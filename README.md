@@ -1,5 +1,5 @@
-# Getting Started with Create React App
-A Mock art-fair app. Users can enjoy the variety of art that comes in many forms. Creators can add and delete their own art stalls.
+# Art Fair
+A Mock art-fair web app. Users can enjoy a variety of art that comes in many forms. Creators can add and delete their own art stalls.
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
