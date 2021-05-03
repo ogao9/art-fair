@@ -1,9 +1,10 @@
 import Card from './Card'
+import TestCard  from './TestCard'
 
 const Cards = ({info, deletebtn, togglebtn}) => {
     return (
         <div>
-            {info.map((obj) => <Card key={obj.id} content={obj} deletebtn={deletebtn} togglebtn={togglebtn}/>)}
+            {info.map((obj) => <TestCard key={obj.id} content={obj} deletebtn={deletebtn} togglebtn={togglebtn}/>)}
         </div>
     )
 }

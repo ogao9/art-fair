@@ -2,18 +2,13 @@
 
 const Header = () => {
     return (
-        <div style={headerStyle}>
-            <h1>This is the Header</h1>
+        <div className="Header">
+            <h1>Welcome to the 2021 Web Art Fair!</h1>
+            <p>Creators from all over the world descend on one React application to display their work</p>
         </div>
     )
 }
 
-const headerStyle = {
-    color: "steelblue",
-    padding: 20,
-    backgroundColor: "lightgray",
-    width: 500,
-    margin: 10,
-}
+
 
 export default Header

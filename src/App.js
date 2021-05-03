@@ -1,11 +1,13 @@
-import { useState } from 'react' //importing a hook
+import { useState } from 'react' 
 import Header from './components/Header'
 import Cards from './components/Cards'
 import AddForm from './components/AddForm'
-import TestCard from './components/TestCard'
+import Login from './components/Login'
+
 
 function App() {
 
+  //global state variable
   const[artInfo, setartInfo] = useState([
       {
         id: 1,
@@ -19,8 +21,9 @@ function App() {
         creator: "Ben Park",
         legacy: false,
       }
-  ]) //global state
+  ]) 
 
+  //--- Button Functions ---
   const deletebtn = (id) => {
     console.log("delete", id);
     setartInfo(artInfo.filter((obj) => obj.id !== id));
@@ -42,21 +45,22 @@ function App() {
   return (
     <div className="container">
       <Header/>
+      <Login/>
       {
         artInfo.length ?
         <Cards info={artInfo} deletebtn={deletebtn} togglebtn={togglebtn}/> 
         : "No more Cards"
       }
       <AddForm onAdd={addbtn}/>
-
-      <TestCard/>
     </div>
   );
 }
-//
 
-//ideas:
+export default App;
+
+
+//Ideas:
 //have a login component
 //if people have credentials, then they can delete or add cards
 //add a favoriting option for each card: this is like the double click task
-export default App;
+

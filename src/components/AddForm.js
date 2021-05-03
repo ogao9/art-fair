@@ -7,21 +7,22 @@ const AddForm = ({onAdd}) => {
     const[legacy, setLegacy] = useState(false);
 
     const onSubmit = (e) =>{
-        e.preventDefault(); //prevent submission to new page?
+        e.preventDefault(); //prevents page reload
 
-        if(!title){ //some text validation
-            alert('Please add a task') 
-            return
+        if(!title){         //some text validation
+            alert('Please add a task');
+            return;
         }
 
-        onAdd({title,creator,legacy}); //pass in an object with text, day, reminder info
-        setTitle('');                    //reset values
+        onAdd({title,creator,legacy}); //calls onAdd, passing in an object with title, creator, legacy info
+        setTitle('');                  //reset values
         setCreator('');
         setLegacy(false);
     }
 
     return (
-        <form onSubmit={onSubmit} style={formStyle}> 
+        <form onSubmit={onSubmit} className="AddForm"> 
+            <p><b>Add a New Art Stall</b></p>
             <div>
                 <label>Title of Piece</label>
                 <input type="text" placeholder="Add Title" value={title} onChange={(e) => setTitle(e.target.value)}></input>
@@ -40,11 +41,6 @@ const AddForm = ({onAdd}) => {
     )
 }
 
-const formStyle={
-    padding: 20,
-    backgroundColor: "lightgray",
-    width: 500,
-    margin: 10,
-}
+
 
 export default AddForm
