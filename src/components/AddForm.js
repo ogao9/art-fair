@@ -1,4 +1,16 @@
 import {useState} from 'react'
+import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button';
+import { makeStyles } from '@material-ui/core/styles';
+
+import { withStyles } from '@material-ui/core/styles';
+import { yellow } from '@material-ui/core/colors';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import Checkbox from '@material-ui/core/Checkbox';
+import CheckBoxOutlineBlankIcon from '@material-ui/icons/CheckBoxOutlineBlank';
+import CheckBoxIcon from '@material-ui/icons/CheckBox';
+import Star from '@material-ui/icons/Star';
+import StarBorder from '@material-ui/icons/StarBorder';
 
 const AddForm = ({onAdd}) => {
     //we want to pass information from this form back to App.js to be added to artInfo array
@@ -20,7 +32,38 @@ const AddForm = ({onAdd}) => {
         setLegacy(false);
     }
 
+    //---Material UI Styles ---
+    const useStyles = makeStyles((theme) => ({
+        root: {
+          '& > *': {
+            margin: theme.spacing(1),
+            width: '25ch',
+          },
+        },
+      }));
+      const classes = useStyles();
+
     return (
+    <div className="AddForm">
+        <form className={classes.root} noValidate autoComplete="off">
+            <div><TextField id="standard-basic" label="Title of Work" value={title} onChange={(e) => setTitle(e.target.value)}/></div>
+            <div><TextField id="standard-basic" label="Creator Name" value={creator} onChange={(e) => setCreator(e.target.value)}/></div>
+            
+            <FormControlLabel control={<Checkbox icon={<StarBorder/>} checkedIcon={<Star/>} name="Feature" />}
+                label="Feature" onChange={()=>setLegacy(!legacy)}/>
+           
+            <div><Button variant="contained" color="primary" onClick={onSubmit}>Add Card</Button></div>
+        </form>
+    </div>
+
+    )
+}
+
+
+
+export default AddForm
+
+/*
         <form onSubmit={onSubmit} className="AddForm"> 
             <p><b>Add a New Art Stall</b></p>
             <div>
@@ -38,9 +81,4 @@ const AddForm = ({onAdd}) => {
 
             <input type="Submit" value="Add Card"></input>
         </form>
-    )
-}
-
-
-
-export default AddForm
+*/

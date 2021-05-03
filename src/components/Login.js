@@ -42,8 +42,8 @@ const Login = () => {
         </div>
     </form>
 
-    const classes = useStyles();
 
+    const classes = useStyles();
     const login2 = <form className={classes.root} noValidate autoComplete="off">
         <div>
         <TextField
@@ -65,9 +65,12 @@ const Login = () => {
 
     return (
         <div className="Login">
-            <h3>Creator and Admin Login Form</h3>
-            <p>Gives access to AddForm and delete buttons</p>
-            <button onClick={onClick}>Show Form</button>
+            <div>
+                <Button variant="contained" color="primary" onClick={onClick} className="LoginButton">Login</Button>
+                <h3>Creator and Admin Login</h3>
+                <p>Gives access to AddForm and delete buttons</p>
+            </div>
+
             {show ? <p>{login2}</p> : null}
         </div>
     )

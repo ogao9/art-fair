@@ -1,0 +1,34 @@
+{
+  "works": [
+    {
+      "id": 1,
+      "title": "Jumping Oranges",
+      "creator": "Peter Banaya",
+      "description": "Two oranges jumping for joy",
+      "legacy": false
+    },
+    {
+      "id": 2,
+      "title": "Peaceful Sunset",
+      "creator": "Ben Park",
+      "description": "A peaceful sunset on the 38th latitude",
+      "legacy": false
+    },
+    {
+      "title": "Oranges Part 3",
+      "creator": "Chrisop",
+      "legacy": true,
+      "id": 3
+    }
+  ],
+  "credentials": [
+    {
+      "Username": "James3",
+      "Access Code": "ghdj65"
+    },
+    {
+      "Username": "Brian0",
+      "Access Code": "bdft98"
+    }
+  ]
+}
