@@ -22,9 +22,10 @@ const useStyles = makeStyles({
   });
 
 
-const TestCard = ({content, deletebtn}) => {
+const TestCard = ({content, deletebtn, authenticate}) => {
   const classes = useStyles();
-  const [likes, setLikes]=useState(0);
+  const [likes, setLikes] = useState(0);
+  
 
   const LikeButton = () =>{
     setLikes(likes+1);
@@ -35,7 +36,6 @@ const TestCard = ({content, deletebtn}) => {
       <Card className={classes.root}>
         <CardActionArea>
           <CardMedia
-            square
             className={classes.media}
             component='img'
             src={Orange}
@@ -55,9 +55,12 @@ const TestCard = ({content, deletebtn}) => {
           <Button size="small" color="primary" href="https://www.theotherartfair.com/toronto/" target="_blank">
             Learn More
           </Button>
-          <Button size="small" color="secondary" onClick={() => deletebtn(content.id)}>
-            Delete
-          </Button>
+          {
+            authenticate ?
+            <Button size="small" color="secondary" onClick={() => deletebtn(content.id)}> Delete </Button>
+            : null
+          }
+          
         </CardActions>
       </Card>
     </div>

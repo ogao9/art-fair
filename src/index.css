@@ -22,7 +22,7 @@ That means index.css is at the top of the hierarchy, so everyone can access it
 .Header{
   color: black;
   padding: 20px;
-  background-color: lightgray;
+  background-color: #496f94;
   width: 100%;
   margin: 10px;
 }
@@ -30,7 +30,7 @@ That means index.css is at the top of the hierarchy, so everyone can access it
 .Login{
   color: black;
   padding: 20px;
-  background-color: lightgray;
+  background-color: whitesmoke;
   width: 100%;
   margin: 10px;
 }

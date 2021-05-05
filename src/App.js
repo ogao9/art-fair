@@ -8,26 +8,36 @@ import Login from './components/Login'
 function App() {
 
   //global state variable
-  const [artInfo, setartInfo] = useState([]);
+  const [artInfo, setArtInfo] = useState([]);
+  const [loginInfo, setLoginInfo] = useState([]);
+  const [authenticate, setAuthenticate] = useState(false);
 
 
   //Function: loads in data upon page loading
   //          we have to create a function inside the function because you can't create an async function directly inside useEffect
   useEffect(()=>{
     const setData = async() =>{
-      const data = await getData();
-      setartInfo(data);
+      const artdata = await getData();
+      const logindata = await getLoginData();
+      setArtInfo(artdata);
+      setLoginInfo(logindata)
     }
     setData();
   },[])   //useEffect only happens if something in this array changes
 
 
-  //Function: GETs data from db.json
+  //Functions: GETs data from db.json
   //          fetch returns a promise object and .json() convert that promise to json data
   const getData = async ()=>{
     const response = await fetch('http://localhost:5000/works'); 
     const data = await response.json(); 
     return data; 
+  }
+
+  const getLoginData = async () => {
+    const response = await fetch('http://localhost:5000/credentials')
+    const data = await response.json();
+    return data;
   }
 
   //Function: Adds a card to db.json
@@ -43,7 +53,7 @@ function App() {
 
     const response = await fetch('http://localhost:5000/works', fetchDetails);
     const data = await response.json(); //set data to the card we just created
-    setartInfo([...artInfo, data]);
+    setArtInfo([...artInfo, data]);
   }
 
 
@@ -55,7 +65,7 @@ function App() {
     }
     const response = await fetch(`http://localhost:5000/works/${id}`,fetchDetails);
   
-    setartInfo(artInfo.filter((obj) => obj.id !== id));
+    setArtInfo(artInfo.filter((obj) => obj.id !== id));
   }
 
 
@@ -63,20 +73,26 @@ function App() {
   //
   const togglebtn = (id) => {
     console.log("toggle called");
-    setartInfo(artInfo.map( (card) => card.id === id ? {...card, legacy: !card.legacy} : card  ));
+    setArtInfo(artInfo.map( (card) => card.id === id ? {...card, legacy: !card.legacy} : card  ));
   }
 
 
   return (
     <div className="container">
       <Header/>
-      <Login/>
+      <Login info={loginInfo} setAuthenticate={setAuthenticate}/>
+
+      {
+        authenticate?
+        <AddForm onAdd={addbtn}/>
+        : null
+      }
+
       {
         artInfo.length ?
-        <Cards info={artInfo} deletebtn={deletebtn} togglebtn={togglebtn}/> 
-        : "No more Cards"
+        <Cards info={artInfo} deletebtn={deletebtn} togglebtn={togglebtn} authenticate={authenticate}/> 
+        : "No Stalls Available"
       }
-      <AddForm onAdd={addbtn}/>
     </div>
   );
 }
@@ -84,14 +100,12 @@ function App() {
 export default App;
 
 
-/*
-Ideas:
-1. add a favoriting option for each card: this is like the double click task
-*/
 
 
-/*
-const[artInfo, setartInfo] = useState([
+
+/* Before we connected the json server
+
+const[artInfo, setArtInfo] = useState([
   {
     id: 1,
     title: "Jumping Oranges",
@@ -110,5 +124,5 @@ const[artInfo, setartInfo] = useState([
     console.log("add called");
     const id = Math.random() * 1000;
     const newCard = {id, ...new_card_info};
-    setartInfo([...artInfo, newCard]);
+setArtInfo([...artInfo, newCard]);
 */

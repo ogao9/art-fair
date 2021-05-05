@@ -45,6 +45,7 @@ const AddForm = ({onAdd}) => {
 
     return (
     <div className="AddForm">
+        <h3>Add an art stall</h3>
         <form className={classes.root} noValidate autoComplete="off">
             <div><TextField id="standard-basic" label="Title of Work" value={title} onChange={(e) => setTitle(e.target.value)}/></div>
             <div><TextField id="standard-basic" label="Creator Name" value={creator} onChange={(e) => setCreator(e.target.value)}/></div>
