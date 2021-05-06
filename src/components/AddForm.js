@@ -7,8 +7,6 @@ import { withStyles } from '@material-ui/core/styles';
 import { yellow } from '@material-ui/core/colors';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
-import CheckBoxOutlineBlankIcon from '@material-ui/icons/CheckBoxOutlineBlank';
-import CheckBoxIcon from '@material-ui/icons/CheckBox';
 import Star from '@material-ui/icons/Star';
 import StarBorder from '@material-ui/icons/StarBorder';
 
@@ -16,7 +14,7 @@ const AddForm = ({onAdd}) => {
     //we want to pass information from this form back to App.js to be added to artInfo array
     const[title, setTitle] = useState('');
     const[creator, setCreator] = useState('');
-    const[legacy, setLegacy] = useState(false);
+    const[starred, setStarred] = useState(false);
 
     const onSubmit = (e) =>{
         e.preventDefault(); //prevents page reload
@@ -26,10 +24,10 @@ const AddForm = ({onAdd}) => {
             return;
         }
 
-        onAdd({title,creator,legacy}); //calls onAdd, passing in an object with title, creator, legacy info
+        onAdd({title,creator,starred}); //calls onAdd, passing in an object with title, creator, legacy info
         setTitle('');                  //reset values
         setCreator('');
-        setLegacy(false);
+        setStarred(false);
     }
 
     //---Material UI Styles ---
@@ -41,7 +39,8 @@ const AddForm = ({onAdd}) => {
           },
         },
       }));
-      const classes = useStyles();
+    const classes = useStyles();
+
 
     return (
     <div className="AddForm">
@@ -51,7 +50,7 @@ const AddForm = ({onAdd}) => {
             <div><TextField id="standard-basic" label="Creator Name" value={creator} onChange={(e) => setCreator(e.target.value)}/></div>
             
             <FormControlLabel control={<Checkbox icon={<StarBorder/>} checkedIcon={<Star/>} name="Feature" />}
-                label="Feature" onChange={()=>setLegacy(!legacy)}/>
+                label="Feature" onChange={()=>setStarred(!starred)}/>
            
             <div><Button variant="contained" color="primary" onClick={onSubmit}>Add Card</Button></div>
         </form>

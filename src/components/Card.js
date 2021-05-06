@@ -1,5 +1,6 @@
 import React from 'react';
 import {useState} from 'react';
+import Orange from '../images/oranges.jpg'
 
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
@@ -9,7 +10,11 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-import Orange from '../images/oranges.jpg'
+
+import Checkbox from '@material-ui/core/Checkbox';
+import Star from '@material-ui/icons/Star';
+import StarBorder from '@material-ui/icons/StarBorder';
+
 
 const useStyles = makeStyles({
     root: {
@@ -22,7 +27,7 @@ const useStyles = makeStyles({
   });
 
 
-const TestCard = ({content, deletebtn, authenticate}) => {
+const TestCard = ({content, deletebtn, togglebtn, authenticate}) => {
   const classes = useStyles();
   const [likes, setLikes] = useState(0);
   
@@ -30,6 +35,9 @@ const TestCard = ({content, deletebtn, authenticate}) => {
   const LikeButton = () =>{
     setLikes(likes+1);
   }
+
+  const icon1 = content.starred ? <Star color="secondary"/> : <StarBorder/>;
+  const icon2 = content.starred ?  <StarBorder/> : <Star color="secondary"/>;
 
   return (
     <div className="NewCard">
@@ -39,7 +47,7 @@ const TestCard = ({content, deletebtn, authenticate}) => {
             className={classes.media}
             component='img'
             src={Orange}
-            title="Contemplative Reptile"
+            title="Two Orange Friends"
           />
           <CardContent>
             <Typography gutterBottom variant="h5" component="h2">Title of Work: {content.title}</Typography>
@@ -60,9 +68,10 @@ const TestCard = ({content, deletebtn, authenticate}) => {
             <Button size="small" color="secondary" onClick={() => deletebtn(content.id)}> Delete </Button>
             : null
           }
-          
+          <Checkbox icon={icon1} checkedIcon={icon2} onChange={()=>togglebtn(content.id)} />
         </CardActions>
       </Card>
+      
     </div>
     )
 }

@@ -1,4 +1,3 @@
-import { getQueriesForElement } from '@testing-library/dom'
 import PropTypes from 'prop-types'
 
 
@@ -11,7 +10,6 @@ const Button = ({onClick, likeCount}) => {
 Button.propTypes = {
     onClick: PropTypes.func,
 }
-
 
 
 export default Button

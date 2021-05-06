@@ -1,34 +1,32 @@
 {
   "works": [
     {
-      "id": 1,
-      "title": "Jumping Oranges",
-      "creator": "Peter Banaya",
-      "description": "Two oranges jumping for joy",
-      "legacy": false
+      "title": "Flying Squirrels",
+      "creator": "Benhamin",
+      "starred": false,
+      "id": 4
     },
     {
-      "id": 2,
-      "title": "Peaceful Sunset",
-      "creator": "Ben Park",
-      "description": "A peaceful sunset on the 38th latitude",
-      "legacy": false
+      "title": "Testing Toggle",
+      "creator": "Yassir",
+      "starred": false,
+      "id": 5
     },
     {
-      "title": "Oranges Part 3",
-      "creator": "Chrisop",
-      "legacy": true,
-      "id": 3
+      "title": "Two Happy Oranges",
+      "creator": "Oliver",
+      "starred": true,
+      "id": 6
     }
   ],
   "credentials": [
     {
-      "Username": "James3",
-      "Access Code": "ghdj65"
+      "Username": "Oliver",
+      "Access Code": "123456"
     },
     {
       "Username": "Brian0",
-      "Access Code": "test123"
+      "Access Code": "raf987"
     }
   ]
 }

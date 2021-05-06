@@ -2,6 +2,7 @@
 index.css is imported in index.js, which effectively renders the entire page
 That means index.css is at the top of the hierarchy, so everyone can access it
 */
+@import url('https://fonts.googleapis.com/css2?family=Changa&display=swap');
 
 * {
   box-sizing: border-box;
@@ -10,7 +11,7 @@ That means index.css is at the top of the hierarchy, so everyone can access it
 }
 
 .container {
-  width: 50%;
+  width: 100%;
   margin: auto;
   overflow: auto;
   min-height: 300px;
@@ -19,12 +20,11 @@ That means index.css is at the top of the hierarchy, so everyone can access it
   border-radius: 5px;
 }
 
-.Header{
+.Welcome{
   color: black;
   padding: 20px;
   background-color: #496f94;
   width: 100%;
-  margin: 10px;
 }
 
 .Login{
@@ -32,28 +32,57 @@ That means index.css is at the top of the hierarchy, so everyone can access it
   padding: 20px;
   background-color: whitesmoke;
   width: 100%;
-  margin: 10px;
 }
 
 .AddForm{
   padding: 20px;
   background-color: whitesmoke;
   width: 100%;
-  margin: 10px;
-}
-
-.NewCard{
-  margin: 10px;
 }
 
 .LoginButton{
   float:right;
 }
 
+.Footer{
+  background-color: black;
+  color: whitesmoke;
+  text-align: center;
+  width: 100%;
+  padding: 20px;
+  margin-top: 15px;
+}
+
+.Navbar li{
+  display: inline;
+  list-style-type: none;
+  padding: 15px;
+  margin: 10px;  
+}
+
+.RouterLink{
+  text-decoration: none;
+  color: black;
+  font-family: 'Changa', sans-serif;
+  font-size: 2vw;
+}
+
+.RouterLink:hover{
+  text-decoration: underline;
+}
+
+.Header{
+  margin-bottom: 10px;
+}
 
 
 
-/*--- Currently Unused Below this Line--- */
+
+
+
+
+
+/*-------- Currently Unused Below this Line-------- */
 .card{
   background-color: #f7df1e;
   padding: 20px;

@@ -1,4 +1,3 @@
-import OldCard from './OldCard'
 import Card  from './Card'
 
 const Cards = ({info, deletebtn, togglebtn, authenticate}) => {
@@ -11,5 +10,6 @@ const Cards = ({info, deletebtn, togglebtn, authenticate}) => {
 }
 
 export default Cards
+
 
 //Note: info.map() applies a function to every item in the array and then returns it as a list
