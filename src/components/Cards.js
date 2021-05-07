@@ -1,11 +1,16 @@
 import Card  from './Card'
+import Grid from '@material-ui/core/Grid'
 
-const Cards = ({info, deletebtn, togglebtn, authenticate}) => {
+const Cards = ({info, deletebtn, togglebtn, authenticate, likebtn}) => {
     return (
-        <div>
-            {info.map((obj) => 
-                <Card key={obj.id} content={obj} deletebtn={deletebtn} togglebtn={togglebtn} authenticate={authenticate}/>)}
-        </div>
+        <Grid container spacing={2} justify="flex-start">
+            {info.map( (obj) => 
+                <Grid item>
+                <Card key={obj.id} 
+                    content={obj} deletebtn={deletebtn} togglebtn={togglebtn} authenticate={authenticate} likebtn={likebtn}/>
+                </Grid>
+            )}
+        </Grid>
     )
 }
 

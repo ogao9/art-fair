@@ -18,7 +18,8 @@ import StarBorder from '@material-ui/icons/StarBorder';
 
 const useStyles = makeStyles({
     root: {
-      maxWidth:400
+      width: 375,
+      height: 400,
     },
     media: {
       height: 200,
@@ -27,17 +28,15 @@ const useStyles = makeStyles({
   });
 
 
-const TestCard = ({content, deletebtn, togglebtn, authenticate}) => {
+const TestCard = ({content, deletebtn, togglebtn, likebtn, authenticate}) => {
   const classes = useStyles();
-  const [likes, setLikes] = useState(0);
-  
+  const [likesHit, setLikesHit] = useState(0);
 
   const LikeButton = () =>{
-    setLikes(likes+1);
+    likebtn(content.id);
+    setLikesHit(likesHit+1);
   }
 
-  const icon1 = content.starred ? <Star color="secondary"/> : <StarBorder/>;
-  const icon2 = content.starred ?  <StarBorder/> : <Star color="secondary"/>;
 
   return (
     <div className="NewCard">
@@ -50,15 +49,15 @@ const TestCard = ({content, deletebtn, togglebtn, authenticate}) => {
             title="Two Orange Friends"
           />
           <CardContent>
-            <Typography gutterBottom variant="h5" component="h2">Title of Work: {content.title}</Typography>
-            <Typography gutterBottom variant="h5" component="h5">Creator Name: {content.creator}</Typography>
-            <Typography variant="body2" color="textSecondary" component="p">Brief Description: {content.description}</Typography>
+            <Typography gutterBottom variant="h6">{content.title}</Typography>
+            <Typography gutterBottom variant="h6">{content.creator}</Typography>
+            <Typography variant="body2" color="textSecondary" component="p">{content.description}</Typography>
           </CardContent>
         </CardActionArea>
 
         <CardActions>
           <Button size="small" color="primary" onClick={LikeButton}>
-            Likes: {likes}
+            Likes: {content.likes}
           </Button>
           <Button size="small" color="primary" href="https://www.theotherartfair.com/toronto/" target="_blank">
             Learn More
@@ -68,7 +67,7 @@ const TestCard = ({content, deletebtn, togglebtn, authenticate}) => {
             <Button size="small" color="secondary" onClick={() => deletebtn(content.id)}> Delete </Button>
             : null
           }
-          <Checkbox icon={icon1} checkedIcon={icon2} onChange={()=>togglebtn(content.id)} />
+          <Checkbox checked={content.starred} icon={<StarBorder/>} checkedIcon={<Star/>} onChange={()=>togglebtn(content.id)} />
         </CardActions>
       </Card>
       

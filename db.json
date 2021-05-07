@@ -1,22 +1,44 @@
 {
   "works": [
     {
-      "title": "Flying Squirrels",
-      "creator": "Benhamin",
-      "starred": false,
-      "id": 4
-    },
-    {
-      "title": "Testing Toggle",
-      "creator": "Yassir",
-      "starred": false,
-      "id": 5
-    },
-    {
-      "title": "Two Happy Oranges",
-      "creator": "Oliver",
+      "title": "Memories",
+      "creator": "Bill Jones",
       "starred": true,
-      "id": 6
+      "description": "Sandy beaches and juicy oranges",
+      "likes": 2,
+      "id": 7
+    },
+    {
+      "title": "Sunset Peaches",
+      "creator": "Peter Banaya",
+      "starred": true,
+      "description": "Ripe peaches on a warm Georgia summer",
+      "likes": 3,
+      "id": 8
+    },
+    {
+      "title": "Hittin Blingers",
+      "creator": "Jack Foyler",
+      "starred": false,
+      "description": "Dingers on the mound",
+      "likes": 0,
+      "id": 9
+    },
+    {
+      "title": "Peaceful Sunset",
+      "creator": "Ben Park",
+      "starred": false,
+      "description": "A great day to enjoy the sunset",
+      "likes": 0,
+      "id": 10
+    },
+    {
+      "title": "AI Oranges",
+      "creator": "John Perrison",
+      "starred": false,
+      "description": "Bring big tech to agriculture",
+      "likes": 0,
+      "id": 11
     }
   ],
   "credentials": [

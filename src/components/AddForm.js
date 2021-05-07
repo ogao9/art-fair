@@ -1,33 +1,47 @@
 import {useState} from 'react'
+
+import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
-import { makeStyles } from '@material-ui/core/styles';
-
-import { withStyles } from '@material-ui/core/styles';
-import { yellow } from '@material-ui/core/colors';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Checkbox from '@material-ui/core/Checkbox';
-import Star from '@material-ui/icons/Star';
-import StarBorder from '@material-ui/icons/StarBorder';
+import ButtonGroup from '@material-ui/core/ButtonGroup';
+import SaveIcon from '@material-ui/icons/Save';
+import DeleteIcon from '@material-ui/icons/Delete';
 
 const AddForm = ({onAdd}) => {
-    //we want to pass information from this form back to App.js to be added to artInfo array
     const[title, setTitle] = useState('');
     const[creator, setCreator] = useState('');
-    const[starred, setStarred] = useState(false);
+    const[description, setDescription] = useState('');
 
-    const onSubmit = (e) =>{
+    const onSave = (e) =>{
         e.preventDefault(); //prevents page reload
 
         if(!title){         //some text validation
-            alert('Please add a task');
+            alert('Please add a title');
             return;
         }
+        const likes = 0;
+        const starred = false;
 
-        onAdd({title,creator,starred}); //calls onAdd, passing in an object with title, creator, legacy info
-        setTitle('');                  //reset values
+        //we want to pass information from this form up App.js to be added to the artInfo array
+        onAdd({title,creator,starred,description,likes}); 
+
+        //could make this a "snackbar"
+        alert('Your card has been added!');
+
+         //reset values
+        setTitle('');                                    
         setCreator('');
-        setStarred(false);
+        setDescription('');
+    }
+
+    const onDiscard = (e) => {
+        e.preventDefault();
+
+        setTitle('');                                    
+        setCreator('');
+        setDescription('');
+
+        alert('Successfully discarded')
     }
 
     //---Material UI Styles ---
@@ -48,11 +62,14 @@ const AddForm = ({onAdd}) => {
         <form className={classes.root} noValidate autoComplete="off">
             <div><TextField id="standard-basic" label="Title of Work" value={title} onChange={(e) => setTitle(e.target.value)}/></div>
             <div><TextField id="standard-basic" label="Creator Name" value={creator} onChange={(e) => setCreator(e.target.value)}/></div>
+            <div><TextField id="standard-basic" label="Description" value={description} onChange={(e) => setDescription(e.target.value)}/></div>
             
-            <FormControlLabel control={<Checkbox icon={<StarBorder/>} checkedIcon={<Star/>} name="Feature" />}
-                label="Feature" onChange={()=>setStarred(!starred)}/>
-           
-            <div><Button variant="contained" color="primary" onClick={onSubmit}>Add Card</Button></div>
+            <div>
+                <ButtonGroup variant="contained">
+                <Button startIcon={<SaveIcon/>} color="primary" onClick={onSave}>Save</Button>
+                <Button startIcon={<DeleteIcon/>} color="secondary" onClick={onDiscard}>Discard</Button>
+                </ButtonGroup>
+            </div>
         </form>
     </div>
 

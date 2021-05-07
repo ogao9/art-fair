@@ -1,26 +1,21 @@
 import React from 'react'
 import { useState, useEffect } from 'react' 
-
 import Cards from './Cards'
-import AddForm from './AddForm'
-import Login from './Login'
+
+import Container from '@material-ui/core/Container'
 
 const ArtDisplay = () => {
 
-//global(or at least used to be) state variables
+  //global(or at least used to be) state variables
   const [artInfo, setArtInfo] = useState([]);
-  const [loginInfo, setLoginInfo] = useState([]);
-  const [authenticate, setAuthenticate] = useState(false);
 
 
   //Function: loads in data upon page loading
   //          we have to create a function inside the function because you can't create an async function directly inside useEffect
   useEffect(()=>{
     const setData = async() =>{
-      const artdata = await getData();
-      const logindata = await getLoginData();
+      const artdata = await getAllCards();
       setArtInfo(artdata);
-      setLoginInfo(logindata)
     }
     setData();
   },[])   //useEffect only happens if something in this array changes
@@ -28,7 +23,7 @@ const ArtDisplay = () => {
 
   //Functions: GETs data from db.json
   //          fetch returns a promise object and .json() convert that promise to json data
-  const getData = async ()=>{
+  const getAllCards = async ()=>{
     const response = await fetch('http://localhost:5000/works'); 
     const data = await response.json(); 
     return data; 
@@ -37,31 +32,8 @@ const ArtDisplay = () => {
   const getSingleCard = async (id)=>{
     const response = await fetch(`http://localhost:5000/works/${id}`); 
     const data = await response.json(); 
-    console.log(data);
+    console.log("getSingleCard: ", data);
     return data; 
-  }
-
-  const getLoginData = async () => {
-    const response = await fetch('http://localhost:5000/credentials')
-    const data = await response.json();
-    return data;
-  }
-
-  //Function: Adds a card to db.json
-  //          new_card_info is passed from AddForm.js, where this function is called
-  const addbtn = async(new_card_info) => {
-    console.log(new_card_info);
-    const fetchDetails = {
-      method: 'POST',
-      headers: {
-        'Content-type': 'application/json'
-      },
-      body: JSON.stringify(new_card_info) //stringify converts an object to a JSON string (the format we want)
-    }
-
-    const response = await fetch('http://localhost:5000/works', fetchDetails);
-    const data = await response.json(); //set data to the card we just created
-    setArtInfo([...artInfo, data]);
   }
 
 
@@ -99,22 +71,43 @@ const ArtDisplay = () => {
 
     setArtInfo(artInfo.map( (card) => card.id === id ? {...card, starred: data.starred} : card  ));
   }
+
+
+  //Function: Changes a card's number of likes
+  //Effects: db.json direction change: PUT request
+  const likebtn = async (id) => {
+    const card = await getSingleCard(id);
+    const updatedCard = {...card, likes: card.likes+1};
+
+    console.log (updatedCard);
+
+    const fetchDetails = {
+      method: "PUT",
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(updatedCard),
+    }
+
+    const response = await fetch(`http://localhost:5000/works/${id}`,fetchDetails);
+    const data = await response.json();
+
+    setArtInfo(artInfo.map((card) => card.id === id ? {...card, likes:data.likes} : card));
+  }
+
+
     return (
-        <div>
-        <Login info={loginInfo} setAuthenticate={setAuthenticate}/>
+        <Container maxWidth="lg">
+          <header className="ArtGalleryWelcome">
+            <h2>Welcome to the Art Gallery!</h2>
+          </header>
 
-        {
-        authenticate?
-        <AddForm onAdd={addbtn}/>
-        : null
-        }
-
-        {
-        artInfo.length ?
-        <Cards info={artInfo} deletebtn={deletebtn} togglebtn={togglebtn} authenticate={authenticate}/> 
-        : "No Stalls Available"
-        }
-        </div>
+          {
+          artInfo.length ?
+          <Cards info={artInfo} deletebtn={deletebtn} togglebtn={togglebtn} authenticate={true} likebtn={likebtn}/> 
+          : "No Stalls Available"
+          }
+        </Container>
     )
 }
 

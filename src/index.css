@@ -3,11 +3,20 @@ index.css is imported in index.js, which effectively renders the entire page
 That means index.css is at the top of the hierarchy, so everyone can access it
 */
 @import url('https://fonts.googleapis.com/css2?family=Changa&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
 
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+}
+
+body{
+  font-family: 'Open Sans', sans-serif;
+}
+
+a{
+  text-decoration: none;
 }
 
 .container {
@@ -20,11 +29,33 @@ That means index.css is at the top of the hierarchy, so everyone can access it
   border-radius: 5px;
 }
 
-.Welcome{
+
+
+.Introduction{
   color: black;
   padding: 20px;
-  background-color: #496f94;
-  width: 100%;
+  background-color: whitesmoke;
+  width:100%;
+  border: 2px solid black;
+  margin: 20px 0;
+}
+
+.AboutPage{
+  color: black;
+  padding: 20px;
+  background-color: whitesmoke;
+  width:100%;
+  border: 2px solid black;
+  margin: 20px 0;
+}
+
+.ArtGalleryWelcome{
+  color: black;
+  padding: 20px;
+  background-color: lightpink;
+  width:100%;
+  border: 2px solid black;
+  margin: 20px 0;
 }
 
 .Login{
@@ -32,16 +63,24 @@ That means index.css is at the top of the hierarchy, so everyone can access it
   padding: 20px;
   background-color: whitesmoke;
   width: 100%;
+  margin-top:10px;
 }
 
 .AddForm{
   padding: 20px;
   background-color: whitesmoke;
   width: 100%;
+  margin-top: 10px;
 }
 
 .LoginButton{
   float:right;
+}
+
+.NewCard{
+  margin-top:10px;
+  width: 400px;
+  height: 400px;
 }
 
 .Footer{
@@ -51,20 +90,26 @@ That means index.css is at the top of the hierarchy, so everyone can access it
   width: 100%;
   padding: 20px;
   margin-top: 15px;
+  line-height: 1.5;
+}
+
+.Footer a{
+  color:white;
+  text-decoration: underline;
 }
 
 .Navbar li{
   display: inline;
   list-style-type: none;
-  padding: 15px;
-  margin: 10px;  
+  padding: 15px 30px 15px 0;
+  margin: 10px 0;
 }
 
 .RouterLink{
   text-decoration: none;
   color: black;
-  font-family: 'Changa', sans-serif;
-  font-size: 2vw;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 1.5vw;
 }
 
 .RouterLink:hover{
