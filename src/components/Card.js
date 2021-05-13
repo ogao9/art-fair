@@ -18,8 +18,9 @@ import StarBorder from '@material-ui/icons/StarBorder';
 
 const useStyles = makeStyles({
     root: {
-      width: 375,
+      maxWidth :350,
       height: 400,
+      margin: 0,
     },
     media: {
       height: 200,

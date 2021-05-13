@@ -5,8 +5,9 @@ import Header from './components/Header'
 import Footer from './components/Footer'
 import HomePage from './components/HomePage'
 import About from './components/About'
-import ArtDisplay from './components/ArtDisplay'
+import ArtCentral from './components/ArtCentral'
 import Admin from './components/Admin'
+import Profile from './components/Profile'
 
 
 function App() {
@@ -18,8 +19,9 @@ function App() {
         <Switch>
             <Route path="/" exact component={HomePage} />
             <Route path="/About" exact component={About} />
-            <Route path="/ArtDisplay" exact component={ArtDisplay}/>
+            <Route path="/ArtDisplay" exact component={ArtCentral}/>
             <Route path="/Admin" exact component={Admin}/>
+            <Route path="/Profile" exact component={Profile}/>
         </Switch>
 
         <Footer/>

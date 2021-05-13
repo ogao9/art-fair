@@ -1,6 +1,7 @@
 import React from 'react';
 import {Link} from'react-router-dom'
 
+
 import Button from '@material-ui/core/Button';
 import {makeStyles, ThemeProvider, createMuiTheme} from '@material-ui/core/styles'
 import {orange} from '@material-ui/core/colors'
@@ -12,10 +13,8 @@ import Container from '@material-ui/core/Container'
 import Paper from '@material-ui/core/Paper'
 import Grid from '@material-ui/core/Grid'
 
-import AppBar from '@material-ui/core/AppBar'
-import Toolbar from '@material-ui/core/Toolbar'
-import IconButton from '@material-ui/core/IconButton'
-import MenuIcon from '@material-ui/icons/Menu'
+import {useSpring, animated} from 'react-spring'
+
 
 const HomePage = () => {
 
@@ -62,36 +61,45 @@ const HomePage = () => {
 
     //Responsive web design: have sizes dynamically change based on viewport we are on (xs, sm, md, lg)
 
+    const props = useSpring({to: {opacity: 1}, from: {opacity:0},delay: 1000, config:{duration:1000}})
+
+
     return (
         <ThemeProvider theme={theme}>
         <Container maxWidth="lg">
     
             <section className="Introduction">
+                <animated.div style={props}>
                 <h1>Welcome to Art Fair 3.0!</h1>
                 <p>Creators from all over the world descend on one React application to display their work</p>
+                </animated.div>
             </section>
+            
             
             <section className="PaperGrid">
             <Grid container spacing={2} justify='space-between'>
-                <Grid item> 
-                    <Paper elevation={3} style={{height:400, width:275}}/>
+            <Grid item xs={3}> 
+                    <Paper elevation={3} style={{height:400}}/>
                 </Grid>
-                <Grid item>
-                    <Paper elevation={3} style={{height:400, width:275}}/>
+                <Grid item xs={3}>
+                    <Paper elevation={3} style={{height:400}}/>
                 </Grid>
-                <Grid item>
-                    <Paper elevation={3} style={{height:400, width:275}}/>
+                <Grid item xs={3}>
+                    <Paper elevation={3} style={{height:400}}/>
                 </Grid>
-                <Grid item>
-                    <Paper elevation={3} style={{height:400, width:275}}/>
+                <Grid item xs={3}>
+                    <Paper elevation={3} style={{height:400}} />
                 </Grid>
             </Grid>
             </section>
+           
 
+            
             <div style={{textAlign:'center'}}>
                <Link to='/ArtDisplay'><Button className={classes.root}>To Gallery</Button></Link>
             </div>
-       
+            
+
         </Container>
         </ThemeProvider>
     )
@@ -100,6 +108,8 @@ const HomePage = () => {
 
 export default HomePage
 
+
+//we made an unintentional feature: it's like curtains
 
 /*
             <AppBar>
@@ -128,4 +138,17 @@ export default HomePage
                     <Paper style={{height:75, width:'100%'}}/>
                 </Grid>
             </Grid>
+
+                            <Grid item> 
+                    <Paper elevation={3} style={{height:400, width:275}}/>
+                </Grid>
+                <Grid item>
+                    <Paper elevation={3} style={{height:400, width:275}}/>
+                </Grid>
+                <Grid item>
+                    <Paper elevation={3} style={{height:400, width:275}}/>
+                </Grid>
+                <Grid item>
+                    <Paper elevation={3} style={{height:400, width:275}}/>
+                </Grid>
 */

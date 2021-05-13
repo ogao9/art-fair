@@ -1,11 +1,11 @@
 {
   "works": [
     {
-      "title": "Memories",
+      "title": "Decadence",
       "creator": "Bill Jones",
       "starred": true,
       "description": "Sandy beaches and juicy oranges",
-      "likes": 2,
+      "likes": 9,
       "id": 7
     },
     {
@@ -35,10 +35,106 @@
     {
       "title": "AI Oranges",
       "creator": "John Perrison",
-      "starred": false,
+      "starred": true,
       "description": "Bring big tech to agriculture",
       "likes": 0,
       "id": 11
+    },
+    {
+      "title": "TestingNewConfig",
+      "creator": "Cards.js",
+      "starred": false,
+      "description": "yes",
+      "likes": 0,
+      "id": 12
+    },
+    {
+      "title": "13",
+      "creator": "Bill Jones",
+      "starred": true,
+      "description": "Sandy beaches and juicy oranges",
+      "likes": 9,
+      "id": 13
+    },
+    {
+      "title": "14",
+      "creator": "Bill Jones",
+      "starred": true,
+      "description": "Sandy beaches and juicy oranges",
+      "likes": 9,
+      "id": 14
+    },
+    {
+      "title": "15",
+      "creator": "Bill Jones",
+      "starred": true,
+      "description": "Sandy beaches and juicy oranges",
+      "likes": 9,
+      "id": 15
+    },
+    {
+      "title": "16",
+      "creator": "Bill Jones",
+      "starred": true,
+      "description": "Sandy beaches and juicy oranges",
+      "likes": 9,
+      "id": 16
+    },
+    {
+      "title": "17",
+      "creator": "Bill Jones",
+      "starred": true,
+      "description": "Sandy beaches and juicy oranges",
+      "likes": 9,
+      "id": 17
+    },
+    {
+      "title": "18",
+      "creator": "Bill Jones",
+      "starred": true,
+      "description": "Sandy beaches and juicy oranges",
+      "likes": 9,
+      "id": 18
+    },
+    {
+      "title": "19",
+      "creator": "Bill Jones",
+      "starred": true,
+      "description": "Sandy beaches and juicy oranges",
+      "likes": 9,
+      "id": 19
+    },
+    {
+      "title": "20",
+      "creator": "Bill Jones",
+      "starred": true,
+      "description": "Sandy beaches and juicy oranges",
+      "likes": 9,
+      "id": 20
+    },
+    {
+      "title": "21",
+      "creator": "Bill Jones",
+      "starred": true,
+      "description": "Sandy beaches and juicy oranges",
+      "likes": 9,
+      "id": 21
+    },
+    {
+      "title": "22",
+      "creator": "Bill Jones",
+      "starred": true,
+      "description": "Sandy beaches and juicy oranges",
+      "likes": 9,
+      "id": 22
+    },
+    {
+      "title": "23",
+      "creator": "Bill Jones",
+      "starred": true,
+      "description": "Sandy beaches and juicy oranges",
+      "likes": 9,
+      "id": 23
     }
   ],
   "credentials": [

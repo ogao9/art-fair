@@ -3,6 +3,7 @@ import {useState, useEffect} from 'react'
 
 import AddForm from './AddForm'
 import Login from './Login'
+import UserForm from './multi-step-form/UserForm'
 
 const Admin = () => {
     const [loginInfo, setLoginInfo] = useState([]);
@@ -41,16 +42,21 @@ const Admin = () => {
 
     return (
         <div>
-            <Login info={loginInfo} setAuthenticate={setAuthenticate}/>
-
+            <UserForm/>
+            
             {
                 authenticate ? 
                 <AddForm onAdd={addbtn}/>
                 : null
             }
+
+            
             
         </div>
     )
 }
 
 export default Admin
+
+
+//<Login info={loginInfo} setAuthenticate={setAuthenticate}/>
