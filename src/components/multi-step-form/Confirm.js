@@ -17,22 +17,24 @@ const Confirm = ({nextStep, prevStep, values}) => {
     }
 
     const backClicked = () => {
-        //display snackbar
-        //clear values
         prevStep();
     }
 
     return (
         <div className="flex-container">
             <div className="MultiForm">
-                <Typography variant="h4">Confirm</Typography>
-                <div>
-                    <h4>Title of Work: {values.hello} </h4>
-                    <h4>Creator Name </h4>
-                    <h4>Description</h4>
-                    <h4>Uploaded File: </h4>
-                    <h4>City of Origin: </h4>
+                <Typography variant="h4" align='center'>Confirm</Typography>
+                <div style={{textAlign:'center'}}>
+                    <p><b>Title</b></p><br></br>
+                    <p>{values.title}</p><br></br>
+
+                    <p><b>Creator Name</b></p><br></br>
+                    <p>{values.creator}</p><br></br>
+
+                    <p><b>Description</b></p><br></br>
+                    <p>{values.description}</p><br></br>
                 </div>
+
                 <div className="ButtonGroup">
                 <ButtonGroup variant="outlined" style={{textAlign:'center', width:'80%', margin:'auto'}}>
                     <Button startIcon={<ArrowBackIosIcon/>} color="primary" onClick={backClicked}>Back</Button>
@@ -40,6 +42,7 @@ const Confirm = ({nextStep, prevStep, values}) => {
                 </ButtonGroup>
                 </div>
             </div>
+            
             <div className="ButtonGroup">
             <ButtonGroup variant="outlined" style={{textAlign:'center', width:'80%', margin:'auto'}}>
                     <Button startIcon={<ArrowBackIosIcon/>} color="primary" onClick={prevStep}>Back</Button>

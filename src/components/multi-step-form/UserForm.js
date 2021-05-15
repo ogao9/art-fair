@@ -1,5 +1,6 @@
 import React from 'react'
 import {useState} from 'react'
+
 import UserFormDetails from './UserFormDetails'
 import PersonalData from './PersonalData'
 import Confirm from './Confirm'
@@ -11,16 +12,16 @@ const UserForm = () => {
     const [userInput, setUserInput] = useState({}); //store all user info in an object
 
     const nextStep = () => {
-        setStep(step+1)
+        setStep(step + 1)
     }
 
     const prevStep = () => {
-        setStep(step-1)
+        setStep(step - 1)
     }
 
 
     //MODIFIES: userInput
-    //EFFECTS: triggered when an input field changes
+    //EFFECTS: triggered when an input field on any of the connected forms changes
     const handleChange = (input, e) => {
         setUserInput({...userInput, [input]: e.target.value});
     }
@@ -53,16 +54,8 @@ const UserForm = () => {
         default:
             return <h1>Oops! Something went wrong...</h1>
     }
-
 }
 
 export default UserForm
 
 
-    /*
-    const [firstName ]
-    const [lastName]
-    const [email]
-    const [city, setCity]
-    const [bio, setBio]
-    */

@@ -1,6 +1,6 @@
 /*
 index.css is imported in index.js, which effectively renders the entire page
-That means index.css is at the top of the hierarchy, so everyone can access it
+That means index.css is at the top of the hierarchy, so everyone in the directory can access it
 */
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
 
@@ -28,13 +28,11 @@ a{
   border-radius: 5px;
 }
 
-
-
 .Introduction{
   color: black;
   padding: 20px;
   background-color: whitesmoke;
-  width:100%;
+  width: 100%;
   border: 2px solid black;
   margin: 20px 0;
 }
@@ -55,7 +53,6 @@ a{
   width: 100%;
   border: 2px solid black;
   margin: 20px 0;
-  box-sizing: border-box;
 }
 
 .Login{
@@ -63,7 +60,7 @@ a{
   padding: 20px;
   background-color: whitesmoke;
   width: 100%;
-  margin-top:10px;
+  margin-top: 10px;
 }
 
 .AddForm{
@@ -74,7 +71,7 @@ a{
 }
 
 .LoginButton{
-  float:right;
+  float: right;
 }
 
 .NewCard{
@@ -91,7 +88,6 @@ a{
   padding: 20px;
   margin-top: 15px;
   line-height: 1.5;
- 
 }
 
 .Footer a{
