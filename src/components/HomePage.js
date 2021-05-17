@@ -96,7 +96,7 @@ const HomePage = () => {
 
             
             <div style={{textAlign:'center'}}>
-               <Link to='/ArtDisplay'><Button className={classes.root}>To Gallery</Button></Link>
+               <Link to='/ArtCentral'><Button className={classes.root}>To Gallery</Button></Link>
             </div>
             
 

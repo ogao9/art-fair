@@ -5,27 +5,25 @@ import Header from './components/Header'
 import Footer from './components/Footer'
 import HomePage from './components/HomePage'
 import About from './components/About'
-import ArtCentral from './components/ArtCentral'
-import Admin from './components/Admin'
+import ArtCentral from './components/art-central/ArtCentral'
 import Profile from './components/Profile'
+import UserForm from'./components/multi-step-form/UserForm'
 
 
 function App() {
   return (
     <Router>
-      <div className="container">
         <Header/>
 
         <Switch>
             <Route path="/" exact component={HomePage} />
             <Route path="/About" exact component={About} />
-            <Route path="/ArtDisplay" exact component={ArtCentral}/>
-            <Route path="/Admin" exact component={Admin}/>
+            <Route path="/ArtCentral" exact component={ArtCentral}/>
+            <Route path="/Form" exact component={UserForm}/>
             <Route path="/Profile" exact component={Profile}/>
         </Switch>
 
         <Footer/>
-      </div>
     </Router>
   );
 }

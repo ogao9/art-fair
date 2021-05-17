@@ -7,47 +7,52 @@ import Button from '@material-ui/core/Button';
 import ButtonGroup from '@material-ui/core/ButtonGroup';
 import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
 import ArrowBackIosIcon from '@material-ui/icons/ArrowBackIos';
+import List from '@material-ui/core/List'
+import ListItem from '@material-ui/core/ListItem'
+import ListItemText from '@material-ui/core/ListItemText'
 
 
-const Confirm = ({nextStep, prevStep, values}) => {
+const Confirm = ({nextStep, prevStep, values, addbtn}) => {
 
     const submitClicked = () => {
-        //send data to db
+        addbtn(); //send data to db and clear form
         nextStep();
     }
 
-    const backClicked = () => {
-        prevStep();
-    }
+    const useStyles = makeStyles((theme) => ({
+        root: {
+          width: '100%',
+          maxWidth: 360,
+          backgroundColor: theme.palette.background.paper,
+        },
+    }));
+    const classes = useStyles();
 
     return (
         <div className="flex-container">
             <div className="MultiForm">
-                <Typography variant="h4" align='center'>Confirm</Typography>
-                <div style={{textAlign:'center'}}>
-                    <p><b>Title</b></p><br></br>
-                    <p>{values.title}</p><br></br>
-
-                    <p><b>Creator Name</b></p><br></br>
-                    <p>{values.creator}</p><br></br>
-
-                    <p><b>Description</b></p><br></br>
-                    <p>{values.description}</p><br></br>
-                </div>
-
-                <div className="ButtonGroup">
-                <ButtonGroup variant="outlined" style={{textAlign:'center', width:'80%', margin:'auto'}}>
-                    <Button startIcon={<ArrowBackIosIcon/>} color="primary" onClick={backClicked}>Back</Button>
-                    <Button endIcon={<ArrowForwardIosIcon/>} color="primary" onClick={submitClicked}>Submit</Button>
-                </ButtonGroup>
-                </div>
+                <Typography variant="h5" align='center'>Confirmation</Typography>
+                <List className={classes.root}>
+                    <ListItem>
+                        <ListItemText primary="Title" secondary={values.title}/>
+                    </ListItem>
+                    <ListItem>
+                        <ListItemText primary="Creator Name" secondary={values.creator}/>
+                    </ListItem>
+                    <ListItem>
+                        <ListItemText primary="Description" secondary={values.description}/>
+                    </ListItem>
+                    <ListItem>
+                        <ListItemText primary="File Uploaded" secondary="File name"/>
+                    </ListItem>
+                </List>
             </div>
             
             <div className="ButtonGroup">
-            <ButtonGroup variant="outlined" style={{textAlign:'center', width:'80%', margin:'auto'}}>
-                    <Button startIcon={<ArrowBackIosIcon/>} color="primary" onClick={prevStep}>Back</Button>
-                    <Button endIcon={<ArrowForwardIosIcon/>} color="primary" onClick={nextStep}>Next</Button>
-            </ButtonGroup>
+                <ButtonGroup variant="outlined">
+                        <Button startIcon={<ArrowBackIosIcon/>} color="primary" onClick={prevStep}>Back</Button>
+                        <Button endIcon={<ArrowForwardIosIcon/>} color="primary" onClick={submitClicked}>Submit</Button>
+                </ButtonGroup>
             </div>
         </div>
     )

@@ -18,14 +18,16 @@ a{
   text-decoration: none;
 }
 
-.container {
-  width: 100%;
-  margin: auto;
-  overflow: auto;
-  min-height: 300px;
-  border: 1px solid whitesmoke;
-  padding: 30px;
-  border-radius: 5px;
+.flex-container{
+  display:flex;
+  width:100%;
+  justify-content: center;
+  align-items: center;
+}
+
+/*Class Specifics */
+.Header{
+  margin: 10px;
 }
 
 .Introduction{
@@ -70,10 +72,6 @@ a{
   margin-top: 10px;
 }
 
-.LoginButton{
-  float: right;
-}
-
 .NewCard{
   margin-top:10px;
   width: 400px;
@@ -113,9 +111,6 @@ a{
   text-decoration: underline;
 }
 
-.Header{
-  margin-bottom: 10px;
-}
 
 .MultiForm{
   position: relative;
@@ -126,20 +121,43 @@ a{
   height: 500px;
 }
 
-
-.flex-container{
-  display:flex;
-  justify-content: center;
-  align-items: center;
-  margin: 20px;
-}
-
 .ButtonGroup{
   position: absolute;
-  top: 450px;
+  top: 550px;
+  margin: 8px;
 }
 
+/*Grid for Profile*/
+.grid-container{
+  display: grid;
+  grid-template-columns: 2fr 7fr;
+  grid-template-rows: repeat(3, 33vh);
+  width: 90%;
+  margin: 0;
+  padding: 0;
+}
 
+.box1{
+  grid-column-start: 1;
+  grid-column-end: 2;
+  grid-row-start: 1;
+  grid-row-end: 2;
+  background-color: skyblue;
+}
+.itema{
+  grid-column-start: 2;
+  grid-column-end: 3;
+  grid-row-start: 1;
+  grid-row-end: 2;
+  background-color: thistle;
+}
+.itemb{
+  grid-column-start: 1;
+  grid-column-end: 2;
+  grid-row-start: 3;
+  grid-row-end: 4;
+  background-color: thistle;
+}
 
 
 

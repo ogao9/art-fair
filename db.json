@@ -5,7 +5,7 @@
       "creator": "Bill Jones",
       "starred": true,
       "description": "Sandy beaches and juicy oranges",
-      "likes": 9,
+      "likes": 12,
       "id": 7
     },
     {
@@ -135,6 +135,15 @@
       "description": "Sandy beaches and juicy oranges",
       "likes": 9,
       "id": 23
+    },
+    {
+      "title": "Banana Boat",
+      "creator": "Peter Banaya",
+      "description": "A banana floats down a stream",
+      "age": "33",
+      "city": "Boston",
+      "experience": "Senior",
+      "id": 24
     }
   ],
   "credentials": [

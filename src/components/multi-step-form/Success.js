@@ -8,7 +8,8 @@ const Success = ({prevStep}) => {
         <div className="flex-container">
             <div className="MultiForm">
                 <Typography variant='h4' align='center'>Success!</Typography>
-                <Button color="primary" onClick={prevStep} variant='outlined'>Back</Button>
+                <Typography variant='body1' align='center'>Your work has been submitted!</Typography>
+                <Button color="primary" onClick={prevStep} variant='outlined'>[temp] Back</Button>
             </div>
         </div>
     )
