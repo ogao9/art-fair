@@ -1,0 +1,159 @@
+{
+  "works": [
+    {
+      "title": "Decadence",
+      "creator": "Bill Jones",
+      "starred": true,
+      "description": "Sandy beaches and juicy oranges",
+      "likes": 12,
+      "id": 7
+    },
+    {
+      "title": "Sunset Peaches",
+      "creator": "Peter Banaya",
+      "starred": true,
+      "description": "Ripe peaches on a warm Georgia summer",
+      "likes": 3,
+      "id": 8
+    },
+    {
+      "title": "Hittin Blingers",
+      "creator": "Jack Foyler",
+      "starred": false,
+      "description": "Dingers on the mound",
+      "likes": 0,
+      "id": 9
+    },
+    {
+      "title": "Peaceful Sunset",
+      "creator": "Ben Park",
+      "starred": false,
+      "description": "A great day to enjoy the sunset",
+      "likes": 0,
+      "id": 10
+    },
+    {
+      "title": "AI Oranges",
+      "creator": "John Perrison",
+      "starred": true,
+      "description": "Bring big tech to agriculture",
+      "likes": 0,
+      "id": 11
+    },
+    {
+      "title": "TestingNewConfig",
+      "creator": "Cards.js",
+      "starred": false,
+      "description": "yes",
+      "likes": 0,
+      "id": 12
+    },
+    {
+      "title": "13",
+      "creator": "Bill Jones",
+      "starred": true,
+      "description": "Sandy beaches and juicy oranges",
+      "likes": 9,
+      "id": 13
+    },
+    {
+      "title": "14",
+      "creator": "Bill Jones",
+      "starred": true,
+      "description": "Sandy beaches and juicy oranges",
+      "likes": 9,
+      "id": 14
+    },
+    {
+      "title": "15",
+      "creator": "Bill Jones",
+      "starred": true,
+      "description": "Sandy beaches and juicy oranges",
+      "likes": 9,
+      "id": 15
+    },
+    {
+      "title": "16",
+      "creator": "Bill Jones",
+      "starred": true,
+      "description": "Sandy beaches and juicy oranges",
+      "likes": 9,
+      "id": 16
+    },
+    {
+      "title": "17",
+      "creator": "Bill Jones",
+      "starred": true,
+      "description": "Sandy beaches and juicy oranges",
+      "likes": 9,
+      "id": 17
+    },
+    {
+      "title": "18",
+      "creator": "Bill Jones",
+      "starred": true,
+      "description": "Sandy beaches and juicy oranges",
+      "likes": 9,
+      "id": 18
+    },
+    {
+      "title": "19",
+      "creator": "Bill Jones",
+      "starred": true,
+      "description": "Sandy beaches and juicy oranges",
+      "likes": 9,
+      "id": 19
+    },
+    {
+      "title": "20",
+      "creator": "Bill Jones",
+      "starred": true,
+      "description": "Sandy beaches and juicy oranges",
+      "likes": 9,
+      "id": 20
+    },
+    {
+      "title": "21",
+      "creator": "Bill Jones",
+      "starred": true,
+      "description": "Sandy beaches and juicy oranges",
+      "likes": 9,
+      "id": 21
+    },
+    {
+      "title": "22",
+      "creator": "Bill Jones",
+      "starred": true,
+      "description": "Sandy beaches and juicy oranges",
+      "likes": 9,
+      "id": 22
+    },
+    {
+      "title": "23",
+      "creator": "Bill Jones",
+      "starred": true,
+      "description": "Sandy beaches and juicy oranges",
+      "likes": 9,
+      "id": 23
+    },
+    {
+      "title": "Banana Boat",
+      "creator": "Peter Banaya",
+      "description": "A banana floats down a stream",
+      "age": "33",
+      "city": "Boston",
+      "experience": "Senior",
+      "id": 24
+    }
+  ],
+  "credentials": [
+    {
+      "Username": "Oliver",
+      "Access Code": "123456"
+    },
+    {
+      "Username": "Brian0",
+      "Access Code": "raf987"
+    }
+  ]
+}

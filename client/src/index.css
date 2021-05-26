@@ -1,0 +1,196 @@
+/*
+index.css is imported in index.js, which effectively renders the entire page
+That means index.css is at the top of the hierarchy, so everyone in the directory can access it
+index.css can be thought of as the "global styles"
+*/
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body{
+  font-family: 'Open Sans', sans-serif;
+}
+
+a{
+  text-decoration: none;
+}
+
+.flex-container{
+  display:flex;
+  width:100%;
+  justify-content: center;
+  align-items: center;
+}
+
+/*----- Class Specifics ----- */
+.Header{
+  margin: 10px;
+}
+
+.Introduction{
+  color: black;
+  padding: 20px;
+  background-color: whitesmoke;
+  width: 100%;
+  border: 2px solid black;
+  margin: 20px 0;
+}
+
+.AboutPage{
+  color: black;
+  padding: 20px;
+  background-color: whitesmoke;
+  width:100%;
+  border: 2px solid black;
+  margin: 20px 0;
+}
+
+.ArtGalleryWelcome{
+  color: black;
+  padding: 20px;
+  background-color: lightpink;
+  width: 100%;
+  border: 2px solid black;
+  margin: 20px 0;
+}
+
+.Login{
+  color: black;
+  padding: 20px;
+  background-color: whitesmoke;
+  width: 100%;
+  margin-top: 10px;
+}
+
+.AddForm{
+  padding: 20px;
+  background-color: whitesmoke;
+  width: 100%;
+  margin-top: 10px;
+}
+
+.NewCard{
+  margin-top:10px;
+  width: 400px;
+  height: 400px;
+}
+
+.Footer{
+  background-color: black;
+  color: whitesmoke;
+  text-align: center;
+  width: 100%;
+  padding: 20px;
+  margin-top: 15px;
+  line-height: 1.5;
+}
+
+.Footer a{
+  color:white;
+  text-decoration: underline;
+}
+
+.Navbar li{
+  display: inline;
+  list-style-type: none;
+  padding: 15px 30px 15px 0;
+  margin: 10px 0;
+}
+
+.RouterLink{
+  text-decoration: none;
+  color: black;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 1.5vw;
+}
+
+.RouterLink:hover{
+  text-decoration: underline;
+}
+
+
+.MultiForm{
+  position: relative;
+  width: 30%;
+  padding: 20px;
+  background-color: whitesmoke;
+  border: 1px solid black;
+  height: 500px;
+}
+
+.ButtonGroup{
+  position: absolute;
+  top: 550px;
+  margin: 8px;
+}
+
+/*----- Grid for Profile -----*/
+.grid-container{
+  display: grid;
+  grid-template-columns: 2fr 7fr;
+  grid-template-rows: repeat(3, 33vh);
+  width: 90%;
+  margin: 0;
+  padding: 0;
+}
+
+.box1{
+  grid-column-start: 1;
+  grid-column-end: 2;
+  grid-row-start: 1;
+  grid-row-end: 2;
+  background-color: skyblue;
+}
+.itema{
+  grid-column-start: 2;
+  grid-column-end: 3;
+  grid-row-start: 1;
+  grid-row-end: 2;
+  background-color: thistle;
+}
+.itemb{
+  grid-column-start: 1;
+  grid-column-end: 2;
+  grid-row-start: 3;
+  grid-row-end: 4;
+  background-color: thistle;
+}
+
+.flex-container.Home{
+  flex-direction: row;
+  justify-content: flex-start;
+}
+
+.HomeItem{
+  width: 25%;
+  margin: 5px;
+}
+
+
+
+.card{
+  display: grid;
+  grid-template-rows: max-content 200px 1fr;
+  border: 1px solid tomato;
+  border-radius: 5px;
+}
+
+.card img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.card-cover{
+  background-color: black;
+}
+
+
+
+
+
+
