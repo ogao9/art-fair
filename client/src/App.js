@@ -16,6 +16,11 @@ function App() {
     
         
         <Switch>
+            <Route path="/Home" exact component={HomePage}/>
+                <Route path="/About" exact component={About} />
+            <Route path="/ArtCentral" exact component={ArtCentral}/>
+            <Route path="/Form" exact component={FormWelcome}/>
+            <Route path="/Profile" exact component={Profile}/>
             <Route path="/Hello" exact >
               <Header/>
               <App2/>
