@@ -1,7 +1,6 @@
 /*
 index.css is imported in index.js, which effectively renders the entire page
 That means index.css is at the top of the hierarchy, so everyone in the directory can access it
-index.css can be thought of as the "global styles"
 */
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
 
@@ -49,14 +48,6 @@ a{
   margin: 20px 0;
 }
 
-.ArtGalleryWelcome{
-  color: black;
-  padding: 20px;
-  background-color: lightpink;
-  width: 100%;
-  border: 2px solid black;
-  margin: 20px 0;
-}
 
 .Login{
   color: black;
@@ -112,57 +103,10 @@ a{
   text-decoration: underline;
 }
 
-
-.MultiForm{
-  position: relative;
-  width: 30%;
-  padding: 20px;
-  background-color: whitesmoke;
-  border: 1px solid black;
-  height: 500px;
-}
-
-.ButtonGroup{
-  position: absolute;
-  top: 550px;
-  margin: 8px;
-}
-
-/*----- Grid for Profile -----*/
-.grid-container{
-  display: grid;
-  grid-template-columns: 2fr 7fr;
-  grid-template-rows: repeat(3, 33vh);
-  width: 90%;
-  margin: 0;
-  padding: 0;
-}
-
-.box1{
-  grid-column-start: 1;
-  grid-column-end: 2;
-  grid-row-start: 1;
-  grid-row-end: 2;
-  background-color: skyblue;
-}
-.itema{
-  grid-column-start: 2;
-  grid-column-end: 3;
-  grid-row-start: 1;
-  grid-row-end: 2;
-  background-color: thistle;
-}
-.itemb{
-  grid-column-start: 1;
-  grid-column-end: 2;
-  grid-row-start: 3;
-  grid-row-end: 4;
-  background-color: thistle;
-}
-
 .flex-container.Home{
   flex-direction: row;
   justify-content: flex-start;
+  flex-wrap: nowrap
 }
 
 .HomeItem{
@@ -170,27 +114,6 @@ a{
   margin: 5px;
 }
 
-
-
-.card{
-  display: grid;
-  grid-template-rows: max-content 200px 1fr;
-  border: 1px solid tomato;
-  border-radius: 5px;
+.flex-container.About{
+  width: 90%;
 }
-
-.card img{
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.card-cover{
-  background-color: black;
-}
-
-
-
-
-
-

@@ -1,5 +1,37 @@
-import React from 'react'
+import React from "react";
 
+const Confirm = ({ nextStep, prevStep, values, addbtn }) => {
+    const submitClicked = () => {
+        //addbtn(); //send data to db and clear form
+        nextStep();
+    };
+
+    return (
+        <div className="form-container">
+            <h2>Confirm</h2>
+            <ul className="confirm">
+                <li>Title</li>
+                <li>{values.title}</li>
+                <li>Creator Name</li>
+                <li>{values.creator}</li>
+                <li>Description</li>
+                <li>{values.description}</li>
+                <li>Age</li>
+                <li>{values.age}</li>
+                <li>City</li>
+                <li>{values.city}</li>
+                <li>Experience</li>
+                <li>{values.experience}</li>
+            </ul>
+            <button onClick={prevStep}>Back</button>
+            <button onClick={submitClicked}>Submit</button>
+        </div>
+    );
+};
+
+export default Confirm;
+
+/*
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from'@material-ui/core/Typography'
 import TextField from '@material-ui/core/TextField';
@@ -12,13 +44,6 @@ import ListItem from '@material-ui/core/ListItem'
 import ListItemText from '@material-ui/core/ListItemText'
 
 
-const Confirm = ({nextStep, prevStep, values, addbtn}) => {
-
-    const submitClicked = () => {
-        addbtn(); //send data to db and clear form
-        nextStep();
-    }
-
     const useStyles = makeStyles((theme) => ({
         root: {
           width: '100%',
@@ -28,8 +53,8 @@ const Confirm = ({nextStep, prevStep, values, addbtn}) => {
     }));
     const classes = useStyles();
 
-    return (
-        <div className="flex-container">
+
+
             <div className="MultiForm">
                 <Typography variant="h5" align='center'>Confirmation</Typography>
                 <List className={classes.root}>
@@ -54,8 +79,6 @@ const Confirm = ({nextStep, prevStep, values, addbtn}) => {
                         <Button endIcon={<ArrowForwardIosIcon/>} color="primary" onClick={submitClicked}>Submit</Button>
                 </ButtonGroup>
             </div>
-        </div>
-    )
-}
 
-export default Confirm
+
+*/

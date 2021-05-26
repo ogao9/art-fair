@@ -1,5 +1,6 @@
 import React from "react";
 import { useState } from "react";
+import {Link} from'react-router-dom';
 
 import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
@@ -14,7 +15,7 @@ const Login = ({ info, setAuthenticate, setAvatarLetter }) => {
     const [loginError, setLoginError] = useState(false);
 
     const onClick = () => {
-        setShow(!show);
+        //setShow(!show);
     };
 
     const onSubmit = () => {
@@ -79,18 +80,18 @@ const Login = ({ info, setAuthenticate, setAvatarLetter }) => {
         <Button
             variant="contained"
             color="primary"
-            onClick={onClick}
+            //onClick={onClick}
             className="LoginButton"
         >
-            Login
+            <Link to='/Login'>Login</Link>
         </Button>
     );
 
-    return <div>{show ? LoginForm : LoginButton}</div>;
+    return <div>{LoginButton}</div>;
 };
 
 export default Login;
-
+//{show ? LoginForm : LoginButton}
 
 /* Form without Material UI style
  

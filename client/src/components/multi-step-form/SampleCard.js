@@ -13,8 +13,10 @@ const Card = ({ content, impactbtn, deletebtn }) => {
       audio.current.play();
     }
 
+    //Could Consider some Default text
+
     return (
-        <div className="card">
+        <div className="SampleCard">
             <h3>{content.title}</h3>
             <img src={content.impact? Orange : Balloon}></img>
             <h5>{content.creator}</h5>
@@ -29,5 +31,3 @@ const Card = ({ content, impactbtn, deletebtn }) => {
 };
 
 export default Card;
-
-

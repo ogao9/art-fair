@@ -3,7 +3,7 @@ import {useState, useEffect} from 'react'
 import {Link} from 'react-router-dom'
 
 import Logo2 from '../images/logo2.png'
-import Login from './Login'
+import PreLogin from './login/preLogin'
 
 import { makeStyles } from '@material-ui/core/styles';
 import Avatar from '@material-ui/core/Avatar'
@@ -88,10 +88,11 @@ const Header = () => {
                 <li><Link to='/About' className="RouterLink">About</Link></li>
                 <li><Link to='/ArtCentral' className="RouterLink">Art Central</Link></li>
                 <li><Link to='/Profile' className="RouterLink">Profile</Link></li>
+                <li><Link to='/Form' className="RouterLink">Form</Link></li>
                 <li style={{float:'right'}}>
                     {authenticated
                     ? avatar
-                    : <Login info={loginInfo} setAuthenticate={setAuthenticated} setAvatarLetter={setAvatarLetter}/>
+                    : <PreLogin info={loginInfo} setAuthenticate={setAuthenticated} setAvatarLetter={setAvatarLetter}/>
                     }
                 </li>
             </ul>
