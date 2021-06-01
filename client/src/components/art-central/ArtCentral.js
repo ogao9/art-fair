@@ -3,10 +3,10 @@ import { useState, useEffect } from "react";
 import Container from "@material-ui/core/Container";
 import Card from "./Card";
 import PaginationComponent from "./Pagination";
-import cardServices from "./cardServices";
+import cardServices from "../../services/cardServices";
 import './ArtCentral.css'
-import Header from '../Header'
-import Footer from '../Footer'
+import Header from '../headfoot/Header'
+import Footer from '../headfoot/Footer'
 
 
 const ArtCentral = () => {

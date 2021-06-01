@@ -2,12 +2,12 @@ import React from "react";
 import {useState} from 'react'
 import UserForm from "./UserForm";
 import SampleCard from "./SampleCard";
-import cardServices from "../art-central/cardServices";
+import cardServices from "../../services/cardServices";
 import userServices from "../../services/userServices"
 import "./FormStyles.css";
-import Header from '../Header'
-import Footer from '../Footer'
-import PreLogin from '../login/preLogin'
+import Header from '../headfoot/Header'
+import Footer from '../headfoot/Footer'
+
 
 const FormWelcome = ({loginInfo}) => {
     const [userInput, setUserInput] = useState({}); //store all user input in an object
@@ -44,7 +44,7 @@ const FormWelcome = ({loginInfo}) => {
     };
 
     const LoginFlag = 
-        <div><h1>You Need to Log In before submitting your work</h1><PreLogin/></div>
+        <div><h1>You Need to Log In before submitting your work</h1></div>
 
     return (
         <div>

@@ -1,10 +1,10 @@
 import React from "react";
 import {Link} from'react-router-dom'
-import Header from './Header'
-import Footer from './Footer'
-import Logo2 from '../images/logo2.png'
+import Header from '../headfoot/Header'
+import Footer from '../headfoot/Footer'
+import Logo2 from '../../images/logo2.png'
 import Slideshow from './Slideshow'
-import './About.css'
+import './HomePage.css'
 
 import Avatar from '@material-ui/core/Avatar'
 import Button from '@material-ui/core/button'

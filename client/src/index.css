@@ -1,7 +1,9 @@
 /*
 index.css is imported in index.js, which effectively renders the entire page
 That means index.css is at the top of the hierarchy, so everyone in the directory can access it
+This document contains the root styles of the application 
 */
+
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
@@ -25,97 +27,3 @@ a{
   justify-content: center;
   align-items: center;
 }
-
-.Header{
-  margin: 10px;
-}
-
-.Introduction{
-  color: black;
-  padding: 20px;
-  background-color: whitesmoke;
-  width: 100%;
-  border: 2px solid black;
-  margin: 20px 0;
-}
-
-.AboutPage{
-  color: black;
-  padding: 20px;
-  background-color: whitesmoke;
-  width:100%;
-  border: 2px solid black;
-  margin: 20px 0;
-}
-
-
-
-
-
-.NewCard{
-  margin-top:10px;
-  width: 400px;
-  height: 400px;
-}
-
-.Footer{
-  background-color: black;
-  color: whitesmoke;
-  text-align: center;
-  width: 100%;
-  padding: 20px;
-  margin-top: 15px;
-  line-height: 1.5;
-}
-
-.Footer a{
-  color:white;
-  text-decoration: underline;
-}
-
-.Navbar li{
-  display: inline;
-  list-style-type: none;
-  padding: 15px 30px 15px 0;
-  margin: 10px 0;
-}
-
-.RouterLink{
-  text-decoration: none;
-  color: black;
-  font-family: 'Open Sans', sans-serif;
-  font-size: 1.5vw;
-}
-
-.RouterLink:hover{
-  text-decoration: underline;
-}
-
-.flex-container.Home{
-  flex-direction: row;
-  justify-content: flex-start;
-  flex-wrap: nowrap
-}
-
-.HomeItem{
-  width: 25%;
-  margin: 5px;
-}
-
-.flex-container.About{
-  width: 90%;
-}
-
-
-/*No Longer Needed 
-
-.AddForm{
-  padding: 20px;
-  background-color: whitesmoke;
-  width: 100%;
-  margin-top: 10px;
-}
-
-
-
-*/

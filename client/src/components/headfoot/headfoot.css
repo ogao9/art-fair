@@ -1,0 +1,39 @@
+
+.Header{
+    margin: 10px;
+  }
+
+.Navbar li{
+    display: inline;
+    list-style-type: none;
+    padding: 15px 30px 15px 0;
+    margin: 10px 0;
+  }
+  
+  .RouterLink{
+    text-decoration: none;
+    color: black;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 1.5vw;
+  }
+  
+  .RouterLink:hover{
+    text-decoration: underline;
+  }
+
+
+
+.Footer{
+    background-color: black;
+    color: whitesmoke;
+    text-align: center;
+    width: 100%;
+    padding: 20px;
+    margin-top: 15px;
+    line-height: 1.5;
+  }
+  
+  .Footer a{
+    color:white;
+    text-decoration: underline;
+  }

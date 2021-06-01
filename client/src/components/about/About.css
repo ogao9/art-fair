@@ -1,0 +1,11 @@
+
+.about-grid-container{
+    display:grid;
+    grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
+}
+
+.about-grid-container div {
+    border-radius: 50%;
+    border: 1px solid black;
+}
+

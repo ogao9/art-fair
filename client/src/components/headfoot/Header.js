@@ -2,8 +2,8 @@ import React from 'react'
 import {useState, useEffect} from 'react'
 import {Link} from 'react-router-dom'
 
-import Logo2 from '../images/logo2.png'
-import PreLogin from './login/preLogin'
+import Logo2 from '../../images/logo2.png'
+import './headfoot.css'
 
 import { makeStyles } from '@material-ui/core/styles';
 import Avatar from '@material-ui/core/Avatar'
@@ -79,6 +79,17 @@ const Header = () => {
         return data;
     }
 
+    const LoginButton = (
+        <Button
+            variant="contained"
+            color="primary"
+            //onClick={onClick}
+            className="LoginButton"
+        >
+            <Link to='/Login'>Login</Link>
+        </Button>
+    );
+
 
     return (
         <div className="Header">
@@ -92,7 +103,7 @@ const Header = () => {
                 <li style={{float:'right'}}>
                     {authenticated
                     ? avatar
-                    : <PreLogin info={loginInfo} setAuthenticate={setAuthenticated} setAvatarLetter={setAvatarLetter}/>
+                    : LoginButton
                     }
                 </li>
             </ul>

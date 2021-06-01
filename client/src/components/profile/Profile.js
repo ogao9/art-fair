@@ -1,10 +1,10 @@
 import React from "react";
 import {useEffect} from 'react'
 import { Link } from "react-router-dom";
-import Header from "../Header";
-import Footer from "../Footer";
+import Header from "../headfoot/Header";
+import Footer from "../headfoot/Footer";
 import "./Profile.css";
-import cardServices from '../art-central/cardServices'
+import cardServices from '../../services/cardServices'
 import Card from '../art-central/Card'
 
 const Profile = ({loginInfo}) => {

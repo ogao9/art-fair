@@ -1,8 +1,8 @@
 import React from "react";
 import { Route, Switch } from "react-router-dom";
 
-import HomePage from "./components/HomePage";
-import About from "./components/About";
+import HomePage from "./components/home/HomePage";
+import About from "./components/about/About";
 import ArtCentral from "./components/art-central/ArtCentral";
 import Profile from "./components/profile/Profile";
 import FormWelcome from "./components/multi-step-form/FormWelcome";
