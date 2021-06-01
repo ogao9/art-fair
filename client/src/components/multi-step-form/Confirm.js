@@ -2,29 +2,25 @@ import React from "react";
 
 const Confirm = ({ nextStep, prevStep, values, addbtn }) => {
     const submitClicked = () => {
-        //addbtn(); //send data to db and clear form
+        addbtn(); //send data to db and clear form
         nextStep();
     };
 
     return (
         <div className="form-container">
+            <div className="Confirm">
             <h2>Confirm</h2>
-            <ul className="confirm">
-                <li>Title</li>
-                <li>{values.title}</li>
-                <li>Creator Name</li>
-                <li>{values.creator}</li>
-                <li>Description</li>
-                <li>{values.description}</li>
-                <li>Age</li>
-                <li>{values.age}</li>
-                <li>City</li>
-                <li>{values.city}</li>
-                <li>Experience</li>
-                <li>{values.experience}</li>
+            <ul>
+                <li><b>Title: </b> {values.title}</li>
+                <li><b>Creator: </b> {values.creator}</li>
+                <li><b>Description: </b> {values.description}</li>
+                <li><b>Age: </b> {values.age}</li>
+                <li><b>City: </b> {values.city}</li>
+                <li><b>Experience: </b> {values.experience}</li>
             </ul>
             <button onClick={prevStep}>Back</button>
             <button onClick={submitClicked}>Submit</button>
+            </div>
         </div>
     );
 };

@@ -83,7 +83,7 @@ const Header = () => {
     return (
         <div className="Header">
             <ul className="Navbar">
-                <li><Link to='/'><img src={Logo2}></img></Link></li>
+                <li><Link to='/'><img src={Logo2} alt='logo'></img></Link></li>
                 <li><Link to='/' className="RouterLink">Home</Link></li>
                 <li><Link to='/About' className="RouterLink">About</Link></li>
                 <li><Link to='/ArtCentral' className="RouterLink">Art Central</Link></li>

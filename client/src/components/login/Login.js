@@ -1,65 +1,91 @@
-import React from 'react'
-import Logo2 from '../../images/logo2.png'
-import userServices from '../../services/userServices'
+import React from "react";
+import { Link, Redirect } from "react-router-dom";
+import Logo2 from "../../images/logo2.png";
+import userServices from "../../services/userServices";
+import "./Login.css";
 
-const Login = () => {
+const Login = ({ loginInfo, setLoginInfo }) => {
     const [username, setUsername] = React.useState("");
     const [password, setPassword] = React.useState("");
-    const [response, setResponse] = React.useState("");
+    const [response, setResponse] = React.useState(null);
 
-    const handleUsername = (e) =>{
-        setUsername(e.target.value)
-    }
+    const handleUsername = (e) => {
+        setUsername(e.target.value);
+    };
 
-    const handlePassword = (e) =>{
-        setPassword(e.target.value)
-    }
+    const handlePassword = (e) => {
+        setPassword(e.target.value);
+    };
 
-    const handleSubmit = async (e) =>{
+    const handleCreate = async (e) => {
         e.preventDefault(); //what does this do? I THINK WE ACTUALLY NEED THIS LINE
-        const newUser = {name: username, password} //shorthand
-        const res = await userServices.addUser(newUser)
+        const newUser = { username, password }; //object shorthand for username:username and password:password
+        const res = await userServices.addUser(newUser);
         setResponse(res);
-        console.log("Submit Pressed")
-    }
-    const handleValidate = async (e) =>{
+        console.log("Submit Pressed");
+    };
+
+    const handleValidate = async (e) => {
         e.preventDefault(); //what does this do?
-        const user_info = {name: username, password} //shorthand
-        const res = await userServices.checkUser(user_info)
-        setResponse(res)
-        console.log("Validating")
-    }
+        const user_info = { username, password };
+        const res = await userServices.checkUser(user_info);
+
+        if (res){
+            setLoginInfo({ username: res.username, id: res._id, cards: res.cards });
+            //return <Redirect to='/Form'/> 
+        } 
+        else setLoginInfo(null);
+
+        console.log("Validating and Setting Login Info");
+
+        
+    };
+
+    //problem: pressing toggle button submits form
+    //solution: buttons have a type attribute that default to "submit" -> must set type="button"
+    const [newUser, setNewUser] = React.useState(false);
 
     return (
-        <div>
-            <img src={Logo2}></img> <br></br>
-            <h3>For the inner artist in everyone</h3> <br></br>
-            <h4>This is the door to a field of happiness</h4> <br></br>
-            <h3>Add New User</h3>
+        <div className="Login">
             <div>
-               <form onSubmit={handleSubmit}>
-                <label>Name</label>
-                <input type="text" value={username} onChange={handleUsername}></input>
-                <label>Password</label>
-                <input type="password" value={password} onChange={handlePassword}></input>
-                <input type="submit" value="Add User"></input>
-            
-            </form> </div>
+                <div className="Login-header">
+                    <Link to="/">
+                        <img src={Logo2}></img>
+                    </Link>
+                    <h3>For the inner artist in everyone</h3>
+                    <h4>This is the door to a field of happiness</h4>
+                </div>
 
-            <h3>Validate User</h3>
-            <div>
-               <form onSubmit={handleValidate}>
-                <label>Name</label>
-                <input type="text" value={username} onChange={handleUsername}></input>
-                <label>Password</label>
-                <input type="password" value={password} onChange={handlePassword}></input>
-                <input type="submit" value="Add User"></input>
-            </form> 
+                <form
+                    className="Login-form"
+                    onSubmit={newUser ? handleCreate : handleValidate}
+                >
+                    <h2>{newUser ? "Sign Up" : "Log In"}</h2>
+                    <section className="username">
+                        <label htmlFor="username">Username</label>
+                        <p>
+                            {newUser ? "Already have an account? " : "Need an account? "}
+                        </p>
+                        <button type="button" onClick={() => setNewUser(!newUser)}>
+                            {newUser ? "Log In" : "Sign up"}
+                        </button>
+                    </section>
+                    <input id="username" type="text" value={username} onChange={handleUsername}></input>
+
+                    <label htmlFor="password">Password</label>
+                    <input
+                        id="password"
+                        type="password"
+                        value={password}
+                        onChange={handlePassword}
+                    ></input>
+
+                    <button type="submit">{newUser ? "Sign Up" : "Log In"}</button>
+                </form>
+                    <h2>Reponse From Server: {loginInfo ? "Success" : "Denied!"}</h2>
             </div>
-            
-            <h3>Response from Server: {response}</h3>
         </div>
-    )
-}
+    );
+};
 
-export default Login
+export default Login;

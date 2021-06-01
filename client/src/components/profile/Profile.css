@@ -1,31 +1,57 @@
+.flex-container {
+    display: flex;
+    width: 100%;
+}
+
+.flex-container .left {
+    flex: 30%;
+    background-color: aquamarine;
+    height: 400px;
+}
+
+.flex-container .right {
+    flex: 70%;
+    background-color: lightblue;
+    height: 400px;
+}
+
+@media (max-width: 700px) {
+    .flex-container .left{
+        flex: 100%;
+    }
+    .flex-container .right{
+      flex: 100%;
+  }
+}
+
 /*----- Grid for Profile -----*/
-.grid-container{
+.grid-container {
     display: grid;
     grid-template-columns: 2fr 7fr;
     grid-template-rows: repeat(3, 33vh);
-    width: 90%;
+    width: 100%;
     margin: 0;
     padding: 0;
-  }
-  
-  .box1{
+}
+
+.box1 {
     grid-column-start: 1;
     grid-column-end: 2;
     grid-row-start: 1;
     grid-row-end: 2;
     background-color: skyblue;
-  }
-  .itema{
+}
+.itema {
     grid-column-start: 2;
     grid-column-end: 3;
     grid-row-start: 1;
     grid-row-end: 2;
     background-color: thistle;
-  }
-  .itemb{
+}
+.itemb {
     grid-column-start: 1;
     grid-column-end: 2;
     grid-row-start: 3;
     grid-row-end: 4;
     background-color: thistle;
-  }
+}

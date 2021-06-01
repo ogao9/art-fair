@@ -4,8 +4,9 @@ import Container from "@material-ui/core/Container";
 import Card from "./Card";
 import PaginationComponent from "./Pagination";
 import cardServices from "./cardServices";
-import TempForm from './TempForm'
 import './ArtCentral.css'
+import Header from '../Header'
+import Footer from '../Footer'
 
 
 const ArtCentral = () => {
@@ -37,7 +38,7 @@ const ArtCentral = () => {
     //PROBLEM: delete doesn't remove the card from UI
     const deletebtn = (id) => {
         cardServices.deleteCard(id);
-        setDB(db+1)
+        
         //Temporary Fix: still kind of broken
         setArtInfo(artInfo.filter(card=>card._id!== id))
     };
@@ -51,59 +52,86 @@ const ArtCentral = () => {
     // ---------- Pagination ----------
     //We are just manipulating the artInfo array
     const [currentPage, setCurrentPage] = useState(1);
-    const cardsPerPage = 8;
+    const cardsPerPage = 6;
 
-    const paginate = pageNumber => {
+    const setPage = pageNumber => {
         setCurrentPage(pageNumber);
     };
 
     const endIndex = cardsPerPage * currentPage;
     const startIndex = endIndex - cardsPerPage;
-    const cardsToShow = artInfo.slice(startIndex, endIndex)
+    const cardsToShow = artInfo ? artInfo.slice(startIndex, endIndex) : []
     //PROBLEM: IF artinfo hasn't loaded, we get an error
+   
                         
     //---------- Pagination ----------
-
+    const[artInfo1, setArtInfo1] = useState([
+        {
+          id: 1,
+          title: "Jumping Oranges 1",
+          creator: "Peter Banaya",
+          legacy: false,
+        },
+        {
+          id: 2,
+          title: "Peaceful Sunset 2",
+          creator: "Ben Park",
+          legacy: false,
+        },
+        {
+            id: 1,
+            title: "Jumping Oranges 3",
+            creator: "Peter Banaya",
+            legacy: false,
+          },
+          {
+            id: 1,
+            title: "Jumping Oranges 4",
+            creator: "Peter Banaya",
+            legacy: false,
+          },
+      ]) 
+      
+      //const cardsToShow = artInfo1.slice(startIndex, endIndex);
 
     return (
         <div>
-            <header className="ArtCentralWelcome">
+            <Header/>
+            <section className="ArtCentralWelcome">
                 <h1>Welcome to Art Central</h1>
-            </header>
+            </section>
 
-        <Container maxWidth="lg">
-            <div className="card-container">
-                {cardsToShow.length
-                    ? cardsToShow.map(cardInfo => (
-                          <Card
-                              key={cardInfo._id}
-                              content={cardInfo}
-                              impactbtn={impactbtn}
-                              deletebtn={deletebtn}
-                          />
-                      ))
-                    : "No Cards Available"}
-            </div>
-
-            <PaginationComponent
-                paginate={paginate}
-                totalCards={artInfo.length}
-                cardsPerPage={cardsPerPage}
-            />
-        </Container>
+            <Container maxWidth="lg">
+                <div className="card-container">
+                    {cardsToShow.length
+                        ? cardsToShow.map(cardInfo => (
+                            <Card
+                                key={cardInfo._id}
+                                content={cardInfo}
+                                impactbtn={impactbtn}
+                                deletebtn={deletebtn}
+                            />
+                        ))
+                        : "No Cards Available"}
+                </div>
+                
+                <div className="flex-container">
+                    <PaginationComponent
+                        currentPage={currentPage}
+                        setPage={setPage}
+                        totalCards={artInfo.length}
+                        cardsPerPage={cardsPerPage}
+                    />
+                </div>
+            </Container>
+            <Footer/>
         </div>
     );
 };
 
 export default ArtCentral;
 
-/* Notes:
-1. artInfo.map() applies a function to every item in the array and then returns it 
-2.
-3.
-
-
-artInfo Before we connected the json server
+/* 
 
 const[artInfo, setArtInfo] = useState([
   {
@@ -120,12 +148,4 @@ const[artInfo, setArtInfo] = useState([
   }
 ]) 
 
-
-
-
-//addbtn ID no longer needed
-    console.log("add called");
-    const id = Math.random() * 1000;
-    const newCard = {id, ...new_card_info};
-setArtInfo([...artInfo, newCard]);
 */

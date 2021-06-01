@@ -1,4 +1,62 @@
 import React from "react";
+import {Link} from'react-router-dom'
+import Header from './Header'
+import Footer from './Footer'
+import Logo2 from '../images/logo2.png'
+import Slideshow from './Slideshow'
+import './About.css'
+
+import Avatar from '@material-ui/core/Avatar'
+import Button from '@material-ui/core/button'
+
+const HomePage = ({loginInfo}) => {
+    const LoginButton = (
+        <Button
+            variant="contained"
+            color="primary"
+            //onClick={onClick}
+            className="LoginButton"
+        >
+            <Link to='/Login'>Login</Link>
+        </Button>
+    );
+
+    return (
+        <div>
+            <div className="Home">
+                <div className="nav-container">
+                    <Link to='/'><img src={Logo2} alt="logo"></img></Link>
+                    <ul>
+                        <li><Link to='/About' className="RouterLink">About</Link></li>
+                        <li><Link to='/ArtCentral' className="RouterLink">Art Central</Link></li>
+                        <li><Link to='/Profile' className="RouterLink">Profile</Link></li>
+                        <li><Link to='/Form' className="RouterLink">Form</Link></li>
+                        <li>{false
+                            ? <Avatar>{loginInfo.username[0]}</Avatar>
+                            : LoginButton
+                            }
+                        </li>
+                    </ul>
+                </div>
+                <div className="Home-content">
+                    <div className="welcome-message">
+                        <h3>Welcome to Art Fair 3.0! Showcase your art to the world</h3>
+                    </div>
+                    <div className="slideshow">
+                        <h3>4-card slideshow here</h3>
+                        <Slideshow/>
+                    </div>
+                </div>
+            </div>
+
+            <Footer/>
+        </div>
+    );
+};
+
+export default HomePage;
+
+/*
 import { useSpring, animated } from "react-spring";
 import { Link } from "react-router-dom";
 
@@ -7,7 +65,7 @@ import Button from "@material-ui/core/Button";
 import Container from "@material-ui/core/Container";
 import Paper from "@material-ui/core/Paper";
 
-const HomePage = () => {
+
     //Customizing MUI Button using makeStyles()
     const useStyles = makeStyles({
         root: {
@@ -28,7 +86,9 @@ const HomePage = () => {
         config: { duration: 1000 },
     });
 
-    return (
+
+            <Header/>
+        
         <Container maxWidth="lg">
             <section className="Introduction">
                 <animated.div style={props}>
@@ -61,13 +121,11 @@ const HomePage = () => {
                 </Link>
             </div>
         </Container>
-    );
-};
 
-export default HomePage;
 
-/*
-    const coverProps = useSpring({to:{backgroundColor: "white"}, from: {backgroundColor: "black"}, delay: 1000, config:{duration:1000} })
+
+--------------------------------------------
+const coverProps = useSpring({to:{backgroundColor: "white"}, from: {backgroundColor: "black"}, delay: 1000, config:{duration:1000} })
                     <animated.div className="card-cover" style={show ? coverProps : null}>
                     <article class="card">
                         <h2>A short heading</h2>

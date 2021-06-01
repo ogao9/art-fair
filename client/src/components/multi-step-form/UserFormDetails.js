@@ -31,6 +31,7 @@ const UserFormDetails = ({ nextStep, prevStep, values, handleChange }) => {
 
     return (
         <div className="form-container">
+            <h2>Submit Your Work Here!</h2>
             <form>
                 <label for="title">Title</label>
                 <input

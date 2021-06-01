@@ -16,6 +16,7 @@ const cardSchema = new mongoose.Schema({
   });
 
 //We must create a model to use the schema
-const Card = mongoose.model('CardModel', cardSchema)
+//The first argument is the name of the model -> this becomes the name of the collection in Mongo
+const Card = mongoose.model('Cards', cardSchema)
 
 module.exports = Card;

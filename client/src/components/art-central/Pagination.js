@@ -1,35 +1,30 @@
-import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import Pagination from '@material-ui/lab/Pagination';
+import React from "react";
 
+export default function PaginationComponent({ currentPage, setPage, totalCards, cardsPerPage }) {
+    const numPages = Math.ceil(totalCards / cardsPerPage);
+    const pages = [];
+    for (let i = 1; i <= numPages; i++) pages.push(i);
 
-const useStyles = makeStyles((theme) => ({
-    root: {
-        marginTop: theme.spacing(2),
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center'
-    }
-}))
+    const handleClick = (e, value) => {
+        setPage(value);
+    };
 
-export default function PaginationComponent({paginate, totalCards, cardsPerPage}) {
-  const classes = useStyles();
-  const [page, setPage] = React.useState(1);
-
-  const handleChange = (event, value) => {
-    setPage(value);
-    paginate(value);
-  };
-
-  const numPages = Math.ceil(totalCards/cardsPerPage);
-
-  return (
-    <div className={classes.root}>
-      <Pagination count={numPages} page={page} onChange={handleChange} />
-    </div>
-  );
+    return (
+        <div className="Pagination">
+            <ul>
+                <li>&laquo;</li>
+                {pages.map(num => (
+                    <li key={num} className={currentPage === num && "active"}>
+                        <a href="#!" onClick={e => handleClick(e, num)}>
+                            {num}
+                        </a>
+                    </li>
+                ))}
+                <li>&raquo;</li>
+            </ul>
+        </div>
+    );
 }
-
 
 //Note: onChange is a function prop defined by MUI, you can't normally assume event and value are passed in
 //      That's the function signature of onChange
@@ -56,4 +51,20 @@ export default function PaginationComponent({paginate, totalCards, cardsPerPage}
             </ul>
         </div>
     )
+
+
+                  import { makeStyles } from '@material-ui/core/styles';
+import Pagination from '@material-ui/lab/Pagination';
+
+
+const useStyles = makeStyles((theme) => ({
+    root: {
+        marginTop: theme.spacing(2),
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center'
+    }
+}))
+const classes = useStyles();
+    <Pagination count={numPages} page={page} onChange={handleChange} />
 */

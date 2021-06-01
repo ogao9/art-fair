@@ -1,0 +1,36 @@
+.Login{
+    display:flex;
+    justify-content: center;
+    background: linear-gradient(to right, #fceabb, #f8b500);
+    height: 100vh;
+    padding: 20px;
+}
+
+.Login-header{
+    text-align: center;
+}
+
+.Login-form{
+    border: 1px solid whitesmoke;
+    border-radius: 5px;
+    padding: 20px;
+    margin: 15px;
+    width: clamp(100%, 600px);
+}
+
+.Login-form input{
+    display: block;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px 0;
+    width: 100%;
+}
+
+.Login-form input[type=submit]:hover{
+    background-color: teal;
+}
+
+.username{
+    display:flex;
+    justify-content: space-between;
+}

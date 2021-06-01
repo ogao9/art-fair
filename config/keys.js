@@ -1,1 +1,1 @@
-module.exports = {MONGO_URI : "mongodb+srv://Oliver:Oliver123456@cluster0.ihwbl.mongodb.net/Cards?retryWrites=true&w=majority"}
+module.exports = {MONGO_URI : "mongodb+srv://Oliver:Oliver123456@cluster0.ihwbl.mongodb.net/ArtFairData?retryWrites=true&w=majority"}

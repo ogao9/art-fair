@@ -29,7 +29,8 @@ const cardServices = {
                 .catch(err => console.log(err))
     },
     postCard: (newCard)=>{
-        axios.post('/api/cards', {...newCard})
+        return axios.post('/api/cards', {...newCard})
+                .then(res => res.data)
                 .catch(err => console.log(err))
     }
 }

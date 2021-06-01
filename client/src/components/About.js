@@ -1,9 +1,41 @@
 import React from 'react'
-import {Link} from 'react-router-dom'
+//import {Link} from 'react-router-dom'
+import Header from './Header'
+import Footer from './Footer'
+import './About.css'
 
 
 const About = () => {
     return (
+        <div>
+            <Header/>
+
+            <div className='about-grid-container'>
+                <div>Circle 1</div>
+                <div>Circle 2</div>
+                <div>Circle 3</div>
+                <div>Circle 4</div>
+            </div>
+
+            <Footer/>
+        </div>
+    )
+}
+
+export default About
+
+
+/*
+<animated.div style={flyprops}>
+                <h3>How does it work?</h3>
+                <Button onClick={()=>setShow(!show)}>Click to Show</Button>
+</animated.div>
+<Number/>
+<Fade/>
+
+
+
+
         <div className="flex-container About">
             <section className="AboutPage">
                 <h3>Story</h3>
@@ -31,17 +63,4 @@ const About = () => {
             </section>
             
         </div>
-    )
-}
-
-export default About
-
-
-/*
-<animated.div style={flyprops}>
-                <h3>How does it work?</h3>
-                <Button onClick={()=>setShow(!show)}>Click to Show</Button>
-</animated.div>
-<Number/>
-<Fade/>
 */

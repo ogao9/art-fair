@@ -17,15 +17,20 @@ const Card = ({ content, impactbtn, deletebtn }) => {
 
     return (
         <div className="SampleCard">
-            <h3>{content.title}</h3>
+            <h2 style={{color: "grey"}}>Card Preview</h2>
             <img src={content.impact? Orange : Balloon}></img>
-            <h5>{content.creator}</h5>
-            <p>{content.description}</p>
-            <p>Current Impact: {content.impact}</p>
-            <button onClick={() => impactbtn(content._id)}>Increase Impact</button>
+            <div className="card-text">
+              <h2>{content.title ? content.title : "Title"}</h2>
+              <h4>{content.creator ? content.creator : "Creator Name"}</h4>
+              <p>{content.description? content.description : "Description"}</p>
+            </div>
+
+            <p>Current Impacts: 0</p>
+            <button onClick={() => impactbtn(content._id)}>Submit Impact Statement</button>
             <button onClick={() => deletebtn(content._id)}>Delete This Card</button>
             <button onClick={playAudio}>Play Audio Pairing</button>
               <audio src={Jazz} ref={audio}></audio>
+              
         </div>
     );
 };

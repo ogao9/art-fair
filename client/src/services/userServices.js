@@ -1,4 +1,4 @@
-// /users and /users/login
+// Makes requests to /users and /users/login
 import axios from 'axios'
 
 
@@ -13,6 +13,11 @@ const userServices = {
             .then( res => res.data)
             .catch(err => console.log(err))
     },
+    updateUser: (update_info)=>{
+        return axios.put('/users/update', update_info)
+            .then(res => res.data)
+            .catch(err => console.log(err))
+    }
 }
 
 

@@ -31,7 +31,7 @@ const PersonalData = ({ nextStep, prevStep, handleChange, values }) => {
                     type="text"
                     placeholder="Enter Your Age"
                     value={values.age}
-                    onChange={e => handleChange("age", e)}
+                    onChange={(e) => handleChange("age", e)}
                 ></input>
                 <label for="city">City</label>
                 <input
@@ -39,15 +39,17 @@ const PersonalData = ({ nextStep, prevStep, handleChange, values }) => {
                     type="text"
                     placeholder="City of Origin"
                     value={values.city}
-                    onChange={e => handleChange("city", e)}
+                    onChange={(e) => handleChange("city", e)}
                 ></input>
                 <label for="exp">Experience Class</label>
                 <select
                     id="exp"
                     value={values.experience}
-                    onChange={e => handleChange("experience", e)}
+                    onChange={(e) => handleChange("experience", e)}
                 >
-                    <option value="Junior">Junior</option>
+                    <option value="Junior" selected>
+                        Junior
+                    </option>
                     <option value="Senior">Senior</option>
                     <option value="Pro">Pro</option>
                 </select>

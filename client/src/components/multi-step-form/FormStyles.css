@@ -1,65 +1,52 @@
-.gradient-header{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: linear-gradient(45deg,#e66465, #9198e5);
-    height: 40vh;
-    width: 100%;
-    font-size: calc(15px + 0.8vw);
-    text-align: center;
-    margin-bottom: 20px;
+h2{
+    text-align:center;
 }
 
 .form-welcome{
     width: 100%
 }
 
+.gradient-header{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(45deg,#e66465, #9198e5);
+    height: 50vh;
+    width: 100%;
+    color: rgb(46, 46, 46);
+    font-size: calc(15px + 0.8vw);
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+
+/*---------- Flexbox ---------- */
 .flex-container1{
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    margin: 10px;
+    margin: 20px 10px;
 }
 
-.MultiForm{
-    padding: 20px;
-    background-color: whitesmoke;
-    border: 1px solid black;
-    width: 90%;
-}
-  
-.SampleCard{
-    display: grid;
-    grid-template-rows: max-content 200px 1fr;
-    border: 1px solid black;
-    padding: 5px;
-    margin: 5px;
-    width: 250px;
-    overflow: hidden;
-}
-
-/* flex sets the initial length of the box
-it seems like you cannot set margin with two boxes at 50% because that will make the mox too big
-Seems counterintuitive given border-box
-*/
+/* the flex property sets the initial length of the box. You cannot give two boxes at 50% any margin 
+because that will make the box too big. Solution: use calc() */
 .left-box1{
+    display:flex;
+    justify-content: center;
+    align-items: center;
     padding: 5px;
-    background-color: whitesmoke;
-    border: 1px solid black;
     height: 500px;
     flex: calc(50% - 2em);
     margin: 1em;
-    
+    border: 1px solid black;
 }
 
 .right-box1{
     display:flex;
     justify-content: center;
     padding: 5px;
-    background-color: thistle;
-    border: 1px solid black;
     height: 500px;
-    flex:  calc(50% - 2em);
+    flex: calc(50% - 2em);
     margin: 1em;
 }
 
@@ -67,9 +54,20 @@ Seems counterintuitive given border-box
 make the two columns stack on top of each other instead of next to each other */
 @media (max-width: 700px) {
     .left-box1, .right-box1{   
-      flex:100%
+      flex:100%;
     }
-  }
+}
+
+
+/*---------- Multi-step Form Styles ---------- */
+.form-container{
+    width:100%;
+    padding: 20px;
+    border: 1px solid black;
+    border-radius: 5px;
+    box-shadow:  0 4px 8px 0 rgba(0,0,0,0.2);
+    background-color: whitesmoke;
+}
 
 .form-container input[type=text], select{
     display: block;
@@ -79,8 +77,6 @@ make the two columns stack on top of each other instead of next to each other */
     border: 1px solid black;
     border-radius: 5px;
 }
-
-
 
 .form-container button{
     display: inline-block;
@@ -95,16 +91,41 @@ make the two columns stack on top of each other instead of next to each other */
     background-color:yellowgreen
 }
 
-.form-container{
-    width:100%;
-    padding: 20px;
-    border: 1px solid black;
-    border-radius: 5px;
-}
-
-.confirm{
+.Confirm ul{
+    display: block;
     padding: 10px;
     border: 1px solid #ddd;
     list-style-type: none;
+    line-height: 2;
+}
+
+.Success{
+    text-align: center;
+}
+
+
+/*---------- Card Preview Styles ---------- */
+.SampleCard{
+    display: grid;
+    grid-template-rows: max-content 200px 1fr max-content;
+    max-width: 300px;
+    /* offset-x | offset-y | blur-radius | spread-radius | color */
+    box-shadow:  0 4px 8px 0 rgba(0,0,0,0.2);
+}
+
+.SampleCard:hover{
+    box-shadow:  0 4px 8px 0 rgba(0,0,0,0.4);
+}
+
+.SampleCard img{
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+}
+
+.SampleCard .card-text{
+    padding: 5px;
+    text-align:center;
+    line-height: 1.4;
 }
 

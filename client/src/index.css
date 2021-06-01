@@ -3,6 +3,7 @@ index.css is imported in index.js, which effectively renders the entire page
 That means index.css is at the top of the hierarchy, so everyone in the directory can access it
 */
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
 * {
   box-sizing: border-box;
@@ -11,7 +12,7 @@ That means index.css is at the top of the hierarchy, so everyone in the director
 }
 
 body{
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Roboto', 'Open Sans', sans-serif;
 }
 
 a{
@@ -25,7 +26,6 @@ a{
   align-items: center;
 }
 
-/*----- Class Specifics ----- */
 .Header{
   margin: 10px;
 }
@@ -49,20 +49,8 @@ a{
 }
 
 
-.Login{
-  color: black;
-  padding: 20px;
-  background-color: whitesmoke;
-  width: 100%;
-  margin-top: 10px;
-}
 
-.AddForm{
-  padding: 20px;
-  background-color: whitesmoke;
-  width: 100%;
-  margin-top: 10px;
-}
+
 
 .NewCard{
   margin-top:10px;
@@ -117,3 +105,17 @@ a{
 .flex-container.About{
   width: 90%;
 }
+
+
+/*No Longer Needed 
+
+.AddForm{
+  padding: 20px;
+  background-color: whitesmoke;
+  width: 100%;
+  margin-top: 10px;
+}
+
+
+
+*/

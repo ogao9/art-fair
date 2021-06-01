@@ -1,20 +1,32 @@
 /*
 Styles for components in ./components/art-central 
-
 */
+:root{
+    --color-azure: #3e8ef1;
+    --color-storm: #a4c9d8;
+    --color-tangerine: #ff4935;
+    --color-citric: #cdf567;
+    --color-sunflower: #ffbc4b;
+    --color-pink: #ffd0d5;
+    --color-salmon: #fb7ea8;
+    --color-factory-yellow: #ffe818;
+    --color-black: #171313;
+    --color-white: #fff;
+    --color-muted-black: #837e7e;
+}
+
 .ArtCentralWelcome{
     display: flex;
     justify-content: center;
     align-items: center;
     background: linear-gradient(45deg,#e66465, #9198e5);
     width: 100%;
-    height: 40vh;
+    height: 50vh;
     font-size: calc(15px + 0.8vw);
     text-align: center;
     margin-bottom: 20px;
 }
   
-
 .card-container {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
@@ -33,3 +45,25 @@ Styles for components in ./components/art-central
     height: 100%;
 }
 
+.Pagination{
+    margin: 10px 0;
+}
+
+.Pagination li{
+    display:inline-block;
+    text-align:center;
+}
+
+.Pagination a{
+    color: black;
+    padding: 8px 16px;
+    border-radius:5px;
+}
+
+.Pagination li.active{
+    background-color: var(--color-azure);
+}
+
+.Pagination li:hover:not(.active){
+    background-color: var(--color-muted-black);
+}
