@@ -1,0 +1,14 @@
+.Footer{
+    background-color: black;
+    color: whitesmoke;
+    text-align: center;
+    width: 100%;
+    padding: 20px;
+    margin-top: 15px;
+    line-height: 1.5;
+  }
+  
+  .Footer a{
+    color:white;
+    text-decoration: underline;
+  }
