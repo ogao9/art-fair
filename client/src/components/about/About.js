@@ -1,29 +1,52 @@
-import React from 'react'
-//import {Link} from 'react-router-dom'
-import Header from '../headfoot/Header'
-import Footer from '../headfoot/Footer'
-import './About.css'
-
+import React from "react";
+import Header from "../headfoot/Header";
+import Footer from "../headfoot/Footer";
+import "./About.css";
 
 const About = () => {
     return (
         <div>
-            <Header/>
+            <div className="about">
+                <Header />
 
-            <div className='about-grid-container'>
-                <div>Circle 1</div>
-                <div>Circle 2</div>
-                <div>Circle 3</div>
-                <div>Circle 4</div>
+                <div className="about grid-container">
+                    <div>
+                        Here at Art Fair 3.0, we believe everything is art. From beautiful
+                        paintings and glass sculptures to , we believe everything is an
+                        art form. Whether you're looking for the next piece of art to hang
+                        in your home or just wanting to enjoy our unique selection of art,
+                        Art Fair 3.0 welcomes you!
+                    </div>
+                    <div>
+                        Here at Art Fair 3.0, we believe everything is art. From beautiful
+                        paintings and glass sculptures to , we believe everything is an
+                        art form. Whether you're looking for the next piece of art to hang
+                        in your home or just wanting to enjoy our unique selection of art,
+                        Art Fair 3.0 welcomes you!
+                    </div>
+                    <div>
+                        Here at Art Fair 3.0, we believe everything is art. From beautiful
+                        paintings and glass sculptures to , we believe everything is an
+                        art form. Whether you're looking for the next piece of art to hang
+                        in your home or just wanting to enjoy our unique selection of art,
+                        Art Fair 3.0 welcomes you!
+                    </div>
+                    <div>
+                        Here at Art Fair 3.0, we believe everything is art. From beautiful
+                        paintings and glass sculptures to , we believe everything is an
+                        art form. Whether you're looking for the next piece of art to hang
+                        in your home or just wanting to enjoy our unique selection of art,
+                        Art Fair 3.0 welcomes you!
+                    </div>
+                </div>
             </div>
 
-            <Footer/>
+            <Footer />
         </div>
-    )
-}
+    );
+};
 
-export default About
-
+export default About;
 
 /*
 <animated.div style={flyprops}>

@@ -1,13 +1,13 @@
-import React from "react";
-import { useState, useEffect } from "react";
-import Container from "@material-ui/core/Container";
+import React, { useState, useEffect } from "react";
 import Card from "./Card";
-import PaginationComponent from "./Pagination";
-import cardServices from "../../services/cardServices";
-import './ArtCentral.css'
+import Pagination from "./Pagination";
 import Header from '../headfoot/Header'
 import Footer from '../headfoot/Footer'
+import cardServices from "../../services/cardServices";
+import Container from "@material-ui/core/Container";
+import './ArtCentral.css'
 
+import SampleData from './SampleData'
 
 const ArtCentral = () => {
     const [artInfo, setArtInfo] = useState([]);
@@ -60,45 +60,16 @@ const ArtCentral = () => {
 
     const endIndex = cardsPerPage * currentPage;
     const startIndex = endIndex - cardsPerPage;
-    const cardsToShow = artInfo ? artInfo.slice(startIndex, endIndex) : []
     //PROBLEM: IF artinfo hasn't loaded, we get an error
-   
-                        
-    //---------- Pagination ----------
-    const[artInfo1, setArtInfo1] = useState([
-        {
-          id: 1,
-          title: "Jumping Oranges 1",
-          creator: "Peter Banaya",
-          legacy: false,
-        },
-        {
-          id: 2,
-          title: "Peaceful Sunset 2",
-          creator: "Ben Park",
-          legacy: false,
-        },
-        {
-            id: 1,
-            title: "Jumping Oranges 3",
-            creator: "Peter Banaya",
-            legacy: false,
-          },
-          {
-            id: 1,
-            title: "Jumping Oranges 4",
-            creator: "Peter Banaya",
-            legacy: false,
-          },
-      ]) 
-      
-      //const cardsToShow = artInfo1.slice(startIndex, endIndex);
+    //const cardsToShow = artInfo ? artInfo.slice(startIndex, endIndex) : [] 
+    const cardsToShow = SampleData.slice(startIndex, endIndex);
+    
 
     return (
-        <div>
-            <Header/>
+        <div className="art-central">
             <section className="ArtCentralWelcome">
-                <h1>Welcome to Art Central</h1>
+                <h1>Welcome to the Outdoor/Indoor/Modern/Audio Section!</h1>
+                <p>We want this to be a truly immersive experience</p>
             </section>
 
             <Container maxWidth="lg">
@@ -116,15 +87,17 @@ const ArtCentral = () => {
                 </div>
                 
                 <div className="flex-container">
-                    <PaginationComponent
+                    <Pagination
                         currentPage={currentPage}
                         setPage={setPage}
-                        totalCards={artInfo.length}
+                        totalCards={SampleData.length}
                         cardsPerPage={cardsPerPage}
                     />
                 </div>
             </Container>
+            
             <Footer/>
+            <Header/>
         </div>
     );
 };

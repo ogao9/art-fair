@@ -1,13 +1,13 @@
 import React from "react";
 import { Link, Redirect } from "react-router-dom";
-import Logo2 from "../../images/logo2.png";
 import userServices from "../../services/userServices";
+import Logo2 from "../../images/logo2.png";
 import "./Login.css";
 
 const Login = ({ loginInfo, setLoginInfo }) => {
     const [username, setUsername] = React.useState("");
     const [password, setPassword] = React.useState("");
-    const [response, setResponse] = React.useState(null);
+    const [newUser, setNewUser] = React.useState(false);
 
     const handleUsername = (e) => {
         setUsername(e.target.value);
@@ -21,12 +21,12 @@ const Login = ({ loginInfo, setLoginInfo }) => {
         e.preventDefault(); //what does this do? I THINK WE ACTUALLY NEED THIS LINE
         const newUser = { username, password }; //object shorthand for username:username and password:password
         const res = await userServices.addUser(newUser);
-        setResponse(res);
+    
         console.log("Submit Pressed");
     };
 
     const handleValidate = async (e) => {
-        e.preventDefault(); //what does this do?
+        e.preventDefault(); 
         const user_info = { username, password };
         const res = await userServices.checkUser(user_info);
 
@@ -37,14 +37,27 @@ const Login = ({ loginInfo, setLoginInfo }) => {
         else setLoginInfo(null);
 
         console.log("Validating and Setting Login Info");
-
-        
     };
 
-    //problem: pressing toggle button submits form
-    //solution: buttons have a type attribute that default to "submit" -> must set type="button"
-    const [newUser, setNewUser] = React.useState(false);
+    const validateTest = (e) =>{
+        e.preventDefault();
+        const cards = ["176"];
+        const id="176";
+        if(username==='Oliver' && password==="123456")
+            setLoginInfo([{ username, id, cards }])
+        else
+            setLoginInfo(null);
+    }
 
+    const [users, setUsers] = React.useState(null)
+    const createTest = (e) =>{
+        e.preventDefault();
+        setUsers(username)
+        console.log("Create Pressed")
+    }
+
+
+    
     return (
         <div className="Login">
             <div>
@@ -58,7 +71,7 @@ const Login = ({ loginInfo, setLoginInfo }) => {
 
                 <form
                     className="Login-form"
-                    onSubmit={newUser ? handleCreate : handleValidate}
+                    onSubmit={newUser ? createTest : validateTest}
                 >
                     <h2>{newUser ? "Sign Up" : "Log In"}</h2>
                     <section className="username">
@@ -82,7 +95,10 @@ const Login = ({ loginInfo, setLoginInfo }) => {
 
                     <button type="submit">{newUser ? "Sign Up" : "Log In"}</button>
                 </form>
-                    <h2>Reponse From Server: {loginInfo ? "Success" : "Denied!"}</h2>
+
+                <h2>Logged In? {loginInfo ? "Yes" : "no"}</h2>
+                <h2>Created? {users? "yes" : "no"}</h2>
+                {/*<h2>Reponse From Server: {loginInfo ? "Success" : "Denied!"}</h2>*/}
             </div>
         </div>
     );

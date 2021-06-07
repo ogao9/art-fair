@@ -97,9 +97,8 @@ const Header = () => {
                 <li><Link to='/'><img src={Logo2} alt='logo'></img></Link></li>
                 <li><Link to='/' className="RouterLink">Home</Link></li>
                 <li><Link to='/About' className="RouterLink">About</Link></li>
-                <li><Link to='/ArtCentral' className="RouterLink">Art Central</Link></li>
+                <li><Link to='/ArtHome' className="RouterLink">Art Home</Link></li>
                 <li><Link to='/Profile' className="RouterLink">Profile</Link></li>
-                <li><Link to='/Form' className="RouterLink">Form</Link></li>
                 <li style={{float:'right'}}>
                     {authenticated
                     ? avatar

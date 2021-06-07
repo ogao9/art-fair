@@ -1,11 +1,16 @@
 
-.about-grid-container{
+.about{
+    background-color: whitesmoke;
+    height: 100vh;
+}
+.about.grid-container{
     display:grid;
     grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
+    grid-gap: 1rem;
 }
 
-.about-grid-container div {
-    border-radius: 50%;
+.about.grid-container div {
+    
     border: 1px solid black;
 }
 

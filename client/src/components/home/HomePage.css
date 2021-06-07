@@ -1,17 +1,3 @@
-:root{
-    --color-azure: #3e8ef1;
-    --color-storm: #a4c9d8;
-    --color-tangerine: #ff4935;
-    --color-citric: #cdf567;
-    --color-sunflower: #ffbc4b;
-    --color-pink: #ffd0d5;
-    --color-salmon: #fb7ea8;
-    --color-factory-yellow: #ffe818;
-    --color-black: #171313;
-    --color-white: #fff;
-    --color-muted-black: #837e7e;
-}
-
 .Home{
     width: 100%;
     height: 100vh;
@@ -64,14 +50,40 @@
     font-weight: bold;
 }
 
+.Home-extras{
+    text-align: center;
+    height: 400px;
+}
 
 
-.SampleCard1{
+/*---------- Card Styles ---------- */
+.SampleCardc{
     display: grid;
-    grid-template-rows: max-content 200px 1fr;
-    border: 1px solid black;
+    grid-template-rows: 200px 1fr max-content;
+    max-width: 300px;
+    /* offset-x | offset-y | blur-radius | spread-radius | color */
+    box-shadow:  0 4px 8px 0 rgba(0,0,0,0.2);
+}
+
+.SampleCardc:hover{
+    box-shadow:  0 4px 8px 0 rgba(0,0,0,0.4);
+}
+
+.SampleCardc img{
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+}
+
+.SampleCardc .card-text{
     padding: 5px;
-    margin: 5px;
-    width: 250px;
-    overflow: hidden;
+    text-align:center;
+    line-height: 1.4;
+}
+
+.SampleCardc button{
+    padding: 8px;
+    margin: 2px;
+    background-color: azure;
+    border-radius: 5px;
 }

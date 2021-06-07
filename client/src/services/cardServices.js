@@ -16,9 +16,22 @@ const cardServices = {
             console.log(error.toJSON())
         }
     },
+    getSome: async (card_ids) =>{
+        try{
+            let response = await axios.get('/api/someCards')
+        }
+        catch(error){
+            console.log(error);
+        }
+    },
     getOne: async(id)=>{
-        let response = await axios.get(`/api/cards/${id}`)
-        return response.data;
+        try{
+            let response = await axios.get(`/api/cards/${id}`)
+            return response.data;
+        }
+        catch(error){
+            console.log(error)
+        }
     },
     deleteCard: (id)=>{
         axios.delete(`/api/cards/${id}`)
