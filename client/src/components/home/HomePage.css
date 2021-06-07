@@ -1,89 +1,32 @@
-.Home{
+
+
+
+.Home-main{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
     width: 100%;
     height: 100vh;
-    background-color: var(--color-storm);
-}
-
-.nav-container{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px 25px;
-}
-
-.Home-content{
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    padding: 10px 25px;
+    background-image: url('../../images/Wavey-Fingerprint.svg');
 }
 
 .welcome-message{
-    flex:50%;
-    border:1px solid black;
-    padding: 5px;
-    font-size: 4rem;
-    font-weight: bold;
+    color:#fff;
+    font-size: 2rem;
+    font-weight: 400;
+    text-align:center;
+    max-width: 1060px;
 }
 
-.slideshow{
-    flex:50%;
-    border:1px solid black;
-    padding: 5px;
-}
-
-@media (max-width: 700px) {
-    .welcome-message, .slideshow{
-        flex: 100%;
-    }
-}
-
-.nav-container ul{
-    display: block;
-    list-style-type:none;
-}
-
-.nav-container li {
-    display: inline;
-    padding: 5px;
-    font-size: 1.125rem;
-    font-weight: bold;
+.feature-slideshow{
+    background-color: whitesmoke;
 }
 
 .Home-extras{
+    height: 100vh;
     text-align: center;
-    height: 400px;
-}
-
-
-/*---------- Card Styles ---------- */
-.SampleCardc{
-    display: grid;
-    grid-template-rows: 200px 1fr max-content;
-    max-width: 300px;
-    /* offset-x | offset-y | blur-radius | spread-radius | color */
-    box-shadow:  0 4px 8px 0 rgba(0,0,0,0.2);
-}
-
-.SampleCardc:hover{
-    box-shadow:  0 4px 8px 0 rgba(0,0,0,0.4);
-}
-
-.SampleCardc img{
-    object-fit: cover;
-    width: 100%;
-    height: 100%;
-}
-
-.SampleCardc .card-text{
-    padding: 5px;
-    text-align:center;
-    line-height: 1.4;
-}
-
-.SampleCardc button{
-    padding: 8px;
-    margin: 2px;
-    background-color: azure;
-    border-radius: 5px;
+    padding: 20px;
+    margin: 20px;
+    display:flex;
+    justify-content: center;
 }
