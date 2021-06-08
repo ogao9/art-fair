@@ -26,6 +26,3 @@ yarn-error.log*
 #ignore text files
 *.txt
 *.json
-
-Slideshow.js
-SlideshowCard.js
