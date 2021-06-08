@@ -6,9 +6,9 @@ import "./About.css";
 const About = () => {
     return (
         <div>
+            <Header />
             <div className="about">
-                <Header />
-
+                <h1>About</h1>
                 <div className="about grid-container">
                     <div>
                         Here at Art Fair 3.0, we believe everything is art. From beautiful

@@ -5,6 +5,11 @@ Styles for components in ./components/art-central
     background: linear-gradient(45deg,#e66465, #9198e5);
 }
 
+a{
+    text-decoration:none;
+    color:white;
+}
+
 .ArtCentralWelcome{
     display: flex;
     justify-content: center;

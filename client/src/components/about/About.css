@@ -1,7 +1,8 @@
-
 .about{
     background-color: whitesmoke;
     height: 100vh;
+    padding:20px;
+    text-align:center;
 }
 .about.grid-container{
     display:grid;

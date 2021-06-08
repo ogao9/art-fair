@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 import {Link} from 'react-router-dom'
-import Logo2 from '../../images/logo2.png'
+import Logo from '../../images/Logo.png'
 import './Header.css'
 
 const Header2 = () => {
@@ -26,7 +26,7 @@ const Header2 = () => {
                     <Link to='/ArtHome' className="nav-link is-hidden-mobile">DesignCentral</Link> 
                 </div>
                 <div className="nav-middle">
-                    <img src={Logo2} alt="Logo"/>
+                    <Link to='/'><img src={Logo} alt="Logo"/></Link>
                 </div>
                 <div className="nav-end">
                     <Link to='/About' className="nav-link">About</Link> 

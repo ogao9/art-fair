@@ -1,13 +1,14 @@
 .Login{
     display:flex;
     justify-content: center;
-    background: linear-gradient(to right, #fceabb, #f8b500);
+    background: rgb(1, 1, 46);
     height: 100vh;
     padding: 20px;
 }
 
 .Login-header{
     text-align: center;
+    color:white;
 }
 
 .Login-form{
@@ -16,6 +17,7 @@
     padding: 20px;
     margin: 15px;
     width: clamp(100%, 600px);
+    background-color: white;
 }
 
 .Login-form input{

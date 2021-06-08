@@ -9,7 +9,7 @@ const ArtHome = () => {
         <div>
             <Header />
             <section className="ArtCentralWelcome">
-                <h1>This is the Design Home</h1>
+                <h1>Welcome to DesignCentral</h1>
             </section>
 
             <div className="art-home grid-container">
