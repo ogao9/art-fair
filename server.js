@@ -29,7 +29,7 @@ if(process.env.NODE_ENV ==="production"){
         res.sendFile(path.resolve(__dirname,'client', 'build', 'index.html'))
     })
 }
-//
+//The heroku-postbuild script is run automatically during production
 
 //listen for connections on the PORT and returns an http server with this applications as its callback function
 const PORT = process.env.PORT || 5000;
