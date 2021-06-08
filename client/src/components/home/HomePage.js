@@ -5,20 +5,7 @@ import Footer from "../headfoot/Footer";
 import Slideshow from "./Slideshow";
 import "./HomePage.css";
 
-import Button from "@material-ui/core/button";
-
 const HomePage = ({ loginInfo }) => {
-    const LoginButton = (
-        <Button
-            variant="contained"
-            color="primary"
-            //onClick={onClick}
-            className="LoginButton"
-        >
-            <Link to="/Login">Login</Link>
-        </Button>
-    );
-
     return (
         <div>
             <Header />
