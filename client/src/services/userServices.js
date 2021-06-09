@@ -8,6 +8,7 @@ const userServices = {
                     .then( ()=> "New User added!")
                     .catch(err => console.log(err))
     },
+    //user_info should be an object: {username, password}
     checkUser: (user_info)=>{
         return axios.post('/users/login', user_info)
             .then( res => res.data)

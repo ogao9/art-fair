@@ -1,5 +1,5 @@
 import React from "react";
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch, Redirect } from "react-router-dom";
 import HomePage from "./components/home/HomePage";
 import About from "./components/about/About";
 import ArtHome from "./components/art-central/ArtHome";
@@ -9,10 +9,23 @@ import FormWelcome from "./components/multi-step-form/FormWelcome";
 import Login from "./components/login/Login";
 
 function App() {
-    const [loginInfo, setLoginInfo] = React.useState([]);
-    const setLogin = (input) => {
-        setLoginInfo(input);
+    const [loginInfo, setLoginInfo] = React.useState(null);
+    const setLogin = (user_obj) => {
+        setLoginInfo(user_obj);
     };
+
+    function PrivateRoute({children, ...rest}){
+        //children refers to the <Profile> component and ...rest refers to the params
+        //react router invokes the render function every time the route matches
+        const isAuth = loginInfo ? true : true;
+        return(
+            <Route {...rest} render={()=>{
+                return isAuth 
+                    ? children
+                    : <Redirect to='/Login'/>
+            }} />
+        )
+    }
 
     return (
         <Switch>
@@ -25,9 +38,9 @@ function App() {
             <Route path="/Form" exact>
                 <FormWelcome loginInfo={loginInfo} />
             </Route>
-            <Route path="/Profile" exact>
+            <PrivateRoute path="/Profile" exact>
                 <Profile loginInfo={loginInfo} />
-            </Route>
+            </PrivateRoute>
             <Route path="/">
                 <HomePage loginInfo={loginInfo} />
             </Route>

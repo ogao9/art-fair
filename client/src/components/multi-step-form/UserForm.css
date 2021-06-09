@@ -1,0 +1,79 @@
+/*---------- Multi-step Form Styles ---------- */
+.form-container{
+    width:100%;
+    padding: 20px;
+    border: 1px solid black;
+    border-radius: 5px;
+    box-shadow:  0 4px 8px 0 rgba(0,0,0,0.2);
+    background-color: whitesmoke;
+}
+
+.form-container input[type=text], select{
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid black;
+    border-radius: 5px;
+}
+
+.form-container button{
+    display: inline-block;
+    width: 50%;
+    border-radius: 5px;
+    background-color:olivedrab;
+    padding: 10px;
+    margin: 10px 0;
+}
+
+.form-container button:hover{
+    background-color:yellowgreen
+}
+
+.Confirm ul{
+    display: block;
+    padding: 10px;
+    border: 1px solid #ddd;
+    list-style-type: none;
+    line-height: 2;
+}
+
+.Success{
+    text-align: center;
+}
+
+
+/*---------- Card Styles ---------- */
+.SampleCardzc{
+    display: grid;
+    grid-template-rows: 200px 1fr max-content;
+    max-width: 300px;
+    max-height: 450px;
+    /* offset-x | offset-y | blur-radius | spread-radius | color */
+    box-shadow:  0 4px 8px 0 rgba(0,0,0,0.2);
+    background-color: whitesmoke;
+    color: black;
+}
+
+.SampleCardzc:hover{
+    box-shadow:  0 4px 8px 0 rgba(0,0,0,0.4);
+}
+
+.SampleCardzc img{
+    object-fit: contain;
+    width: 100%;
+    height: 100%;
+}
+
+.SampleCardzc .card-text{
+    padding: 5px;
+    text-align:center;
+    line-height: 1.4;
+}
+
+.SampleCardzc button{
+    padding: 8px;
+    margin: 2px;
+    background-color: azure;
+    border-radius: 5px;
+}

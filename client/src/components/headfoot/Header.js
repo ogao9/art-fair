@@ -1,17 +1,17 @@
 import React, {useState} from 'react'
-import {Link} from 'react-router-dom'
+import {Link, NavLink} from 'react-router-dom'
 import Logo from '../../images/Logo.png'
 import './Header.css'
 
-const Header2 = () => {
+const Header = () => {
     const [expand, setExpand] = useState(false);
     const expandedNav = (
         <nav className="expanded-nav">
             <Link to='/' className="nav-link">Home</Link> 
             <Link to='/' className="nav-link">Featured</Link> 
             <Link to='/ArtHome' className="nav-link">DesignCentral</Link> 
-            <Link to='/About' className="nav-link">About</Link> 
-            <Link to='/' className="nav-link">Docs</Link> 
+            <NavLink to='/About' className="nav-link" activeClassName="active">About</NavLink> 
+            <Link to='/Profile' className="nav-link">Profile</Link> 
             <Link to='/Login' className="nav-link">Login</Link> 
         </nav>
     );
@@ -29,8 +29,8 @@ const Header2 = () => {
                     <Link to='/'><img src={Logo} alt="Logo"/></Link>
                 </div>
                 <div className="nav-end">
-                    <Link to='/About' className="nav-link">About</Link> 
-                    <Link to='/' className="nav-link">Docs</Link> 
+                    <NavLink to='/About' className="nav-link" activeClassName="active">About</NavLink> 
+                    <Link to='/Profile' className="nav-link">Profile</Link> 
                     <Link to='/Login' className="nav-link">Login</Link> 
                 </div>
             </nav>
@@ -39,4 +39,4 @@ const Header2 = () => {
     )
 }
 
-export default Header2
+export default Header

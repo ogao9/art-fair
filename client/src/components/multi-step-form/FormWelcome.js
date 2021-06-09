@@ -1,12 +1,11 @@
-import React from "react";
-import {useState} from 'react'
+import React, {useState} from "react";
+import Header from '../headfoot/Header'
+import Footer from '../headfoot/Footer'
 import UserForm from "./UserForm";
 import SampleCard from "./SampleCard";
 import cardServices from "../../services/cardServices";
 import userServices from "../../services/userServices"
-import "./FormStyles.css";
-import Header from '../headfoot/Header'
-import Footer from '../headfoot/Footer'
+import "./FormWelcome.css";
 
 
 const FormWelcome = ({loginInfo}) => {
@@ -51,10 +50,10 @@ const FormWelcome = ({loginInfo}) => {
             <Header/>
             <div className="form-welcome">
                 <div className="gradient-header">
-                    <h1>Show us what you got</h1>
+                    <h1>Share Your Design</h1>
                 </div>
-                <div className="flex-container1">
-                    <div className="left-box1">
+                <div className="form-flex-container">
+                    <div className="form-flex-left">
                         {
                             true
                             ? <UserForm
@@ -66,7 +65,7 @@ const FormWelcome = ({loginInfo}) => {
                         }
                         
                     </div>
-                    <div className="right-box1">
+                    <div className="form-flex-right">
                         <SampleCard content={userInput} />
                     </div>
                 </div>
@@ -78,39 +77,4 @@ const FormWelcome = ({loginInfo}) => {
 
 export default FormWelcome;
 
-/* 
-<div className="form-welcome">
-            <div className="gradient-header">
-                <h1>Show us what you got</h1>
-            </div>
-            <div className='flex-container1'>
-                <UserForm addbtn={addCard}/>
-                <SampleCard content={sampleContent}/>
-            </div>
-        </div>
 
-
-        
-        //EFFECTS: Adds a new card to db 
-        const onAdd = () => {
-            const cardfrac = {
-                title: userInput.title,
-                creator: userInput.creator,
-                description: userInput.description,
-                impact:0,
-                starred:false,
-            }
-            
-            addbtn(cardfrac)
-            setUserInput({}); //reset values after submit
-        }
-
-
-            const sampleContent = {
-        title: "Hello",
-        creator: "HelloCreator",
-        description: "Hello Descr",
-        impact: 2,
-        _id: "65",
-    };
-*/

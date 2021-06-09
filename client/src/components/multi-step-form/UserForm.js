@@ -1,14 +1,12 @@
-import React from "react";
-import { useState, useEffect } from "react";
-
+import React, {useState} from "react";
 import UserFormDetails from "./UserFormDetails";
 import PersonalData from "./PersonalData";
 import Confirm from "./Confirm";
 import Success from "./Success";
+import './UserForm.css'
 
 const UserForm = ({ addbtn, handleChange, userInput }) => {
-    //----------Multi-Step Form Controls---------
-    const [step, setStep] = useState(1);
+    const [step, setStep] = useState(1); //controls current page of form
 
     const nextStep = () => {
         setStep(step + 1);
@@ -55,8 +53,3 @@ const UserForm = ({ addbtn, handleChange, userInput }) => {
 
 export default UserForm;
 
-/*
-        //used this when we needed to updata a local array 
-        //const data = await response.json(); //set data to the card we just created
-        // setArtInfo([...artInfo, data]);  
-*/

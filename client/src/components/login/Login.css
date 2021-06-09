@@ -2,10 +2,13 @@
     width:100%;
     background: #05192d;
 }
+
 .Login{
     display:flex;
+    flex-wrap: wrap;
     justify-content: center;
     align-items:center;
+
     max-width: 1176px;
     margin-left: auto;
     margin-right: auto;
@@ -14,13 +17,29 @@
 
 .Login-left{
     flex: 50%;
+    min-height: 150px;
     color:whitesmoke;
     line-height: 1.5;
 }
+
+.Login-left .explore-button{
+    width: clamp(200px, 100%, 500px);
+    padding: 15px;
+    margin: 20px 0 ;
+    border: 1px solid rgb(252, 206, 13);
+    border-radius: 10px;
+    background: #05192d;
+    color:whitesmoke;
+    cursor: pointer;
+}
+.Login-left .explore-button:hover{
+    background:#092847a1; 
+}
+
 .Login-right{
+    flex: 50%;
     display:flex;
     align-items:center;
-    flex: 50%;
     height: 500px;
 }
 
@@ -30,31 +49,18 @@
     }
     .Login-right{
         flex: 100%;
-  }
+    }
 }
 
 
-.explore-button{
-    width: clamp(200px, 100%, 500px);
-    padding: 15px;
-    border: 1px solid rgb(252, 206, 13);
-    border-radius: 10px;
-    background: #05192d;
-    color:whitesmoke;
-    cursor: pointer;
-}
-.explore-button:hover{
-    background:#092847a1; 
-}
-
-
-/*-----LoginForm Component-----*/
+/*--------- LoginForm Component Styles ----------*/
 .Login-form{
+    width: clamp(200px, 100%, 600px);
+    padding: 20px;
     border: 1px solid whitesmoke;
     border-radius: 5px;
-    padding: 20px;
-    width: clamp(200px, 100%, 600px);
     background-color: whitesmoke;
+    color:black;
 }
 
 .Login-form .username{
@@ -64,23 +70,23 @@
 
 .Login-form input{
     display: block;
-    border-radius: 5px;
+    width: 100%;
     padding: 10px;
     margin: 10px 0;
-    width: 100%;
-}
-.Login-form button[type="submit"]{
-    display: block;
-    color:whitesmoke;
-    background-color:#05192d ;
     border-radius: 5px;
-    padding: 20px;
-    margin: 10px 0;
-    width: 100%;
-    cursor:pointer;
 }
 
+.Login-form button[type="submit"]{
+    display: block;
+    width: 100%;
+    padding: 20px;
+    margin: 10px 0;
+    border-radius: 5px;
+    color:whitesmoke;
+    background-color:#05192d ;
+    cursor:pointer;
+}
 .Login-form button[type="submit"]:hover{
-    background:#041322a1; 
+    background:#07213b ; 
 }
 

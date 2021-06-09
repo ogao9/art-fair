@@ -4,6 +4,7 @@ import Header from "../headfoot/Header";
 import Footer from "../headfoot/Footer";
 import Card from "../art-central/Card";
 import cardServices from "../../services/cardServices";
+import withAuth from './withAuth'
 import "./Profile.css";
 
 const Profile = ({ loginInfo }) => {
@@ -38,27 +39,32 @@ const Profile = ({ loginInfo }) => {
     //     loadCards();
     // }, []);
 
+    // <button style={{backgroundColor:'black',padding:'15px',textAlign:'center'}}><Link to='/Form'>Submit Your Design!</Link></button>
     return (
         <div>
             <Header />
-            <div className="flex-container">
-                <div className="left">
-                    <h2>{loginInfo ? "Username Goes Here" : "Not Logged In"}</h2>
-                    <button style={{backgroundColor:'black',padding:'15px',textAlign:'center'}}><Link to='/Form'>Submit Your Design!</Link></button>
+            <div className="profile-container">
+                <div className="profile-left">
+                    <div>
+                        <h2>{loginInfo ? loginInfo.username : "Your Username"}</h2>
+                        <Link to='/Form'><button className="submit-your-work-btn">Submit Your Design!</button></Link>
+                    </div>
                 </div>
-                <div className="right">
-                    <h2>User's Cards</h2>
-                    <div className="card-container">
-                        {cards
-                            ? cards.map((cardInfo) => (
-                                  <Card
-                                      key={cardInfo._id}
-                                      content={cardInfo}
-                                      impactbtn={null}
-                                      deletebtn={null}
-                                  />
-                              ))
-                            : "No Cards Available"}
+                <div className="profile-right">
+                    <div>
+                        <h2>Your Designs</h2>
+                        <div className="card-container">
+                            {cards
+                                ? cards.map((cardInfo) => (
+                                    <Card
+                                        key={cardInfo._id}
+                                        content={cardInfo}
+                                        impactbtn={null}
+                                        deletebtn={null}
+                                    />
+                                ))
+                                : "No Cards Available"}
+                        </div>
                     </div>
                 </div>
             </div>

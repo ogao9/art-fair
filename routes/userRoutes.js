@@ -44,7 +44,7 @@ router.post('/', async (req,res)=>{
 router.post('/login', async (req,res)=>{
     const user = await User.findOne({username:req.body.username});
     if(!user){
-        return res.status(400).send('Cannot Find User')
+        return res.status(400).send(null)
     }
     try{
         if(await bcrypt.compare(req.body.password, user.password)) //compare encrypted passwords
