@@ -18,11 +18,17 @@ const HomePage = ({ loginInfo }) => {
                         creative design into your daily life.
                     </p>
                 </div>
-                <div className="feature-slideshow"></div>
+                <div className="feature-slideshow">
+                     
+                </div>
             </div>
 
             <div className="Home-extras">
-                <Slideshow />
+                <div>
+                   <h1>Check out some of the leading designs!</h1>
+                    <Slideshow /> 
+                </div>
+                
             </div>
             <Footer />
         </div>

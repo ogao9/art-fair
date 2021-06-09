@@ -1,23 +1,65 @@
+.Login-container{
+    width:100%;
+    background: #05192d;
+}
 .Login{
     display:flex;
     justify-content: center;
-    background: rgb(1, 1, 46);
-    height: 100vh;
+    align-items:center;
+    max-width: 1176px;
+    margin-left: auto;
+    margin-right: auto;
     padding: 20px;
 }
 
-.Login-header{
-    text-align: center;
-    color:white;
+.Login-left{
+    flex: 50%;
+    color:whitesmoke;
+    line-height: 1.5;
+}
+.Login-right{
+    display:flex;
+    align-items:center;
+    flex: 50%;
+    height: 500px;
 }
 
+@media screen and (max-width: 700px) {
+    .Login-left{
+        flex: 100%;
+    }
+    .Login-right{
+        flex: 100%;
+  }
+}
+
+
+.explore-button{
+    width: clamp(200px, 100%, 500px);
+    padding: 15px;
+    border: 1px solid rgb(252, 206, 13);
+    border-radius: 10px;
+    background: #05192d;
+    color:whitesmoke;
+    cursor: pointer;
+}
+.explore-button:hover{
+    background:#092847a1; 
+}
+
+
+/*-----LoginForm Component-----*/
 .Login-form{
     border: 1px solid whitesmoke;
     border-radius: 5px;
     padding: 20px;
-    margin: 15px;
-    width: clamp(100%, 600px);
-    background-color: white;
+    width: clamp(200px, 100%, 600px);
+    background-color: whitesmoke;
+}
+
+.Login-form .username{
+    display:flex;
+    justify-content: space-between;
 }
 
 .Login-form input{
@@ -27,12 +69,18 @@
     margin: 10px 0;
     width: 100%;
 }
-
-.Login-form input[type=submit]:hover{
-    background-color: teal;
+.Login-form button[type="submit"]{
+    display: block;
+    color:whitesmoke;
+    background-color:#05192d ;
+    border-radius: 5px;
+    padding: 20px;
+    margin: 10px 0;
+    width: 100%;
+    cursor:pointer;
 }
 
-.username{
-    display:flex;
-    justify-content: space-between;
+.Login-form button[type="submit"]:hover{
+    background:#041322a1; 
 }
+

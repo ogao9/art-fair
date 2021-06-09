@@ -24,7 +24,10 @@
     height: 100vh;
     text-align: center;
     padding: 20px;
-    margin: 20px;
     display:flex;
     justify-content: center;
+    /* background-color: whitesmoke;
+    color: black; */
+    background-color: black;
+    color:#fff;
 }

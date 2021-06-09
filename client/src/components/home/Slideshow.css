@@ -18,31 +18,33 @@
 }
 
 /*---------- Card Styles ---------- */
-.SampleCardc{
+.SampleCardzc{
     display: grid;
     grid-template-rows: 200px 1fr max-content;
     max-width: 300px;
     /* offset-x | offset-y | blur-radius | spread-radius | color */
     box-shadow:  0 4px 8px 0 rgba(0,0,0,0.2);
+    background-color: whitesmoke;
+    color: black;
 }
 
-.SampleCardc:hover{
+.SampleCardzc:hover{
     box-shadow:  0 4px 8px 0 rgba(0,0,0,0.4);
 }
 
-.SampleCardc img{
-    object-fit: cover;
+.SampleCardzc img{
+    object-fit: contain;
     width: 100%;
     height: 100%;
 }
 
-.SampleCardc .card-text{
+.SampleCardzc .card-text{
     padding: 5px;
     text-align:center;
     line-height: 1.4;
 }
 
-.SampleCardc button{
+.SampleCardzc button{
     padding: 8px;
     margin: 2px;
     background-color: azure;

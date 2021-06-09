@@ -2,7 +2,7 @@ import React from 'react'
 
 const SlideshowCard = ({content}) => {
     return (
-        <div className="SampleCardc">
+        <div className="SampleCardzc">
             <img src={content.img}></img>
             <div className="card-text">
                 <h2>{content.title ? content.title : "Title"}</h2>
@@ -11,7 +11,7 @@ const SlideshowCard = ({content}) => {
             </div>
 
             <button>
-                Submit Impact Statement
+                This inspired me
             </button>
             <button>Play Audio Pairing</button>
         </div>
