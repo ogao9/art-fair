@@ -6,7 +6,7 @@ import "./HomePage.css";
 
 const HomePage = ({ loginInfo }) => {
     return (
-        <div>
+        <div className="component-container">
             <Header />
             <div className="Home-main">
                 <div className="welcome-message">
@@ -18,6 +18,9 @@ const HomePage = ({ loginInfo }) => {
                     </p>
                     <Link to='/ArtHome'><button className="big-discover-button">Discover</button></Link>
                 </div>
+            </div>
+            <div className="filler">
+                
             </div>
             <Footer />
         </div>

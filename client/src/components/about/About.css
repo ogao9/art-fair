@@ -33,3 +33,12 @@
     }
 }
 
+.component-container{
+    min-height:100vh;
+    position: relative;
+}
+
+.test{
+    position:absolute;
+    bottom:0;
+}

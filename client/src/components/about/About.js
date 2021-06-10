@@ -5,7 +5,7 @@ import "./About.css";
 
 const About = () => {
     return (
-        <div>
+        <div className="component-container">
             <Header />
             <div className="about-container">
                 <div className="about-container left">
@@ -38,7 +38,8 @@ const About = () => {
                 </div>
             </div>
 
-            <Footer />
+            
+            <Footer/>
         </div>
     );
 };

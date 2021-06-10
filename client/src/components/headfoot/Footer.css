@@ -1,9 +1,11 @@
 .Footer{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: 20px;
     background-color: black;
     color: whitesmoke;
     text-align: center;
-    width: 100%;
-    padding: 20px;
     line-height: 1.5;
   }
   

@@ -31,3 +31,11 @@ body{
   --color-muted-black: #837e7e;
 }
 
+.filler{
+  background-color: white;
+  min-height:500px;
+}
+
+.component-container{
+  position:relative;
+}

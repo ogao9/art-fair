@@ -1,3 +1,7 @@
+.home-container{
+    position: relative;
+}
+
 .Home-main{
     display:flex;
     flex-direction: column;
@@ -9,26 +13,28 @@
 }
 
 .welcome-message{
+    max-width: 1060px;
     padding: 10px;
     color:#fff;
     font-size: 2rem;
     font-weight: 400;
-    max-width: 1060px;
 }
 
 .big-discover-button{
     width: clamp(300px, 50%, 600px);
     margin: 50px 0;
     padding: 20px;
-    border: 1px solid black;
+    border: none;
     border-radius: 50px;
-    background: linear-gradient(45deg,#e66465, #9198e5);
+    background: linear-gradient(to right, #fc6076, #ff9a44);
+    box-shadow: 0 4px 10px 0 rgba(252, 104, 110, 0.75);
     font-size: x-large;
     color: whitesmoke;
     cursor: pointer;
 }
 .big-discover-button:hover{
-    background: linear-gradient(45deg,  #fa6e6e,#9ea6f8);
+    background: linear-gradient(to left, #fc6076, #ff9a44);
 }
+
 
 

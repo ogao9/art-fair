@@ -13,11 +13,8 @@ const Footer = () => {
                 <p>Inspired by <a href="https://www.theotherartfair.com/" target="_blank" rel='noreferrer'>
                     The Other Art Fair</a></p>
             </div>
-
         </footer>
     )
 }
 
 export default Footer
-
-//<Link to='/about'>About</Link>

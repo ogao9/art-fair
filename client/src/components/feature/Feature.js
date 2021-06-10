@@ -6,11 +6,15 @@ import './Feature.css'
 
 const Feature = () => {
     return (
-        <div>
+        <div className="component-container">
             <Header/>
             <div className="feature-container">
-                <h1>Check out this week's featured designs!</h1>
-                <Slideshow/>
+                <div className="feature-left">
+                    <h1>Check out this week's featured designs!</h1>
+                </div>
+                <div className="feature-right">
+                    <Slideshow/>
+                </div>
             </div>
             <Footer/>
         </div>

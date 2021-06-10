@@ -1,15 +1,14 @@
 import React, { useState, useEffect } from "react";
-import Card from "./Card";
-import Pagination from "./Pagination";
 import Header from '../headfoot/Header'
 import Footer from '../headfoot/Footer'
+import Card from "./Card";
+import Pagination from "./Pagination";
 import cardServices from "../../services/cardServices";
-import Container from "@material-ui/core/Container";
-import './ArtCentral.css'
+import './Gallery.css'
 
 import SampleData from './SampleData'
 
-const ArtCentral = () => {
+const Gallery = () => {
     const [artInfo, setArtInfo] = useState([]);
     const [db, setDB] = useState(0);
 
@@ -61,64 +60,52 @@ const ArtCentral = () => {
     const endIndex = cardsPerPage * currentPage;
     const startIndex = endIndex - cardsPerPage;
     //PROBLEM: IF artinfo hasn't loaded, we get an error
-    const cardsToShow = artInfo ? artInfo.slice(startIndex, endIndex) : [] 
-    //const cardsToShow = SampleData.slice(startIndex, endIndex);
+    //const cardsToShow = artInfo ? artInfo.slice(startIndex, endIndex) : [] 
+    const cardsToShow = SampleData.slice(startIndex, endIndex);
     
 
     return (
-        <div className="art-central">
-            <section className="ArtCentralWelcome">
-                <h1>Welcome to the Outdoor/Indoor/Modern/Audio Section!</h1>
-                <p>We want this to be a truly immersive experience</p>
-            </section>
-
-            <Container maxWidth="lg">
-                <div className="card-container">
-                    {cardsToShow.length
-                        ? cardsToShow.map(cardInfo => (
-                            <Card
-                                key={cardInfo._id}
-                                content={cardInfo}
-                                impactbtn={impactbtn}
-                                deletebtn={deletebtn}
-                            />
-                        ))
-                        : "No Cards Available"}
-                </div>
-                
-                <div className="flex-container">
-                    <Pagination
-                        currentPage={currentPage}
-                        setPage={setPage}
-                        totalCards={cardsToShow.length}
-                        cardsPerPage={cardsPerPage}
-                    />
-                </div>
-            </Container>
-            
-            <Footer/>
+        <div className="component-container">
             <Header/>
+            <div className="dark-theme">
+                <section className="Gallery-welcome">
+                    <div className="welcome-text-container">
+                        <h1>$Template String: Outdoors </h1>
+                        <p>We're glad you're taking design outdoors. It's amazing out there.</p> 
+                    </div>
+                </section>
+
+                <section className="Gallery-content">
+                    <div className="card-container">
+                        {cardsToShow.length
+                            ? cardsToShow.map(cardInfo => (
+                                <Card
+                                    key={cardInfo._id}
+                                    content={cardInfo}
+                                    impactbtn={impactbtn}
+                                    deletebtn={deletebtn}
+                                />
+                            ))
+                            : "No Cards Available"}
+                    </div>
+                    
+                    <div className="pagination-container">
+                        <Pagination
+                            currentPage={currentPage}
+                            setPage={setPage}
+                            totalCards={SampleData.length}
+                            cardsPerPage={cardsPerPage}
+                        />
+                    </div>
+                </section>
+
+                <div className="filler"/>
+            </div>
+            <Footer/>
         </div>
     );
 };
 
-export default ArtCentral;
+export default Gallery;
 
-/* 
 
-const[artInfo, setArtInfo] = useState([
-  {
-    id: 1,
-    title: "Jumping Oranges",
-    creator: "Peter Banaya",
-    legacy: false,
-  },
-  {
-    id: 2,
-    title: "Peaceful Sunset",
-    creator: "Ben Park",
-    legacy: false,
-  }
-]) 
-
-*/

@@ -2,8 +2,8 @@ import React from "react";
 import { Route, Switch, Redirect } from "react-router-dom";
 import HomePage from "./components/home/HomePage";
 import About from "./components/about/About";
-import ArtHome from "./components/art-central/ArtHome";
-import ArtCentral from "./components/art-central/ArtCentral";
+import DesignHome from "./components/art-central/DesignHome";
+import Gallery from "./components/art-central/Gallery";
 import Profile from "./components/profile/Profile";
 import FormWelcome from "./components/multi-step-form/FormWelcome";
 import Login from "./components/login/Login";
@@ -34,8 +34,8 @@ function App() {
                 <Login loginInfo={loginInfo} setLoginInfo={setLogin} />
             </Route>
             <Route path="/About" exact component={About} />
-            <Route path="/ArtHome" exact component={ArtHome} />
-            <Route path="/ArtCentral" exact component={ArtCentral} />
+            <Route path="/DesignHome" exact component={DesignHome} />
+            <Route path="/Gallery" exact component={Gallery} />
             <Route path="/Feature" exact component={Feature} />
             <Route path="/Form" exact>
                 <FormWelcome loginInfo={loginInfo} />
