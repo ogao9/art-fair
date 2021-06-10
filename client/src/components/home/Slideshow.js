@@ -1,10 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import SlideshowCard from './SlideshowCard'
-
-import Orange from '../../images/oranges.jpg'
 import Balloon from '../../images/balloons.jpg'
 import Desk from '../../images/desk.jpg'
-import Logo from '../../images/logo2.png'
 import Modern from '../../images/modern.jpg'
 import Tree from '../../images/tree.png'
 import './Slideshow.css'

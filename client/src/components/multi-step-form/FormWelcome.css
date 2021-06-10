@@ -23,7 +23,12 @@ h2{
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    margin: 20px 10px;
+    justify-content: center;
+    align-items:center;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right:auto;
+    margin-bottom: 50px;
 }
 
 /* the flex property sets the initial length of the box. You cannot give two boxes at 50% any margin 

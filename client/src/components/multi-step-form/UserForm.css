@@ -2,19 +2,24 @@
 .form-container{
     width:100%;
     padding: 20px;
+    min-height: 500px;
     border: 1px solid black;
     border-radius: 5px;
     box-shadow:  0 4px 8px 0 rgba(0,0,0,0.2);
     background-color: whitesmoke;
 }
 
-.form-container input[type=text], select{
+.form-container input{
     display: block;
     width: 100%;
     padding: 10px;
     margin: 10px 0;
     border: 1px solid black;
     border-radius: 5px;
+}
+
+.form-container input:invalid{
+    border: 2px solid red;
 }
 
 .form-container button{
@@ -30,20 +35,12 @@
     background-color:yellowgreen
 }
 
-.Confirm ul{
-    display: block;
-    padding: 10px;
-    border: 1px solid #ddd;
-    list-style-type: none;
-    line-height: 2;
-}
-
-.Success{
+.Success-page{
     text-align: center;
 }
 
 
-/*---------- Card Styles ---------- */
+/*---------- Card Preview Styles ---------- */
 .SampleCardzc{
     display: grid;
     grid-template-rows: 200px 1fr max-content;

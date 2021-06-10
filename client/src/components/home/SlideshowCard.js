@@ -3,7 +3,7 @@ import React from 'react'
 const SlideshowCard = ({content}) => {
     return (
         <div className="SampleCardzc">
-            <img src={content.img}></img>
+            <img src={content.img} alt="featured design image"></img>
             <div className="card-text">
                 <h2>{content.title ? content.title : "Title"}</h2>
                 <h4>{content.creator ? content.creator : "Creator Name"}</h4>
