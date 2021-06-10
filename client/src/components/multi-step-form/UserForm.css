@@ -3,10 +3,8 @@
     width:100%;
     padding: 20px;
     min-height: 500px;
-    border: 1px solid black;
-    border-radius: 5px;
-    box-shadow:  0 4px 8px 0 rgba(0,0,0,0.2);
-    background-color: whitesmoke;
+    background-color: #ff4e0d;
+    color: whitesmoke;
 }
 
 .form-container input{

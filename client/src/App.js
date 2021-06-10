@@ -7,6 +7,7 @@ import ArtCentral from "./components/art-central/ArtCentral";
 import Profile from "./components/profile/Profile";
 import FormWelcome from "./components/multi-step-form/FormWelcome";
 import Login from "./components/login/Login";
+import Feature from "./components/feature/Feature"
 
 function App() {
     const [loginInfo, setLoginInfo] = React.useState(null);
@@ -35,6 +36,7 @@ function App() {
             <Route path="/About" exact component={About} />
             <Route path="/ArtHome" exact component={ArtHome} />
             <Route path="/ArtCentral" exact component={ArtCentral} />
+            <Route path="/Feature" exact component={Feature} />
             <Route path="/Form" exact>
                 <FormWelcome loginInfo={loginInfo} />
             </Route>

@@ -3,13 +3,13 @@
     justify-content: center;
     align-items:center;
     position:relative;
-    width:1000px;
+    width: clamp(500px, 100%, 1000px);
     border:1px solid black;
 }
 .left-arrow{
     position:absolute;
     top:50%;
-    left:50px;
+    left:10px;
 }
 .right-arrow{
     position:absolute;

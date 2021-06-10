@@ -6,11 +6,12 @@
 
 .about-container.left {
     flex: 40%;
-    background-color: #264e70;
-    color: white;
     display:flex;
     align-items:center;
+    min-height: 200px;
     padding-left: 50px;
+    background-color: #264e70;
+    color: white;
 }
 
 .about-container.right {
@@ -26,12 +27,9 @@
     padding: 20px;
 }
 
-@media (max-width: 700px) {
-    .about-container.left{
+@media (max-width: 767px) {
+    .about-container.left, .about-container.right{
         flex: 100%;
     }
-    .about-container.right{
-      flex: 100%;
-  }
 }
 

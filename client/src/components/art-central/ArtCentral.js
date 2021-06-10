@@ -61,8 +61,8 @@ const ArtCentral = () => {
     const endIndex = cardsPerPage * currentPage;
     const startIndex = endIndex - cardsPerPage;
     //PROBLEM: IF artinfo hasn't loaded, we get an error
-    //const cardsToShow = artInfo ? artInfo.slice(startIndex, endIndex) : [] 
-    const cardsToShow = SampleData.slice(startIndex, endIndex);
+    const cardsToShow = artInfo ? artInfo.slice(startIndex, endIndex) : [] 
+    //const cardsToShow = SampleData.slice(startIndex, endIndex);
     
 
     return (
@@ -90,7 +90,7 @@ const ArtCentral = () => {
                     <Pagination
                         currentPage={currentPage}
                         setPage={setPage}
-                        totalCards={SampleData.length}
+                        totalCards={cardsToShow.length}
                         cardsPerPage={cardsPerPage}
                     />
                 </div>

@@ -16,18 +16,19 @@
     max-width: 1060px;
 }
 
-.feature-slideshow{
-    background-color: whitesmoke;
+.big-discover-button{
+    width: clamp(300px, 50%, 600px);
+    margin: 50px 0;
+    padding: 20px;
+    border: 1px solid black;
+    border-radius: 50px;
+    background: linear-gradient(45deg,#e66465, #9198e5);
+    font-size: x-large;
+    color: whitesmoke;
+    cursor: pointer;
+}
+.big-discover-button:hover{
+    background: linear-gradient(45deg,  #fa6e6e,#9ea6f8);
 }
 
-.Home-extras{
-    height: 100vh;
-    text-align: center;
-    padding: 20px;
-    display:flex;
-    justify-content: center;
-    /* background-color: whitesmoke;
-    color: black; */
-    background-color: black;
-    color:#fff;
-}
+

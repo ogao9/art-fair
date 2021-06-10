@@ -2,7 +2,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Header from "../headfoot/Header";
 import Footer from "../headfoot/Footer";
-import Slideshow from "./Slideshow";
 import "./HomePage.css";
 
 const HomePage = ({ loginInfo }) => {
@@ -17,18 +16,8 @@ const HomePage = ({ loginInfo }) => {
                         your desk indoors. Let us help you inject some
                         creative design into your daily life.
                     </p>
+                    <Link to='/ArtHome'><button className="big-discover-button">Discover</button></Link>
                 </div>
-                <div className="feature-slideshow">
-                     
-                </div>
-            </div>
-
-            <div className="Home-extras">
-                <div>
-                   <h1>Check out some of the leading designs!</h1>
-                    <Slideshow /> 
-                </div>
-                
             </div>
             <Footer />
         </div>
@@ -36,3 +25,5 @@ const HomePage = ({ loginInfo }) => {
 };
 
 export default HomePage;
+
+

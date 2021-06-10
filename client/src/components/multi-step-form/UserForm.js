@@ -10,7 +10,7 @@ import "./UserForm.css";
 
 
 //-----Parent container for the form Wizard -----
-//
+//      **--Ideally, the form can stand alone and serve as a pop-up on any page**
 const UserForm = ({ loginInfo }) => {
     const [userInput, setUserInput] = useState({}); //store all user input in an object
     const [step, setStep] = useState(1);
