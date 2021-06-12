@@ -1,0 +1,58 @@
+/*---------- Large Container ---------- */
+.form-outer-container{
+    width: 100%
+}
+
+.form-flex-container{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items:center;
+    max-width: 1176px;
+    margin-left: auto;
+    margin-right:auto;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+/*---------- Form Step Styles ---------- */
+.form-container{
+    width:100%;
+    padding: 20px;
+    min-height: 500px;
+    background-color: #ff4e0d;
+    color: whitesmoke;
+
+    input{
+        display: block;
+        width: 100%;
+        padding: 10px;
+        margin: 10px 0;
+        border: 1px solid black;
+        border-radius: 5px;
+
+        &:invalid{
+            color:red;
+        }
+    }
+
+    button{
+        display: inline-block;
+        width: 50%;
+        border-radius: 5px;
+        background-color:olivedrab;
+        padding: 10px;
+        margin: 10px 0;
+
+        &:hover{
+            background-color:yellowgreen
+        }
+    }
+}
+
+.Success-page{
+    text-align: center;
+}
+
+

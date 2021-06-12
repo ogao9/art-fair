@@ -1,14 +1,15 @@
 import React, { useEffect }  from "react";
 import { Link } from "react-router-dom";
+import cardServices from "../../services/cardServices";
 import Header from "../headfoot/Header";
 import Footer from "../headfoot/Footer";
 import Card from "../art-central/Card";
-import cardServices from "../../services/cardServices";
 import withAuth from './withAuth'
-import "./Profile.css";
+import "./Profile.scss";
 
 const Profile = ({ loginInfo }) => {
     //const [cards, setCards] = React.useState([]);
+
     const cards = [
         {
           id: 1,
@@ -40,14 +41,15 @@ const Profile = ({ loginInfo }) => {
     // }, []);
 
     // <button style={{backgroundColor:'black',padding:'15px',textAlign:'center'}}><Link to='/Form'>Submit Your Design!</Link></button>
+    
     return (
-        <div>
+        <>
             <Header />
             <div className="profile-container">
                 <div className="profile-left">
                     <div>
                         <h2>{loginInfo ? loginInfo.username : "Your Username"}</h2>
-                        <Link to='/Form'><button className="submit-your-work-btn">Submit Your Design!</button></Link>
+                        <Link to='/Form'><button className="link-submit">Submit Your Design!</button></Link>
                     </div>
                 </div>
                 <div className="profile-right">
@@ -69,7 +71,7 @@ const Profile = ({ loginInfo }) => {
                 </div>
             </div>
             <Footer />
-        </div>
+        </>
     );
 };
 

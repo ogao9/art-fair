@@ -1,10 +1,10 @@
 import React from "react";
 import { Link, useHistory } from "react-router-dom";
+import userServices from "../../services/userServices";
 import Header from "../headfoot/Header";
 import Footer from "../headfoot/Footer";
 import LoginForm from "./LoginForm";
-import userServices from "../../services/userServices";
-import "./Login.css";
+import "./Login.scss";
 
 const Login = ({ loginInfo, setLoginInfo }) => {
     let history = useHistory(); //browser history, used for routing
@@ -44,17 +44,20 @@ const Login = ({ loginInfo, setLoginInfo }) => {
     return (
         <div>
             <Header />
-            <div className="Login-container">
-                <div className="Login">
-                    <div className="Login-left">
+            <div className="login-outer-container">
+                <div className="login-inner-container">
+                    <div className="login-left">
                         <h1>Get Inspired. Inspire Others.</h1>
                         <h3>Discover designs to inject into your daily life</h3>
                         <Link to='/ArtHome'><button className="explore-button">Explore Designs</button></Link>
                     </div>
-                    <div className="Login-right">
+                    <div className="login-right">
                         <LoginForm handleSignUp={handleSignUp} handleLogin={handleLogin} />
                     </div>
                 </div>
+            </div>
+            <div className="filler">
+                
             </div>
             <Footer />
         </div>

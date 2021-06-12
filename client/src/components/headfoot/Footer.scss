@@ -1,15 +1,14 @@
 .Footer{
-    position: absolute;
-    bottom: 0;
     width: 100%;
     padding: 20px;
     background-color: black;
     color: whitesmoke;
     text-align: center;
     line-height: 1.5;
-  }
+    
+    a{
+      color:white;
+      text-decoration: underline;
+    }
+}
   
-  .Footer a{
-    color:white;
-    text-decoration: underline;
-  }

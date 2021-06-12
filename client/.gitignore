@@ -26,3 +26,5 @@ yarn-error.log*
 #ignore text files
 *.txt
 *.json
+
+db.json

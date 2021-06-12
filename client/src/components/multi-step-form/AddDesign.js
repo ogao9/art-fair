@@ -1,18 +1,18 @@
 import React, {useState} from "react";
 import Header from '../headfoot/Header'
 import Footer from '../headfoot/Footer'
-import UserForm from "./UserForm";
-import "./FormWelcome.css";
+import DesignForm from "./DesignForm";
+import "./DesignForm.scss";
 
 
-const FormWelcome = ({loginInfo}) => {
+const AddDesign = ({loginInfo}) => {
 
     return (
         <div>
             <Header/>
-            <div className="form-welcome">
+            <div className="form-outer-container">
                 <div className="form-flex-container">
-                    <UserForm loginInfo={loginInfo}/>
+                    <DesignForm loginInfo={loginInfo}/>
                 </div>
             </div>
             <Footer/>
@@ -20,6 +20,6 @@ const FormWelcome = ({loginInfo}) => {
     );
 };
 
-export default FormWelcome;
+export default AddDesign;
 
 

@@ -1,11 +1,11 @@
 import React from "react";
 import Header from "../headfoot/Header";
 import Footer from "../headfoot/Footer";
-import "./About.css";
+import "./About.scss";
 
 const About = () => {
     return (
-        <div className="component-container">
+        <>
             <Header />
             <div className="about-container">
                 <div className="about-container left">
@@ -37,10 +37,11 @@ const About = () => {
                     </section>
                 </div>
             </div>
-
-            
+            <div className="filler">
+                
+            </div>
             <Footer/>
-        </div>
+        </>
     );
 };
 

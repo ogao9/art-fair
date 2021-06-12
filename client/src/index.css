@@ -1,9 +1,3 @@
-/*
-index.css is imported in index.js, which renders our application
-That means index.css is at the top of the hierarchy, so everyone can access it
-This document contains the root styles of the application 
-*/
-
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
@@ -33,9 +27,6 @@ body{
 
 .filler{
   background-color: white;
-  min-height:500px;
+  min-height: 400px;
 }
 
-.component-container{
-  position:relative;
-}

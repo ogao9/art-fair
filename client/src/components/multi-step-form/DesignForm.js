@@ -1,12 +1,7 @@
 import React, { useState } from "react";
-import DesignCategory from './DesignCategory'
-import DesignDetails from "./DesignDetails";
-import DesignUpload from "./DesignUpload";
-import Confirm from "./Confirm";
-import Success from "./Success";
 import cardServices from "../../services/cardServices";
 import userServices from "../../services/userServices";
-import "./UserForm.css";
+import {DesignCategory, DesignDetails, DesignUpload, DesignConfirm, DesignSuccess} from './DesignFormSteps'
 
 
 //-----Parent container for the form Wizard -----
@@ -83,7 +78,7 @@ const UserForm = ({ loginInfo }) => {
         case 4:
             return (
                 <div className="form-container">
-                    <Confirm
+                    <DesignConfirm
                         prevStep={prevStep}
                         nextStep={nextStep}
                         handleSubmit={handleSubmit}
@@ -94,7 +89,7 @@ const UserForm = ({ loginInfo }) => {
         case 5:
             return (
                 <div className="form-container">
-                    <Success prevStep={prevStep} />
+                    <DesignSuccess prevStep={prevStep} />
                 </div>
             );
         default:

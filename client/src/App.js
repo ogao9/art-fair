@@ -5,9 +5,10 @@ import About from "./components/about/About";
 import DesignHome from "./components/art-central/DesignHome";
 import Gallery from "./components/art-central/Gallery";
 import Profile from "./components/profile/Profile";
-import FormWelcome from "./components/multi-step-form/FormWelcome";
+import AddDesign from "./components/multi-step-form/AddDesign";
 import Login from "./components/login/Login";
 import Feature from "./components/feature/Feature"
+
 
 function App() {
     const [loginInfo, setLoginInfo] = React.useState(null);
@@ -38,7 +39,7 @@ function App() {
             <Route path="/Gallery" exact component={Gallery} />
             <Route path="/Feature" exact component={Feature} />
             <Route path="/Form" exact>
-                <FormWelcome loginInfo={loginInfo} />
+                <AddDesign loginInfo={loginInfo} />
             </Route>
             <PrivateRoute path="/Profile" exact>
                 <Profile loginInfo={loginInfo} />

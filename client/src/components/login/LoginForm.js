@@ -18,7 +18,8 @@ const LoginForm = ({handleSignUp, handleLogin}) => {
     return (
         <form className="Login-form" onSubmit={newUser ? signUpClicked : loginClicked}>
             <h2>{newUser ? "Sign Up" : "Log In"}</h2>
-            <section className="username">
+            
+            <section className="username-flex">
                 <label htmlFor="username">Username</label>
                 <p>{newUser ? "Already have an account? " : "Need an account? "}
                 <button type="button" onClick={() => setNewUser(!newUser)}>

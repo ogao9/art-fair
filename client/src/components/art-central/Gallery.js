@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
+import cardServices from "../../services/cardServices";
 import Header from '../headfoot/Header'
 import Footer from '../headfoot/Footer'
 import Card from "./Card";
 import Pagination from "./Pagination";
-import cardServices from "../../services/cardServices";
-import './Gallery.css'
-
+import './Gallery.scss'
 import SampleData from './SampleData'
+
 
 const Gallery = () => {
     const [artInfo, setArtInfo] = useState([]);
@@ -65,11 +65,11 @@ const Gallery = () => {
     
 
     return (
-        <div className="component-container">
+        <>
             <Header/>
             <div className="dark-theme">
                 <section className="Gallery-welcome">
-                    <div className="welcome-text-container">
+                    <div className="welcome-text">
                         <h1>$Template String: Outdoors </h1>
                         <p>We're glad you're taking design outdoors. It's amazing out there.</p> 
                     </div>
@@ -88,7 +88,7 @@ const Gallery = () => {
                             ))
                             : "No Cards Available"}
                     </div>
-                    
+
                     <div className="pagination-container">
                         <Pagination
                             currentPage={currentPage}
@@ -102,7 +102,7 @@ const Gallery = () => {
                 <div className="filler"/>
             </div>
             <Footer/>
-        </div>
+        </>
     );
 };
 

@@ -7,16 +7,16 @@ import Indoors from '../../images/indoors.jpg'
 import Modern from '../../images/digital.jpg'
 import Audio from '../../images/audio.jpg'
 import Wildcard from '../../images/wildcard.jpg'
-import "./DesignHome.css";
+import "./DesignHome.scss";
 
 const DesignHome = () => {
     const [hover1, setHover1] = useState(false);
 
     return (
-        <div className="component-container">
+        <>
             <Header />
-            <section className="DesignHome-welcome">
-                <div className="DesignHome-text">
+            <section className="designhome-welcome">
+                <div className="welcome-text">
                    <h1>Find your inspiration. Find your design.</h1>
                     <p>Choose from our 5 pre-defined categories or take a chance with the wild card.</p> 
                 </div>
@@ -62,7 +62,7 @@ const DesignHome = () => {
             <section className="filler"/>
 
             <Footer />
-        </div>
+        </>
     );
 };
 

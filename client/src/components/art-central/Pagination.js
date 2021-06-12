@@ -1,5 +1,5 @@
 import React from "react";
-import "./Pagination.css";
+import "./Pagination.scss";
 
 export default function PaginationComponent({currentPage,setPage,totalCards,cardsPerPage}) {
     const numPages = Math.ceil(totalCards / cardsPerPage);

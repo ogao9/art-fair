@@ -1,9 +1,9 @@
 import React, { useState, useRef } from "react";
 import Digital from "../../images/digital.jpg";
-import './Card.css'
+import './Card.scss'
 
 
-const Card = ({ content, impactbtn, deletebtn }) => {
+const Card = ({ content, impactbtn}) => {
 
     return (
         <div className="card">

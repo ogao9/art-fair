@@ -2,13 +2,13 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Header from "../headfoot/Header";
 import Footer from "../headfoot/Footer";
-import "./HomePage.css";
+import "./HomePage.scss";
 
 const HomePage = ({ loginInfo }) => {
     return (
-        <div className="component-container">
+        <div>
             <Header />
-            <div className="Home-main">
+            <div className="home-welcome">
                 <div className="welcome-message">
                     <h1>Get Inspired</h1>
                     <p>
@@ -19,9 +19,24 @@ const HomePage = ({ loginInfo }) => {
                     <Link to='/ArtHome'><button className="big-discover-button">Discover</button></Link>
                 </div>
             </div>
-            <div className="filler">
-                
+            <div className="flow-chart">
+                <div className="flow-item">
+                    <h1>How to use Design.io</h1>
+                </div>
+                <div className="flow-item">
+                    <h1>Step 1</h1>
+                </div>
+                <div className="flow-item">
+                    <h1>Step 1</h1>
+                </div>
+                <div className="flow-item">
+                    <h1>Step 1</h1>
+                </div>
+                <div className="flow-item">
+                    <h1>Step 1</h1>
+                </div>
             </div>
+            
             <Footer />
         </div>
     );
