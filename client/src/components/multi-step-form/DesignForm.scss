@@ -1,28 +1,11 @@
-/*---------- Large Container ---------- */
-.form-outer-container{
-    width: 100%
-}
-
-.form-flex-container{
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items:center;
-    max-width: 1176px;
-    margin-left: auto;
-    margin-right:auto;
-    margin-top: 50px;
-    margin-bottom: 50px;
-}
-
 /*---------- Form Step Styles ---------- */
 .form-container{
-    width:100%;
+    min-width: 800px;
     padding: 20px;
     min-height: 500px;
     background-color: #ff4e0d;
     color: whitesmoke;
+    border: 1px solid black;
 
     input{
         display: block;

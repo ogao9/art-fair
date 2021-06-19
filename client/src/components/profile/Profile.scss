@@ -1,50 +1,92 @@
 :root{
-    --box-margin: 20px;
+    --box-margin: 1rem;
 }
 
 .profile-container {
     display: flex;
     flex-wrap: wrap;
     width: 100%;
+    background-color: #f3f7f7;
+    color: black;
+    position: relative;
+
+    .form-active{
+        opacity: 0.5;
+    }
 
     .profile-left {
         flex: calc(30% - var(--box-margin)*2);
         margin: 0 var(--box-margin);
         min-height: 400px;
-        background-color: aquamarine;
-
-        .link-submit{
-            width: clamp(200px, 50%, 600px);
-            padding: 16px;
-            margin: 10px;
-            border-radius:10px;
-            color: whitesmoke;
-            background-color: black;
-            cursor: pointer;
-        }
     }
 
     .profile-right {
         flex: calc(70% - var(--box-margin)*2);
         margin: 0 var(--box-margin);
         min-height: 400px;
-        background-color: lightblue;
-        color: black;
-
-        .card-container{
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            grid-gap: 1rem;
-        }  
+        display: flex;
+        flex-direction: column;
     }
+
+    @media (max-width: 900px) {
+        .profile-left{
+            flex: 100%;
+        }
+        .profile-right{
+            flex: 100%;
+        }
+    }    
 }
 
-@media (max-width: 700px) {
-    .profile-left{
-        flex: 100%;
-    }
-    .profile-right{
-        flex: 100%;
-    }
+.left-item{
+    width: 100%;
+    margin: 1rem 0;
+    padding: 1rem;
 }
+
+.avatar{
+    width: 100px;
+    height: 100px;
+    border-radius: 5px;
+    display: grid;
+    place-items: center;
+    background-color: lightskyblue;
+    font-size:xx-large;
+}
+
+.right-item{
+    width: 100%;
+    min-height: 300px;
+    padding: 1rem;
+    margin: 1rem 0;
+    background-color: white;
+    color: black; 
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.3);
+}
+
+.link-submit{
+    width: clamp(200px, 50%, 600px);
+    padding: 16px;
+    margin: 10px;
+    border-radius:10px;
+    color: whitesmoke;
+    background-color: black;
+    cursor: pointer;
+}
+
+
+.card-container{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-gap: 1rem;
+} 
+
+.design-form{
+    position: absolute;
+    opacity: 1;
+    top: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
 

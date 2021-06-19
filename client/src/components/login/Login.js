@@ -10,7 +10,6 @@ const Login = ({ loginInfo, setLoginInfo }) => {
     let history = useHistory(); //browser history, used for routing
 
     const handleSignUp = async (userInfo) => {
-        console.log("Creating New User...");
         try{
             const newUser = { username: userInfo.username, password: userInfo.password }; 
             const res = await userServices.addUser(newUser);
@@ -25,13 +24,12 @@ const Login = ({ loginInfo, setLoginInfo }) => {
     };
 
     const handleLogin = async (userInfo) => {
-        console.log("Validating Login Info...");
         try{
             const res = await userServices.checkUser(userInfo); //userInfo is {username, password}
             if (res) {
                 setLoginInfo({username:res.username, id:res._id, cards:res.cards});
                 alert(`Welcome ${res.username}!`)
-                history.push("/");  //redirect user to homepage
+                history.push("/Profile");  //redirect user to profile
             } else {
                 setLoginInfo(null);
                 alert('Login Failed!')
@@ -41,26 +39,28 @@ const Login = ({ loginInfo, setLoginInfo }) => {
         }
     };
 
+    const loginTest = () =>{
+        history.push("/Profile")
+    }
+
     return (
-        <div>
+        <>
             <Header />
             <div className="login-outer-container">
                 <div className="login-inner-container">
                     <div className="login-left">
-                        <h1>Get Inspired. Inspire Others.</h1>
-                        <h3>Discover designs to inject into your daily life</h3>
-                        <Link to='/ArtHome'><button className="explore-button">Explore Designs</button></Link>
+                        <h1>Get Inspired. <br/> Inspire Others.</h1>
+                        <p>Discover designs to inject into your daily life</p>
+                        <Link to='/DesignHome'><button className="explore-button">Explore Designs</button></Link>
                     </div>
+
                     <div className="login-right">
                         <LoginForm handleSignUp={handleSignUp} handleLogin={handleLogin} />
                     </div>
                 </div>
             </div>
-            <div className="filler">
-                
-            </div>
             <Footer />
-        </div>
+        </>
     );
 };
 

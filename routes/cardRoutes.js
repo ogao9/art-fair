@@ -1,11 +1,9 @@
 const express = require('express')
 const mongoose = require('mongoose')
 
-//Import Item Model
-const Card = require('../models/Card')
+const router = express.Router()  //Use Express's built-in Router to handle the routes
+const Card = require('../models/Card') //Import Item Model
 
-//Use Express's built-in Router to handle the routes
-const router = express.Router()
 
 // @GET api/cards
 // Get ALL Cards
@@ -15,8 +13,22 @@ router.get("/", async (req,res)=>{
     return res.status(200).json(cards)
 })
 
+// @GET api/cards/featured 
+// Get the featured cards
+router.get("/featured", async(req,res)=>{
+    const featured = await Card.find();
+    return res.status(200).json(featured)
+})
+
+// @GET api/cards/category
+// Get the featured cards
+router.get("/:category", async(req,res)=>{
+    const category_cards = await Card.find({category: req.params.category});
+    return res.status(200).json(category_cards)
+})
+
 // @GET api/cards/id
-// Get ONE Cards
+// Get ONE Card
 router.get("/:id", async (req,res)=>{
     const card = await Card.findById(req.params.id)
     return res.status(200).json(card)
@@ -30,6 +42,7 @@ router.post("/", (req,res)=>{
         title: req.body.title,
         creator: req.body.creator,
         description: req.body.description,
+        category: req.body.category,
     })
     new_card.save()
         .then( card => res.status(200).json(new_card))

@@ -1,0 +1,124 @@
+.gallery-container{
+    width: 100%;
+    min-height: 100vh;
+    background: black;
+}
+
+.gallery-welcome{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    min-height: 300px;
+    padding: 2rem;
+
+    background-color: black;
+    color: whitesmoke;
+    text-shadow: 0px 0px 10px rgba(0,0,0,.3);
+    font-size: 2rem;
+    font-weight: 400;
+
+    welcome-text{
+        width: clamp(300px, 40%, 600px);
+    }
+}
+
+.gallery-content{
+    max-width: 1400px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 20px;
+
+    .card-container{
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        grid-gap: 1rem;
+    }    
+}
+
+.Pagination-container{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 16px;
+    margin: 20px 0;
+
+    a{
+        background-color: black;
+        text-decoration: none;
+        color: white;
+        border: 1px solid white;
+        border-radius: 4px;
+        margin: 0 4px;
+        padding: 8px 16px;
+    
+        &:hover{
+            background-color:darkslategray;
+        }
+        
+        &.active{
+            background-color:darkslategray;
+        }
+    }
+}
+
+.submit-teaser{
+    display: flex;
+    width: 100%;
+    min-height: 600px;
+    padding: 5rem 2rem;
+    background-color: white;
+}
+
+.teaser-left{
+    flex: 40%;
+    padding: 1rem;
+    font-size: 1.5rem;
+
+    button{
+        width: clamp(300px, 80%, 600px);
+        margin: 50px 0;
+        padding: 20px;
+        border: none;
+        border-radius: 50px;
+        background: linear-gradient(to right, #4e54c8, #858bfd);
+        box-shadow: 0 4px 10px 0 #3f2b96;
+        font-size: 2rem;
+        cursor: pointer;
+    
+            &:hover{
+                transform: scale(0.98);
+            }
+        }
+    
+    a{
+        text-decoration: none;
+        color: black;
+    }
+}
+
+.teaser-right{
+    flex: 70%;
+    padding: 2rem;
+    background-color: #d7d9fc;
+    border-radius: 1rem;
+
+    img{
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+}
+
+@media  (max-width: 800px) {
+    .teaser-left, .teaser-right{
+        flex: 100%;
+    }
+}
+
+
+
+
+
+

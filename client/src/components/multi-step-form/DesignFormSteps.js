@@ -1,13 +1,14 @@
 import React, { useState, useRef } from "react";
 import {Link} from 'react-router-dom'
-import Card from '../art-central/Card'
+import Card from '../design-home/Card'
 
 
-const DesignCategory = ({nextStep}) => {
+const DesignCategory = ({nextStep, closebtn}) => {
     return (
         <div>
             <h1>Pick Your Category</h1>
             <button onClick={nextStep}>Next</button>
+            <button onClick={closebtn}>Close</button>
         </div>
     )
 }

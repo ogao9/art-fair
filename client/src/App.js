@@ -1,13 +1,13 @@
 import React from "react";
 import { Route, Switch, Redirect } from "react-router-dom";
 import HomePage from "./components/home/HomePage";
+import Feature from "./components/featured/Feature"
+import DesignHome from "./components/design-home/DesignHome";
+import Gallery from "./components/design-home/Gallery";
 import About from "./components/about/About";
-import DesignHome from "./components/art-central/DesignHome";
-import Gallery from "./components/art-central/Gallery";
+import Forum from "./components/forum/Forum"
 import Profile from "./components/profile/Profile";
-import AddDesign from "./components/multi-step-form/AddDesign";
 import Login from "./components/login/Login";
-import Feature from "./components/feature/Feature"
 
 
 function App() {
@@ -36,11 +36,9 @@ function App() {
             </Route>
             <Route path="/About" exact component={About} />
             <Route path="/DesignHome" exact component={DesignHome} />
-            <Route path="/Gallery" exact component={Gallery} />
+            <Route path="/Gallery" component={Gallery} />
             <Route path="/Feature" exact component={Feature} />
-            <Route path="/Form" exact>
-                <AddDesign loginInfo={loginInfo} />
-            </Route>
+            <Route path="/Forum" exact component={Forum} />
             <PrivateRoute path="/Profile" exact>
                 <Profile loginInfo={loginInfo} />
             </PrivateRoute>

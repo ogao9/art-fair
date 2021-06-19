@@ -2,11 +2,11 @@ import React, { useState } from "react";
 import cardServices from "../../services/cardServices";
 import userServices from "../../services/userServices";
 import {DesignCategory, DesignDetails, DesignUpload, DesignConfirm, DesignSuccess} from './DesignFormSteps'
-
+import './DesignForm.scss'
 
 //-----Parent container for the form Wizard -----
 //      **--Ideally, the form can stand alone and serve as a pop-up on any page**
-const UserForm = ({ loginInfo }) => {
+const UserForm = ({ loginInfo, closebtn }) => {
     const [userInput, setUserInput] = useState({}); //store all user input in an object
     const [step, setStep] = useState(1);
 
@@ -51,7 +51,7 @@ const UserForm = ({ loginInfo }) => {
         case 1:
             return(
                 <div className="form-container">
-                    <DesignCategory nextStep={nextStep}/>
+                    <DesignCategory nextStep={nextStep} closebtn={closebtn}/>
                 </div>
             )
         case 2:

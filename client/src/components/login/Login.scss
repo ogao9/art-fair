@@ -1,70 +1,65 @@
 .login-outer-container{
-    width:100%;
+    width: 100%;
     background: #05192d;
 }
 
 .login-inner-container{
-    display:flex;
+    display: flex;
     flex-wrap: wrap;
-    justify-content: center;
-    align-items:center;
+    justify-content: space-around;
 
     max-width: 1176px;
-    margin-left: auto;
-    margin-right: auto;
-    padding: 20px;
-
+    min-height: 100vh;
+    margin: 0 auto;
+    
     .login-left{
         flex: 50%;
-        min-height: 150px;
-        color:whitesmoke;
-        line-height: 1.5;
+        padding: 10rem 1rem 1rem;
+        min-height: 200px;
+        color: whitesmoke;
+        line-height: 1.3;
+        font-size: 1.5rem;
+    }
 
-        .explore-button{
-            width: clamp(200px, 100%, 500px);
-            padding: 15px;
-            margin: 20px 0;
-            border: 1px solid rgb(252, 206, 13);
-            border-radius: 10px;
-            background: #05192d;
-            color:whitesmoke;
-            cursor: pointer;
+    .login-right{
+        flex: 50%;
+        padding: 10rem 1rem 1rem;
+        min-height: 500px;
+    }
 
-            &:hover{
-                background: #092847a1; 
-                transform: scale(0.95);
-            }
+    @media screen and (max-width: 800px) {
+        .login-left, .login-right{
+            flex: 100%;
+            padding-top: 1rem;
         }
     }
+}
 
-    .login-right{
-        flex: 50%;
-        display:flex;
-        align-items:center;
-        height: 500px;
+.explore-button{
+    width: clamp(200px, 100%, 500px);
+    padding: 1rem;
+    margin: 1rem 0;
+    border: 2px solid rgb(252, 206, 13);
+    border-radius: 10px;
+    background: #05192d;
+    font-size: 1.2rem;
+    color: whitesmoke;
+    cursor: pointer;
+
+    &:hover{
+        background: #092847a1; 
+        transform: scale(0.95);
     }
-
 }
 
 
-@media screen and (max-width: 700px) {
-    .login-left{
-        flex: 100%;
-    }
-    .login-right{
-        flex: 100%;
-    }
-}
-
-
-/*--------- LoginForm Component Styles ----------*/
 .Login-form{
-    width: clamp(200px, 100%, 600px);
-    padding: 20px;
+    width: clamp(300px, 100%, 600px);
+    padding: 1.5rem;
     border: 1px solid whitesmoke;
     border-radius: 5px;
     background-color: whitesmoke;
-    color:black;
+    color: black;
 
     .username-flex{
         display: flex;
@@ -82,15 +77,15 @@
     button[type="submit"]{
         display: block;
         width: 100%;
-        padding: 20px;
-        margin: 10px 0;
+        padding: 1rem;
+        margin: 1rem 0;
         border-radius: 5px;
         color: whitesmoke;
         background-color: #05192d;
-        cursor:pointer;
+        cursor: pointer;
 
         &:hover{
-            background: #07213b; 
+            transform: scale(0.98); 
         }
     }
 }

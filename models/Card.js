@@ -5,14 +5,14 @@ const cardSchema = new mongoose.Schema({
     title: String,
     creator: String,
     description: String,
-    impact: {
+    category: {
+        type: String,
+        default: "Indoor"
+    },
+    metric: {
       type: Number,
       default: 0
     },
-    starred: {
-      type: Boolean,
-      default: false
-    }
   });
 
 //We must create a model to use the schema

@@ -16,8 +16,6 @@
     .right{
         flex: 60%;
         background-color: lightblue;
-        display: flex;
-        flex-direction: column;
         padding: 50px 20px;
 
         .item{
@@ -31,6 +29,27 @@
 @media (max-width: 767px) {
     .about-container.left, .about-container.right{
         flex: 100%;
+    }
+}
+
+.team-container{
+    padding: 2rem;
+    text-align: center;
+}
+.member-container{
+    display: flex;
+    min-height: 500px;
+    padding: 2rem;
+}
+
+.member-card{
+    flex: 25%;
+    display: grid;
+    grid-template-rows: 100px max-content max-content;
+    padding: 1rem;
+
+    i{
+        font-size: 5rem;
     }
 }
 

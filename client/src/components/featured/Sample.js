@@ -1,4 +1,4 @@
-import Balloon from "../../images/balloons.jpg";
+import Digital from "../../images/digital.jpg"
 import Desk from "../../images/desk.jpg";
 import Modern from "../../images/modern.jpg";
 import Tree from "../../images/tree.png";
@@ -34,7 +34,7 @@ const sampleContent = [
             description: "Let it float. Let it fly.",
             impact: 24,
             _id: "69",
-            img: Balloon,
+            img: Digital,
         },
     ];
 

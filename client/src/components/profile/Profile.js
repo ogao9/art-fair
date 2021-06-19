@@ -1,14 +1,16 @@
-import React, { useEffect }  from "react";
+import React, { useState, useEffect }  from "react";
 import { Link } from "react-router-dom";
 import cardServices from "../../services/cardServices";
 import Header from "../headfoot/Header";
 import Footer from "../headfoot/Footer";
-import Card from "../art-central/Card";
+import Card from "../design-home/Card";
+import DesignForm from "../multi-step-form/DesignForm"
 import withAuth from './withAuth'
 import "./Profile.scss";
 
 const Profile = ({ loginInfo }) => {
     //const [cards, setCards] = React.useState([]);
+    const [showForm, setShow] = useState(false);
 
     const cards = [
         {
@@ -45,15 +47,23 @@ const Profile = ({ loginInfo }) => {
     return (
         <>
             <Header />
-            <div className="profile-container">
-                <div className="profile-left">
-                    <div>
-                        <h2>{loginInfo ? loginInfo.username : "Your Username"}</h2>
-                        <Link to='/Form'><button className="link-submit">Submit Your Design!</button></Link>
+            <div className={`profile-container`}>
+                <div className={`profile-left ${showForm ? "form-active": null}`}>
+                    <div className="left-item">
+                        <div>
+                            <div className="avatar">{loginInfo ? loginInfo.username[0] : "O"}</div>
+                            <h2>{loginInfo ? loginInfo.username : "Your Username"}</h2>
+                            <h2>Other Info Here</h2>
+                        </div>
                     </div>
                 </div>
-                <div className="profile-right">
-                    <div>
+
+                <div className={`profile-right ${showForm ? "form-active": null}`}>
+                    <section className="right-item">
+                        <h2>Submit A Design</h2>
+                        <button className="link-submit" onClick={()=>setShow(!showForm)}>Submit Your Design!</button>
+                    </section>
+                    <section className="right-item">
                         <h2>Your Designs</h2>
                         <div className="card-container">
                             {cards
@@ -62,12 +72,23 @@ const Profile = ({ loginInfo }) => {
                                         key={cardInfo._id}
                                         content={cardInfo}
                                         impactbtn={null}
-                                        deletebtn={null}
                                     />
                                 ))
-                                : "No Cards Available"}
+                                : "You have No designs"}
                         </div>
-                    </div>
+                    </section>
+                    <section className="right-item">
+                        <h2>Saved Designs</h2>
+                        
+                    </section>
+                    <section className="right-item">
+                        <h2>Badges</h2>
+
+                    </section>
+                </div>
+
+                <div className="design-form">
+                    {showForm ? <DesignForm loginInfo={null} closebtn={()=>setShow(false)} /> : null}
                 </div>
             </div>
             <Footer />
