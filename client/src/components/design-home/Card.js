@@ -9,13 +9,16 @@ const Card = ({ content, image }) => {
             <div>
                 <div className="text-flex">
                     <h2>{content.title ? content.title : "Title"}</h2>
-                    <span className="category-tag">Save</span>
                 </div>
                 <div className="text-flex">
                     <p>{content.creator ? content.creator : "Username"}</p>
                     <span className="category-tag">{content.category ? content.category : "category"} </span>
                 </div>
+                
             </div>
+            <div>
+                    <i class="far fa-plus-square"></i> Save this Design
+                </div>
         </div>
     );
 };

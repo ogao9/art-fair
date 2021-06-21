@@ -8,8 +8,7 @@ const Forum = () => {
         <>
             <Header/>
             <div className="forum-container">
-                <h1>Forum</h1>
-                <p>--- Under Construction (future plans) --- </p>
+                <h1>Coming Soon</h1>
             </div>
             <Footer/>
         </>

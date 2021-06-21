@@ -3,6 +3,7 @@ import { Link, Route, useRouteMatch, useParams } from "react-router-dom";
 import cardServices from "../../services/cardServices";
 import Header from '../headfoot/Header'
 import Footer from '../headfoot/Footer'
+import GalleryCard from "./GalleryCard"
 import Card from "./Card";
 import SubmitImg from "../../images/submitForm.png"
 import './Gallery.scss'
@@ -10,7 +11,7 @@ import {SampleData, Images} from './SampleData'
 
 
 const Gallery = ({cardsPerPage}) =>{
-    const {path, url} = useRouteMatch(); //url is the current URL, while path contains the pattern
+    const {path, url} = useRouteMatch(); //url is the actual url while path contains the pattern
 
     return (
         <>
@@ -31,35 +32,40 @@ export default Gallery;
 
 
 const GalleryDisplay = ({cardsPerPage}) => {
-    const [galleryData, setGalleryData] = useState([]);
-    let { category } = useParams(); //access url parameters, we get the category name here
+    const [galleryData, setGalleryData] = useState(SampleData);
+    const {path, url} = useRouteMatch();
+    let { category } = useParams();     //access url parameters to get category name
 
     useEffect(() => {
         const setData = async () => {
             const data = await cardServices.getCategory(category);
             setGalleryData(data);
         };
-        setData();
+        //setData();
         console.log("useEffect Called")
     },[]); 
     
 
     // ---------- Pagination: We are just manipulating the artInfo array ----------
     const [currentPage, setCurrentPage] = useState(1);
-    const endIndex = cardsPerPage * currentPage;
-    const startIndex = endIndex - cardsPerPage;
-    
-    const cardsToShow = galleryData ? galleryData.slice(startIndex, endIndex) : SampleData.slice(startIndex, endIndex); 
-    const totalCards = galleryData ? galleryData.length : SampleData.length;
-    
     const categoryImage = Images.find(obj => obj.name === category).image;
+
+    function setCardsToShow (){
+        const endIndex = cardsPerPage * currentPage;
+        const startIndex = endIndex - cardsPerPage;
+
+        return galleryData.slice(startIndex, endIndex);
+    }
+    const cardsToShow = setCardsToShow();
+
 
     return (
         <>
             <div className="gallery-container">
+
                 <section className="gallery-welcome">
-                    <div className="welcome-text">
-                        <h1>Welcome to the {category} Gallery</h1>
+                    <div>
+                        <h1>Welcome to the {category} Design Gallery</h1>
                         <p>We're glad you're taking design {category}. You can do some amazing things there.</p> 
                     </div>
                 </section>
@@ -67,30 +73,39 @@ const GalleryDisplay = ({cardsPerPage}) => {
                 <section className="gallery-content">
                     <div className="card-container">
                         {cardsToShow.length
-                            ? cardsToShow.map(cardInfo => (
-                                <Card
-                                    key={cardInfo._id}
-                                    content={cardInfo}
-                                    image={categoryImage}
-                                />
+                            ? cardsToShow.map((cardInfo, idx) => (
+                                <div className="gallery-card" key={idx}>
+                                    <Link to={`${url}/${idx}`}/>
+                                    <Card
+                                        content={cardInfo}
+                                        image={categoryImage}
+                                    />
+                                </div>
                             ))
                             : "No Cards Available"}
                     </div>
 
-                    <div className="pagination-container">
+                    <div>
                         <Pagination
                             currentPage={currentPage}
-                            setPage={(page)=>setCurrentPage(page)}
-                            totalCards={totalCards}
+                            setPage={(page) => setCurrentPage(page)}
+                            totalCards={galleryData.length}
                             cardsPerPage={cardsPerPage}
                         />
                     </div>
                 </section>
+
+                <section className="card-popup">
+                        <Route path={`${path}/:cardID`}>
+                            <GalleryCard content={cardsToShow} image={categoryImage}/>
+                        </Route>
+                </section>
             </div>
+
 
             <div className="submit-teaser">
                 <div className="teaser-left">
-                   <h1>Want to showcase your design?</h1>
+                    <h1>Want to showcase your design?</h1>
                     <p>It's easy and there's no pressure. All designs have the potential to inspire.</p>
                     <button>
                         <Link to='/Profile'>Submit your design</Link>
@@ -116,7 +131,7 @@ function Pagination({ currentPage, setPage, totalCards, cardsPerPage }) {
     };
 
     return (
-        <nav className="Pagination-container">
+        <nav className="pagination-container">
             {pages.map((pageNum) => (
                 <a
                     key={pageNum}
@@ -131,18 +146,3 @@ function Pagination({ currentPage, setPage, totalCards, cardsPerPage }) {
     );
 }
 
-    // //Increments specified card's impact
-    // const impactbtn = async (id) => {
-    //     const old_card = await cardServices.getOne(id);
-    //     const updated_card = {...old_card, impact: old_card.impact+1}
-    //     cardServices.updateCard(id, updated_card);
-    //     setDB(db+1)
-    // };
-
-    // //PROBLEM: delete doesn't remove the card from UI
-    // const deletebtn = (id) => {
-    //     cardServices.deleteCard(id);
-        
-    //     //Temporary Fix: still kind of broken
-    //     setArtInfo(artInfo.filter(card=>card._id!== id))
-    // };

@@ -1,9 +1,18 @@
+//set text color based on background
+@function set-text-color($back-color){
+    @if(lightness($back-color) > 70){
+        @return #333;
+    }@else {
+        @return lightgray;
+    }
+}
+
 .card {
     display: grid;
-    grid-template-rows: 200px 1fr;
+    grid-template-rows: 225px 1fr;
     grid-gap: 1rem;
-    padding: 20px;
-    color:lightgray;
+    padding: 1rem;
+
 
     img{
         width: 100%;
@@ -19,7 +28,7 @@
     }
 
     .category-tag{
-        background-color: #3f2b96;
+        background-color: var(--theme-purple);
         border-radius: 50px;
         padding: 4px 8px;
     }

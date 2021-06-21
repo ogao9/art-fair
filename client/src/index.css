@@ -13,6 +13,8 @@ body{
 
 :root{
   --color-azure: #3e8ef1;
+  --lighter-black: #121212;
+  --theme-purple: #4e54c8;
 }
 
 .filler{

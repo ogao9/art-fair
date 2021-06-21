@@ -1,22 +1,21 @@
 .home-welcome{
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
     width: 100%;
     min-height: 100vh;
-    background-color: black;
+    background-color: var(--lighter-black);
 
     .welcome-message{
         max-width: 1060px;
-        padding: 10px;
+        padding: 1rem;
         color: #fff;
         font-size: 2rem;
     }
 }
 
 .big-discover-button{
-    width: clamp(300px, 50%, 600px);
+    width: clamp(250px, 50%, 800px);
     margin: 50px 0;
     padding: 20px;
     border: none;
@@ -36,7 +35,7 @@
     display: flex;
     flex-flow: row wrap;
     align-items: center;
-    padding: 1rem;
+    padding: 6rem 1rem;
 
     .roadmap-message{
         flex: 40%;

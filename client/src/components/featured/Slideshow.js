@@ -46,12 +46,12 @@ const Slideshow = ({ featuredArray }) => {
                 })
             }, 3000))
         }
-
         setPaused(!paused); //set new state
     }
 
     return (
         <div className="slideshow-container">
+
             <div className="slideshow-track">
                 {featuredArray.map((content, index) => (
                     <div key={index} className={`slideshow-slide ${currentSlide===index ? "active" : null}`}>
@@ -59,13 +59,18 @@ const Slideshow = ({ featuredArray }) => {
                         <div>
                             <div className="text-flex">
                                 <h2>{content.title ? content.title : "Title"}</h2>
-                                <span>#Inpsired: {content.impact}</span>
                             </div>
                             <div className="text-flex">
                                 <p>{content.creator ? content.creator : "Username"}</p>
-                                <span>Circular Tag</span>
+                                <span className="category-tag">{content.category}</span>
                             </div>
                         </div>
+                        <div>
+                            <h3>Description</h3>
+                            <p>{content.description}</p>
+                        </div>
+                        <div><i class="far fa-plus-square fa-lg"></i> Save This Design</div>
+
                     </div>
                 ))}
             </div>

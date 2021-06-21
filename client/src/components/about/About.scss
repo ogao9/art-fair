@@ -1,56 +1,138 @@
-.about-container {
-    display: flex;
-    flex-wrap: wrap;
-    width: 100%;
+.wrapper{
+    min-height: 90vh;
+    background-color: var(--lighter-black);
+    color: whitesmoke;
+}
+
+.fill-top{
+    display: flex; flex-wrap: wrap; align-items: center;
+    padding: 2rem;
 
     .left{
-        flex: 40%;
-        display:flex;
-        align-items:center;
-        min-height: 200px;
-        padding-left: 50px;
-        background-color: #264e70;
-        color: white;
+        flex: 50%;
+        padding: 1rem;
+        font-size: 1.6rem;
+
+        ul{
+            margin: 2rem 1rem;
+        }
+        li{
+            padding: 0.5rem;
+        }
+        a{
+            color: whitesmoke;
+            text-decoration: none;
+            font-size: 1.8rem;
+
+            &:hover{
+                text-decoration: underline 2px;
+            }
+        }
     }
 
     .right{
-        flex: 60%;
-        background-color: lightblue;
-        padding: 50px 20px;
+        flex: 50%;
+        height: 600px;
+        background-color: #4e54c8;
+        background-image: url('../../images/PurpleCheese.svg');
+        background-attachment: fixed;
+        background-size: cover;
+        border-radius: 1rem;
+    }
 
-        .item{
-            width: clamp(500px, 75%, 1200px);
-            padding: 20px;
+    @media (max-width: 800px) {
+        .left{
+            flex: 100%; order: 10;
+        }
+        .right{
+            flex: 100%; order: 5;
+            height: 300px;
         }
     }
 }
 
 
-@media (max-width: 767px) {
-    .about-container.left, .about-container.right{
-        flex: 100%;
+.text-container{
+    display: flex; flex-wrap: wrap;
+    width: 100%;
+    padding: 6rem 2rem;
+    color: #202124;
+
+    .left{
+        flex: 40%;
+        min-height: 300px;
+        border-radius: 1rem;
+        background-color: #ffaa00;
+        background-image: url('../../images/Liquid-Cheese.svg');
+        background-attachment: fixed;
+        background-size: cover;
+    }
+
+    .right{
+        flex: 60%;
+        display: flex; flex-direction: column;
+        padding: 0 2rem;
+        line-height: 1.2;
+    }
+
+    .text-item{
+        margin-bottom: 2rem; 
+        font-size: 1.2rem;
+
+        button{
+            padding: 8px 16px; margin: 1rem 0;
+            font-size: 1.6rem;
+            cursor: pointer;
+        }
+    }
+
+    @media (max-width:800px) {
+        .left{
+            flex: 100%; order: 10;
+        }
+        .right{
+            flex: 100%; order: 20;
+            padding: 2rem 0;
+        }
     }
 }
 
-.team-container{
-    padding: 2rem;
+.team-header{
+    min-height: 400px;
+    padding: 6rem 2rem;
     text-align: center;
-}
-.member-container{
-    display: flex;
-    min-height: 500px;
-    padding: 2rem;
-}
+    background-color:  var(--lighter-black);
+    color: whitesmoke;
 
-.member-card{
-    flex: 25%;
-    display: grid;
-    grid-template-rows: 100px max-content max-content;
-    padding: 1rem;
+    .metrics{
+        display: flex; flex-flow: row wrap; justify-content: space-around;
+        margin: 2rem;
+    }
 
-    i{
+    .num{
         font-size: 5rem;
     }
+
+    h1{
+        margin-right: 1rem;
+    }
 }
+
+.member-container{
+    display: flex; flex-wrap: wrap; align-items: center; justify-content: center;
+    min-height: 400px;
+    padding: 2rem;
+    background: whitesmoke;
+    color: #292929;
+    text-align: center;
+
+    .member-card{
+        flex: 25%; 
+        display: grid;
+        grid-template-rows: 100px max-content max-content;
+        padding: 1rem;
+    }
+}
+
 
 

@@ -6,7 +6,7 @@ import Outdoors from '../../images/outdoors.jpg'
 import Indoors from '../../images/indoors.jpg'
 import Digital from '../../images/digital.jpg'
 import Audio from '../../images/audio.jpg'
-import Minimal from '../../images/minimal.png'
+import Minimal from '../../images/minimal.jpg'
 import Wildcard from '../../images/wildcard.jpg'
 import "./DesignHome.scss";
 
@@ -27,7 +27,7 @@ const DesignHome = () => {
                 <div className="welcome-text">
                     <h1>Find your inspiration. Find your design.</h1>
                     <p>
-                        Choose from our 5 pre-defined categories or take a chance with the
+                        Choose from 5 broad categories or take a chance with the
                         wild card.
                     </p>
                 </div>

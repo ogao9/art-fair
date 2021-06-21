@@ -2,7 +2,7 @@ import Outdoor from "../../images/outdoors.jpg";
 import Indoor from "../../images/indoors.jpg";
 import Digital from "../../images/digital.jpg";
 import Audio from "../../images/audio.jpg";
-import Minimal from "../../images/minimal.png";
+import Minimal from "../../images/minimal.jpg";
 import Wildcard from "../../images/wildcard.jpg";
 
 export const SampleData = [

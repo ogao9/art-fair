@@ -1,9 +1,9 @@
 import React, {useState} from "react";
 
-const LoginForm = ({handleSignUp, handleLogin}) => {
+const LoginForm = ({handleSignUp, handleLogin, loading}) => {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
-    const [newUser, setNewUser] = useState(false);
+    const [newUser, setNewUser] = useState(true);
 
     const signUpClicked = (e) => {
         e.preventDefault(); //what does this do? I THINK WE ACTUALLY NEED THIS LINE
@@ -17,19 +17,12 @@ const LoginForm = ({handleSignUp, handleLogin}) => {
 
     return (
         <form className="Login-form" onSubmit={newUser ? signUpClicked : loginClicked}>
-            <h2>{newUser ? "Sign Up" : "Log In"}</h2>
+            <h1>{newUser ? "Create an Account" : "Welcome Back!"}</h1>
             
-            <section className="username-flex">
-                <label htmlFor="username">Username</label>
-                <p>{newUser ? "Already have an account? " : "Need an account? "}
-                <button type="button" onClick={() => setNewUser(!newUser)}>
-                    {newUser ? "Log In" : "Sign up"}
-                </button>
-                </p>
-            </section>
+            <label htmlFor="email">Email</label>
             <input
-                id="username"
-                type="text"
+                id="email"
+                type="email"
                 value={username}
                 onChange={(e)=>setUsername(e.target.value)}
             ></input>
@@ -43,6 +36,16 @@ const LoginForm = ({handleSignUp, handleLogin}) => {
             ></input>
 
             <button type="submit">{newUser ? "Sign Up" : "Log In"}</button>
+
+            <section>
+                <hr/>
+                <p>{newUser ? "Already have an account? " : "Need an account? "}</p>
+                <button type="button" onClick={() => setNewUser(!newUser)}>
+                    {newUser ? "Log In Here" : "Sign Up"}
+                </button>
+            </section>
+
+            {loading ? <i id="login-spinner" class="fas fa-spinner fa-3x"></i> : null}
         </form>
     );
 };
