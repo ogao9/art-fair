@@ -1,5 +1,5 @@
 {
-  "name": "art-fair-mern",
+  "name": "design-io",
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
@@ -19,8 +19,7 @@
   "dependencies": {
     "bcrypt": "^5.0.1",
     "express": "^4.17.1",
-    "mongoose": "^5.12.10",
-    "sass": "^1.34.1"
+    "mongoose": "^5.12.10"
   },
   "devDependencies": {
     "concurrently": "^6.1.0",

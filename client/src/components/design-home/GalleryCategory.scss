@@ -1,0 +1,129 @@
+.blur{
+    opacity: 0.75;
+}
+
+.gallery-container{
+    width: 100%;
+    min-height: 100vh;
+    background: var(--lighter-black);
+    color: whitesmoke;
+    position: relative;
+}
+
+.gallery-welcome{
+    display: flex; align-items: center;
+    width: 80%;
+    min-height: 300px;
+    padding: 2rem;
+    font-size: 2rem;
+}
+
+.gallery-content{
+    max-width: 1400px;
+    margin: 0 auto;
+    
+    .card-container{
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(325px, 1fr));
+        grid-gap: 1rem;
+    }    
+}
+
+.gallery-card{
+    position: relative;
+
+    a{
+        position: absolute;
+        top:0;
+        display: block;
+        width: 100%; height: 100%;
+    }
+}
+
+.card-popup{
+    display: flex; justify-content: center; 
+    width: 100%;
+    position: absolute;
+    top: 0; left:0;
+}
+
+
+
+
+
+.submit-teaser{
+    display: flex;
+    width: 100%;
+    min-height: 600px;
+    padding: 5rem 2rem;
+    background-color: white;
+}
+
+.teaser-left{
+    flex: 40%;
+    padding: 1rem;
+    font-size: 1.5rem;
+
+    button{
+        width: 90%;
+        margin: 50px 0; padding: 20px;
+        border: none; border-radius: 50px;
+        background: linear-gradient(to right, #4e54c8, #858bfd);
+        box-shadow: 0 4px 10px 0 #4e54c8;
+        font-size: 2rem;
+        cursor: pointer;
+    
+        &:hover{
+            transform: scale(0.98);
+        }
+    }
+    
+    a{
+        text-decoration: none;
+        color: black;
+    }
+}
+
+.teaser-right{
+    flex: 70%;
+    padding: 2rem;
+    background-color: #d7d9fc;
+    border-radius: 1rem;
+
+    img{
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+}
+
+@media (max-width: 800px) {
+    .teaser-left, .teaser-right{
+        flex: 100%;
+    }
+}
+
+
+.pagination-container{
+    display: flex; justify-content: center; align-items: center;
+    width: 100%;
+    padding: 2rem;
+
+    a{
+        background-color: black;
+        color: white;
+        text-decoration: none;
+        border: 2px solid darkgray; border-radius: 25px;
+        margin: 0 4px;
+        padding: 8px 16px;
+    
+        &:hover, &.active{
+            background-color:rgb(59, 59, 59);
+        }
+    }
+}
+
+
+
+
+

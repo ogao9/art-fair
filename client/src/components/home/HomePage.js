@@ -5,8 +5,8 @@ import Footer from "../headfoot/Footer";
 import "./HomePage.scss";
 
 const roadmapSteps = [
-    { desc: "Check out featured designs with expert analysis", route: "/Feature" },
-    { desc: "Get inspired by more designs in the Gallery", route: "/DesignHome" },
+    { desc: "Check out featured designs with expert analysis", route: "/Featured" },
+    { desc: "Get inspired by more designs in the Gallery", route: "/Gallery" },
     { desc: "Create an account to save your favorite designs", route: "/Login" },
     { desc: "Submit your own designs to inspire others", route: "/Profile" },
     { desc: "Discuss interesting designs on the Forums", route: "/Forum" },
@@ -25,7 +25,7 @@ const HomePage = () => {
                         your phone. Let us help you inject some creative design into your
                         daily life.
                     </p>
-                    <Link to="/DesignHome">
+                    <Link to="/Gallery">
                         <button className="big-discover-button">Discover</button>
                     </Link>
                 </div>

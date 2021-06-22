@@ -1,34 +1,31 @@
 .header-container{
     width:100%;
-    padding: 0 1.5rem 1rem;
+    padding: 0 1.5rem;
     background-color:black;
 }
 
 .nav-container{
-    display:flex;
-    justify-content: space-between;
-    align-items: center;
+    display:flex; justify-content: space-between; align-items: center;
     width: 100%;
-    padding: 15px;
+    padding: 1rem;
 
     .nav-start{
         flex-basis: 40%;
-        display: flex;
-        justify-content: flex-start;
+        display: flex; justify-content: flex-start;
     }
     
     .nav-end{
-        flex-basis:40%;
-        display:flex;
-        justify-content: flex-end;
+        flex-basis: 40%;
+        display :flex; justify-content: flex-end;
     }
 }
 
 .expanded-nav {
     width: 100%;
+
     a{
         display: block;
-        padding: 15px;  
+        padding: 1rem;  
     }
 }
 
@@ -41,17 +38,24 @@
 
 .nav-link{
     font-size: 1.2rem;
-    margin-right: 30px;
+    margin-right: 30px; padding: 8px 0;
     cursor: pointer;
     color: whitesmoke;
     text-decoration: none;
+
+    &.login{
+        background-color: var(--theme-purple);
+        padding: 8px 16px;
+        border-radius: 5px;
+        font-size: 1.1rem;
+    }
 
     &:last-child{
         margin-right:0;
     }
 
     &:hover{
-        color:gray;
+        color:darken(lightgray, 5%);
     }
 
     &.active{
@@ -69,6 +73,64 @@
         &.is-hidden-mobile{
             display: none;
         }
+    }
+}
+
+$light-black: #121212;
+@import "../../index";
+
+.dropdown{
+    position: relative;
+    z-index: 10;
+
+    .top-avatar{
+        background-color: var(--theme-purple);
+        cursor: pointer;
+    }
+
+    .menu{
+        position: absolute;
+        top: 50px; left: -170px;
+        display: flex; flex-direction: column; align-items: center;
+        background-color: lighten($light-black, 10%);
+        color: whitesmoke;
+        width: 210px;
+        padding: 1rem 0 0;
+        border-radius: 5px;
+        font-size: 1.2rem;
+    }
+
+    p{
+        font-size: 1.3rem;
+        margin-bottom: 4px;
+    }
+
+    a{
+        width: 100%;
+        text-decoration: none;
+        color: whitesmoke;
+    }
+
+    button{
+        @extend %btn-reset;
+        display: block;
+        width: 100%;
+        cursor: pointer;
+        padding: 1rem;
+        
+        &.log-out{
+            margin-top: 0.8rem;
+        }
+        &:hover{
+            background-color: lighten($light-black, 20%); ;
+        }
+    }
+
+    .avatar{
+        background-color: var(--theme-purple);
+        width: 60px;
+        height: 60px;
+        font-size: 1.6rem;
     }
 }
 

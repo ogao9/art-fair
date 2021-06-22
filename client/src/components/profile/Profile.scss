@@ -1,3 +1,5 @@
+@import "../../index";
+
 :root{
     --box-margin: 1rem;
 }
@@ -17,6 +19,7 @@
     .profile-left {
         flex: calc(30% - var(--box-margin)*2);
         margin: 0 var(--box-margin);
+        padding: 1rem 3rem;
         min-height: 400px;
     }
 
@@ -24,13 +27,13 @@
         flex: calc(70% - var(--box-margin)*2);
         margin: 0 var(--box-margin);
         min-height: 400px;
-        display: flex;
-        flex-direction: column;
+        display: flex; flex-direction: column;
     }
 
     @media (max-width: 900px) {
         .profile-left{
             flex: 100%;
+            padding: 1rem;
         }
         .profile-right{
             flex: 100%;
@@ -38,20 +41,50 @@
     }    
 }
 
-.left-item{
-    width: 100%;
-    margin: 1rem 0;
-    padding: 1rem;
+.avatar{
+    display: grid; place-items: center;
+    width: 100px; height: 100px;
+    margin-bottom: 1rem;
+    border-radius: 5px;
+    background-color: var(--theme-purple);
+    color: lightgray;
+    font-size: 2.5rem;
 }
 
-.avatar{
-    width: 100px;
-    height: 100px;
-    border-radius: 5px;
-    display: grid;
-    place-items: center;
-    background-color: lightskyblue;
-    font-size:xx-large;
+.profile-header{
+    margin-bottom: 1rem;
+}
+
+.profile-about{
+    margin: 1rem 0;
+
+    input{
+        display: block;
+        width: 80%;
+        padding: 8px 16px;
+        margin: 8px 0;
+        border-radius: 5px;
+    }
+
+    form button{
+        padding: 8px 16px;
+        background-color: var(--lighter-black);
+        color: whitesmoke;
+        cursor: pointer;
+        border-radius: 5px; border: none;
+        margin: 8px 0;
+    }
+}
+
+.profile-edit{
+    display: flex; justify-content: space-between; align-items: center;
+    
+    button{
+        @extend %btn-reset;
+        cursor: pointer;
+    }
+
+    
 }
 
 .right-item{
@@ -67,7 +100,6 @@
 .link-submit{
     width: clamp(200px, 50%, 600px);
     padding: 16px;
-    margin: 10px;
     border-radius:10px;
     color: whitesmoke;
     background-color: black;

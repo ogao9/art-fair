@@ -1,148 +1,77 @@
-import React, { useState, useEffect } from "react";
-import { Link, Route, useRouteMatch, useParams } from "react-router-dom";
-import cardServices from "../../services/cardServices";
-import Header from '../headfoot/Header'
-import Footer from '../headfoot/Footer'
-import GalleryCard from "./GalleryCard"
-import Card from "./Card";
-import SubmitImg from "../../images/submitForm.png"
-import './Gallery.scss'
-import {SampleData, Images} from './SampleData'
+import React, {useState} from "react";
+import { Link, Route, Switch, useRouteMatch, useParams } from "react-router-dom";
+import Header from "../headfoot/Header";
+import Footer from "../headfoot/Footer";
+import Outdoors from '../../images/outdoors.jpg'
+import Indoors from '../../images/indoors.jpg'
+import Digital from '../../images/digital.jpg'
+import Audio from '../../images/audio.jpg'
+import Minimal from '../../images/minimal.jpg'
+import Wildcard from '../../images/wildcard.jpg'
+import "./Gallery.scss";
+import {GalleryCategory} from "./GalleryCategory"
 
 
-const Gallery = ({cardsPerPage}) =>{
-    const {path, url} = useRouteMatch(); //url is the actual url while path contains the pattern
+const Gallery = () => {
+    const {path, url} = useRouteMatch(); //url is the actual current url while path contains the pattern of current URL
 
     return (
         <>
-            <Header/>
-            <Route path={`${path}/:category`}> 
-                    <GalleryDisplay cardsPerPage={cardsPerPage}/>
-            </Route>
-            <Footer/>
+            <Header />
+            <Switch>
+                <Route path={`${path}/:category`}> 
+                    <GalleryCategory/>
+                </Route>
+                <Route path={`${path}`}>
+                    <GalleryHome/>
+                </Route>
+            </Switch>
+            <Footer />
         </>
     );
-}
-
-Gallery.defaultProps = {
-    cardsPerPage: 6
 };
 
 export default Gallery;
 
 
-const GalleryDisplay = ({cardsPerPage}) => {
-    const [galleryData, setGalleryData] = useState(SampleData);
-    const {path, url} = useRouteMatch();
-    let { category } = useParams();     //access url parameters to get category name
 
-    useEffect(() => {
-        const setData = async () => {
-            const data = await cardServices.getCategory(category);
-            setGalleryData(data);
-        };
-        //setData();
-        console.log("useEffect Called")
-    },[]); 
-    
+function GalleryHome(){
+    const categories = [
+        {name: 'Indoor', image: Indoors},
+        {name: 'Outdoor', image: Outdoors},
+        {name: 'Digital', image: Digital},
+        {name: 'Minimal', image: Minimal},
+        {name: 'Audio', image: Audio},
+        {name: 'Wildcard', image: Wildcard},
+    ]
 
-    // ---------- Pagination: We are just manipulating the artInfo array ----------
-    const [currentPage, setCurrentPage] = useState(1);
-    const categoryImage = Images.find(obj => obj.name === category).image;
-
-    function setCardsToShow (){
-        const endIndex = cardsPerPage * currentPage;
-        const startIndex = endIndex - cardsPerPage;
-
-        return galleryData.slice(startIndex, endIndex);
-    }
-    const cardsToShow = setCardsToShow();
-
-
-    return (
+    return(
         <>
-            <div className="gallery-container">
-
-                <section className="gallery-welcome">
-                    <div>
-                        <h1>Welcome to the {category} Design Gallery</h1>
-                        <p>We're glad you're taking design {category}. You can do some amazing things there.</p> 
-                    </div>
-                </section>
-
-                <section className="gallery-content">
-                    <div className="card-container">
-                        {cardsToShow.length
-                            ? cardsToShow.map((cardInfo, idx) => (
-                                <div className="gallery-card" key={idx}>
-                                    <Link to={`${url}/${idx}`}/>
-                                    <Card
-                                        content={cardInfo}
-                                        image={categoryImage}
-                                    />
-                                </div>
-                            ))
-                            : "No Cards Available"}
-                    </div>
-
-                    <div>
-                        <Pagination
-                            currentPage={currentPage}
-                            setPage={(page) => setCurrentPage(page)}
-                            totalCards={galleryData.length}
-                            cardsPerPage={cardsPerPage}
-                        />
-                    </div>
-                </section>
-
-                <section className="card-popup">
-                        <Route path={`${path}/:cardID`}>
-                            <GalleryCard content={cardsToShow} image={categoryImage}/>
-                        </Route>
-                </section>
-            </div>
-
-
-            <div className="submit-teaser">
-                <div className="teaser-left">
-                    <h1>Want to showcase your design?</h1>
-                    <p>It's easy and there's no pressure. All designs have the potential to inspire.</p>
-                    <button>
-                        <Link to='/Profile'>Submit your design</Link>
-                    </button> 
+            <section className="designhome-welcome">
+                <div className="welcome-text">
+                    <h1>Find your inspiration. Find your design.</h1>
+                    <p>
+                        Choose from 5 broad categories or take a chance with the
+                        wild card.
+                    </p>
                 </div>
+            </section>
 
-                <div className="teaser-right">
-                    <img src={SubmitImg} alt="submit form screenshot" />
+            <section className="category-container">
+                <div className="category-grid">
+                    {categories.map((category) => (
+                        <div className="category-grid-item">
+                            <img src={category.image} alt="Category Image" />
+                            <h1>{category.name}</h1>
+
+                            <div className="overlay">
+                                <Link to={`/Gallery/${category.name}`} />
+                                <h2>Click to Enter</h2>
+                            </div>
+                        </div>
+                    ))}
                 </div>
-            </div>
+            </section>
         </>
-    );
-};
-
-
-function Pagination({ currentPage, setPage, totalCards, cardsPerPage }) {
-    const numPages = Math.ceil(totalCards / cardsPerPage);
-    const pages = [];
-    for (let i = 1; i <= numPages; i++) pages.push(i);
-
-    const handleClick = (e, value) => {
-        setPage(value);
-    };
-
-    return (
-        <nav className="pagination-container">
-            {pages.map((pageNum) => (
-                <a
-                    key={pageNum}
-                    href="#!"
-                    onClick={(e) => handleClick(e, pageNum)}
-                    className={currentPage === pageNum ? "active" : null}
-                >
-                    {pageNum}
-                </a>
-            ))}
-        </nav>
-    );
+    )
 }
-

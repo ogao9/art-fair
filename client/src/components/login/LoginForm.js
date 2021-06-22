@@ -1,9 +1,9 @@
 import React, {useState} from "react";
 
-const LoginForm = ({handleSignUp, handleLogin, loading}) => {
+const LoginForm = ({handleSignUp, handleLogin, loading, errors}) => {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
-    const [newUser, setNewUser] = useState(true);
+    const [newUser, setNewUser] = useState(false);
 
     const signUpClicked = (e) => {
         e.preventDefault(); //what does this do? I THINK WE ACTUALLY NEED THIS LINE
@@ -33,7 +33,10 @@ const LoginForm = ({handleSignUp, handleLogin, loading}) => {
                 type="password"
                 value={password}
                 onChange={(e)=>setPassword(e.target.value)}
+                required
             ></input>
+
+            <div className="error-msg">{errors ? "Passwords must have at least 6 characters" : null} </div>
 
             <button type="submit">{newUser ? "Sign Up" : "Log In"}</button>
 

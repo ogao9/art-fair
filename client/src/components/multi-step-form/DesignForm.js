@@ -1,13 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { UserContext } from "../../UserContext";
 import cardServices from "../../services/cardServices";
 import userServices from "../../services/userServices";
 import {DesignCategory, DesignDetails, DesignUpload, DesignConfirm, DesignSuccess} from './DesignFormSteps'
 import './DesignForm.scss'
 
 //-----Parent container for the form Wizard -----
-//      **--Ideally, the form can stand alone and serve as a pop-up on any page**
-const UserForm = ({ loginInfo, closebtn }) => {
+const AddDesignForm = ({ closebtn }) => {
     const [userInput, setUserInput] = useState({}); //store all user input in an object
+    const {user} = useContext(UserContext)
     const [step, setStep] = useState(1);
 
     const nextStep = () => {
@@ -37,7 +38,7 @@ const UserForm = ({ loginInfo, closebtn }) => {
 
         //2. Associate new card with current user
         const update_card_info = {
-            userID: loginInfo.id,
+            userID: user.id,
             cardID: res._id,
         };
         console.log("Update Info", update_card_info);
@@ -97,4 +98,4 @@ const UserForm = ({ loginInfo, closebtn }) => {
     }
 };
 
-export default UserForm;
+export default AddDesignForm;

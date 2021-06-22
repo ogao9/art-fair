@@ -2,7 +2,7 @@ import React, { useState, useRef } from "react";
 import Wildcard from '../../images/wildcard.jpg'
 import './Card.scss'
 
-const Card = ({ content, image }) => {
+const Card = ({ content, image, children }) => {
     return (
         <div className="card">
             <img src={image} alt="Design"/>
@@ -18,7 +18,8 @@ const Card = ({ content, image }) => {
             </div>
             <div>
                     <i class="far fa-plus-square"></i> Save this Design
-                </div>
+            </div>
+            {children}
         </div>
     );
 };
