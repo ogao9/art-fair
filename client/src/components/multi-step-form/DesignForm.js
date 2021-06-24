@@ -2,13 +2,19 @@ import React, { useState, useContext } from "react";
 import { UserContext } from "../../UserContext";
 import cardServices from "../../services/cardServices";
 import userServices from "../../services/userServices";
-import {DesignCategory, DesignDetails, DesignUpload, DesignConfirm, DesignSuccess} from './DesignFormSteps'
-import './DesignForm.scss'
+import {
+    DesignCategory,
+    DesignDetails,
+    DesignUpload,
+    DesignConfirm,
+    DesignSuccess,
+} from "./DesignFormSteps";
+import "./DesignForm.scss";
 
 //-----Parent container for the form Wizard -----
 const AddDesignForm = ({ closebtn }) => {
     const [userInput, setUserInput] = useState({}); //store all user input in an object
-    const {user} = useContext(UserContext)
+    const { user } = useContext(UserContext);
     const [step, setStep] = useState(1);
 
     const nextStep = () => {
@@ -20,7 +26,7 @@ const AddDesignForm = ({ closebtn }) => {
     };
 
     //EFFECTS: triggered when an input field on any of the steps changes
-    //         input is the name of the field (title, creator, description)
+    //         input is the name of the field (title, description, category)
     const handleChange = (input_field, e) => {
         setUserInput({ ...userInput, [input_field]: e.target.value });
     };
@@ -29,37 +35,42 @@ const AddDesignForm = ({ closebtn }) => {
         //1. Add New card to cards database
         const new_card_info = {
             title: userInput.title,
-            creator: 'should be username here',
             description: userInput.description,
-            impact: 0,
-            starred: false,
+            category: userInput.category,
+            creator: user.username,
         };
         const res = await cardServices.postCard(new_card_info);
 
         //2. Associate new card with current user
         const update_card_info = {
-            userID: user.id,
+            userID: user._id,
             cardID: res._id,
         };
         console.log("Update Info", update_card_info);
         const update = await userServices.updateUser(update_card_info);
 
         //3. Reset Form Values
-        //setUserInput({}); //reset values after submit
+        setUserInput({});
     };
 
     switch (step) {
         case 1:
-            return(
+            return (
                 <div className="form-container">
-                    <DesignCategory nextStep={nextStep} closebtn={closebtn}/>
+                    <DesignCategory
+                        nextStep={nextStep}
+                        closebtn={closebtn}
+                        handleChange={handleChange}
+                        userInput={userInput}
+                    />
                 </div>
-            )
+            );
         case 2:
             return (
                 <div className="form-container">
                     <DesignDetails
                         nextStep={nextStep}
+                        prevStep={prevStep}
                         handleChange={handleChange}
                         userInput={userInput}
                     />
@@ -76,7 +87,7 @@ const AddDesignForm = ({ closebtn }) => {
                     />
                 </div>
             );
-        case 4:
+        case 5:
             return (
                 <div className="form-container">
                     <DesignConfirm
@@ -87,10 +98,10 @@ const AddDesignForm = ({ closebtn }) => {
                     />
                 </div>
             );
-        case 5:
+        case 4:
             return (
                 <div className="form-container">
-                    <DesignSuccess prevStep={prevStep} />
+                    <DesignSuccess prevStep={prevStep} closebtn={closebtn} />
                 </div>
             );
         default:

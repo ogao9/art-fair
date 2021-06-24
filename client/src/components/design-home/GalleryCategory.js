@@ -1,35 +1,35 @@
 import React, { useState, useEffect } from "react";
-import { Link, Route, useRouteMatch, useParams, Redirect } from "react-router-dom";
+import { Link, Route, useRouteMatch, useParams} from "react-router-dom";
 import cardServices from "../../services/cardServices";
-import GalleryCard from "./GalleryCard"
 import Card from "./Card";
+import GalleryCard from "./GalleryCard"
 import SubmitImg from "../../images/submitForm.png"
-import {SampleData, Images} from './SampleData'
-import Wildcard from "../../images/wildcard.jpg";
 import './GalleryCategory.scss'
-
-const categories = ["Indoor", "Outdoor", "Digital", "Audio", "Wildcard", "Minimal"]
-// if(!categories.includes(category))
-//         return <Redirect to='/Gallery'/>;
+//import { SampleData} from "../../services/SampleData";
 
 const GalleryCategory = () =>{
-    const [galleryData, setGalleryData] = useState(SampleData);
-    const [active, setActive] = useState(false);
-    const {path, url} = useRouteMatch();
-    let { category } = useParams();     //access url parameters to get category name
+    const [galleryData, setGalleryData] = useState([]);
+    const [loading, setLoading] = useState(false)
+    const [blur, setBlur] = useState(false);
+
+    const {path} = useRouteMatch();
+    let { category } = useParams();     
 
     useEffect(() => {
+        setLoading(true);
         const setData = async () => {
-            const data = await cardServices.getCategory(category);
+            const data = await cardServices.getCategoryCards(category);
             setGalleryData(data);
+            setLoading(false);
         };
-        //setData();
-        console.log("useEffect Called")
+        setData();
     },[]); 
 
+    if(loading)
+        return <h2>Loading...</h2>
     return (
         <>
-            <div className={`gallery-container ${active ? "blur" : ""}`}>
+            <div className={`gallery-container ${blur ? "blur" : ""}`}>
                 <section className="gallery-welcome">
                     <div>
                         <h1>Welcome to the {category} Design Gallery</h1>
@@ -42,14 +42,14 @@ const GalleryCategory = () =>{
 
             <section className="card-popup">
                 <Route path={`${path}/:id`}>
-                    <GalleryCard image={Wildcard} setActive={setActive}/>
+                    <GalleryCard setBlur={setBlur}/>
                 </Route>
             </section>
 
-            <div className={`submit-teaser ${active ? "blur" : ""}`}>
+            <div className={`submit-teaser ${blur ? "blur" : ""}`}>
                 <div className="teaser-left">
                     <h1>Want to showcase your design?</h1>
-                    <p>It's easy and there's no pressure. All designs have the potential to inspire.</p>
+                    <p>It's easy and there's no pressure. We believe all designs have the potential to inspire.</p>
                     <button>
                         <Link to='/Profile'>Submit your design</Link>
                     </button> 
@@ -63,51 +63,40 @@ const GalleryCategory = () =>{
     );
 }
 
-
-
 function GalleryDisplay({cardsPerPage, galleryData}){
-    const {path, url} = useRouteMatch();
-    let { category } = useParams();     //access url parameters to get category name
+    const {url} = useRouteMatch();   
 
-
-    // ---------- Pagination: We are just manipulating the artInfo array ----------
+    // Pagination: Slicing cardsToShow array -----
     const [currentPage, setCurrentPage] = useState(1);
-    const categoryImage = Images.find(obj => obj.name === category).image;
-
-    function setCardsToShow (){
-        const endIndex = cardsPerPage * currentPage;
-        const startIndex = endIndex - cardsPerPage;
-
-        return galleryData.slice(startIndex, endIndex);
-    }
-    const cardsToShow = setCardsToShow();
+    const endIndex = cardsPerPage * currentPage;
+    const startIndex = endIndex - cardsPerPage;
+    const cardsToShow = galleryData.slice(startIndex, endIndex);
     
-
     return(
+        <>
         <section className="gallery-content">
             <div className="card-container">
                 {cardsToShow.length
                     ? cardsToShow.map((cardInfo) => (
-                        <div className="gallery-card" key={cardInfo.id}>
-                            <Link to={`${url}/${cardInfo.id}`}/>
+                        <div className="gallery-card" key={cardInfo._id}>
+                            <Link to={`${url}/${cardInfo._id}`}/>
                             <Card
                                 content={cardInfo}
-                                image={categoryImage}
                             />
                         </div>
                     ))
                     : "No Cards Available"}
             </div>
-
-            <div>
-                <Pagination
-                    currentPage={currentPage}
-                    setPage={(page) => setCurrentPage(page)}
-                    totalCards={galleryData.length}
-                    cardsPerPage={cardsPerPage}
-                />
-            </div>
         </section>
+        
+        <Pagination
+            currentPage={currentPage}
+            setPage={(page) => setCurrentPage(page)}
+            totalCards={galleryData.length}
+            cardsPerPage={cardsPerPage}
+        />
+            
+        </>
     )
 }
 
@@ -125,18 +114,33 @@ function Pagination({ currentPage, setPage, totalCards, cardsPerPage }) {
         setPage(value);
     };
 
+    const next = () =>{
+        if(currentPage !== pages.length)
+            setPage(currentPage + 1)
+    }
+
+    const prev = () =>{
+        if(currentPage !== 1)
+            setPage(currentPage - 1)
+    }
+
     return (
         <nav className="pagination-container">
+            <ul>
+                <li><a href="#!" onClick={prev}><i class="fas fa-angle-double-left fa-sm"/></a></li>
             {pages.map((pageNum) => (
+                <li key={pageNum}>
                 <a
-                    key={pageNum}
                     href="#!"
                     onClick={(e) => handleClick(e, pageNum)}
                     className={currentPage === pageNum ? "active" : null}
                 >
                     {pageNum}
                 </a>
+                </li>
             ))}
+                <li><a href="#!" onClick={next}><i class="fas fa-angle-double-right fa-sm"/></a></li>
+            </ul>
         </nav>
     );
 }

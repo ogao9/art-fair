@@ -1,14 +1,13 @@
 .home-welcome{
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    display: flex; align-items: center; justify-content: center;
     width: 100%;
     min-height: 100vh;
     background-color: var(--lighter-black);
 
+
     .welcome-message{
         max-width: 1060px;
-        padding: 1rem;
+        padding: 1.5rem;
         color: #fff;
         font-size: 2rem;
     }
@@ -18,8 +17,7 @@
     width: clamp(250px, 50%, 800px);
     margin: 50px 0;
     padding: 20px;
-    border: none;
-    border-radius: 50px;
+    border: none; border-radius: 50px;
     background: linear-gradient(45deg, #ff4e50, #f9d423); 
     color: white;
     box-shadow: 0 4px 10px 0 #ff4e50;
@@ -27,7 +25,7 @@
     cursor: pointer;
 
     &:hover{
-        transform: scale(0.95);
+        transform: scale(0.98);
     }
 }
 
@@ -35,21 +33,15 @@
     display: flex;
     flex-flow: row wrap;
     align-items: center;
-    padding: 6rem 1rem;
+    padding: 5rem 1rem;
 
     .roadmap-message{
-        flex: 40%;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
+        flex: 40%; align-self: flex-start;
+        display: flex; flex-direction: column; align-items: center;
         min-height: 100px;
-        padding: 1rem;
+        padding: 5rem 1rem;
         text-align: center;
         font-size: 1.6rem;
-
-        i{
-            font-size: 10em;
-        }
     }
 
     .roadmap-flow{
@@ -62,6 +54,7 @@
     @media  (max-width:800px) {
         .roadmap-message, .roadmap-flow{
             flex: 100%;
+            padding: 1rem;
         }
     }
 }

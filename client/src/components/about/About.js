@@ -15,6 +15,7 @@ const About = () => {
         <>  
             <Header />
             <div className="wrapper">
+                <div className="fill-5"></div>
                 <div className="fill-top">
                     <div className="left">
                         <h1>About Design.io</h1>

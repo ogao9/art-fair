@@ -62,13 +62,14 @@
 
 
 //---------- Analysis Container ----------
-.analysis{
-    width: 100%;
-    padding: 6rem 1rem;
+.analysis-container{
+    display: flex; flex-wrap: wrap;
+    width: 100%; 
 }
 
-.analysis-experts{
-    //padding: 0 3rem;
+.left-experts{
+    flex: 30%;
+    padding: 1rem;
     font-size: 1.6rem;
     line-height: 1.3;
     
@@ -81,26 +82,15 @@
     }
 }
 
-.flex-center{
-    display: flex; flex-flow: column; align-items: center;
-    width: 100%;
-
-    .expert-header{
-        text-align: center;
-        font-size: 1.6rem;
-    }
-}
-
-.analysis-slides{
+.right-slides{
+    flex: 70%;
     position: relative;
-    width: clamp(325px, 80%, 1800px);
-    margin: 2rem; 
-    border: 2px solid black;
-
+    padding: 1rem;
+    
     .btn-left{
         @extend %btn-reset;
         position: absolute;
-        top: 50%; left: -10px;
+        top: 50%; left: -0.5rem;
         padding: 1rem;
         transform: translateY(-50%);
     }
@@ -108,12 +98,12 @@
     .btn-right{
         @extend %btn-reset;
         position: absolute;
-        top: 50%; right: 4px;
+        top: 50%; right: 0;
         transform: translateY(-50%);
     }
 
     i{
-        opacity: 0.5;
+        opacity: 0.3;
         cursor: pointer;
         padding: 0.5rem;
 
@@ -126,6 +116,7 @@
 .analysis-cards{
     display: flex; flex-flow: row nowrap;
     width: 100%;
+    padding: 0.5rem;
 
     overflow-x: auto;
     scroll-behavior: smooth;
@@ -140,30 +131,54 @@
         flex: 0 0 300px;
         margin-right: 1rem;
         cursor: pointer;
+        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
        
         &.active{
-            border: 2px solid gold; border-radius: 10px;
+            border: 3px solid gold; border-radius: 5px;
         }
     }
 }
 
-.analysis-text{
-    width: clamp(325px, 80%, 1800px);
-    padding: 1rem 0;
 
+@media (max-width: 800px) {
+    .left-experts, .right-slides{
+        flex: 100%;
+        overflow: hidden;
+    }
+}
+
+.analysis-text-container{
+    display: flex; flex-wrap: wrap;
+    padding: 0 1.5rem;
+
+    .filler{
+        flex: 30%;
+    }
+    .text{
+        flex: 70%;
+        padding: 0.5rem;
+    }
     ul{
         list-style-type: none;
     }
 
     li{
-        margin-bottom: 1.5rem;
+        margin-bottom: 1rem;
     }
 
     span{
-        font-size: 1.6rem;
+        font-size: 1.3rem;
+    }
+
+    @media (max-width: 800px) {
+        .filler{
+            display: none;
+        }
+        .text{
+            flex: 100%;
+        }
     }
 }
-
 
 
 

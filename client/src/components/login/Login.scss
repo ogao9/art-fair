@@ -1,19 +1,17 @@
 @import '../../index';
 
-.login-outer-container{
+.login-container{
     width: 100%;
     background: var(--lighter-black);
     color: whitesmoke;
 }
 
-.login-spacer{
-    height: 15vh;
-}
+.top-spacer{height: 15vh}
 
 .login-inner-container{
-    display: flex; flex-wrap: wrap;
+    display: flex; flex-wrap: wrap; 
     width: clamp(300px, 80%, 1800px);
-    min-height: 100vh;
+    min-height: 85vh;
     margin: 0 auto;
 }
 
@@ -30,12 +28,10 @@
         border-radius: 50px; border: none;
         background: linear-gradient(45deg, #ff4e50, #f9d423); 
         color: whitesmoke;
-        font-size: 1.3rem;
+        font-size: 1.5rem; 
         cursor: pointer;
     
-        &:hover{
-            transform: scale(0.95);
-        }
+        &:hover{transform: scale(0.95);}
     }    
 }
 
@@ -45,34 +41,33 @@
     padding: 1rem;
 }
 
-
-@keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-}
-
-
-
 @media screen and (max-width: 800px) {
+    .top-spacer{height: 5vh;}
+
     .login-left, .login-right{
         flex: 100%;
     }
 }
 
 
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
 .Login-form{
     width: clamp(300px, 100%, 800px);
     padding: 1.5rem;
-    border: 1px solid whitesmoke;
-    border-radius: 5px;
+    border: 1px solid whitesmoke; border-radius: 5px;
     background-color: whitesmoke;
-    color: black;
+    color: var(--lighter-black);
     position: relative;
 
     #login-spinner{
         position: absolute;
-        top: 25%; left: 50%;
-        transform: translate(0, -50%);
+        top: 50%; left: 50%;
+        transform: translate(-50%, -50%);
         animation: spin 2s infinite;
     }
 
@@ -92,6 +87,7 @@
         padding: 10px;
         margin: 10px 0;
         border-radius: 5px;
+        font-size: 1.2rem;
     }
 
     button[type="submit"]{
@@ -119,9 +115,7 @@
         text-align: center;
         margin-top: 1rem;
 
-        p{
-            margin: 1rem 0;
-        }
+        p{ margin: 1rem 0; }
     }
 
     .error-msg{

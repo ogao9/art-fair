@@ -1,18 +1,9 @@
 .forum-container{
-    position: relative;
+    display: flex; align-items: center; justify-content: center;
     width: 100%;
-    min-height: 100vh;
-    background: url('../../images/comingSoon.jpg');
-    background-position: center; /* Center the image */
-    background-repeat: no-repeat; /* Do not repeat the image */
-    background-size: cover; /* Resize the background image to cover the entire container */
-
-    h1{
-        position: absolute;
-        top: 25%;
-        font-size: 3rem;
-        color: whitesmoke;
-        padding: 2rem;
-        text-align: center;
-    }
+    height: 90vh;
+    background-color: var(--lighter-black);
+    color: whitesmoke;
+    font-size: 1.8rem;
+    text-align: center;
 }

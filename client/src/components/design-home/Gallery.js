@@ -1,16 +1,23 @@
-import React, {useState} from "react";
-import { Link, Route, Switch, useRouteMatch, useParams } from "react-router-dom";
+import React from "react";
+import { Link, Route, Switch, useRouteMatch, Redirect } from "react-router-dom";
 import Header from "../headfoot/Header";
 import Footer from "../headfoot/Footer";
-import Outdoors from '../../images/outdoors.jpg'
-import Indoors from '../../images/indoors.jpg'
-import Digital from '../../images/digital.jpg'
-import Audio from '../../images/audio.jpg'
-import Minimal from '../../images/minimal.jpg'
-import Wildcard from '../../images/wildcard.jpg'
-import "./Gallery.scss";
 import {GalleryCategory} from "./GalleryCategory"
+import { Categories } from "../../services/SampleData";
+import "./Gallery.scss";
 
+function CategoryRoute({children, path}){
+    const categories = ["Indoor", "Outdoor", "Digital", "Audio", "Wildcard", "Minimal"]
+    const validCategory = categories.includes("") ? true : true;
+
+    return(
+        <Route path={path} render={()=>{
+            return validCategory
+                ? children
+                : <Redirect to='/Gallery'/>
+        }} />
+    )
+}
 
 const Gallery = () => {
     const {path, url} = useRouteMatch(); //url is the actual current url while path contains the pattern of current URL
@@ -19,9 +26,9 @@ const Gallery = () => {
         <>
             <Header />
             <Switch>
-                <Route path={`${path}/:category`}> 
+                <CategoryRoute path={`${path}/:category`}> 
                     <GalleryCategory/>
-                </Route>
+                </CategoryRoute>
                 <Route path={`${path}`}>
                     <GalleryHome/>
                 </Route>
@@ -34,17 +41,7 @@ const Gallery = () => {
 export default Gallery;
 
 
-
 function GalleryHome(){
-    const categories = [
-        {name: 'Indoor', image: Indoors},
-        {name: 'Outdoor', image: Outdoors},
-        {name: 'Digital', image: Digital},
-        {name: 'Minimal', image: Minimal},
-        {name: 'Audio', image: Audio},
-        {name: 'Wildcard', image: Wildcard},
-    ]
-
     return(
         <>
             <section className="designhome-welcome">
@@ -59,7 +56,7 @@ function GalleryHome(){
 
             <section className="category-container">
                 <div className="category-grid">
-                    {categories.map((category) => (
+                    {Categories.map((category) => (
                         <div className="category-grid-item">
                             <img src={category.image} alt="Category Image" />
                             <h1>{category.name}</h1>

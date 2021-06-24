@@ -1,78 +1,33 @@
-import React, { useState, useEffect, useContext }  from "react";
+import React, { useState, useContext }  from "react";
 import { Link, useRouteMatch } from "react-router-dom";
-import cardServices from "../../services/cardServices";
+import { UserContext } from "../../UserContext";
+import userServices from "../../services/userServices";
 import Header from "../headfoot/Header";
 import Footer from "../headfoot/Footer";
 import Card from "../design-home/Card";
 import DesignForm from "../multi-step-form/DesignForm"
-
-import withAuth from './withAuth'
 import "./Profile.scss";
 
-//import {GalleryDisplay} from "../design-home/GalleryCategory"
-import {Images} from "../design-home/SampleData"
-import { UserContext } from "../../UserContext";
-
-const YourCards = [ 
-    {
-      id: 1,
-      title: "Your Card 1",
-      creator: "Peter Banaya",
-      category: "Digital",
-      legacy: false,
-    },
-    {
-      id: 2,
-      title: "Peaceful Sunset 2",
-      creator: "Ben Park",
-      category: "Digital",
-      legacy: false,
-    },
-    {
-        id: 1,
-        title: "Jumping Oranges 3",
-        creator: "Peter Banaya",
-        category: "Digital",
-        legacy: false,
-      },
-]
-
-const StarredCards = [
-    {
-      id: 1,
-      title: "Starred Card 1",
-      creator: "Peter Banaya",
-      legacy: false,
-    },
-    {
-      id: 2,
-      title: "Peaceful Sunset 2",
-      creator: "Ben Park",
-      legacy: false,
-    },
-    {
-        id: 1,
-        title: "Jumping Oranges 3",
-        creator: "Peter Banaya",
-        legacy: false,
-      },
-]
 
 const Profile = () => {
     const {user, setUser} = useContext(UserContext)
-    const [yourCards, setYourCards] = useState(YourCards);
-    const [savedCards, setStarredCards] = useState(StarredCards);
     const [showForm, setShow] = useState(false);
     const [showEdit, setEdit] = useState(false);
 
-    // useEffect(() => {
-    //     const loadCards = async () => {
-    //         const res = await cardServices.getSome(loginInfo.cards); //loginInfo.cards is an array of strings
-    //         setCards(res);
-    //     };
-    //     console.log("Loading Cards...");
-    //     loadCards();
-    // }, []);
+    const yourCards = user ? user.yourCards : [];
+    const savedCards = user ? user.savedCards : [];
+
+    const handleAboutForm = async (e)=>{
+        e.preventDefault();
+        //const updated_info = aboutForm;
+        //const res = await userServices.updatePersonalInfo(updated_info)
+        // if(res)
+        //     setUser(res)
+        // else   
+        //     alert("Something went wrong!")
+
+        setEdit(false);
+    }
     
     return (
         <>
@@ -81,11 +36,12 @@ const Profile = () => {
                 <div className={`profile-left ${showForm ? "form-active": null}`}>
                     <div className="profile-header">
                         <div className="avatar">{user ? user.username[0] : "O"}</div>
-                        <h2>{user ? user.username : "Your Username"}</h2>
-                        <h2>Your Email</h2>
-                        
+                        <h2>{user ? user.username : "Username"}</h2>
+                        <p>{user ? user.email : "Email"}</p>
                     </div>
+
                     <hr/>
+                    
                     <div className="profile-about">
                         <div className="profile-edit"> 
                            <h2>About</h2>
@@ -93,7 +49,7 @@ const Profile = () => {
                         </div>
                         
                         {showEdit ?
-                        <form>
+                        <form onSubmit={(e)=>handleAboutForm(e)}>
                             <label htmlFor="location">Location</label>
                             <input id="location" type="text"/>
 
@@ -107,15 +63,15 @@ const Profile = () => {
                         </form>
                         :
                         
-                        <div>
-                        <p>Location</p>
-                        <p>--</p>
-                        <p>Design Interests</p>
-                        <p>--</p>
-                        <p>Your Favorite Quote</p>
-                        <p>--</p>
+                        <div className="about-view">
+                            <p>Location</p>
+                            <p>{user.location ? user.location : "--"}</p>
+                            <p>Design Interests</p>
+                            <p>{user ? user.interests : "--"}</p>
+                            <p>Your Favorite Quote</p>
+                            <p>{user ? user.favQuote : "--"}</p>
                         </div>
-}
+                        }
                     </div>  
 
                     <div className="share">
@@ -126,23 +82,32 @@ const Profile = () => {
 
                 <div className={`profile-right ${showForm ? "form-active": null}`}>
                     <section className="right-item">
-                        <h2>Badges</h2>
-                        <p>None</p>
+                        <h2 className="title">Badges</h2>
+                        <div className="badge-container">
+                            <div>
+                            <div><i class="fas fa-shapes fa-5x"/></div>
+                            <p>Design Novice</p>
+                            </div>
+                            <div>
+                            <div><i class="fas fa-shapes fa-5x"/></div>
+                            <p>Contributor</p>
+                            </div>
+                        </div>
                     </section>
 
                     <section className="right-item">
-                        <h2>Your Designs</h2>
-                        <GalleryDisplay cardsPerPage={1} galleryData={yourCards}/>
+                        <h2 className="title">Your Designs</h2>
+                        <GalleryDisplay cardsPerPage={2} galleryData={yourCards}/>
                         
                     </section>
 
                     <section className="right-item">
-                        <h2>Saved Designs</h2>
+                        <h2 className="title">Saved Designs</h2>
                         <GalleryDisplay cardsPerPage={1} galleryData={savedCards}/>
                     </section>
 
                     <section className="right-item">
-                        <h2>Activity Log</h2>
+                        <h2 className="title">Activity Log</h2>
                         <p>Table or List</p>
                     </section>
                     
@@ -163,19 +128,12 @@ export default Profile;
 
 
 function GalleryDisplay({cardsPerPage, galleryData}){
-    const {path, url} = useRouteMatch();
+    const {url} = useRouteMatch();
 
-    // ---------- Pagination: We are just manipulating the artInfo array ----------
     const [currentPage, setCurrentPage] = useState(1);
-    //const categoryImage = Images.find(obj => obj.name === category).image;
-
-    function setCardsToShow (){
-        const endIndex = cardsPerPage * currentPage;
-        const startIndex = endIndex - cardsPerPage;
-
-        return galleryData.slice(startIndex, endIndex);
-    }
-    const cardsToShow = setCardsToShow();
+    const endIndex = cardsPerPage * currentPage;
+    const startIndex = endIndex - cardsPerPage;
+    const cardsToShow = galleryData.slice(startIndex, endIndex);
     
 
     return(
@@ -238,14 +196,3 @@ function Pagination({ currentPage, setPage, totalCards, cardsPerPage }) {
 }
 
 
-{/* <div className="card-container">
-                            {yourCards
-                                ? yourCards.map((cardInfo) => (
-                                    <Card
-                                        key={cardInfo._id}
-                                        content={cardInfo}
-                                        impactbtn={null}
-                                    />
-                                ))
-                                : "You have No designs"}
-                        </div> */}

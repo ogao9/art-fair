@@ -64,6 +64,7 @@
         padding: 8px 16px;
         margin: 8px 0;
         border-radius: 5px;
+        font-size: 1rem;
     }
 
     form button{
@@ -73,6 +74,12 @@
         cursor: pointer;
         border-radius: 5px; border: none;
         margin: 8px 0;
+    }
+
+    .about-view{
+        p:nth-child(even){
+            margin-bottom: 1rem;
+        }
     }
 }
 
@@ -90,11 +97,15 @@
 .right-item{
     width: 100%;
     min-height: 300px;
-    padding: 1rem;
+    padding: 1.5rem;
     margin: 1rem 0;
     background-color: white;
     color: black; 
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.3);
+
+    h2.title{
+        padding-left: 1rem;
+    }
 }
 
 .link-submit{
@@ -119,6 +130,20 @@
     top: 1rem;
     left: 50%;
     transform: translateX(-50%);
+    width: clamp(325px, 80%, 1800px);
+    
+}
+
+.badge-container{
+    display: grid; 
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    margin: 2rem 0;
+    text-align: center;
+    font-size: 1.1rem;
+
+    i{
+        color: #f9d423;
+    }
 }
 
 

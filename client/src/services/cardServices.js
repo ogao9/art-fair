@@ -2,7 +2,7 @@ import axios from 'axios'
 
 //What we are doing here is making requests with axios to our node.js server, which responds with what we specified
 const cardServices = {
-    getAll: async () =>{
+    getAllCards: async () =>{
         try{
             let response = await axios.get('/api/cards')
             return response.data
@@ -11,7 +11,7 @@ const cardServices = {
             console.log(error.toJSON())
         }
     },
-    getCategory: async (category) =>{
+    getCategoryCards: async (category) =>{
         try{
             let response = await axios.get(`api/cards/${category}`, {baseURL: '/'})
             return response.data
@@ -19,7 +19,7 @@ const cardServices = {
             console.log(error.toJSON())
         }
     },
-    getFeatured: async () =>{
+    getFeaturedCards: async () =>{
         try{
             let response = await axios.get('/api/cards/featured')
             return response.data
@@ -28,10 +28,10 @@ const cardServices = {
             console.log(error);
         }
     },
-    getOne: async(id)=>{
+    getOneCard: async(id)=>{
         try{
-            let response = await axios.get(`/api/cards/${id}`)
-            return response.data
+            let response = await axios.get(`/api/cards/one/${id}`);
+            return response.data;
         }
         catch(error){
             console.log(error)

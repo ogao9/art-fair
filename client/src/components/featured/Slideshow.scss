@@ -11,6 +11,11 @@
     position: relative;
     width: clamp(350px, 60%, 1200px);
     height: 600px;
+
+    button{
+        @extend %btn-reset;
+        cursor: pointer;
+    }
 }
 
 .slideshow-slide{

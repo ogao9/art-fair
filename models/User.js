@@ -1,6 +1,7 @@
-const mongoose = require('mongoose')
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
 
-const userSchema = new mongoose.Schema({
+const userSchema = new Schema({
     username: {
         type: String,
         required: true
@@ -9,14 +10,37 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    cards:{
+    email: {
+        type: String,
+        required: true
+    },
+    location: {
+        type: String,
+        default: ""
+    },
+    designInterests: {
+        type: String,
+        default: ""
+    },
+    favQuote: {
+        type: String,
+        default: ""
+    },
+    yourCards:{
+        type: Array,
+        default: []
+    },
+    savedCards:{
+        type: Array,
+        default: []
+    },
+    badges:{
         type: Array,
         default: []
     }
 })
 
 
-
-const User = mongoose.model('Users', userSchema);
+const User = mongoose.model('User', userSchema);
 
 module.exports = User;

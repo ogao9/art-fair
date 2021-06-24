@@ -1,14 +1,14 @@
 const express = require('express')
-const router = express.Router();
 const bcrypt = require('bcrypt')
 
+const router = express.Router();
 const User = require('../models/User')
 
 // @ GET /users
 // Retreives all users
 router.get('/', async (req,res)=>{
-    const response = await User.find();
-    return res.status(200).json(response);
+    const allUsers = await User.find();
+    return res.status(200).json(allUsers);
 })
 
 /*
@@ -19,7 +19,7 @@ hashing the salt with the original password gives us a unique hashing
 */
 
 // @ POST /users
-// Adds a new user to the DB
+// Adds a new user
 router.post('/', async (req,res)=>{
     try{
         const salt = await bcrypt.genSalt();
@@ -27,25 +27,26 @@ router.post('/', async (req,res)=>{
 
         const new_user = new User({
             username: req.body.username,
-            password: hashedPassword
+            password: hashedPassword,
+            email: req.body.email
         })
+
         new_user.save()
                 .then( user => res.status(201).json(user))
-
     }catch(error){
         console.log(error);
         res.status(500).send("error")
     }
 })
 
-
 // @POST /users/login
-// Checks whether entered credentials match with any in DB
+// Checks whether entered credentials match 
 router.post('/login', async (req,res)=>{
-    const user = await User.findOne({username:req.body.username});
-    if(!user){
+    const user = await User.findOne({email:req.body.email});
+
+    if(!user)
         return res.status(400).send(null)
-    }
+
     try{
         if(await bcrypt.compare(req.body.password, user.password)) //compare encrypted passwords
              res.status(200).send(user)
@@ -56,16 +57,15 @@ router.post('/login', async (req,res)=>{
     }
 })
 
-// @PUT /users/update
-// Adds new card id to user's card array
-router.put('/update', async (req,res)=>{
-    const id = req.body.userID;
+// @PUT /users/addCard
+// Adds new card id to user's yourCards array
+router.put('/saveCard', async (req,res)=>{
     try{
-        const user = await User.findById(id);
-        const new_cards = [...user.cards, req.body.cardID];
-        //const updated_user = await User.findByIdAndUpdate(id, {...user, cards: new_cards}, {new:true})
-        //this method only updates the field you specify
-        const updated_user = await User.findByIdAndUpdate(id, {cards:new_cards}, {new:true})
+        const userID = req.body.userID;
+        const user = await User.findById(userID)
+        const savedCardsUpdated = [...user.savedCards, req.body.cardID];
+
+        const updated_user = await User.findByIdAndUpdate(userID, {savedCards : savedCardsUpdated}, {new : true}) //this method only updates the field you specify
         return res.status(200).json(updated_user)
     }catch(error){
         res.status(500).json(error);

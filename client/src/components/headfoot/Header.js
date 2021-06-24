@@ -1,9 +1,10 @@
 import React, {useState, useRef, useEffect, useContext} from 'react'
 import {Link, NavLink} from 'react-router-dom'
-import Logo from '../../images/Logo.png'
-import Avatar from '@material-ui/core/Avatar';
-import './Header.scss'
 import { UserContext } from '../../UserContext';
+import Avatar from '@material-ui/core/Avatar';
+import Logo from '../../images/Logo.png'
+import './Header.scss'
+
 
 const ExpandedNav = () =>{
     return(
@@ -35,22 +36,24 @@ const useClickOutside = (handler) =>{
     return domNode;
 }
 
-const AvatarDropdown = ({username}) =>{
+const AvatarDropdown = ({username, setUser}) =>{
     const [open, setOpen] = useState(false);
-    
     const menuRef = useClickOutside(()=>{setOpen(false)})
 
+    const handleLogout = ()=>{
+        setUser(null);
+    }
 
     return(
         <div className="dropdown">
-            <Avatar className="top-avatar" onClick={()=>{setOpen(!open)}}>{username[0]}</Avatar>
+            <Avatar className="top-avatar" onClick={()=>{setOpen(!open)}}>{username[0].toUpperCase()}</Avatar>
             {open && 
             <div className="menu" ref={menuRef}>
                 <Avatar className="avatar">{username[0]}</Avatar>
                 <p>{username}</p>
 
                 <Link to='/Profile' className="profile-link"><button className="profile-btn"><i class="far fa-user fa-lg"/>My Profile</button></Link>
-                <button className="log-out"><i class="fas fa-sign-out-alt fa-lg"/>Log Out</button>
+                <button className="log-out" onClick={handleLogout}><i class="fas fa-sign-out-alt fa-lg"/>Log Out</button>
             </div>
             }
         </div>
@@ -59,7 +62,7 @@ const AvatarDropdown = ({username}) =>{
 
 const Header = () => {
     const [expand, setExpand] = useState(false);
-    const {user} = useContext(UserContext)
+    const {user, setUser} = useContext(UserContext);
     const loggedIn = user ? true : false;
     const username = user ? user.username : "";
     
@@ -78,7 +81,7 @@ const Header = () => {
                 <div className="nav-end">
                     <NavLink to='/About' className="nav-link is-hidden-mobile" activeClassName="active">About</NavLink> 
                     <NavLink to='/Forum' className="nav-link is-hidden-mobile">Forum</NavLink> 
-                    {loggedIn ? <AvatarDropdown username={username} />
+                    {loggedIn ? <AvatarDropdown username={username} setUser={setUser} />
                     : <NavLink to='/Login' className="nav-link login">Log In</NavLink> 
                     }
                     

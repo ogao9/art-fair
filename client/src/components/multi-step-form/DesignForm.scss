@@ -1,20 +1,17 @@
-/*---------- Form Step Styles ---------- */
 .form-container{
-    min-width: 800px;
-    padding: 20px;
-    min-height: 500px;
-    background-color: whitesmoke;
+    width: 100%;
+    height: clamp(500px, 75vh, 1000px);
+    background-color: #f3f7f7;
     color: var(--lighter-black);
-    border: 1px solid black;
-    border-radius: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.3);
 
     input{
         display: block;
         width: 100%;
-        padding: 10px;
+        padding: 1rem;
         margin: 10px 0;
         border: 1px solid black;
-        border-radius: 5px;
+        border-radius: 2px;
 
         &:invalid{
             color:red;
@@ -24,19 +21,62 @@
     button{
         display: inline-block;
         width: 50%;
-        border-radius: 5px;
-        background-color:olivedrab;
-        padding: 10px;
+        border-radius: 50px;
+        background-color: var(--theme-purple);
+        color: whitesmoke;
+        padding: 1rem;
         margin: 10px 0;
+        font-size: 1rem;
 
         &:hover{
-            background-color:yellowgreen
+            transform: scale(0.98);
         }
     }
 }
 
-.Success-page{
+.flex-split{
+    display: flex; flex-wrap: wrap;
+    width: 100%;
+    height: 100%;
+}
+
+.left-form{
+    flex: 50%;
+    padding: 1rem;
+    display: flex; align-items: center; justify-content: center;
+
+    img{
+        text-align: center;
+    }
+}
+
+.form-image{
+    flex: 50%;
+    background-color: #4e54c8;
+    background-image: url('../../images/PurpleCheese.svg');
+    background-attachment: fixed;
+    background-size: cover;
+    border-radius: 5px;
+}
+
+@media (max-width: 800px) {
+    .left-form, .form-image{
+        flex:100%;
+    }
+}
+.success-page{
     text-align: center;
 }
+
+
+
+
+
+
+
+
+
+
+
 
 

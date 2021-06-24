@@ -1,25 +1,27 @@
-// Makes requests to /users and /users/login
-import axios from 'axios'
-
+import axios from "axios";
 
 const userServices = {
-    addUser: (new_user)=>{
-        return axios.post('/users', new_user)
-                    .then( ()=> "New User added!")
-                    .catch(err => console.log(err))
-    },
-    //user_info should be an object: {username, password}
-    checkUser: (user_info)=>{
-        return axios.post('/users/login', user_info)
+    addUser: (new_user) => {
+        return axios
+            .post("/users", new_user)
             .then( res => res.data)
-            .catch(err => console.log(err))
+            .catch((err) => console.log(err));
     },
-    updateUser: (update_info)=>{
-        return axios.put('/users/update', update_info)
-            .then(res => res.data)
-            .catch(err => console.log(err))
+    checkUser: (user_info) => {
+        return axios
+            .post("/users/login", user_info)
+            .then((res) => res.data)
+            .catch((err) => console.log(err));
+    },
+    saveCard: (cardToSave) => {
+        return axios
+            .put("/users/saveCard", cardToSave)
+            .then((res) => res.data)
+            .catch((err) => console.log(err));
+    },
+    updatePersonalInfo: (updated_info) =>{
+        return axios.put("/users/updatePersonalInfo", updated_info).then(res=>res.data).catch(err=>console.log(err));
     }
-}
+};
 
-
-export default userServices
+export default userServices;

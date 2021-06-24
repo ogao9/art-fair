@@ -1,22 +1,36 @@
-const mongoose = require('mongoose')
+const mongoose = require("mongoose");
+const Schema = mongoose.Schema;
 
 //The Schema defines the shape of the document in the database
-const cardSchema = new mongoose.Schema({
-    title: String,
-    creator: String,
-    description: String,
+const cardSchema = new Schema({
+    title: {
+        type: String,
+        required: true,
+    },
+    creator: {
+        type: String,
+        required: true,
+    },
+    description: {
+        type: String,
+        required: true,
+    },
     category: {
         type: String,
-        default: "Indoor"
+        default: "Wildcard",
+    },
+    expertAnalysis: {
+        type: Array,
+        default: []
     },
     metric: {
-      type: Number,
-      default: 0
+        type: Number,
+        default: 0,
     },
-  });
+}, {timestamps:true});
 
-//We must create a model to use the schema
-//The first argument is the name of the model -> this becomes the name of the collection in Mongo
-const Card = mongoose.model('Cards', cardSchema)
+//Create a model based on the schema; the first arg is the name of the model
+//Mongoose will pluralize this name (Card -> Cards), which will be the name of the collection looked for in out DB 
+const Card = mongoose.model("Card", cardSchema);
 
 module.exports = Card;

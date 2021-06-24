@@ -13,20 +13,14 @@
         padding: 1rem;
         font-size: 1.6rem;
 
-        ul{
-            margin: 2rem 1rem;
-        }
-        li{
-            padding: 0.5rem;
-        }
+        ul {margin: 2rem 1rem;}
+        li {padding: 0.5rem;}
         a{
             color: whitesmoke;
             text-decoration: none;
             font-size: 1.8rem;
 
-            &:hover{
-                text-decoration: underline 2px;
-            }
+            &:hover{ text-decoration: underline 2px;}
         }
     }
 
@@ -80,19 +74,25 @@
         font-size: 1.2rem;
 
         button{
-            padding: 8px 16px; margin: 1rem 0;
-            font-size: 1.6rem;
+            padding: 12px 24px; margin: 1rem 0;
+            font-size: 1.3rem;
             cursor: pointer;
+            background-color: var(--lighter-black);
+            color: whitesmoke;
+            border-radius: 50px;
+
+            &:hover{transform: scale(0.98);}
         }
     }
 
     @media (max-width:800px) {
+        & {padding: 1.5rem;}
         .left{
             flex: 100%; order: 10;
         }
         .right{
             flex: 100%; order: 20;
-            padding: 2rem 0;
+            padding: 2rem 0 0;
         }
     }
 }
@@ -109,13 +109,9 @@
         margin: 2rem;
     }
 
-    .num{
-        font-size: 5rem;
-    }
+    .num{ font-size: 5rem;}
 
-    h1{
-        margin-right: 1rem;
-    }
+    h1{margin-right: 1rem;}
 }
 
 .member-container{
@@ -123,7 +119,7 @@
     min-height: 400px;
     padding: 2rem;
     background: whitesmoke;
-    color: #292929;
+    color: var(--lighter-black);
     text-align: center;
 
     .member-card{

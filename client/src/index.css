@@ -17,8 +17,7 @@ body{
   --theme-purple: #4e54c8;
 }
 
-.filler{
-  background-color: white;
-  min-height: 400px;
+.fill-5{
+  height: 5vh;
 }
 
