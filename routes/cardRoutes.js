@@ -22,10 +22,14 @@ router.get("/", async (req,res)=>{
 // @GET api/cards/featured 
 // Get the featured cards
 router.get("/featured", async(req,res)=>{
-    const LeadExpert = await User.find({username: 'leadexpert'},'savedCards -_id')
-    const array = await LeadExpert[0].savedCards
-    const featuredCards = await Card.find({'_id':{$in: array}})
-    return res.status(200).send(featuredCards)
+    try{
+        const LeadExpert = await User.find({username: 'leadexpert'},'savedCards -_id')
+        const array = await LeadExpert[0].savedCards
+        const featuredCards = await Card.find({'_id':{$in: array}})
+        return res.status(200).send(featuredCards)
+    }catch(err){
+        console.log(err);
+    }
 })
 
 // @GET api/cards/:category
@@ -39,8 +43,35 @@ router.get("/:category", async(req,res)=>{
     }
 })
 
+// @GET api/cards/savedCards/:userID
+// Get the user's saved cards
+router.get("/savedCards/:userID", async(req,res)=>{
+    try{
+        const user = await User.findById(req.params.userID,'savedCards -_id')
+        const array = await user.savedCards
+        const savedCards = await Card.find({'_id':{$in: array}})
+        return res.status(200).send(savedCards)
+    }catch(err){
+        console.log(err)
+    }
+    
+})
+
+// @GET api/cards/yourCards/:userID
+// Get the user's submitted cards
+router.get("/yourCards/:userID", async(req,res)=>{
+    try{
+        const user = await User.findById(req.params.userID,'yourCards -_id')
+        const array = await user.yourCards
+        const yourCards = await Card.find({'_id':{$in: array}})
+        return res.status(200).send(yourCards)
+    }catch(err){
+        console.log(err)
+    }
+})
+
 // @GET api/cards/one/:id
-// Get ONE Card based on ID
+// Get one card based on ID
 router.get("/one/:id", async (req,res)=>{
     try{
         const singleCard = await Card.findById(req.params.id)
@@ -49,11 +80,6 @@ router.get("/one/:id", async (req,res)=>{
         console.log(err)
     }
 })
-
-
-
-
-
 
 // @POST api/cards
 // Creates a new Card and adds it to the DB
@@ -75,7 +101,7 @@ router.post("/", (req,res)=>{
 // Deletes specified card
 router.delete("/:id", async (req,res)=>{
     await Card.findById(req.params.id)
-                .then(card => card.remove().then(card=> res.status(200).json({deleted:true})))
+                .then(card => card.remove().then(card=> res.status(200).json({deleted:"success"})))
                 .catch(err => res.status(404).json({error: err}))
 })
 
@@ -86,5 +112,6 @@ router.put("/:id", async (req,res)=>{
                 .then(card => res.status(200).json(card))
                 .catch(err => res.status(404).json({err}))
 })
+
 
 module.exports = router;

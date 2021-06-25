@@ -14,7 +14,7 @@ import "./DesignForm.scss";
 //-----Parent container for the form Wizard -----
 const AddDesignForm = ({ closebtn }) => {
     const [userInput, setUserInput] = useState({}); //store all user input in an object
-    const { user } = useContext(UserContext);
+    const { user, setUser } = useContext(UserContext);
     const [step, setStep] = useState(1);
 
     const nextStep = () => {
@@ -25,13 +25,13 @@ const AddDesignForm = ({ closebtn }) => {
         setStep(step - 1);
     };
 
-    //EFFECTS: triggered when an input field on any of the steps changes
-    //         input is the name of the field (title, description, category)
+    //Triggered when an input field on any of the steps changes
     const handleChange = (input_field, e) => {
         setUserInput({ ...userInput, [input_field]: e.target.value });
     };
 
-    const handleSubmit = async () => {
+    const handleSubmit = async (e) => {
+        e.preventDefault();
         //1. Add New card to cards database
         const new_card_info = {
             title: userInput.title,
@@ -42,15 +42,21 @@ const AddDesignForm = ({ closebtn }) => {
         const res = await cardServices.postCard(new_card_info);
 
         //2. Associate new card with current user
-        const update_card_info = {
-            userID: user._id,
-            cardID: res._id,
-        };
-        console.log("Update Info", update_card_info);
-        const update = await userServices.updateUser(update_card_info);
-
-        //3. Reset Form Values
-        setUserInput({});
+        if(res){
+            const update_card_info = {
+                userID: user._id,
+                cardID: res._id,
+            };
+            const update = await userServices.addNewCard(update_card_info);
+            if(update){
+                setStep(5);
+                setUser(update);
+                setUserInput({});
+            }    
+        }else{
+            alert("Something went wrong!")
+        }
+        
     };
 
     switch (step) {
@@ -87,7 +93,7 @@ const AddDesignForm = ({ closebtn }) => {
                     />
                 </div>
             );
-        case 5:
+        case 4:
             return (
                 <div className="form-container">
                     <DesignConfirm
@@ -98,7 +104,7 @@ const AddDesignForm = ({ closebtn }) => {
                     />
                 </div>
             );
-        case 4:
+        case 5:
             return (
                 <div className="form-container">
                     <DesignSuccess prevStep={prevStep} closebtn={closebtn} />

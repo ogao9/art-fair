@@ -8,6 +8,23 @@ import Wildcard from "../images/wildcard.jpg";
 import Outdoor from "../images/outdoors.jpg";
 import Indoor from "../images/indoors.jpg";
 
+export const Categories = [
+    {name: 'Indoor', image: Indoor},
+    {name: 'Outdoor', image: Outdoor},
+    {name: 'Digital', image: Digital},
+    {name: 'Minimal', image: Minimal},
+    {name: 'Audio', image: Audio},
+    {name: 'Wildcard', image: Wildcard},
+  ]
+
+  export const FeatureImages = [
+    {name: 'Indoor', image: Desk},
+    {name: 'Outdoor', image: Tree},
+    {name: 'Digital', image: Digital},
+    {name: 'Minimal', image: Minimal},
+    {name: 'Audio', image: Audio},
+    {name: 'Wildcard', image: Modern},
+  ]
 
 export const FeatureSample = [
     {
@@ -232,11 +249,3 @@ export const SampleData = [
     },
 ];
 
-export const Categories = [
-  {name: 'Indoor', image: Indoor},
-  {name: 'Outdoor', image: Outdoor},
-  {name: 'Digital', image: Digital},
-  {name: 'Minimal', image: Minimal},
-  {name: 'Audio', image: Audio},
-  {name: 'Wildcard', image: Wildcard},
-]

@@ -1,6 +1,5 @@
 import axios from 'axios'
 
-//What we are doing here is making requests with axios to our node.js server, which responds with what we specified
 const cardServices = {
     getAllCards: async () =>{
         try{
@@ -28,6 +27,22 @@ const cardServices = {
             console.log(error);
         }
     },
+    getSavedCards: async(userID)=>{
+        try{
+            let response = await axios.get(`api/cards/savedCards/${userID}`, {baseURL: '/'})
+            return response.data;
+        }catch(error){
+            console.log(error)
+        }
+    },
+    getYourCards: async(userID)=>{
+        try{
+            let response = await axios.get(`api/cards/yourCards/${userID}`, {baseURL: '/'})
+            return response.data;
+        }catch(error){
+            console.log(error)
+        }
+    },
     getOneCard: async(id)=>{
         try{
             let response = await axios.get(`/api/cards/one/${id}`);
@@ -37,19 +52,21 @@ const cardServices = {
             console.log(error)
         }
     },
+    postCard: (newCard)=>{
+        return axios.post('/api/cards', newCard)
+                .then(res => res.data)
+                .catch(err => console.log(err))
+    },
     deleteCard: (id)=>{
         axios.delete(`/api/cards/${id}`)
+                .then(res => res.data)
                 .catch(err => console.log(err))
     },
     updateCard: (id, updated_card)=>{
         axios.put(`/api/cards/${id}`,{...updated_card})
-                .catch(err => console.log(err))
-    },
-    postCard: (newCard)=>{
-        return axios.post('/api/cards', {...newCard})
                 .then(res => res.data)
                 .catch(err => console.log(err))
-    }
+    },
 }
 
 export default cardServices;

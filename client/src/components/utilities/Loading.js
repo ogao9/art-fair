@@ -1,6 +1,6 @@
 import React from 'react'
-import Header from './headfoot/Header'
-import Footer from './headfoot/Footer'
+import Header from '../headfoot/Header'
+import Footer from '../headfoot/Footer'
 
 const Loading = () => {
     return (
@@ -23,9 +23,10 @@ export default Loading
 const LoadingStyle = {
     width: "100%",
     height: "90vh",
-    backgroundColor: "",
+    backgroundColor: "black",
     color: "whitesmoke",
     display: "flex",
     alignItems: "center",
-    justifyContent: "center"
+    justifyContent: "center",
+    textAlign: "center"
 }

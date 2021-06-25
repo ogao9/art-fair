@@ -1,11 +1,29 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect, useContext, useRef } from "react";
 import userServices from "../../services/userServices";
 import { UserContext } from "../../UserContext";
+import {FeatureImages} from '../../services/SampleData'
 import LoginForm from "../login/LoginForm";
 import "./Slideshow.scss";
 
+
+const useClickOutside = (handler) => {
+    const domNode = useRef();
+
+    useEffect(() => {
+        let maybeHandler = (event) => {
+            if (domNode.current && !domNode.current.contains(event.target)) handler();
+        };
+        document.addEventListener("mousedown", maybeHandler);
+
+        return () => {
+            document.removeEventListener("mousedown", maybeHandler);
+        };
+    });
+
+    return domNode;
+};
+
 const Slideshow = ({ featuredArray }) => {
-    const { user } = useContext(UserContext);
     const [currentSlide, setSlide] = useState(0);
     const [paused, setPaused] = useState(false);
     const [intervalID, setIntervalID] = useState();
@@ -50,20 +68,6 @@ const Slideshow = ({ featuredArray }) => {
         setPaused(!paused); //set new state
     };
 
-    async function handleSave() {
-        if (user) {
-            const update_card_info = {
-                //userID: user.id,
-                //cardID: content._id,
-            };
-            console.log("Update Info", update_card_info);
-            const update = await userServices.updateUser(update_card_info);
-        } else {
-            //setShowLogin(true)
-            alert("saving")
-        }
-    }
-
     return (
         <div className="slideshow-container">
             <div className="slideshow-track">
@@ -73,7 +77,6 @@ const Slideshow = ({ featuredArray }) => {
                         content={content}
                         index={index}
                         currentSlide={currentSlide}
-                        handleSave={handleSave}
                     />
                 ))}
             </div>
@@ -96,10 +99,49 @@ const Slideshow = ({ featuredArray }) => {
 export default Slideshow;
 
 
-function SlideshowCard({ content, index, currentSlide, handleSave }) {
+function SlideshowCard({ content, index, currentSlide}) {
+    const { user } = useContext(UserContext);
+    const [showLogin, setShowLogin] = useState(false);
+    const loginRef = useClickOutside (()=>setShowLogin(false))
+    const [saved, setSaved] = useState(false)
+
+    const getImage = ()=>{
+        const image = FeatureImages.find(obj=> obj.name===content.category).image
+        return image;
+    }
+
+    async function handleSave() {
+        if (user) {
+            const cardToSave = {
+                userID: user._id,
+                cardID: content._id,
+            };
+
+            const saved = await userServices.saveCard(cardToSave);
+            if(saved)
+                setSaved(true);
+            else
+                alert("failed!")
+        } else {
+            setShowLogin(true)
+        }
+    }
+
+
+    useEffect(()=>{
+        if(user)
+            setSaved( user.savedCards.includes(content._id))
+    }, [user])
+
+    function resolveAction(){
+        setShowLogin(false);
+        handleSave();
+    }
+
     return (
+        <>
         <div className={`slideshow-slide ${currentSlide === index ? "active" : ""}`}>
-            <img src={content.img} alt="Category Image" />
+            <img src={getImage()} alt="Category Image" />
             <div>
                 <div className="text-flex">
                     <h2>{content.title ? content.title : "Title"}</h2>
@@ -115,10 +157,14 @@ function SlideshowCard({ content, index, currentSlide, handleSave }) {
             </div>
 
             <div>
-                <button onClick={handleSave}>
-                    <i class="far fa-plus-square" /> Save this Design{" "}
-                </button>
+                {saved 
+                ?<button><i class="far fa-check-circle" /> Saved </button>
+                :<button onClick={handleSave}><i class="far fa-plus-square" /> Save this Design</button>
+                }
             </div>
         </div>
+
+        <div className="show-login" ref={loginRef}>{showLogin && <LoginForm resolveAction={resolveAction}/>}</div>
+        </>
     );
 }

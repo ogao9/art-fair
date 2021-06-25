@@ -3,7 +3,7 @@ import { useHistory } from "react-router-dom";
 import userServices from "../../services/userServices";
 import { UserContext } from "../../UserContext";
 
-const LoginForm = () => {
+const LoginForm = ({resolveAction}) => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [newUser, setNewUser] = useState(false);
@@ -12,6 +12,7 @@ const LoginForm = () => {
 
     const {user, setUser} = useContext(UserContext);
     const history = useHistory(); 
+    
 
     const handleSignUp = async (userInfo) => {
         try{
@@ -49,8 +50,7 @@ const LoginForm = () => {
                 const res = await userServices.checkUser(userInfo); 
                 if (res) {
                     setUser(res);
-                    alert(`Welcome ${res.username}!`) //replace with something better
-                    history.push("/Profile");  //redirect user to profile
+                    resolveAction ? resolveAction() : history.push("/Profile");  //redirect user to profile
                 } else {
                     setUser(null);
                     alert('Login Failed!') //replace with snackbar
@@ -111,3 +111,9 @@ const LoginForm = () => {
 };
 
 export default LoginForm;
+
+
+
+LoginForm.defaultProps = {
+    resolveAction : null,
+}

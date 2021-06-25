@@ -12,10 +12,7 @@
         margin: 10px 0;
         border: 1px solid black;
         border-radius: 2px;
-
-        &:invalid{
-            color:red;
-        }
+        font-size: 1rem;
     }
 
     button{
@@ -47,6 +44,27 @@
 
     img{
         text-align: center;
+    }
+
+    select{
+        border:none;
+        background: none;
+        padding: 1rem;
+        font-size: 1.3rem;
+        overflow-y: auto;
+        scrollbar-width: none; /*For Firefox*/;
+
+        option{
+            display: inline-block;
+            border: 1px solid black;
+            margin: 8px 0;
+            padding: 8px 16px;
+            border-radius: 1rem;
+
+            &:checked{background: linear-gradient(#4e54c8, #4e54c8);}
+        }
+
+        
     }
 }
 

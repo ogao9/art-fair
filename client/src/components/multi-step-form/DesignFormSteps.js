@@ -4,7 +4,6 @@ import Card from '../design-home/Card'
 
 
 const DesignCategory = ({nextStep, closebtn, userInput, handleChange}) => {
-
     return (
         <div className="flex-split">
             <div className="left-form">
@@ -12,10 +11,10 @@ const DesignCategory = ({nextStep, closebtn, userInput, handleChange}) => {
                     <img src={DarkLogo} alt="logo"/>
                     <h1>Pick Your Category</h1>
                     <form>
-                        <select value={userInput.category} onChange={(e)=>handleChange("category", e)}>
+                        <select value={userInput.category} onChange={(e)=>handleChange("category", e)} size={6}>
                             <option value="Indoor">Indoor</option>
                             <option value="Outdoor">Outdoor</option>
-                            <option value="Digital">Indoor</option>
+                            <option value="Digital">Digital</option>
                             <option value="Audio">Audio</option>
                             <option value="Minimal">Minimal</option>
                             <option value="Wilcard">Wildcard</option>
@@ -33,12 +32,9 @@ const DesignCategory = ({nextStep, closebtn, userInput, handleChange}) => {
 
 
 const DesignDetails = ({ nextStep, prevStep, userInput, handleChange }) => {
-
     return (
         <div className="flex-split">
-        
             <div className="left-form">
-                
                 <div>
                 <img src={DarkLogo} alt="logo"/>
                 <form>
@@ -53,6 +49,7 @@ const DesignDetails = ({ nextStep, prevStep, userInput, handleChange }) => {
                         value={userInput.title}
                         onChange={(e) => handleChange("title", e)}
                         maxLength="20"
+                        required
                     ></input>
 
                     <label htmlFor="description">
@@ -66,6 +63,7 @@ const DesignDetails = ({ nextStep, prevStep, userInput, handleChange }) => {
                         placeholder="Description"
                         value={userInput.description}
                         onChange={(e) => handleChange("description", e)}
+                        required
                     ></input>
                 </form>
                 <button onClick={prevStep}>Back</button>
@@ -112,39 +110,38 @@ const DesignUpload = ({ nextStep, prevStep, handleChange, userInput }) => {
 };
 
 
-const DesignConfirm = ({ nextStep, prevStep, handleSubmit, userInput }) => {
-    const onSubmit = () => {
-        //handleSubmit(); //userInput is already housed in UserForm.js
-        nextStep();
-    };
+const DesignConfirm = ({ prevStep, handleSubmit, userInput }) => {
 
     return (
-        <div>
-            <h1>Preview</h1>
-            <Card content={userInput} impactbtn={null}/>
-           <button onClick={prevStep}>Back</button>
-            <button onClick={onSubmit}>Submit</button> 
+        <div className="flex-split">
+            <div className="left-form">
+                <div>
+                <h1>Preview</h1>
+                <Card content={userInput}/> 
+                <button onClick={prevStep}>Back</button>
+                <button onClick={(e)=> handleSubmit(e)}>Submit</button> 
+                </div>
+            </div>
+            <div className="form-image"></div>
         </div>
     );
 };
 
 
-
-
-const DesignSuccess = ({prevStep, closebtn, handleSubmit}) => {
+const DesignSuccess = ({prevStep, closebtn}) => {
     
     return (
         <div className="flex-split">
-        <div className="left-form">
-            <div className="success-page">
-            <h1><i class="fas fa-check-circle fa-5x" style={{"color":"green"}}></i></h1>
-            <h1>Success!</h1> 
-            <p>You have earned a contributor badge and your design should appear in your profile within minutes.</p>
-            <button onClick={prevStep}>[Temporary] Back</button>
-            <button onClick={closebtn}>Done!</button>
+            <div className="left-form">
+                <div className="success-page">
+                <h1><i class="fas fa-check-circle fa-5x" style={{"color":"green"}}></i></h1>
+                <h1>Success!</h1> 
+                <p>You have earned a contributor badge and your design should appear in your profile within minutes.</p>
+                <button onClick={prevStep}>[Temporary] Back</button>
+                <button onClick={closebtn}>Done!</button>
+                </div>
             </div>
-        </div>
-        <div className="form-image"></div>
+            <div className="form-image"></div>
         </div>
     )
 }

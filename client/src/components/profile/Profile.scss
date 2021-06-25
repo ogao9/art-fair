@@ -9,7 +9,7 @@
     flex-wrap: wrap;
     width: 100%;
     background-color: #f3f7f7;
-    color: black;
+    color: var(--lighter-black);
     position: relative;
 
     .form-active{
@@ -56,7 +56,7 @@
 }
 
 .profile-about{
-    margin: 1rem 0;
+    margin: 0.5rem 0;
 
     input{
         display: block;
@@ -77,14 +77,16 @@
     }
 
     .about-view{
+        p:nth-child(odd){ color:rgb(119, 119, 119)}
         p:nth-child(even){
-            margin-bottom: 1rem;
+            margin-bottom: 1rem; font-weight: bold;
         }
     }
 }
 
 .profile-edit{
     display: flex; justify-content: space-between; align-items: center;
+    margin-bottom: 1rem;
     
     button{
         @extend %btn-reset;

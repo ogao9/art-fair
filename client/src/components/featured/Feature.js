@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom'
 import cardServices from '../../services/cardServices'
 import Header from "../headfoot/Header"
 import Footer from "../headfoot/Footer"
-import Loading from '../Loading'
+import Loading from '../utilities/Loading'
 import Slideshow from "./Slideshow"
 import Card from "../design-home/Card"
 import './Feature.scss'
@@ -65,7 +65,7 @@ const Feature = () => {
         <>
             <div className="fill-screen">
                 <Header/>
-                <div className="top-spacer"/>
+                <div className="feature-spacer"/>
 
                 <div className="feature-container">
                     <div className="feature-left">
@@ -81,7 +81,7 @@ const Feature = () => {
                 </div>
             </div>
 
-            <div className="top-spacer"></div>
+            <div className="feature-spacer"></div>
 
             <div className="analysis-container" id="analysis">
                     <div className="left-experts">
