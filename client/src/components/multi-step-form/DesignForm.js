@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import { UserContext } from "../../UserContext";
+import { UserContext } from "../utilities/UserContext";
 import cardServices from "../../services/cardServices";
 import userServices from "../../services/userServices";
 import {

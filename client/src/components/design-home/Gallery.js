@@ -1,50 +1,17 @@
 import React from "react";
-import { Link, Route, Switch, useRouteMatch, Redirect } from "react-router-dom";
+import { Link, Route, Switch, useRouteMatch,} from "react-router-dom";
+import { CategoryRoute } from "../utilities/CustomRoutes";
+import { Categories, AddDesignImg } from "../../services/SampleData";
 import Header from "../headfoot/Header";
 import Footer from "../headfoot/Footer";
-import {GalleryCategory} from "./GalleryCategory"
-import { Categories } from "../../services/SampleData";
-import "./Gallery.scss";
+import GalleryCategory from "./GalleryCategory"
+import "./Gallery.scss"
 
-function CategoryRoute({children, path}){
-    const categories = ["Indoor", "Outdoor", "Digital", "Audio", "Wildcard", "Minimal"]
-    const validCategory = categories.includes("") ? true : true;
-
+const GalleryHome = ()=>{
     return(
-        <Route path={path} render={()=>{
-            return validCategory
-                ? children
-                : <Redirect to='/Gallery'/>
-        }} />
-    )
-}
-
-const Gallery = () => {
-    const {path, url} = useRouteMatch(); //url is the actual current url while path contains the pattern of current URL
-
-    return (
-        <>
+        <>  
             <Header />
-            <Switch>
-                <CategoryRoute path={`${path}/:category`}> 
-                    <GalleryCategory/>
-                </CategoryRoute>
-                <Route path={`${path}`}>
-                    <GalleryHome/>
-                </Route>
-            </Switch>
-            <Footer />
-        </>
-    );
-};
-
-export default Gallery;
-
-
-function GalleryHome(){
-    return(
-        <>
-            <section className="designhome-welcome">
+            <section className="galleryhome-welcome">
                 <div className="welcome-text">
                     <h1>Find your inspiration. Find your design.</h1>
                     <p>
@@ -69,6 +36,25 @@ function GalleryHome(){
                     ))}
                 </div>
             </section>
+            <Footer/>
         </>
     )
 }
+
+const Gallery = () => {
+    const {path} = useRouteMatch(); 
+    return (
+        <>
+            <Switch>
+                <CategoryRoute path={`${path}/:category`}> 
+                    <GalleryCategory/>
+                </CategoryRoute>
+                <Route path={`${path}`}>
+                    <GalleryHome/>
+                </Route>
+            </Switch>
+        </>
+    );
+};
+
+export default Gallery;

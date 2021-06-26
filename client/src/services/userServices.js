@@ -15,14 +15,14 @@ const userServices = {
     },
     saveCard: (cardToSave) => {
         return axios
-            .put("/users/saveCard", cardToSave)
-            .then((res) => res.data)
+            .put("/users/saveCard", cardToSave,  {baseURL: '/'})
+            .then((res) => res.data) //the response is the entire updated user
             .catch((err) => console.log(err));
     },
     removeSavedCard: (userCardInfo)=>{
         //I'm sending userID and cardID
         return axios.put("/users/removeSavedCard", userCardInfo)
-        .then(res=> res.data)
+        .then(res=> res.data) //the response is the entire updated user
         .catch(err=>console.log(err))
     },
     updatePersonalInfo: (updated_info) => {

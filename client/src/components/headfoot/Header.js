@@ -1,6 +1,6 @@
 import React, {useState, useRef, useEffect, useContext} from 'react'
 import {Link, NavLink} from 'react-router-dom'
-import { UserContext } from '../../UserContext';
+import { UserContext } from '../utilities/UserContext';
 import Avatar from '@material-ui/core/Avatar';
 import Logo from '../../images/Logo.png'
 import './Header.scss'

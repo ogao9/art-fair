@@ -49,26 +49,25 @@
     }
 }
 
-
-
 @keyframes spin {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
 }
 
 .Login-form{
+    display: flex; flex-flow: column nowrap; align-items: center;
     width: clamp(300px, 100%, 800px);
     padding: 1.5rem;
     border: 1px solid whitesmoke; border-radius: 5px;
     background-color: whitesmoke;
     color: var(--lighter-black);
     position: relative;
+    z-index: 100;
 
     #login-spinner{
-        position: absolute;
-        top: 50%; left: 50%;
         transform: translate(-50%, -50%);
         animation: spin 2s infinite;
+        text-align: center;
     }
 
     .username-flex{
@@ -81,12 +80,15 @@
         text-align: center;
     }
 
+    label{align-self:flex-start;}
+
     input{
         display: block;
         width: 100%;
-        padding: 10px;
+        padding: 12px;
         margin: 10px 0;
-        border-radius: 5px;
+        border-radius: 3px;
+        border: 2px solid lightgray;
         font-size: 1.2rem;
     }
 
@@ -107,15 +109,15 @@
 
     button[type="button"]{
         @extend %btn-reset;
-        text-decoration: underline;
+        text-decoration: underline 2px;
         cursor: pointer;
     }
 
-    section{
+    .login-footer{
         text-align: center;
         margin-top: 1rem;
 
-        p{ margin: 1rem 0; }
+        p{ margin: 1rem 0; font-size: 1.1rem; }
     }
 
     .error-msg{

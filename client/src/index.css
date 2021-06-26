@@ -1,5 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
 
 * {
   box-sizing: border-box;
@@ -8,11 +8,10 @@
 }
 
 body{
-  font-family: 'Roboto', 'Open Sans', sans-serif;
+  font-family: 'Roboto', sans-serif;
 }
 
 :root{
-  --color-azure: #3e8ef1;
   --lighter-black: #121212;
   --theme-purple: #4e54c8;
 }

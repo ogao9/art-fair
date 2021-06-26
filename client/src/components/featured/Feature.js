@@ -7,7 +7,6 @@ import Loading from '../utilities/Loading'
 import Slideshow from "./Slideshow"
 import Card from "../design-home/Card"
 import './Feature.scss'
-//import {FeatureSample} from '../../services/SampleData'
 
 const Feature = () => {
     const [featuredContent, setContent] = useState([]);
@@ -63,7 +62,7 @@ const Feature = () => {
 
     return (
         <>
-            <div className="fill-screen">
+            <div className="top-wrapper">
                 <Header/>
                 <div className="feature-spacer"/>
 

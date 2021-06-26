@@ -7,6 +7,16 @@ import Minimal from "../images/minimal.jpg";
 import Wildcard from "../images/wildcard.jpg";
 import Outdoor from "../images/outdoors.jpg";
 import Indoor from "../images/indoors.jpg";
+import SubmitImg from "../images/submitForm.png"
+
+export const AddDesignImg = SubmitImg;
+
+export const TeamMembers = [
+    { name: "Dee Signer", role: "UI/UX Designer" },
+    { name: "Ray Act", role: "Frontend Developer" },
+    { name: "Dan Mongo", role: "Database Engineer" },
+    { name: "Noda Esper", role: "Backend Engineer" },
+];
 
 export const Categories = [
     {name: 'Indoor', image: Indoor},
@@ -17,7 +27,7 @@ export const Categories = [
     {name: 'Wildcard', image: Wildcard},
   ]
 
-  export const FeatureImages = [
+  export const CardImages = [
     {name: 'Indoor', image: Desk},
     {name: 'Outdoor', image: Tree},
     {name: 'Digital', image: Digital},

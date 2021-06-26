@@ -1,14 +1,8 @@
 import React from "react";
+import { TeamMembers } from "../../services/SampleData";
 import Header from "../headfoot/Header";
 import Footer from "../headfoot/Footer";
 import "./About.scss";
-
-const teamMembers = [
-    { name: "Dee Signer", role: "UI/UX Designer" },
-    { name: "Ray Act", role: "Frontend Developer" },
-    { name: "Dan Mongo", role: "Database Engineer" },
-    { name: "Noda Esper", role: "Backend Engineer" },
-];
 
 const About = () => {
     return (
@@ -77,7 +71,7 @@ const About = () => {
                     </div>
                 
                     <div className="member-container">
-                        {teamMembers.map((value, index)=>(
+                        {TeamMembers.map((value, index)=>(
                             <section className="member-card">
                                 <i class="fas fa-user-tie fa-5x"></i>
                                 <h1>{value.name}</h1>

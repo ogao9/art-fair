@@ -1,42 +1,34 @@
 @import "../../index";
 
-:root{
-    --box-margin: 1rem;
-}
-
 .profile-container {
-    display: flex;
-    flex-wrap: wrap;
+    display: flex; flex-wrap: wrap;
     width: 100%;
+    padding: 4rem 2rem;
     background-color: #f3f7f7;
     color: var(--lighter-black);
     position: relative;
 
-    .form-active{
-        opacity: 0.5;
-    }
+    .form-active{ opacity: 0.5;}
 
     .profile-left {
-        flex: calc(30% - var(--box-margin)*2);
-        margin: 0 var(--box-margin);
-        padding: 1rem 3rem;
+        flex: 30%;
+        padding: 0 2rem;
         min-height: 400px;
+
+        hr{ margin: 1rem 0; color:rgb(119, 119, 119);}
     }
 
     .profile-right {
-        flex: calc(70% - var(--box-margin)*2);
-        margin: 0 var(--box-margin);
-        min-height: 400px;
+        flex: 70%;
         display: flex; flex-direction: column;
+        min-height: 400px;
+        padding: 0 1rem;
     }
 
     @media (max-width: 900px) {
-        .profile-left{
+        .profile-left, .profile-right{
             flex: 100%;
             padding: 1rem;
-        }
-        .profile-right{
-            flex: 100%;
         }
     }    
 }
@@ -45,14 +37,16 @@
     display: grid; place-items: center;
     width: 100px; height: 100px;
     margin-bottom: 1rem;
-    border-radius: 5px;
     background-color: var(--theme-purple);
     color: lightgray;
+    border-radius: 5px;
     font-size: 2.5rem;
 }
 
 .profile-header{
     margin-bottom: 1rem;
+
+    p{color: rgb(119, 119, 119);}
 }
 
 .profile-about{
@@ -61,9 +55,10 @@
     input{
         display: block;
         width: 80%;
-        padding: 8px 16px;
+        padding: 12px;
         margin: 8px 0;
-        border-radius: 5px;
+        border: 1px solid #ccc;
+        border-radius: 3px;
         font-size: 1rem;
     }
 
@@ -77,32 +72,33 @@
     }
 
     .about-view{
+        p{font-size: 1.1rem; margin-bottom: 4px;}
+
         p:nth-child(odd){ color:rgb(119, 119, 119)}
+
         p:nth-child(even){
-            margin-bottom: 1rem; font-weight: bold;
+            margin-bottom: 1rem; font-weight: 600; 
         }
     }
-}
 
-.profile-edit{
-    display: flex; justify-content: space-between; align-items: center;
-    margin-bottom: 1rem;
-    
-    button{
-        @extend %btn-reset;
-        cursor: pointer;
+    .profile-edit{
+        display: flex; justify-content: space-between; align-items: center;
+        margin-bottom: 1rem;
+        
+        button{
+            @extend %btn-reset;
+            cursor: pointer;
+        }
     }
-
-    
 }
 
 .right-item{
     width: 100%;
     min-height: 300px;
     padding: 1.5rem;
-    margin: 1rem 0;
+    margin-bottom: 2rem;
     background-color: white;
-    color: black; 
+    color: var(--lighter-black); 
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.3);
 
     h2.title{
@@ -110,15 +106,35 @@
     }
 }
 
-.link-submit{
-    width: clamp(200px, 50%, 600px);
-    padding: 16px;
-    border-radius:10px;
-    color: whitesmoke;
-    background-color: black;
-    cursor: pointer;
+.badge-container{
+    display: grid; 
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    margin: 2rem 0;
+    text-align: center;
+    font-size: 1.1rem;
+
+    i{
+        color: #f9d423;
+        display: block;
+    }
 }
 
+.your-designs{
+    display: flex; justify-content: space-between; 
+    width: 100%;
+
+    button{
+        width: 200px;
+        padding: 16px;
+        border-radius: 10px;
+        color: whitesmoke;
+        background-color: var(--lighter-black);
+        font-size: 1.1rem;
+        cursor: pointer;
+
+        &:hover{transform: scale(0.98);}
+    }
+}
 
 .card-container{
     display: grid;
@@ -135,17 +151,3 @@
     width: clamp(325px, 80%, 1800px);
     
 }
-
-.badge-container{
-    display: grid; 
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-    margin: 2rem 0;
-    text-align: center;
-    font-size: 1.1rem;
-
-    i{
-        color: #f9d423;
-    }
-}
-
-

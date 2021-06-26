@@ -1,0 +1,27 @@
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.loading-container{
+    display: flex; align-items: center; justify-content: center;
+    width: 100%;
+    height: 100vh;
+    background-color: var(--lighter-black);
+    color: whitesmoke;
+    text-align: center;
+
+    #login-spinner{
+        animation: spin 2s infinite;
+    }
+}
+
+.page404-container{
+    display: flex; align-items: center; justify-content: center;
+    width: 100%;
+    height: 100vh;
+    background-color: var(--lighter-black);
+    color: whitesmoke;
+    text-align: center;
+}
+

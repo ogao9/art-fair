@@ -25,16 +25,13 @@
         margin: 10px 0;
         font-size: 1rem;
 
-        &:hover{
-            transform: scale(0.98);
-        }
+        &:hover{ transform: scale(0.98);}
     }
 }
 
 .flex-split{
     display: flex; flex-wrap: wrap;
-    width: 100%;
-    height: 100%;
+    width: 100%; height: 100%;
 }
 
 .left-form{
@@ -42,24 +39,19 @@
     padding: 1rem;
     display: flex; align-items: center; justify-content: center;
 
-    img{
-        text-align: center;
-    }
-
     select{
-        border:none;
-        background: none;
+        display: flex; flex-flow: wrap;
+        border: none; background: none;
+        width: 200px;
         padding: 1rem;
-        font-size: 1.3rem;
-        overflow-y: auto;
+        font-size: 1.2rem;
         scrollbar-width: none; /*For Firefox*/;
 
         option{
-            display: inline-block;
             border: 1px solid black;
             margin: 8px 0;
             padding: 8px 16px;
-            border-radius: 1rem;
+            border-radius: 50px;
 
             &:checked{background: linear-gradient(#4e54c8, #4e54c8);}
         }
@@ -68,8 +60,15 @@
     }
 }
 
+.left-form-container{
+    width: clamp(300px, 90%, 1200px);
+    margin: 0 auto;
+    display: flex; flex-flow: column; align-items: center;
+}
+
 .form-image{
     flex: 50%;
+    min-height: 100px;
     background-color: #4e54c8;
     background-image: url('../../images/PurpleCheese.svg');
     background-attachment: fixed;
@@ -78,23 +77,14 @@
 }
 
 @media (max-width: 800px) {
-    .left-form, .form-image{
-        flex:100%;
+    .left-form {
+        flex:100%; order: 5;
+    }
+    .form-image{
+        flex:100%; order: 1;
     }
 }
+
 .success-page{
     text-align: center;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-

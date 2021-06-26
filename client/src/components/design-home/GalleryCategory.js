@@ -1,11 +1,49 @@
 import React, { useState, useEffect } from "react";
-import { Link, Route, useRouteMatch, useParams} from "react-router-dom";
+import { Link, Route, useRouteMatch, useParams, useHistory } from "react-router-dom";
+import { Categories, AddDesignImg } from "../../services/SampleData";
+import { useClickOutside } from "../utilities/useClickOutside";
+import Loading from "../utilities/Loading"
 import cardServices from "../../services/cardServices";
+import Header from "../headfoot/Header";
+import Footer from "../headfoot/Footer";
 import Card from "./Card";
-import GalleryCard from "./GalleryCard"
-import SubmitImg from "../../images/submitForm.png"
+import GalleryDisplay from "./GalleryDisplay";
 import './GalleryCategory.scss'
-//import { SampleData} from "../../services/SampleData";
+
+
+const LargeCard = ({setBlur}) => {
+    const [content, setContent] = useState([]);
+    const [loading, setLoading] = useState(false);
+    const history = useHistory();
+    const cardRef = useClickOutside(() => {
+        history.replace(`/Gallery/${category}`);
+    });
+
+    const { id, category } = useParams(); 
+
+    useEffect(() => {
+        setBlur(true); setLoading(true);
+        const getData = async () =>{
+            const data = await cardServices.getOneCard(id);
+            setContent(data);
+        }
+        getData();
+        setLoading(false);
+
+        return () => {
+            setBlur(false);
+        };
+    }, []);
+
+    if(loading)
+        return <h2>Loading</h2>
+
+    return(
+        <div className="large-card" ref={cardRef}>
+            <Card content={content} config="slideshow"/>
+        </div>
+    )
+}
 
 const GalleryCategory = () =>{
     const [galleryData, setGalleryData] = useState([]);
@@ -17,18 +55,23 @@ const GalleryCategory = () =>{
 
     useEffect(() => {
         setLoading(true);
+
         const setData = async () => {
             const data = await cardServices.getCategoryCards(category);
             setGalleryData(data);
             setLoading(false);
         };
+
         setData();
     },[]); 
 
+
     if(loading)
-        return <h2>Loading...</h2>
+        return <Loading/>
+
     return (
         <>
+            <Header />
             <div className={`gallery-container ${blur ? "blur" : ""}`}>
                 <section className="gallery-welcome">
                     <div>
@@ -42,7 +85,7 @@ const GalleryCategory = () =>{
 
             <section className="card-popup">
                 <Route path={`${path}/:id`}>
-                    <GalleryCard setBlur={setBlur}/>
+                    <LargeCard setBlur={setBlur}/>
                 </Route>
             </section>
 
@@ -56,93 +99,12 @@ const GalleryCategory = () =>{
                 </div>
 
                 <div className="teaser-right">
-                    <img src={SubmitImg} alt="submit form screenshot" />
+                    <img src={AddDesignImg} alt="submit form screenshot" />
                 </div>
             </div>
+            <Footer />
         </>
     );
 }
 
-function GalleryDisplay({cardsPerPage, galleryData}){
-    const {url} = useRouteMatch();   
-
-    // Pagination: Slicing cardsToShow array -----
-    const [currentPage, setCurrentPage] = useState(1);
-    const endIndex = cardsPerPage * currentPage;
-    const startIndex = endIndex - cardsPerPage;
-    const cardsToShow = galleryData.slice(startIndex, endIndex);
-    
-    return(
-        <>
-        <section className="gallery-content">
-            <div className="card-container">
-                {cardsToShow.length
-                    ? cardsToShow.map((cardInfo) => (
-                        <div className="gallery-card" key={cardInfo._id}>
-                            <Link to={`${url}/${cardInfo._id}`}/>
-                            <Card
-                                content={cardInfo}
-                            />
-                        </div>
-                    ))
-                    : "No Cards Available"}
-            </div>
-        </section>
-        
-        <Pagination
-            currentPage={currentPage}
-            setPage={(page) => setCurrentPage(page)}
-            totalCards={galleryData.length}
-            cardsPerPage={cardsPerPage}
-        />
-            
-        </>
-    )
-}
-
-GalleryDisplay.defaultProps = {
-    cardsPerPage: 6
-};
-
-
-function Pagination({ currentPage, setPage, totalCards, cardsPerPage }) {
-    const numPages = Math.ceil(totalCards / cardsPerPage);
-    const pages = [];
-    for (let i = 1; i <= numPages; i++) pages.push(i);
-
-    const handleClick = (e, value) => {
-        setPage(value);
-    };
-
-    const next = () =>{
-        if(currentPage !== pages.length)
-            setPage(currentPage + 1)
-    }
-
-    const prev = () =>{
-        if(currentPage !== 1)
-            setPage(currentPage - 1)
-    }
-
-    return (
-        <nav className="pagination-container">
-            <ul>
-                <li><a href="#!" onClick={prev}><i class="fas fa-angle-double-left fa-sm"/></a></li>
-            {pages.map((pageNum) => (
-                <li key={pageNum}>
-                <a
-                    href="#!"
-                    onClick={(e) => handleClick(e, pageNum)}
-                    className={currentPage === pageNum ? "active" : null}
-                >
-                    {pageNum}
-                </a>
-                </li>
-            ))}
-                <li><a href="#!" onClick={next}><i class="fas fa-angle-double-right fa-sm"/></a></li>
-            </ul>
-        </nav>
-    );
-}
-
-export{GalleryCategory, GalleryDisplay}
+export default GalleryCategory;

@@ -8,7 +8,7 @@ const roadmapSteps = [
     { desc: "Check out featured designs with expert analysis", link: <Link to='/Featured'/>},
     { desc: "Get inspired by more designs in the Gallery",  link: <Link to='/Gallery'/> },
     { desc: "Create an account to save your favorite designs", link: <Link to='/Login'/> },
-    { desc: "Submit your own designs to inspire others",  link: <Link to='/profile'/> },
+    { desc: "Submit your own designs to inspire others",  link: <Link to='/Profile'/> },
     { desc: "Discuss interesting designs on the Forums",  link: <Link to='/Forum'/> },
     { desc: "Deploy an inspired design into the real-world. Repeat.", link: <a href="#"/>},
 ];

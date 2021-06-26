@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import Header from "../headfoot/Header";
 import Footer from "../headfoot/Footer";
 import LoginForm from "./LoginForm";
@@ -7,6 +7,11 @@ import "./Login.scss";
 
 
 const Login = () => {
+    const history = useHistory();
+    const toProfile = () =>{
+        history.push('/Profile');
+    }
+    
     return (
         <>
             <Header />
@@ -21,7 +26,7 @@ const Login = () => {
                     </div>
 
                     <div className="login-right">
-                        <LoginForm />
+                        <LoginForm onLoginSuccess={toProfile}/>
                     </div>
                 </div>
             </div>

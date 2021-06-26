@@ -1,53 +1,54 @@
-import React, { useState, useRef, useContext, useEffect } from "react";
+import React, { useState, useContext, useEffect } from "react";
+import { useClickOutside} from "../utilities/useClickOutside"
+import { UserContext } from "../utilities/UserContext";
 import userServices from "../../services/userServices";
-import { UserContext } from "../../UserContext";
+import { CardImages } from "../../services/SampleData";
 import LoginForm from "../login/LoginForm";
-import { Categories } from "../../services/SampleData";
 import './Card.scss'
 
-const getImage = (category) =>{
-    return Categories.find(obj => obj.name === category).image;
+
+function getImage(category){
+    if(category)
+        return CardImages.find(obj => obj.name === category).image;
+    else    
+        return null;
 }
 
-
-const useClickOutside = (handler) => {
-    const domNode = useRef();
-
-    useEffect(() => {
-        let maybeHandler = (event) => {
-            if (domNode.current && !domNode.current.contains(event.target)) handler();
-        };
-        document.addEventListener("mousedown", maybeHandler);
-
-        return () => {
-            document.removeEventListener("mousedown", maybeHandler);
-        };
-    });
-
-    return domNode;
-};
-
-const Card = ({ content, children }) => {
-    const [showLogin, setShowLogin] = useState(false)
-    const {user} = useContext(UserContext);
+const Card = ({ content, children, config }) => {
+    const {user, setUser} = useContext(UserContext);
     const loginRef = useClickOutside (()=>setShowLogin(false))
+
+    const [showLogin, setShowLogin] = useState(false)
+    const [saved, setSaved] = useState(false)
     const image = getImage(content.category)
 
-    async function handleSave(){
-        if(user){
+    useEffect(()=>{
+        if(user)
+            setSaved( user.savedCards.includes(content._id))
+    }, [user])
+
+    async function handleSave() {
+        if (user) {
             const cardToSave = {
                 userID: user._id,
                 cardID: content._id,
             };
-            const update = await userServices.saveCard(cardToSave);
-            if(update)
-                alert("card saved!")
+
+            const saved = await userServices.saveCard(cardToSave);
+            if(saved){
+                setSaved(true); setUser(saved)
+            }
             else
-                console.log("Something went wrong saving your card");
-        }
-        else{
+                alert("Failed to save card")
+        } else {
             setShowLogin(true);
         }
+    }
+
+    function onLoginSuccess(){
+        console.log("onLoginSuccess Called")
+        setShowLogin(false);
+        handleSave();
     }
 
     return (
@@ -65,17 +66,25 @@ const Card = ({ content, children }) => {
                     </div>
                 </div>
 
+                {config==="slideshow" ? <p>{content.description}</p> : null}
+
                 <div>
-                    <button onClick={handleSave}><i class="far fa-plus-square"/> Save this Design </button>
+                    { saved
+                    ? <p><i class="far fa-check-circle" /> Saved </p>  
+                    : <button onClick={handleSave}><i class="far fa-plus-square"/> Save this Design </button>
+                    }
                 </div>
+
                 {children}
             </div>
 
-            <div className="show-login" ref={loginRef}>{showLogin && <LoginForm/>}</div>
+            <div className="show-login" ref={loginRef}>{showLogin && <LoginForm onLoginSuccess={onLoginSuccess}/>}</div>
         </>
     );
 };
 
 export default Card;
 
-
+Card.defaultProps = {
+    config: "gallery"
+}
