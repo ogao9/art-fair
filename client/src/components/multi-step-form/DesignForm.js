@@ -2,22 +2,17 @@ import React, { useState, useContext } from "react";
 import { UserContext } from "../utilities/UserContext";
 import cardServices from "../../services/cardServices";
 import userServices from "../../services/userServices";
-import {
-    DesignCategory,
-    DesignDetails,
-    DesignUpload,
-    DesignConfirm,
-    DesignSuccess,
-} from "./DesignFormSteps";
+import { DesignCategory, DesignDetails, DesignUpload, DesignConfirm, DesignSuccess} from "./DesignFormSteps";
 import "./DesignForm.scss";
 
-//-----Parent container for the form Wizard -----
+
 const AddDesignForm = ({ closebtn }) => {
-    const [userInput, setUserInput] = useState({}); //store all user input in an object
     const { user, setUser } = useContext(UserContext);
+    const [userInput, setUserInput] = useState({"category":"Indoor", "creator": user.username}); 
     const [step, setStep] = useState(1);
 
-    const nextStep = () => {
+    const nextStep = (e) => {
+        e.preventDefault();
         setStep(step + 1);
     };
 
@@ -32,22 +27,21 @@ const AddDesignForm = ({ closebtn }) => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        //1. Add New card to cards database
         const new_card_info = {
             title: userInput.title,
             description: userInput.description,
             category: userInput.category,
-            creator: user.username,
+            creator: userInput.creator
         };
         const res = await cardServices.postCard(new_card_info);
 
-        //2. Associate new card with current user
         if(res){
             const update_card_info = {
                 userID: user._id,
                 cardID: res._id,
             };
             const update = await userServices.addNewCard(update_card_info);
+            
             if(update){
                 setStep(5);
                 setUser(update);
@@ -56,59 +50,51 @@ const AddDesignForm = ({ closebtn }) => {
         }else{
             alert("Something went wrong!")
         }
-        
     };
 
     switch (step) {
         case 1:
             return (
-                <div className="form-container">
-                    <DesignCategory
-                        nextStep={nextStep}
-                        closebtn={closebtn}
-                        handleChange={handleChange}
-                        userInput={userInput}
-                    />
-                </div>
+                <DesignCategory
+                    closebtn={closebtn}
+                    nextStep={nextStep}
+                    handleChange={handleChange}
+                    userInput={userInput}
+                />
             );
         case 2:
             return (
-                <div className="form-container">
-                    <DesignDetails
-                        nextStep={nextStep}
-                        prevStep={prevStep}
-                        handleChange={handleChange}
-                        userInput={userInput}
-                    />
-                </div>
+                <DesignDetails
+                    prevStep={prevStep}
+                    nextStep={nextStep}
+                    handleChange={handleChange}
+                    userInput={userInput}
+                />
             );
         case 3:
             return (
-                <div className="form-container">
-                    <DesignUpload
-                        prevStep={prevStep}
-                        nextStep={nextStep}
-                        handleChange={handleChange}
-                        userInput={userInput}
-                    />
-                </div>
+                <DesignUpload
+                    prevStep={prevStep}
+                    nextStep={nextStep}
+                    handleChange={handleChange}
+                    userInput={userInput}
+                />
             );
         case 4:
             return (
-                <div className="form-container">
-                    <DesignConfirm
-                        prevStep={prevStep}
-                        nextStep={nextStep}
-                        handleSubmit={handleSubmit}
-                        userInput={userInput}
-                    />
-                </div>
+                <DesignConfirm
+                    prevStep={prevStep}
+                    nextStep={nextStep}
+                    handleSubmit={handleSubmit}
+                    userInput={userInput}
+                />
             );
         case 5:
             return (
-                <div className="form-container">
-                    <DesignSuccess prevStep={prevStep} closebtn={closebtn} />
-                </div>
+                <DesignSuccess 
+                    prevStep={prevStep} 
+                    closebtn={closebtn} 
+                />
             );
         default:
             return <h1>Oops! Something went wrong...</h1>;

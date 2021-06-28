@@ -25,7 +25,7 @@ const HomePage = () => {
                         in the wild. Let us help you inject some creative design into your
                         daily life.
                     </p>
-                    <Link to="/Gallery">
+                    <Link to="/Featured">
                         <button className="big-discover-button">Discover</button>
                     </Link>
                 </div>

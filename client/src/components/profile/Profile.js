@@ -9,10 +9,9 @@ import GalleryDisplay from "../design-home/GalleryDisplay";
 import DesignForm from "../multi-step-form/DesignForm"
 import "./Profile.scss";
 
-const Badges = ["Design Novice", "Contributor"]
 
 const Profile = () => {
-    const {user} = useContext(UserContext);
+    const {user, setUser} = useContext(UserContext);
     const [yourCards, setYourCards] = useState([]);
     const [savedCards, setSavedCards] = useState([]);
     const [aboutInfo, setAboutInfo] = useState({})
@@ -33,23 +32,23 @@ const Profile = () => {
     }, [user])
 
     const removeYourCard = async (cardID)=>{
-        const res = await cardServices.deleteCard(cardID)
+        const res = await cardServices.deleteCard(cardID);
+
         if(res){
-            alert("Card Deleted")
+            const updateProfile = await userServices.removeYourCard({userID: user._id, cardID})
+            if(updateProfile) setUser(updateProfile);
+            else alert("Failed to update profile after removing card")
         }
         else
-            alert("Something went wrong!")
+            alert("Failed to remove your card")
     }
 
     const removeSavedCard = async(cardID) =>{
         const info = {userID: user._id, cardID}
         const res = await userServices.removeSavedCard(info)
 
-        if(res){
-            alert("saved card removed")
-        }
-        else
-            alert("Bad")
+        if(res) setUser(res);
+        else alert("Failed to remove saved card")
     }
     
     if(loading)
@@ -72,7 +71,7 @@ const Profile = () => {
                     <section className="right-item">
                         <h2>Badges</h2>
                         <div className="badge-container">
-                            {Badges.map((str, idx) => (
+                            {user.badges.map((str, idx) => (
                                 <div key={idx}>
                                     <i class="fab fa-creative-commons-share fa-5x"/>
                                     <p>{str}</p>
@@ -88,13 +87,16 @@ const Profile = () => {
                         </div>
                         {yourCards.length
                         ? <GalleryDisplay cardsPerPage={3} galleryData={yourCards} handleRemove={removeYourCard}/>
-                        : null
+                        : <p>No Designs</p>
                         }
                     </section>
 
                     <section className="right-item">
                         <h2>Saved Designs</h2>
-                        <GalleryDisplay cardsPerPage={3} galleryData={savedCards} handleRemove={removeSavedCard}/>
+                        {savedCards.length
+                        ? <GalleryDisplay cardsPerPage={3} galleryData={savedCards} handleRemove={removeSavedCard}/>
+                        : <p>No Saved Designs</p>
+                        }
                     </section>
 
                     <section className="right-item">

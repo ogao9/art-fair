@@ -1,6 +1,6 @@
 //--------Gallery/Category Styles -----------
 .blur{
-    opacity: 0.75;
+    opacity: 0.9;
 }
 
 .gallery-container{
@@ -16,6 +16,8 @@
     padding: 2rem;
     font-size: 2rem;
 }
+
+
 
 .card-popup{
     position: absolute;
@@ -37,12 +39,14 @@
     padding: 1rem;
     font-size: 1.5rem;
 
+    p{color: #404040; margin-top: 4px;}
+
     button{
         width: 90%;
-        margin: 50px 0; padding: 20px;
+        margin: 2rem 0; padding: 20px;
         border: none; border-radius: 50px;
-        background: linear-gradient(to right, #4e54c8, #7279fc);
-        box-shadow: 0 4px 10px 0 #4e54c8;
+        background: linear-gradient(45deg, #ff4e50, #f9d423); 
+        box-shadow: 0 4px 10px 0 #ff4e50;
         font-size: 2rem;
         cursor: pointer;
     
@@ -51,15 +55,15 @@
     
     a{
         text-decoration: none;
-        color: lightgray;
+        color: whitesmoke;
     }
 }
 
 .teaser-right{
     flex: 70%;
     padding: 2rem;
-    background-color: #d7d9fc;
-    border-radius: 1rem;
+    background-color: #f4f4ff;
+    border-radius: 0.5rem;
 
     img{
         width: 100%;
@@ -68,7 +72,7 @@
     }
 }
 
-@media (max-width: 800px) {
+@media (max-width: 1000px) {
     .submit-teaser{
         padding: 1rem;
     }

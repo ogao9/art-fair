@@ -100,17 +100,13 @@ router.post("/", (req,res)=>{
 // @DELETE api/cards/id
 // Deletes specified card
 router.delete("/:id", async (req,res)=>{
-    await Card.findById(req.params.id)
-                .then(card => card.remove().then(card=> res.status(200).json({deleted:"success"})))
-                .catch(err => res.status(404).json({error: err}))
-})
+    try{
+        const deletedCard = await Card.findByIdAndRemove(req.params.id);
+        return res.status(200).send(deletedCard);
 
-// @PUT api/cards/id
-// Updates specified card impact
-router.put("/:id", async (req,res)=>{
-    await Card.findByIdAndUpdate(req.params.id, req.body)
-                .then(card => res.status(200).json(card))
-                .catch(err => res.status(404).json({err}))
+    }catch(err){
+        console.log(err)
+    }         
 })
 
 

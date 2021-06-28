@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Link, Route, useRouteMatch, useParams, useHistory } from "react-router-dom";
-import { Categories, AddDesignImg } from "../../services/SampleData";
+import { UserContext } from "../utilities/UserContext";
+import { AddDesignImg } from "../../services/SampleData";
 import { useClickOutside } from "../utilities/useClickOutside";
 import Loading from "../utilities/Loading"
 import cardServices from "../../services/cardServices";
@@ -46,6 +47,7 @@ const LargeCard = ({setBlur}) => {
 }
 
 const GalleryCategory = () =>{
+    const {user} = useContext(UserContext);
     const [galleryData, setGalleryData] = useState([]);
     const [loading, setLoading] = useState(false)
     const [blur, setBlur] = useState(false);
@@ -63,7 +65,7 @@ const GalleryCategory = () =>{
         };
 
         setData();
-    },[]); 
+    },[user]); 
 
 
     if(loading)
@@ -80,7 +82,9 @@ const GalleryCategory = () =>{
                     </div>
                 </section>
 
-                <GalleryDisplay galleryData={galleryData}/>
+                
+                    <GalleryDisplay galleryData={galleryData} cardLink={true}/>
+                
             </div>
 
             <section className="card-popup">
@@ -91,7 +95,7 @@ const GalleryCategory = () =>{
 
             <div className={`submit-teaser ${blur ? "blur" : ""}`}>
                 <div className="teaser-left">
-                    <h1>Want to showcase your design?</h1>
+                    <h1>Want to share your design?</h1>
                     <p>It's easy and there's no pressure. We believe all designs have the potential to inspire.</p>
                     <button>
                         <Link to='/Profile'>Submit your design</Link>

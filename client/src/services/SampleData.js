@@ -123,12 +123,6 @@ export const FeatureSample = [
         }
     }
 ];
-const expertAnalysis = [
-    {"Tim": "A great design."},
-    {"Sara": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio numquam asperiores reiciendis adipisci delectus amet omnis minima nesciunt ducimus quos?"},
-    {"Peter": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio numquam asperiores reiciendis adipisci delectus amet omnis minima nesciunt ducimus quos?"},
-    {"Sophia": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio numquam asperiores reiciendis adipisci delectus amet omnis minima nesciunt ducimus quos?"}
-]
 
 export const SampleData = [
     {

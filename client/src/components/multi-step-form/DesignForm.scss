@@ -1,90 +1,140 @@
 .form-container{
-    width: 100%;
-    height: clamp(500px, 75vh, 1000px);
+    display: flex; flex-flow: row wrap;
+    width: 100%; min-height: 700px;
     background-color: #f3f7f7;
     color: var(--lighter-black);
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.3);
+}
 
-    input{
+.form-left{
+    flex: 50%; height: 100%;
+    display: flex; align-items: center; justify-content: center;
+    padding: 1rem;
+    position: relative;
+
+    img.logo{
+        position: absolute;
+        top: 0; left: 0;
+        margin: 4px;
+    }
+
+    label{color: #404040;}
+
+    input[type="text"]{
         display: block;
         width: 100%;
         padding: 1rem;
         margin: 10px 0;
-        border: 1px solid black;
-        border-radius: 2px;
+        border: 1px solid #ccc;
         font-size: 1rem;
     }
 
-    button{
-        display: inline-block;
-        width: 50%;
-        border-radius: 50px;
-        background-color: var(--theme-purple);
-        color: whitesmoke;
+    textarea{
+        display: block;
+        width: 100%; min-height: 100px;
         padding: 1rem;
         margin: 10px 0;
+        border: 1px solid #ccc;
         font-size: 1rem;
-
-        &:hover{ transform: scale(0.98);}
+        font-family: 'Roboto', sans-serif;
     }
 }
 
-.flex-split{
-    display: flex; flex-wrap: wrap;
-    width: 100%; height: 100%;
-}
-
-.left-form{
-    flex: 50%;
-    padding: 1rem;
-    display: flex; align-items: center; justify-content: center;
-
-    select{
-        display: flex; flex-flow: wrap;
-        border: none; background: none;
-        width: 200px;
-        padding: 1rem;
-        font-size: 1.2rem;
-        scrollbar-width: none; /*For Firefox*/;
-
-        option{
-            border: 1px solid black;
-            margin: 8px 0;
-            padding: 8px 16px;
-            border-radius: 50px;
-
-            &:checked{background: linear-gradient(#4e54c8, #4e54c8);}
-        }
-
-        
-    }
-}
-
-.left-form-container{
-    width: clamp(300px, 90%, 1200px);
-    margin: 0 auto;
-    display: flex; flex-flow: column; align-items: center;
-}
-
-.form-image{
-    flex: 50%;
-    min-height: 100px;
+.form-right{
+    flex: 50%; min-height: 200px;
     background-color: #4e54c8;
     background-image: url('../../images/PurpleCheese.svg');
     background-attachment: fixed;
     background-size: cover;
-    border-radius: 5px;
 }
 
-@media (max-width: 800px) {
-    .left-form {
-        flex:100%; order: 5;
+@media (max-width: 1000px) {
+    .form-left {
+        flex:100%; 
     }
-    .form-image{
-        flex:100%; order: 1;
+    .form-right{
+        display: none;
     }
+}
+
+.left-form-container{
+    width: clamp(300px, 80%, 1200px);
+    min-height: 500px;
+    margin: 3rem auto 0; 
+    padding: 3rem 0 1rem;
+    position: relative;
+    font-family: 'Roboto';
+
+    .text-header{
+        margin-bottom: 1.5rem;
+
+        p{
+            margin-top: 8px;
+            color: #404040;
+        }
+    }
+
+    .button-group{
+        position: absolute;
+        bottom: 0; right: 0;
+        width: 50%;
+
+        i{padding: 0 4px;}
+
+        button{
+            display: inline-block;
+            width: 50%;
+            padding: 12px 16px;
+            background-color: lighten(#4e54c8, 2%);
+            color: whitesmoke;
+            border:none; border-radius: 12px;
+            font-size: 1.05rem;
+            cursor:pointer;
+    
+            &:hover{ transform: scale(0.98);}
+
+            &:nth-child(1){
+                background: none;
+                color: #404040;
+            }
+        }
+    }
+}
+
+.radio{
+    margin-bottom: 8px;
+
+    label{font-size:larger;
+    padding: 4px;}
+
+    input{
+        height: 22px;
+        width: 22px;
+        vertical-align: middle;
+        border-color: purple;
+    }
+}
+
+.form-card{
+    width: 100%; height: 450px;
+    margin-bottom: 30px;
+}
+
+.text-header.card-preview{
+    margin-bottom: 0;
+    padding: 1rem;
+    color: #404040;
 }
 
 .success-page{
     text-align: center;
+
+    i{color: green;}
+
+    p{
+        text-align: center;
+        line-height: 1.1;
+        margin: 8px 0;
+        color: #404040;
+    }
 }

@@ -3,10 +3,10 @@ import Card from "../design-home/Card";
 import "./Slideshow.scss";
 
 
-const SlideshowCard = ({content, index, currentSlide})=>{
+const SlideshowCard = ({content, index, currentSlide, setPause})=>{
     return(
         <div className={`slideshow-card ${currentSlide === index ? "active" : ""}`}>
-            <Card content={content} config="slideshow"/>
+            <Card content={content} setPause={setPause} config="slideshow"/>
         </div>
     )
 }
@@ -57,6 +57,11 @@ const Slideshow = ({ featuredArray }) => {
         setPaused(!paused); //set new state
     };
 
+    const setPause = () =>{
+        if(!paused) clearInterval(intervalID)
+        setPaused(true);
+    }
+
     return (
         <div className="slideshow-container">
             <div className="slideshow-track">
@@ -66,6 +71,7 @@ const Slideshow = ({ featuredArray }) => {
                         content={content}
                         index={index}
                         currentSlide={currentSlide}
+                        setPause={setPause}
                     />
                 ))}
             </div>

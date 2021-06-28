@@ -1,6 +1,7 @@
-import React, {useState, useRef, useEffect, useContext} from 'react'
+import React, {useState, useContext} from 'react'
 import {Link, NavLink} from 'react-router-dom'
 import { UserContext } from '../utilities/UserContext';
+import {useClickOutside} from '../utilities/useClickOutside'
 import Avatar from '@material-ui/core/Avatar';
 import Logo from '../../images/Logo.png'
 import './Header.scss'
@@ -16,24 +17,6 @@ const ExpandedNav = () =>{
             <NavLink to='/Forum' className="nav-link">Forum</NavLink> 
         </nav>
     )
-}
-
-const useClickOutside = (handler) =>{
-    const domNode = useRef();
-
-    useEffect(()=>{
-        let maybeHandler = (event) =>{
-            if(domNode.current && !domNode.current.contains(event.target))
-                handler();
-        }
-        document.addEventListener("mousedown", maybeHandler)
-
-        return ()=>{
-            document.removeEventListener("mousedown", maybeHandler)
-        }
-    })
-
-    return domNode;
 }
 
 const AvatarDropdown = ({username, setUser}) =>{
@@ -70,7 +53,7 @@ const Header = () => {
         <div className="header-container">
             <nav className="nav-container">
                 <div className="nav-start">
-                    <a className="nav-link hamburger-menu" onClick={()=>setExpand(!expand)}><i class="fas fa-bars"></i></a>
+                    <a className="nav-link hamburger-menu" onClick={()=>setExpand(!expand)} href='#'><i class="fas fa-bars"></i></a>
                     <Link to='/' className="nav-link is-hidden-mobile">Home</Link>
                     <NavLink to='/Featured' className="nav-link is-hidden-mobile">Featured</NavLink> 
                     <NavLink to='/Gallery' className="nav-link is-hidden-mobile">Gallery</NavLink> 
@@ -82,7 +65,7 @@ const Header = () => {
                     <NavLink to='/About' className="nav-link is-hidden-mobile" activeClassName="active">About</NavLink> 
                     <NavLink to='/Forum' className="nav-link is-hidden-mobile">Forum</NavLink> 
                     {loggedIn ? <AvatarDropdown username={username} setUser={setUser} />
-                    : <NavLink to='/Login' className="nav-link login">Log In</NavLink> 
+                    : <NavLink to='/Login' className="nav-link login">Sign In</NavLink> 
                     }
                     
                 </div>

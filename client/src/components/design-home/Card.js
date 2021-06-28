@@ -14,7 +14,7 @@ function getImage(category){
         return null;
 }
 
-const Card = ({ content, children, config }) => {
+const Card = ({ content, children, config, setPause, saveButton }) => {
     const {user, setUser} = useContext(UserContext);
     const loginRef = useClickOutside (()=>setShowLogin(false))
 
@@ -25,9 +25,10 @@ const Card = ({ content, children, config }) => {
     useEffect(()=>{
         if(user)
             setSaved( user.savedCards.includes(content._id))
-    }, [user])
+    },[user])
 
     async function handleSave() {
+        setPause && setPause(); //pause the slideshow
         if (user) {
             const cardToSave = {
                 userID: user._id,
@@ -36,19 +37,20 @@ const Card = ({ content, children, config }) => {
 
             const saved = await userServices.saveCard(cardToSave);
             if(saved){
-                setSaved(true); setUser(saved)
+                setUser(saved); console.log("save card Success!")
             }
             else
                 alert("Failed to save card")
         } else {
-            setShowLogin(true);
+            setShowLogin(true); console.log("user not logged in")
         }
+        console.log("handleSave Finished")
     }
 
-    function onLoginSuccess(){
-        console.log("onLoginSuccess Called")
+    const onLoginSuccess = async ()=>{
+        //console.log(user);
+       // await handleSave(); This should work, but user is null after login for some reason
         setShowLogin(false);
-        handleSave();
     }
 
     return (
@@ -66,19 +68,31 @@ const Card = ({ content, children, config }) => {
                     </div>
                 </div>
 
-                {config==="slideshow" ? <p>{content.description}</p> : null}
-
+                {config==="slideshow" ? 
                 <div>
+                    <h3>A note from the creator</h3>
+                    <p>{content.description}</p> 
+                </div>
+                : null}
+
+                {saveButton ?
+                    <div>
                     { saved
                     ? <p><i class="far fa-check-circle" /> Saved </p>  
                     : <button onClick={handleSave}><i class="far fa-plus-square"/> Save this Design </button>
                     }
-                </div>
+                    </div>
+                :null}
+                
 
                 {children}
             </div>
-
-            <div className="show-login" ref={loginRef}>{showLogin && <LoginForm onLoginSuccess={onLoginSuccess}/>}</div>
+            
+            { showLogin &&
+            <div className="show-login-container">
+                <div className="show-login" ref={loginRef}> <LoginForm onLoginSuccess={onLoginSuccess}/></div>
+            </div>
+            }
         </>
     );
 };
@@ -86,5 +100,7 @@ const Card = ({ content, children, config }) => {
 export default Card;
 
 Card.defaultProps = {
-    config: "gallery"
+    config: "gallery",
+    saveButton: "True",
+    setPause: null,
 }

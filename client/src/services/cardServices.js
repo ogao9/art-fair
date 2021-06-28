@@ -58,12 +58,7 @@ const cardServices = {
                 .catch(err => console.log(err))
     },
     deleteCard: (id)=>{
-        axios.delete(`/api/cards/${id}`)
-                .then(res => res.data)
-                .catch(err => console.log(err))
-    },
-    updateCard: (id, updated_card)=>{
-        axios.put(`/api/cards/${id}`,{...updated_card})
+        return axios.delete(`/api/cards/${id}`)
                 .then(res => res.data)
                 .catch(err => console.log(err))
     },

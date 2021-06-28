@@ -25,6 +25,12 @@ const userServices = {
         .then(res=> res.data) //the response is the entire updated user
         .catch(err=>console.log(err))
     },
+    removeYourCard: (userCardInfo)=>{
+        //I'm sending userID and cardID
+        return axios.put("/users/removeYourCard", userCardInfo)
+        .then(res=> res.data) //the response is the entire updated user
+        .catch(err=>console.log(err))
+    },
     updatePersonalInfo: (updated_info) => {
         return axios
             .put("/users/updatePersonalInfo", updated_info)

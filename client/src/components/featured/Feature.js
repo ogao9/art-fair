@@ -24,6 +24,7 @@ const Feature = () => {
             setLoading(false)
         }
         getData();
+        
     },[])
 
     const scrollRight = ()=>{
@@ -37,17 +38,11 @@ const Feature = () => {
         let items = [];
         analysis.map(obj=>{
             for(const name in obj)
-                items.push(<li><span><i class="fas fa-user-tie"/> {name}: {obj[name]}</span> </li>)
-        })
-        return items;
-    }
-
-    const getExperts = () =>{
-        let items = [];
-        analysis.map(obj=>{
-            for (const name in obj){
-                items.push(<li><span><i class="fas fa-user-tie"/> {name}</span> </li>)
-            }
+                items.push(<li>
+                    <div>
+                        <h2><i class="fas fa-user-tie fa-sm"/> {name}</h2>
+                        <p>{obj[name]}</p>
+                    </div></li>)
         })
         return items;
     }
@@ -86,7 +81,6 @@ const Feature = () => {
                     <div className="left-experts">
                         <h1><i class="far fa-edit"/>Expert Analysis</h1>
                         <p>See what our experts had to say about this week's featured works.</p>
-                        <ul>{getExperts()}</ul>
                     </div>
 
                     <div className="right-slides">

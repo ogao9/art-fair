@@ -5,43 +5,104 @@ import Card from '../design-home/Card'
 
 const DesignCategory = ({nextStep, closebtn, userInput, handleChange}) => {
     return (
-        <div className="flex-split">
-            <div className="left-form">
+        <div className="form-container">
+            <div className="form-left">
+                <img className="logo" src={DarkLogo} alt="logo" />
                 <div className="left-form-container">
-                    <img src={DarkLogo} alt="logo"/>
-                    <h1>Pick Your Category</h1>
+                    <div className="text-header">
+                        <h1>Pick a category for your design</h1>
+                        <p>
+                            Unsure which category your design falls in? Choose Wildcard.
+                        </p>
+                    </div>
                     <form>
-                        <select value={userInput.category} onChange={(e)=>handleChange("category", e)} size={6}>
-                            <option value="Indoor">Indoor</option>
-                            <option value="Outdoor">Outdoor</option>
-                            <option value="Digital">Digital</option>
-                            <option value="Audio">Audio</option>
-                            <option value="Minimal">Minimal</option>
-                            <option value="Wilcard">Wildcard</option>
-                        </select>
+                        <div className="radio">
+                            <input
+                                type="radio"
+                                id="indoor"
+                                value="Indoor"
+                                onChange={(e) => handleChange("category", e)}
+                                checked={userInput.category==="Indoor"}
+                            />
+                            <label for="indoor">Indoor</label>
+                        </div>
+                        <div className="radio">
+                            <input
+                                type="radio"
+                                id="outdoor"
+                                value="Outdoor"
+                                onChange={(e) => handleChange("category", e)}
+                                checked={userInput.category==="Outdoor"}
+                            />
+                            <label for="outdoor">Outdoor</label>
+                        </div>
+                        <div className="radio">
+                            <input
+                                type="radio"
+                                id="digital"
+                                value="Digital"
+                                onChange={(e) => handleChange("category", e)}
+                                checked={userInput.category==="Digital"}
+                            />
+                            <label for="digital">Digital</label>
+                        </div>
+                        <div className="radio"> 
+                            <input
+                                type="radio"
+                                id="minimal"
+                                value="Minimal"
+                                onChange={(e) => handleChange("category", e)}
+                                checked={userInput.category==="Minimal"}
+                            />
+                            <label for="minimal">Minimal</label>
+                        </div>
+                        <div className="radio">
+                            <input
+                                type="radio"
+                                id="audio"
+                                value="Audio"
+                                onChange={(e) => handleChange("category", e)}
+                                checked={userInput.category==="Audio"}
+                            />
+                            <label for="audio">Digital</label>
+                        </div>
+                        <div className="radio">
+                            <input
+                                type="radio"
+                                id="wildcard"
+                                value="Wildcard"
+                                onChange={(e) => handleChange("category", e)}
+                                checked={userInput.category==="Wildcard"}
+                            />
+                            <label for="wildcard">Wildcard</label>
+                        </div>
                     </form>
-                    <button onClick={closebtn}>Close</button>
-                    <button onClick={nextStep}>Next</button>
+                    <div className="button-group">
+                        <button onClick={closebtn} type="button"><i class="far fa-window-close"/>Close</button>
+                        <button onClick={nextStep} >Next<i class="fas fa-arrow-right"/></button>
+                    </div>
                 </div>
             </div>
 
-            <div className="form-image"></div>
+            <div className="form-right"></div>
         </div>
-    )
+    );
 }
 
 
 const DesignDetails = ({ nextStep, prevStep, userInput, handleChange }) => {
     return (
-        <div className="flex-split">
-            <div className="left-form">
+        <div className="form-container">
+            <div className="form-left">
+                <img className="logo" src={DarkLogo} alt="logo"/>
                 <div className="left-form-container">
-                    <img src={DarkLogo} alt="logo"/>
-                    <form>
-                        <label htmlFor="title">
-                            <i class="fas fa-angle-double-right"/>Give your design a title
-                            (creativity is encouraged)
-                        </label>
+                    <div className="text-header">
+                        <h1>Some Details</h1>
+                        <p>Creative titles are encouraged 
+                            and we'd love to hear the motivations behind your design.
+                        </p>
+                    </div>
+                    <form onSubmit={nextStep}>
                         <input
                             id="title"
                             type="text"
@@ -52,26 +113,21 @@ const DesignDetails = ({ nextStep, prevStep, userInput, handleChange }) => {
                             required
                         ></input>
 
-                        <label htmlFor="description">
-                            <i class="fas fa-angle-double-right"/>Give a brief description of your design
-                            <br />
-                            What's the motivation behind it and how should other people interpret it?
-                        </label>
-                        <input
-                            id="description"
-                            type="text"
-                            placeholder="Description"
-                            value={userInput.description}
-                            onChange={(e) => handleChange("description", e)}
-                            required
-                        ></input>
+                        <textarea value={userInput.description}
+                        onChange={(e) => handleChange("description", e)}
+                        placeholder="Description"
+                        maxLength="200"
+                        required/>
+                            
+                        <div className="button-group">
+                            <button onClick={prevStep} type="button"><i class="fas fa-arrow-left"/>Back</button>
+                            <button type="submit">Next<i class="fas fa-arrow-right"/></button>
+                        </div>
                     </form>
-                    <button onClick={prevStep}>Back</button>
-                    <button onClick={nextStep}>Next</button>
                 </div>
             </div>
 
-            <div className="form-image"></div>
+            <div className="form-right"></div>
         </div>
     );
 };
@@ -79,7 +135,7 @@ const DesignDetails = ({ nextStep, prevStep, userInput, handleChange }) => {
 const DesignUpload = ({ nextStep, prevStep, handleChange, userInput }) => {
     //https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/file
     const fileInput = useRef(null); 
-    const [filename, setFileName] = useState(" No File Chosen");
+    const [filename, setFileName] = useState("No File Chosen");
 
     const handleUpload = (e) => {
         console.log(fileInput.current);
@@ -88,41 +144,54 @@ const DesignUpload = ({ nextStep, prevStep, handleChange, userInput }) => {
     };
 
     return (
-        <div className="flex-split">
-            <div className="left-form">
+        <div className="form-container">
+            <div className="form-left">
+                <img className="logo" src={DarkLogo} alt="logo"/>
                 <div className="left-form-container">
-                    <img src={DarkLogo} alt="logo"/>
-                    <form>      
-                        <label htmlFor="file-upload">
-                            Upload an image of your design <br /> .png, .jpg, .svg accepted
-                        </label>
-                        <input type="file" id="file-upload" accept="image/png, image/jpeg" />
-                    </form>
+                    <div className="text-header">
+                        <h1>Upload an image of your design</h1>
+                        <p>File types accepted: png, jpeg, svg</p>
+                    </div>
 
-                    <button onClick={prevStep}>Back</button>
-                    <button onClick={nextStep}>Next</button>
+                    <form onSubmit={nextStep}>      
+                        <input type="file" accept="image/png, image/jpeg"/>
+
+                        <div className="button-group">
+                            <button onClick={prevStep} type="button"><i class="fas fa-arrow-left"/>Back</button>
+                            <button> Next<i class="fas fa-arrow-right"/></button>
+                        </div>
+                    </form>
                 </div>
             </div>
 
-            <div className="form-image"></div>
+            <div className="form-right"></div>
         </div>
     );
 };
 
 
-const DesignConfirm = ({ prevStep, handleSubmit, userInput }) => {
+const DesignConfirm = ({ prevStep, nextStep, handleSubmit, userInput }) => {
 
     return (
-        <div className="flex-split">
-            <div className="left-form">
+        <div className="form-container">
+            <div className="form-left">
+                <img className="logo" src={DarkLogo} alt="logo"/>
                 <div className="left-form-container">
-                    <h1>Preview</h1>
-                    <Card content={userInput}/> 
-                    <button onClick={prevStep}>Back</button>
-                    <button onClick={(e)=> handleSubmit(e)}>Submit</button> 
+                    <div className="text-header card-preview">
+                        <h1>Design Preview</h1>
+                    </div>
+
+                    <div className="form-card"> 
+                        <Card content={userInput} saveButton={false}/> 
+                    </div>
+
+                    <div className="button-group">
+                        <button onClick={prevStep} type="button"><i class="fas fa-arrow-left"/>Back</button>
+                        <button onClick={handleSubmit}>Submit<i class="fas fa-upload"/></button>
+                    </div>
                 </div>
             </div>
-            <div className="form-image"></div>
+            <div className="form-right"></div>
         </div>
     );
 };
@@ -131,17 +200,21 @@ const DesignConfirm = ({ prevStep, handleSubmit, userInput }) => {
 const DesignSuccess = ({prevStep, closebtn}) => {
     
     return (
-        <div className="flex-split">
-            <div className="left-form">
+        <div className="form-container">
+            <div className="form-left">
                 <div className="left-form-container success-page">
-                    <h1><i class="fas fa-check-circle fa-5x" style={{"color":"green"}}></i></h1>
+                    <div><i class="fas fa-check-circle fa-5x"/></div>
                     <h1>Success!</h1> 
-                    <p>You have earned a contributor badge and your design should appear in your profile within minutes.</p>
-                    <button onClick={prevStep}>[Temporary] Back</button>
-                    <button onClick={closebtn}>Done!</button>
+                    <p>Thanks for sharing your design with the world! You have earned a contributor badge, 
+                        and your design should appear in your profile within seconds.</p>
+                    <div className="button-group">
+                        <button></button>
+                        <button onClick={closebtn}>Done!</button>
+                    </div>
                 </div>
             </div>
-            <div className="form-image"></div>
+
+            <div className="form-right"></div>
         </div>
     )
 }

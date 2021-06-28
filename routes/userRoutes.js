@@ -89,6 +89,24 @@ router.put("/removeSavedCard", async (req, res) => {
     }
 });
 
+// @PUT /users/removeSavedCard
+// Remove specified card from savedCards array
+router.put("/removeYourCard", async (req, res) => {
+    try {
+        const user = await User.findById(req.body.userID);
+        const yourCardsUpdated = user.yourCards.remove(req.body.cardID);
+
+        const updated_user = await User.findByIdAndUpdate(
+            req.body.userID,
+            { yourCards: yourCardsUpdated },
+            { new: true }
+        );
+        return res.status(200).json(updated_user);
+    } catch (err) {
+        console.log(err);
+    }
+});
+
 // @PUT /users/addNewCard
 // Add just created card to user's yourCards array
 router.put("/addNewCard", async (req, res) => {

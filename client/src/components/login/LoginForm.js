@@ -38,7 +38,7 @@ const LoginForm = ({onLoginSuccess}) => {
             } else alert("Sign up failed!")
         }
 
-        setLoading(false);
+        setLoading(false); 
     };
 
     const handleLogin = async (e) => {
@@ -57,45 +57,69 @@ const LoginForm = ({onLoginSuccess}) => {
             }
         }
 
-        setLoading(false);
+        setLoading(false); //"can't perform state update on unmounted component error is this"
     };
+
+    const handleGuest = async(e)=>{
+        e.preventDefault();
+        setLoading(true); setPwdError(false); setLoginError(false);
+
+        const res = await userServices.checkUser({email: "guest@design.io", password: "123456"})
+        if (res) {
+            setUser(res);
+            onLoginSuccess();
+        } else {
+            alert("Sorry, Login as guest failed.")
+        }
+    }
 
 
     return (
+        <div className="login-form-container">
+        <div className="login-form-header">
+                <h1>{newUser ? "Create an Account" : "Sign in to Design.io"}</h1>
+                <p>{newUser ? "Start your design adventure today" : "A place to discover and share designs"}</p>
+        </div>
+
         <form className="Login-form" onSubmit={newUser ? handleSignUp : handleLogin}>
-            <h1>{newUser ? "Create Account" : "Welcome to Design.io!"}</h1>
-            
-            <label htmlFor="email">Email</label>
             <input
                 id="email"
                 type="email"
                 value={email}
                 onChange={(e)=>setEmail(e.target.value)}
+                placeholder="Email"
+                required
             ></input>
 
-            <label htmlFor="password">Password</label>
             <input
                 id="password"
                 type="password"
                 value={password}
                 onChange={(e)=>setPassword(e.target.value)}
+                placeholder="Password"
                 required
             ></input>
 
             <div className="error-msg">{pwdError ? "Passwords must have at least 6 characters" : null} </div>
             <div className="error-msg">{loginError ? "Your email or password is incorrect" : null} </div>
 
-            <button type="submit">{newUser ? "Sign Up" : "Log In"}</button>
+            <button type="submit">{newUser ? "Sign Up" : "Sign In"}</button>
             {loading ? <i id="login-spinner" class="fas fa-spinner fa-3x"></i> : null}
 
             <section className="login-footer">
                 <hr/>
                 <p>{newUser ? "Already have an account? " : "Need an account? "}</p>
-                <button type="button" onClick={() => setNewUser(!newUser)}>
-                    {newUser ? "Log In Here" : "Sign Up"}
-                </button>
+                {newUser 
+                ? <button type="button" onClick={() => setNewUser(false)}> Log In Here </button>
+                : <div>
+                    <button className="guest-login" type="button" onClick={handleGuest}>Login as Guest</button>
+                    <span> - or - </span>
+                    <button className="guest-login" type="button" onClick={() => setNewUser(true)}> Sign Up </button>
+                </div>
+                }
             </section>
         </form>
+        </div>
     );
 };
 

@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, Route, Switch, useRouteMatch,} from "react-router-dom";
 import { CategoryRoute } from "../utilities/CustomRoutes";
-import { Categories, AddDesignImg } from "../../services/SampleData";
+import { Categories } from "../../services/SampleData";
 import Header from "../headfoot/Header";
 import Footer from "../headfoot/Footer";
 import GalleryCategory from "./GalleryCategory"
@@ -25,7 +25,7 @@ const GalleryHome = ()=>{
                 <div className="category-grid">
                     {Categories.map((category) => (
                         <div className="category-grid-item">
-                            <img src={category.image} alt="Category Image" />
+                            <img src={category.image} alt="Category" />
                             <h1>{category.name}</h1>
 
                             <div className="overlay">

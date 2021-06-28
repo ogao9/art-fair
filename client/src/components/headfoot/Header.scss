@@ -1,5 +1,6 @@
 .header-container{
     width:100%;
+    min-height: 10vh;
     padding: 0 1.5rem;
     background-color:black;
 }
@@ -81,7 +82,7 @@ $light-black: #121212;
 
 .dropdown{
     position: relative;
-    z-index: 10;
+    z-index: 200;
 
     .top-avatar{
         background-color: var(--theme-purple);
