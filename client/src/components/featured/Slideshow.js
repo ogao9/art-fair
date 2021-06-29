@@ -22,7 +22,7 @@ const Slideshow = ({ featuredArray }) => {
                 if (currentSlide === featuredArray.length - 1) return 0;
                 else return currentSlide + 1;
             });
-        }, 4000);
+        }, 5000);
 
         setIntervalID(interval);
         
@@ -51,7 +51,7 @@ const Slideshow = ({ featuredArray }) => {
                         if (currentSlide === featuredArray.length - 1) return 0;
                         else return currentSlide + 1;
                     });
-                }, 4000)
+                }, 5000)
             );
         }
         setPaused(!paused); //set new state

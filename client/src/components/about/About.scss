@@ -73,9 +73,14 @@
     .text-item{
         margin-bottom: 2rem; 
         font-size: 1.1rem;
+        line-height: 1.1;
 
-        h1{font-family: 'Roboto', sans-serif;}
-        p{font-family: 'Open Sans', sans-serif;}
+
+        h1{font-family: 'Roboto', sans-serif;
+        margin-bottom: 6px;}
+        p{font-family: 'Open Sans', sans-serif;
+            color: #273240;
+        line-height: 1.2;}
 
         button{
             padding: 12px 24px; margin: 1rem 0;
@@ -102,12 +107,18 @@
     }
 }
 
+.team-container{
+    background: whitesmoke;
+    color: var(--lighter-black);
+}
 .team-header{
-    min-height: 400px;
-    padding: 6rem 2rem;
+    min-height: 300px;
+    padding: 6rem 2rem 0;
     text-align: center;
-    background-color:  var(--lighter-black);
-    color: whitesmoke;
+    // background-color:  var(--lighter-black);
+    // color: whitesmoke;
+    background: whitesmoke;
+    color: var(--lighter-black);
 
     .metrics{
         display: flex; flex-flow: row wrap; justify-content: space-around;

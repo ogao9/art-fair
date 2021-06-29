@@ -68,18 +68,15 @@ const Profile = () => {
                 </div>
                 
                 <div className={`profile-right ${showForm ? "form-active" : null}`}>
-                    <section className="right-item">
-                        <h2>Badges</h2>
-                        <div className="badge-container">
-                            {user.badges.map((str, idx) => (
-                                <div key={idx}>
-                                    <i class="fab fa-creative-commons-share fa-5x"/>
-                                    <p>{str}</p>
-                                </div>
-                            ))}
-                        </div>
-                    </section>
 
+                <section className="right-item">
+                        <h2>Saved Designs</h2>
+                        {savedCards.length
+                        ? <GalleryDisplay cardsPerPage={3} galleryData={savedCards} handleRemove={removeSavedCard}/>
+                        : <p>No Saved Designs</p>
+                        }
+                    </section>
+                    
                     <section className="right-item">
                         <div className="your-designs">
                             <h2>Your Designs</h2>
@@ -91,12 +88,18 @@ const Profile = () => {
                         }
                     </section>
 
+                    
+
                     <section className="right-item">
-                        <h2>Saved Designs</h2>
-                        {savedCards.length
-                        ? <GalleryDisplay cardsPerPage={3} galleryData={savedCards} handleRemove={removeSavedCard}/>
-                        : <p>No Saved Designs</p>
-                        }
+                        <h2>Badges</h2>
+                        <div className="badge-container">
+                            {user.badges.map((str, idx) => (
+                                <div key={idx}>
+                                    <i class="fab fa-creative-commons-share fa-5x"/>
+                                    <p>{str}</p>
+                                </div>
+                            ))}
+                        </div>
                     </section>
 
                     <section className="right-item">

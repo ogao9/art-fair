@@ -14,7 +14,19 @@ const Login = () => {
     return (
         <>
             <Header />
-            <div className="login-container">
+            <div className="top-spacer"></div>
+                <div className="login-container-temp">
+                    
+                    <LoginForm onLoginSuccess={toProfile} />
+                </div>
+            <Footer />
+        </>
+    );
+};
+
+export default Login;
+
+{/* <div className="login-container">
                 <div className="login-left">
                     <div className="login-left-text">
                         <div className="top-spacer"></div>
@@ -26,10 +38,4 @@ const Login = () => {
                     <div className="top-spacer"></div>
                     <LoginForm onLoginSuccess={toProfile} />
                 </div>
-            </div>
-            <Footer />
-        </>
-    );
-};
-
-export default Login;
+            </div> */}

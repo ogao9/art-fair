@@ -10,7 +10,6 @@
     height: 10vh;
 }
 
-
 //----------- Feature Container -----------
 .feature-container{
     display: flex; flex-wrap: wrap; justify-content: center;
@@ -18,9 +17,15 @@
     padding: 1rem;
 }
 
+@keyframes transitionBackground{
+    0%{background-position: 1% 0%;}
+    50%{background-position: 99% 100%;}
+    100%{background-position: 1% 0%;}
+
+}
 .feature-left{
     flex: 50%;
-    padding: 5rem 3rem 0;
+    padding: 5rem 5rem 0 ;
     margin: 1rem 0;
     font-size: 1.6rem;
 
@@ -28,18 +33,37 @@
         margin: 1rem 1rem 1rem 0;
         padding: 8px 16px;
         width: clamp(200px, 30%, 500px);
-        background: #4e54c8;
-        border: none; border-radius: 10px;
+        background: linear-gradient(270deg, #ff4e4e, #f9ae23); 
+        background-size: 400% 400%;
+            animation: transitionBackground 5s ease infinite;
+
+        &.static{
+            //background: #404040;
+            animation-delay: 1s;
+        }
+        &.animated{
+            background-size: 400% 400%;
+            animation: transitionBackground 5s ease infinite;
+        }
+        
+        border: none; border-radius: 5px;
         line-height: 2; 
 
-        &:hover{ transform: scale(0.95);}
+        &:hover{ transform: scale(0.98);}
     }
 
     a{
         text-decoration: none;
-        color: white;
+        color: whitesmoke;
         font-size: 1.6em;
     }
+
+    p{
+        margin-top: 8px;
+        max-width: 75%; 
+        font-size: 1.3rem; 
+        color: #B3B3B3; 
+        line-height: 1.3}
 }
 
 .feature-right{
@@ -48,11 +72,18 @@
     padding: 0 3rem;
 }
 
-@media screen and (max-width: 800px){
+@media screen and (max-width: 1000px){
     .feature-left, .feature-right{
-        padding: 1rem;
+        padding: 1rem; padding-left: 3rem;
         flex: 100%;
     }
+}
+
+@media  (max-width: 500px) {
+    .feature-left, .feature-right{
+        padding: 1rem;
+    }
+    .feature-spacer{height: 5vh;}
 }
 
 
@@ -116,7 +147,7 @@
     &::-webkit-scrollbar{ display: none;} /* Chrome, Safari and Opera */
     
     .analysis-card{
-        flex: 0 0 300px;
+        flex: 0 0 300px; height: 100%;
         margin-right: 1rem;
         cursor: pointer;
         box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);

@@ -1,5 +1,12 @@
 @import '../../index';
 
+.login-container-temp{
+    width: 100%; min-height: 90vh;
+    display: flex; justify-content: center;
+    background-color: var(--lighter-black);
+
+}
+
 .login-container{
     display: flex; flex-wrap: wrap; 
     width: 100%; min-height: 90vh;
@@ -7,7 +14,9 @@
     color: whitesmoke;
 }
 
-.top-spacer{height: 15vh}
+.top-spacer{height: 15vh;
+    background-color: var(--lighter-black);
+}
 
 .login-left{
     flex: 50%; min-height: 200px;

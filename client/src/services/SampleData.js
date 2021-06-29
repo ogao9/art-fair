@@ -8,8 +8,27 @@ import Wildcard from "../images/wildcard.jpg";
 import Outdoor from "../images/outdoors.jpg";
 import Indoor from "../images/indoors.jpg";
 import SubmitImg from "../images/submitForm.png"
+import Web from "../images/web.png"
+import ProfileImg from "../images/Profile.png"
+import GalleryImg from "../images/gallery.png"
+import ForumImg from "../images/forum.png"
+
 
 export const AddDesignImg = SubmitImg;
+
+export const roadmapSteps = [
+    { header: "Explore", desc: "Get inspired by a diverse set of designs in the Gallery",  link: '/Gallery', image: GalleryImg},
+    { header: "Join the Community", desc: "Create an account to save your favorite designs and even share your own", link: '/Login', image: ProfileImg },
+    { header: "Talk to Others", desc: "Discuss interesting designs on the Forums",  link: '/Forum', image: ForumImg },
+];
+
+// export const roadmapStepsTest = [
+//     { header:"Featured Designs",desc: "Check out featured designs with expert analysis", link: <Link to='/Featured'/>,},
+//     { header: "Head to the Gallery", desc: "Get inspired by more designs in the Gallery",  link: <Link to='/Gallery'/> },
+//     { header: "", desc: "Create an account to save your favorite designs and to share your own", link: <Link to='/Login'/> },
+//     { header: "", desc: "Discuss interesting designs on the Forums",  link: <Link to='/Forum'/> },
+//     { header: "", desc: "Deploy an inspired design into the real-world. Repeat.", link: <a href="#"/>},
+// ];
 
 export const TeamMembers = [
     { name: "Dee Signer", role: "UI/UX Designer" },
@@ -21,9 +40,9 @@ export const TeamMembers = [
 export const Categories = [
     {name: 'Indoor', image: Indoor},
     {name: 'Outdoor', image: Outdoor},
-    {name: 'Digital', image: Digital},
+    {name: 'Web', image: Web},
     {name: 'Minimal', image: Minimal},
-    {name: 'Audio', image: Audio},
+    {name: 'Digital', image: Digital},
     {name: 'Wildcard', image: Wildcard},
   ]
 
@@ -32,6 +51,7 @@ export const Categories = [
     {name: 'Outdoor', image: Tree},
     {name: 'Digital', image: Digital},
     {name: 'Minimal', image: Minimal},
+    {name: 'Web', image: Web},
     {name: 'Audio', image: Audio},
     {name: 'Wildcard', image: Modern},
   ]

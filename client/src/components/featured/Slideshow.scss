@@ -1,7 +1,7 @@
 @import '../../index';
 
 .slideshow-container{
-    display: flex; justify-content: space-between;
+    display: flex; justify-content: space-between; flex-wrap: wrap;
     width: 100%; height: 100%;
 }
 
@@ -48,4 +48,12 @@
     }
 
     button { @extend %btn-reset }
+}
+
+@media (max-width: 450px) {
+    .slideshow-container{justify-content: center;}
+    .slideshow-nav{
+        flex-direction: row;
+        width: 100px;
+    }
 }
