@@ -31,6 +31,11 @@
             padding: 1rem;
         }
     }    
+    @media (max-width: 500px) {
+        &{
+            padding: 0.5rem;
+        }
+    } 
 }
 
 .avatar{
@@ -100,11 +105,13 @@
     background-color: white;
     color: var(--lighter-black); 
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.3);
-
-    h2.title{
-        padding-left: 1rem;
-    }
 }
+
+@media (max-width: 500px) {
+    .right-item{
+        padding: 0.5rem;
+    }
+} 
 
 .badge-container{
     display: grid; 
@@ -128,7 +135,7 @@
         padding: 16px;
         border-radius: 10px; border: none;
         color: whitesmoke;
-        background: linear-gradient(45deg, #ff4e50, #f99c23); 
+        background: linear-gradient(45deg, #ff4e50, #f97923); 
         font-size: 1.1rem;
         cursor: pointer;
 
@@ -144,10 +151,7 @@
 
 .design-form{
     position: absolute;
-    opacity: 1;
-    top: 1rem;
-    left: 50%;
+    top: 1rem; left: 50%;
     transform: translateX(-50%);
     width: clamp(325px, 80%, 1800px);
-    
 }

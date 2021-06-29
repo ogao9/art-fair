@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import Header from "../headfoot/Header";
 import Footer from "../headfoot/Footer";
 import LoginForm from "./LoginForm";
@@ -15,10 +15,10 @@ const Login = () => {
         <>
             <Header />
             <div className="top-spacer"></div>
-                <div className="login-container-temp">
-                    
-                    <LoginForm onLoginSuccess={toProfile} />
-                </div>
+
+            <div className="login-container-temp">
+                <LoginForm onLoginSuccess={toProfile} />
+            </div>
             <Footer />
         </>
     );

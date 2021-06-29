@@ -1,15 +1,13 @@
-.top-wrapper{
-    min-height: 100vh;
+.home-outer-container{
+    min-height: 90vh;
     background-color: var(--lighter-black);
     color: whitesmoke;
 }
 
-.feature-spacer{
-    height: 10vh;
-}
+.home-spacer{ height: 10vh;}
+.whitesmoke {background-color: whitesmoke;}
 
-//----------- Feature Container -----------
-.feature-container{
+.home-inner-container{
     display: flex; flex-wrap: wrap; justify-content: center;
     width: 100%;
     padding: 1rem;
@@ -19,169 +17,143 @@
     0%{background-position: 1% 0%;}
     50%{background-position: 99% 100%;}
     100%{background-position: 1% 0%;}
-
 }
-.feature-left{
+
+.home-left{
     flex: 50%;
-    padding: 5rem 5rem 0 ;
-    margin: 1rem 0;
-    font-size: 1.6rem;
+    padding: 5rem;
+    font-size: 1.8rem;
 
     button{
-        margin: 1rem 1rem 1rem 0;
-        padding: 8px 16px;
         width: clamp(200px, 30%, 500px);
+        margin: 1rem; margin-left: 0;
+        padding: 16px;
+        border: none; border-radius: 5px;
+        color: white;
+        font-size: 1.3rem; 
         background: linear-gradient(270deg, #ff4e4e, #f9ae23); 
         background-size: 400% 400%;
         animation: transitionBackground 5s ease infinite;
-
-        &.static{ animation-delay: 1s;}
         
-        border: none; border-radius: 5px;
-        line-height: 2; 
-
+        &.delay{ animation-delay: 1s;}
         &:hover{ transform: scale(0.98);}
-    }
-
-    a{
-        text-decoration: none;
-        color: white;
-        font-size: 1.6em;
     }
 
     p{
         max-width: 75%; 
-        font-size: 1.3rem; 
+        margin-top: 8px;
+        font-size: 1.4rem; 
         color: #B3B3B3; 
-        line-height: 1.5}
+        line-height: 1.3;
+    }
 }
 
-.feature-right{
+.home-right{
     flex: 50%;
-    margin: 1rem 0;
-    padding: 0 3rem;
+    padding: 1rem 3rem;
 }
 
 @media screen and (max-width: 1000px){
-    .feature-left, .feature-right{
+    .home-left, .home-right{
         padding: 1rem; padding-left: 3rem;
         flex: 100%;
+    }
+    .home-spacer{height: 5vh;}
+}
+
+@media  (max-width: 500px) {
+    .home-left{
+        padding: 1rem;
+        align-self: center;
+        p{max-width: 100%;}
+    }
+    .home-right{
+        padding: 0.5rem;
+        align-self: center;
     }
 }
 
 
-.roadmap-opener{
-    padding: 5rem 5rem 0;
-    color: #273240;
-    font-size: 1.2rem;
-    max-width: 800px;
-
-    h1{margin-bottom: 12px;}
+//------    Roadmap    -----
+//-----     -------    -----
+.roadmap-container{
+    width: 100%;
+    background-color: whitesmoke;
+    padding: 1rem;
 }
 
-.roadmap-test{
+.roadmap-opener{
+    max-width: 800px;
+    padding: 5rem 5rem 0;
+    font-size: 1.3rem;
+    color: var(--lighter-black);
+
+    h1{ 
+        margin-bottom: 8px ;
+    }
+
+    p{
+        font-family: 'Noto Sans JP';
+        color: #273240;
+    }
+
+    p:nth-child(1){font-size: 1rem; margin-bottom: 8px;}
+}
+
+.roadmap-items{
     display: flex; flex-flow: row wrap; align-items: center;
-    padding: 5rem;
+    padding: 5rem; padding-bottom: 1rem;
 
     .left-image{
-        flex: 60%; height: 500px;
+        flex: 60%; 
 
         img{
             width: 100%; height: 100%;
+            aspect-ratio: 16 /9;
             object-fit: cover;
         }
     }
 
     .right-text{
-        flex: 40%;
+        flex: 40%; //min-height: 250px;
+        display: flex; justify-content: center;
+        padding: 2rem;
         color: #273240;
-        display: grid; place-items: center;
-        font-size: 1.2rem;
+        font-size: 1.1rem;
+        
+        p{font-family: 'Noto Sans JP';}
 
         button{
-            padding: 16px;
+            padding: 14px 16px;
             margin: 8px 0;
             background-color: #4e54c8;
             color: whitesmoke;
             border: none; border-radius: 5px;
             width: 100px;
             cursor: pointer;
+            font-size: 1.3rem;
         }
     }
+
     .text-wrapper{
         max-width: 400px;
-        padding: 1rem;
-    }
-
-    @media (max-width: 1000px) {
-        .left-image{
-            flex: 100%; order: 5;
-        }
-         .right-text{
-            flex: 100%; order: 1;
-            display: block;
-            padding: 0;
-        }
-        &{
-            padding: 1rem;
-        }
-    }
-
-}
-
-
-.roadmap-container{
-    display: flex; flex-flow: row wrap; align-items: center;
-    padding: 5rem 1rem;
-
-    .roadmap-message{
-        flex: 40%; align-self: flex-start;
-        display: flex; flex-direction: column; align-items: center;
-        min-height: 100px;
-        padding: 5rem 1rem;
-        text-align: center;
-        font-size: 1.6rem;
-    }
-
-    .roadmap-flow{
-        flex: 60%;
-        display: flex; flex-direction: column; align-items: center;
-    }
-
-    @media  (max-width:800px) {
-        .roadmap-message, .roadmap-flow{
-            flex: 100%;
-            padding: 1rem;
-        }
     }
 }
 
-.flow-item{
-    position: relative;
-    width: 90%;
-    min-height: 75px;
-    padding: 1.2rem; margin: 1rem;
-    background: linear-gradient(to right, #4e54c8, #858bfd);
-    color: lightgray;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.3);
-    font-size: 2rem;
-    cursor: pointer;
-
-    &:hover{ transform: scale(1.02); }
-
-    a{
-        position: absolute;
-        top: 0; left: 0;
+@media (max-width: 1000px) {
+    .roadmap-opener{
+        padding: 2rem;
+    }
+    .roadmap-items{
+        padding: 2rem;
+    }
+    .roadmap-items .left-image{
+        flex: 100%; 
+    }
+    .roadmap-items .right-text{
+        flex: 100%; 
         display: block;
-        width: 100%;
-        height: 100%;
+        padding: 2rem 0 0;
     }
+    
 }
-
-.flow-item::before{
-    font-family: "Font Awesome 5 Free";
-    font-weight: 900;
-    content: "\f14e";
-}
-

@@ -11,12 +11,13 @@ const GalleryHome = ()=>{
     return(
         <>  
             <Header />
+            <div className="gallery-spacer"></div>
+
             <section className="galleryhome-welcome">
                 <div className="welcome-text">
                     <h1>Find your inspiration. Find your design.</h1>
                     <p>
-                        Choose from 5 broad categories or take a chance with the
-                        wild card.
+                        Choose from 5 broad categories or take a chance with the Wildcard.
                     </p>
                 </div>
             </section>
@@ -36,6 +37,9 @@ const GalleryHome = ()=>{
                     ))}
                 </div>
             </section>
+
+            <div className="gallery-spacer"></div>
+
             <Footer/>
         </>
     )

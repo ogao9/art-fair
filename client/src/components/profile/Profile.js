@@ -56,6 +56,7 @@ const Profile = () => {
     return (
         <>
             <Header />
+
             <div className="profile-container">
                 <div className={`profile-left ${showForm ? "form-active" : null}`}>
                     <div className="profile-header">
@@ -68,15 +69,14 @@ const Profile = () => {
                 </div>
                 
                 <div className={`profile-right ${showForm ? "form-active" : null}`}>
-
-                <section className="right-item">
-                        <h2>Saved Designs</h2>
-                        {savedCards.length
-                        ? <GalleryDisplay cardsPerPage={3} galleryData={savedCards} handleRemove={removeSavedCard}/>
-                        : <p>No Saved Designs</p>
-                        }
+                    <section className="right-item">
+                            <h2>Saved Designs</h2>
+                            {savedCards.length
+                            ? <GalleryDisplay cardsPerPage={3} galleryData={savedCards} handleRemove={removeSavedCard}/>
+                            : <p></p>
+                            }
                     </section>
-                    
+                        
                     <section className="right-item">
                         <div className="your-designs">
                             <h2>Your Designs</h2>
@@ -84,11 +84,9 @@ const Profile = () => {
                         </div>
                         {yourCards.length
                         ? <GalleryDisplay cardsPerPage={3} galleryData={yourCards} handleRemove={removeYourCard}/>
-                        : <p>No Designs</p>
+                        : <p></p>
                         }
                     </section>
-
-                    
 
                     <section className="right-item">
                         <h2>Badges</h2>
@@ -112,6 +110,7 @@ const Profile = () => {
                     {showForm ? <DesignForm closebtn={() => setShow(false)} /> : null}
                 </div>
             </div>
+
             <Footer />
         </>
     );

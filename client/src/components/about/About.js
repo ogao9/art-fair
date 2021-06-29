@@ -8,12 +8,13 @@ const About = () => {
     return (
         <>  
             <Header />
-            <div className="wrapper">
+            <div className="top-wrapper">
                 <div className="fill-5"></div>
-                <div className="fill-top">
+
+                <div className="about-welcome">
                     <div className="left">
                         <h1>About Design.io</h1>
-                        <p>We think about designs. We also think about you.</p>
+                        <p>We think about designs.</p>
                         <ul className="fa-ul">
                             <li><span ><i class="fas fa-angle-double-right"/></span><a href="#mission">Our Mission</a></li>
                             <li><span><i class="fas fa-angle-double-right"/></span><a href="#vision">Our Vision</a></li>
@@ -25,6 +26,8 @@ const About = () => {
                 </div>
             </div>
             
+            <div className="about-spacer"></div>
+
             <div className="text-container">
                 <div className="left"></div>
 
@@ -53,7 +56,7 @@ const About = () => {
                         <div><i class="fas fa-hammer fa-2x"></i></div>
                         <h1>Our Process</h1>
                         <p>Interested in how Design.io was built? Check out some documentation on Github.</p>
-                        <a href="https://github.com/ogao9/art-fair" target='_blank' rel="noreferrer"><button><i class="fab fa-github"/>Github</button></a>
+                        <a href="https://github.com/ogao9/design.io" target='_blank' rel="noreferrer"><button><i class="fab fa-github"/>Github</button></a>
                     </section>
                 </div>
             </div>
@@ -81,6 +84,7 @@ const About = () => {
                     </div>
                 </div>
             </div>
+            <div className="about-spacer"></div>
 
             <Footer/>
         </>

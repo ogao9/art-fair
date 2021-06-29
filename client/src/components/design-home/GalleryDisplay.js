@@ -14,32 +14,31 @@ export default function GalleryDisplay ({cardsPerPage, galleryData, cardLink, ha
     const totalCards = galleryData ? galleryData.length : 0;
     
     return(
-        <>
-        <section className="gallery-content">
-            <div className="card-container">
-                {cardsToShow.length
-                    ? cardsToShow.map((cardInfo) => (
-                        <div className="gallery-card" key={cardInfo._id}>
-                            {cardLink ? <Link to={`${url}/${cardInfo._id}`}/> : null}
-                            <Card content={cardInfo}>
-                                {handleRemove 
-                                ? <button onClick={()=>handleRemove(cardInfo._id)}><i class="far fa-minus-square"></i> Remove this Design</button>
-                                : null}
-                            </Card>
-                        </div>
-                    ))
-                    : "No Cards Available"}
-            </div>
-        </section>
+        <div className="gallery-display-container">
+            <section className="gallery-content">
+                <div className="card-container">
+                    {cardsToShow.length
+                        ? cardsToShow.map((cardInfo) => (
+                            <div className="gallery-card" key={cardInfo._id}>
+                                {cardLink ? <Link to={`${url}/${cardInfo._id}`}/> : null}
+                                <Card content={cardInfo}>
+                                    {handleRemove 
+                                    ? <button onClick={()=>handleRemove(cardInfo._id)}><i class="far fa-minus-square"></i> Remove this Design</button>
+                                    : null}
+                                </Card>
+                            </div>
+                        ))
+                        : "No Cards Available"}
+                </div>
+            </section>
         
-        <Pagination
-            currentPage={currentPage}
-            setPage={(page) => setCurrentPage(page)}
-            totalCards={totalCards}
-            cardsPerPage={cardsPerPage}
-        />
-            
-        </>
+            <Pagination
+                currentPage={currentPage}
+                setPage={(page) => setCurrentPage(page)}
+                totalCards={totalCards}
+                cardsPerPage={cardsPerPage}
+            />
+        </div>
     )
 }
 

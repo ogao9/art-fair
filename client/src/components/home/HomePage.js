@@ -1,75 +1,84 @@
-import React, {useState, useEffect} from 'react'
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import cardServices from '../../services/cardServices'
+import cardServices from "../../services/cardServices";
+import { roadmapSteps } from "../../services/SampleData";
 import Header from "../headfoot/Header";
 import Footer from "../headfoot/Footer";
 import Loading from "../utilities/Loading";
-import Slideshow from '../featured/Slideshow';
-import { roadmapSteps } from '../../services/SampleData';
+import Slideshow from "../featured/Slideshow";
 import "./HomePage.scss";
-
 
 const HomePage = () => {
     const [featuredContent, setContent] = useState([]);
     const [loading, setLoading] = useState(false);
 
-    useEffect(()=>{
+    useEffect(() => {
         setLoading(true);
-        const getData = async ()=>{
+        const getData = async () => {
             const data = await cardServices.getFeaturedCards();
             setContent(data);
-            setLoading(false)
-        }
+            setLoading(false);
+        };
         getData();
-    },[])
+    }, []);
 
-    if(loading)
-        return <Loading/>
+    if (loading) return <Loading />;
 
     return (
         <>
-            <div className="top-wrapper">
-                <Header/>
-                <div className="feature-spacer"/>
+            <Header />
+            <div className="home-outer-container">
+                <div className="home-spacer" />
 
-                <div className="feature-container">
-                    <div className="feature-left">
-                        <h1>Design is everywhere.</h1>
+                <div className="home-inner-container">
+                    <div className="home-left">
+                        <h1>Design is Everywhere.</h1>
                         <p>
-                        It's on your desk, on the web, and out in the wild.
-                        Let us help you inject some creative design into your daily life.
+                            It's on your desk, on the web, and out in the wild. Let us
+                            help you inject some creative design into your daily life.
                         </p>
-                        <button className="animated"><Link to="/Profile">Get Started</Link></button>
-                        <button className="static"><Link to='/Gallery'>More Designs</Link></button>
+                        <Link to="/Profile"><button>Get Started</button></Link>
+                        <Link to="/Gallery"><button className="delay">More Designs</button></Link>
                     </div>
 
-                    <div className="feature-right">
-                        <Slideshow featuredArray={featuredContent}/>
+                    <div className="home-right">
+                        <Slideshow featuredArray={featuredContent} />
                     </div>
                 </div>
             </div>
 
-            <div className="roadmap-opener">
-                <h1><i class="fas fa-compass fa-lg"></i>How should I use Design.io?</h1>
-                <p>That's a great question. Let us walk you through a sample roadmap to get you started on your design journey</p>
-            </div>
-
-            {roadmapSteps.map((obj, idx)=>(
-                <div className="roadmap-test">
-                <div className="left-image"><img src={obj.image}/></div>
-                <div className="right-text">
-                    <div className="text-wrapper">
-                        <h1>{obj.header}</h1>
-                        <p>{obj.desc}</p>
-                        <Link to={obj.link}><button>Go!</button></Link>
+            <div className="roadmap-container">
+                <div className="roadmap-opener">
+                    <p>Roadmap</p>
+                    <h1>How should I use Design.io?</h1>
+                    <p>
+                        That's a great question. Let us take you through some of the major features of 
+                        Design.io.
+                    </p>
+                </div>
+                {roadmapSteps.map((obj, idx) => (
+                    <div className="roadmap-items" key={idx}>
+                        <div className="left-image">
+                            <img src={obj.image} />
+                        </div>
+                        <div className="right-text">
+                            <div className="text-wrapper">
+                                <h1>{obj.header}</h1>
+                                <p>{obj.desc}</p>
+                                <Link to={obj.link}>
+                                    <button>Go!</button>
+                                </Link>
+                            </div>
+                        </div>
                     </div>
-                </div>
-                </div>
-            ))}
+                ))}
+            </div>
+            
+            <div className="home-spacer whitesmoke"></div>
+            
             <Footer />
         </>
     );
 };
 
 export default HomePage;
-

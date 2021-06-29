@@ -75,16 +75,15 @@ const GalleryCategory = () =>{
         <>
             <Header />
             <div className={`gallery-container ${blur ? "blur" : ""}`}>
-                <section className="gallery-welcome">
+                <section className="gallery-welcome-text">
                     <div>
+                        <div className="gallery-welcome-spacer"></div>
                         <h1>Welcome to the {category} Design Gallery</h1>
                         <p>We're glad you're taking design {category}. You can do some amazing things there.</p> 
                     </div>
                 </section>
 
-                
-                    <GalleryDisplay galleryData={galleryData} cardLink={true}/>
-                
+                <GalleryDisplay galleryData={galleryData} cardLink={true}/>
             </div>
 
             <section className="card-popup">
@@ -95,7 +94,8 @@ const GalleryCategory = () =>{
 
             <div className={`submit-teaser ${blur ? "blur" : ""}`}>
                 <div className="teaser-left">
-                    <h1>Want to share your design?</h1>
+                    <p>Put yourself out there</p>
+                    <h1>Have a design to share?</h1>
                     <p>It's easy and there's no pressure. We believe all designs have the potential to inspire.</p>
                     <button>
                         <Link to='/Profile'>Submit your design</Link>
