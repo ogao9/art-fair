@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React from "react";
 import DarkLogo from "../../images/LogoDark.png"
 import Card from '../design-home/Card'
 
@@ -59,12 +59,12 @@ const DesignCategory = ({nextStep, closebtn, userInput, handleChange}) => {
                         <div className="radio">
                             <input
                                 type="radio"
-                                id="audio"
-                                value="Audio"
+                                id="web"
+                                value="Web"
                                 onChange={(e) => handleChange("category", e)}
-                                checked={userInput.category==="Audio"}
+                                checked={userInput.category==="Web"}
                             />
-                            <label for="audio">Digital</label>
+                            <label for="audio">Web</label>
                         </div>
                         <div className="radio">
                             <input
@@ -134,31 +134,45 @@ const DesignDetails = ({ nextStep, prevStep, userInput, handleChange }) => {
 
 const DesignUpload = ({ nextStep, prevStep, handleChange, userInput }) => {
     //https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/file
-    const fileInput = useRef(null); 
-    const [filename, setFileName] = useState("No File Chosen");
+    //Implement Later
+    // const fileInput = useRef(null); 
+    // const [filename, setFileName] = useState("No File Chosen");
 
-    const handleUpload = (e) => {
-        console.log(fileInput.current);
-        setFileName(fileInput.current.files[0].name);
-        handleChange(filename, e);
-    };
+    // const handleUpload = (e) => {
+    //     console.log(fileInput.current);
+    //     setFileName(fileInput.current.files[0].name);
+    //     handleChange(filename, e);
+    // };
 
     return (
         <div className="form-container">
             <div className="form-left">
-                <img className="logo" src={DarkLogo} alt="logo"/>
+                <img className="logo" src={DarkLogo} alt="logo" />
                 <div className="left-form-container">
                     <div className="text-header">
-                        <h1>Upload an image of your design</h1>
-                        <p>File types accepted: png, jpeg, svg</p>
+                        <h1>Submit a link to an image of your design</h1>
+                        <p>Direct File Upload Coming Soon</p>
                     </div>
 
-                    <form onSubmit={nextStep}>      
-                        <input type="file" accept="image/png, image/jpeg"/>
+                    <form onSubmit={nextStep}>
+                        <input
+                            type="text"
+                            value={userInput.image}
+                            onChange={(e) => handleChange("image", e)}
+                            placeholder="Image Address"
+                            required
+                        />
 
                         <div className="button-group">
-                            <button onClick={prevStep} type="button"><i class="fas fa-arrow-left"/>Back</button>
-                            <button> Next<i class="fas fa-arrow-right"/></button>
+                            <button onClick={prevStep} type="button">
+                                <i class="fas fa-arrow-left" />
+                                Back
+                            </button>
+                            <button>
+                                {" "}
+                                Next
+                                <i class="fas fa-arrow-right" />
+                            </button>
                         </div>
                     </form>
                 </div>

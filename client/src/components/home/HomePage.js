@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import cardServices from "../../services/cardServices";
 import { roadmapSteps } from "../../services/SampleData";
+import cardServices from "../../services/cardServices";
 import Header from "../headfoot/Header";
 import Footer from "../headfoot/Footer";
 import Loading from "../utilities/Loading";
-import Slideshow from "../featured/Slideshow";
+import Slideshow from "./Slideshow";
 import "./HomePage.scss";
 
 const HomePage = () => {

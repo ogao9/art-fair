@@ -31,7 +31,8 @@ const AddDesignForm = ({ closebtn }) => {
             title: userInput.title,
             description: userInput.description,
             category: userInput.category,
-            creator: userInput.creator
+            creator: userInput.creator,
+            image: userInput.image
         };
         const res = await cardServices.postCard(new_card_info);
 

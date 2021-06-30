@@ -2,16 +2,19 @@ import React, { useState, useContext, useEffect } from "react";
 import { useClickOutside} from "../utilities/useClickOutside"
 import { UserContext } from "../utilities/UserContext";
 import userServices from "../../services/userServices";
-import { CardImages } from "../../services/SampleData";
+import { CardImages, DefaultImg } from "../../services/SampleData";
 import LoginForm from "../login/LoginForm";
 import './Card.scss'
 
 
-function getImage(category){
-    if(category)
-        return CardImages.find(obj => obj.name === category).image;
+function getImage(content){
+    if(content.image){
+        return content.image;
+    }
+    else if(content.category)
+        return CardImages.find(obj => obj.name === content.category).image;
     else    
-        return null;
+        return DefaultImg;
 }
 
 const Card = ({ content, children, config, setPause, saveButton }) => {
@@ -20,7 +23,7 @@ const Card = ({ content, children, config, setPause, saveButton }) => {
 
     const [showLogin, setShowLogin] = useState(false)
     const [saved, setSaved] = useState(false)
-    const image = getImage(content.category)
+    const image = getImage(content)
 
     useEffect(()=>{
         if(user)

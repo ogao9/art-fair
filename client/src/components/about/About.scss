@@ -37,7 +37,7 @@
 
     @media (max-width: 800px) {
         .left{
-            flex: 100%; order: 10;
+            flex: 100%; 
         }
         .right{
             display: none;
@@ -58,7 +58,7 @@
     color: var(--lighter-black);
 
     .left{
-        flex: calc(40% - 2rem);
+        flex: calc(50% - 2rem);
         min-height: 300px;
         margin-right: 2rem;
         border-radius: 1rem;
@@ -69,7 +69,7 @@
     }
 
     .right{
-        flex: 60%;
+        flex: 50%;
         display: flex; flex-direction: column;
         padding: 1rem; padding-right: 2rem;
         line-height: 1.2;

@@ -4,7 +4,7 @@
     color: whitesmoke;
 }
 
-.home-spacer{ height: 10vh;}
+.home-spacer{ height: 6vh;}
 .whitesmoke {background-color: whitesmoke;}
 
 .home-inner-container{
@@ -22,7 +22,7 @@
 .home-left{
     flex: 50%;
     padding: 5rem;
-    font-size: 1.8rem;
+    font-size: 1.6rem;
 
     button{
         width: clamp(200px, 30%, 500px);
@@ -33,6 +33,7 @@
         font-size: 1.3rem; 
         background: linear-gradient(270deg, #ff4e4e, #f9ae23); 
         background-size: 400% 400%;
+        cursor: pointer;
         animation: transitionBackground 5s ease infinite;
         
         &.delay{ animation-delay: 1s;}
@@ -42,8 +43,8 @@
     p{
         max-width: 75%; 
         margin-top: 8px;
-        font-size: 1.4rem; 
         color: #B3B3B3; 
+        font-size: 1.4rem; 
         line-height: 1.3;
     }
 }
@@ -58,7 +59,7 @@
         padding: 1rem; padding-left: 3rem;
         flex: 100%;
     }
-    .home-spacer{height: 5vh;}
+    .home-spacer{height: 4vh;}
 }
 
 @media  (max-width: 500px) {
@@ -97,7 +98,10 @@
         color: #273240;
     }
 
-    p:nth-child(1){font-size: 1rem; margin-bottom: 8px;}
+    p:nth-child(1){
+        font-size: 1rem; 
+        margin-bottom: 8px;
+    }
 }
 
 .roadmap-items{
@@ -109,23 +113,25 @@
 
         img{
             width: 100%; height: 100%;
-            aspect-ratio: 16 /9;
             object-fit: cover;
+            aspect-ratio: 16 /9;
         }
     }
 
     .right-text{
-        flex: 40%; //min-height: 250px;
+        flex: 40%; 
         display: flex; justify-content: center;
         padding: 2rem;
-        color: #273240;
+        color: var(--lighter-black);
         font-size: 1.1rem;
         
-        p{font-family: 'Noto Sans JP';}
+        p{
+            font-family: 'Noto Sans JP';
+            color: #273240;
+        }
 
         button{
-            padding: 14px 16px;
-            margin: 8px 0;
+            padding: 14px 16px; margin: 8px 0;
             background-color: #4e54c8;
             color: whitesmoke;
             border: none; border-radius: 5px;
@@ -141,10 +147,7 @@
 }
 
 @media (max-width: 1000px) {
-    .roadmap-opener{
-        padding: 2rem;
-    }
-    .roadmap-items{
+    .roadmap-opener, .roadmap-items{
         padding: 2rem;
     }
     .roadmap-items .left-image{
@@ -152,8 +155,7 @@
     }
     .roadmap-items .right-text{
         flex: 100%; 
-        display: block;
         padding: 2rem 0 0;
+        justify-content: flex-start;
     }
-    
 }

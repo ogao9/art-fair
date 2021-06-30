@@ -15,6 +15,7 @@ const ExpandedNav = () =>{
             <NavLink to='/Gallery' className="nav-link">Gallery</NavLink> 
             <NavLink to='/About' className="nav-link">About</NavLink> 
             <NavLink to='/Forum' className="nav-link">Forum</NavLink> 
+            <NavLink to='/Login' className="nav-link login mobile">Sign In</NavLink> 
         </nav>
     )
 }
@@ -65,7 +66,7 @@ const Header = () => {
                     <NavLink to='/About' className="nav-link is-hidden-mobile" activeClassName="active">About</NavLink> 
                     <NavLink to='/Forum' className="nav-link is-hidden-mobile">Forum</NavLink> 
                     {loggedIn ? <AvatarDropdown username={username} setUser={setUser} />
-                    : <NavLink to='/Login' className="nav-link login">Sign In</NavLink> 
+                    : <NavLink to='/Login' className="nav-link login is-hidden-mobile">Sign In</NavLink> 
                     }
                     
                 </div>

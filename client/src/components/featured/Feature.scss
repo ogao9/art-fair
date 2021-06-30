@@ -1,33 +1,79 @@
 @import '../../index';
 
-//---------- Analysis Container ----------
-.analysis-container{
-    display: flex; flex-flow: row nowrap;
-    width: 100%; 
+.feature-spacer{
+    background-color: var(--lighter-black);
+    height: 5vh;
 }
 
-.left-experts{
-    flex: 30%; align-self: center;
-    padding: 2rem;
-    font-size: 1.6rem;
-    line-height: 1.3;
+.feature-top{
+    display: flex; flex-flow: row wrap; 
+    color: whitesmoke;
+    background-color: var(--lighter-black);
+    min-height: 65vh;
     
-    ul{ 
-        list-style-type: none;
-        li{padding: 0.5rem;}
+
+    .left-text{
+        flex: 50%;
+        padding: 5rem;
+        font-size: 1.4rem;
+
+        p{
+            color: #B3B3B3;
+        }
+
+        button{
+            width: clamp(200px, 30%, 500px);
+            margin: 1rem; margin-left: 0;
+            padding: 16px;
+            border: none; border-radius: 5px;
+            color: white;
+            font-size: 1.3rem; 
+            background: linear-gradient(270deg, #ff4e4e, #f9ae23); 
+            cursor: pointer;
+        }
+    }
+
+    .right-image{
+        flex: 50%; 
+        display: grid; place-items: center;
+
+        img{
+            width: 70%; height: auto;
+            object-fit: cover;
+        }
+    }
+
+    @media (max-width: 800px) {
+        .left-text{
+            flex: 100%;
+            padding: 2rem;
+        }
+        .right-image{
+            flex: 100%;
+        }
     }
 }
 
-.right-slides{
-    flex: 70%; overflow: hidden;
-    padding: 1rem; padding-left: 0;
+.feature-slides-container{
+    width: 100%; 
+    background-color: var(--lighter-black);
+    color: whitesmoke;
+}
+
+.feature-slides-track{
+    width: 100%; overflow: hidden;
+    padding: 2rem; 
     position: relative;
+
+    h2.title{
+        padding-left: 2rem;
+        margin-bottom: 12px;
+    }
     
     .btn-left{
         @extend %btn-reset;
         position: absolute;
-        top: 50%; left: -1rem;
-        padding: 1rem;
+        top: 50%; left: 0;
         transform: translateY(-50%);
     }
 
@@ -47,11 +93,10 @@
     }
 }
 
-.analysis-cards{
+.feature-cards{
     display: flex; flex-flow: row nowrap;
     width: 100%; height: 400px;
-    padding: 0.5rem;
-
+    
     overflow-x: auto;
     scroll-behavior: smooth;
     -ms-overflow-style: none;  /* Hide scrollbar IE and Edge */
@@ -59,53 +104,88 @@
 
     &::-webkit-scrollbar{ display: none;} /* Chrome, Safari and Opera */
     
-    .analysis-card{
+    .feature-card{
         flex: 0 0 300px; height: 100%;
-        margin-right: 1rem;
+        margin-right: 0.5rem;
         cursor: pointer;
-        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+        color: whitesmoke;
        
         &.active{
-            transform: scale(1.03);
+            transform: scale(1.08);
             box-shadow: 0 4px 8px 0 rgba(0,0,0,0.25);
-            border: 2px solid lightgray; border-radius: 3px;
         }
     }
 }
 
+.analysis-spacer{
+    height: 5vh;
+    background-color: whitesmoke;
+}
 
-@media (max-width: 800px) {
-    .analysis-container{
-        flex-wrap: wrap;
+.analysis-opener{
+    width: 100%;
+    padding: 2rem 5rem ;
+    font-size: 1.3rem;
+    background-color: whitesmoke;
+    color: var(--lighter-black);
+
+    .text-wrapper{
+        max-width: 800px;
     }
-    .left-experts, .right-slides{
-        flex: 100%;
-        overflow: hidden;
+
+    h1{ margin-bottom: 8px ;}
+
+    p{
+        font-family: 'Noto Sans JP';
+        color: #273240;
+    }
+
+    p:nth-child(1){
+        font-size: 1rem; 
+        margin-bottom: 8px;
     }
 }
 
-.analysis-text-container{
-    display: flex; flex-wrap: wrap;
-    padding: 0 1rem 3rem;
-    
+.analysis-section{
+    display: flex; flex-flow: row wrap;
+    background-color: whitesmoke;
+    padding: 2rem 4rem;
 
-    .filler{ flex: 30%; }
-
-    .text{
-        flex: 70%;
-        padding: 1rem;
-        background-color: #f3f7f7;
-        p{font-size: 1.1rem; font-family: 'Open Sans';}
+    .left-card{
+        flex: 0 0 400px; height: 400px;
+        max-width: 400px;
+        background-color: darken(whitesmoke, 1%);
+        border-radius: 5px;
     }
 
-    ul{ list-style-type: none;}
+    .right-text{
+        flex: 1;
+        padding: 1rem; padding-left: 3rem;
 
-    li{ margin-bottom: 1rem; }
+        ul{ 
+            list-style-type: none;
+            max-width: 800px;
+        }
 
-    span{ font-size: 1.3rem;}
+        li{ margin-bottom: 1rem; }
+
+        p{
+            font-family: 'Noto Sans JP';
+            color: #273240;
+        }
+
+        h2{
+            margin-top: 8px;
+        }
+
+    }
 
     @media (max-width: 800px) {
-        .filler{ display: none; }
-        .text{ flex: 100%; }
+        .left-card, .right-text{
+            flex: 100%;
+        }
+        .right-text{
+            padding: 1rem;
+        }
     }
 }

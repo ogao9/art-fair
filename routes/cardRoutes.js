@@ -89,7 +89,7 @@ router.post("/", (req,res)=>{
         creator: req.body.creator,
         description: req.body.description,
         category: req.body.category,
-        expertAnalysis: req.body.expertAnalysis
+        image: req.body.image,
     })
 
     newCard.save()

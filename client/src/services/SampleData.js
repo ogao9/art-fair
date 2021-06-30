@@ -13,22 +13,14 @@ import ProfileImg from "../images/Profile.png"
 import GalleryImg from "../images/gallery.png"
 import ForumImg from "../images/forum.png"
 
-
 export const AddDesignImg = SubmitImg;
+export const DefaultImg = Wildcard;
 
 export const roadmapSteps = [
     { header: "Explore", desc: "Get inspired by a diverse set of designs in the Gallery",  link: '/Gallery', image: GalleryImg},
     { header: "Join the Community", desc: "Create an account to save your favorite designs and even share your own", link: '/Login', image: ProfileImg },
-    { header: "Talk to Others", desc: "Discuss interesting designs on the Forums",  link: '/Forum', image: ForumImg },
+    { header: "Talk to Others", desc: "Discuss interesting designs on the Forums to see what others are thinking",  link: '/Forum', image: ForumImg },
 ];
-
-// export const roadmapStepsTest = [
-//     { header:"Featured Designs",desc: "Check out featured designs with expert analysis", link: <Link to='/Featured'/>,},
-//     { header: "Head to the Gallery", desc: "Get inspired by more designs in the Gallery",  link: <Link to='/Gallery'/> },
-//     { header: "", desc: "Create an account to save your favorite designs and to share your own", link: <Link to='/Login'/> },
-//     { header: "", desc: "Discuss interesting designs on the Forums",  link: <Link to='/Forum'/> },
-//     { header: "", desc: "Deploy an inspired design into the real-world. Repeat.", link: <a href="#"/>},
-// ];
 
 export const TeamMembers = [
     { name: "Dee Signer", role: "UI/UX Designer" },
