@@ -9,10 +9,10 @@ const About = () => {
         <>  
             <Header />
             <div className="top-wrapper">
-                <div className="fill-5"></div>
+                <div className="fill-5"/>
 
                 <div className="about-welcome">
-                    <div className="left">
+                    <div className="left-text">
                         <h1>About Design.io</h1>
                         <p>We think about designs.</p>
                         <ul className="fa-ul">
@@ -22,18 +22,18 @@ const About = () => {
                             <li><span><i class="fas fa-angle-double-right"/></span><a href="#team">Our Team</a></li>
                         </ul>
                     </div>
-                    <div className="right"></div>
+                    <div className="right-image"/>
                 </div>
             </div>
             
             <div className="about-spacer"></div>
 
             <div className="text-container">
-                <div className="left"></div>
+                <div className="left-image"/>
 
-                <div className="right">
+                <div className="right-text">
                     <section className="text-item" id="mission">
-                        <div><i class="fas fa-map-marked fa-2x"></i></div>
+                        <div><i class="fas fa-map-marked fa-2x"/></div>
                         <h1>Our Mission</h1>
                         <p>Everything in the physical world has been designed, whether it was carefully considered or not.
                                     Think about how your bed is placed in your bedroom and which apps are on your phone's home screen.
@@ -43,7 +43,7 @@ const About = () => {
                         </p>
                     </section>
                     <section className="text-item" id="vision">
-                        <div><i class="fas fa-glasses fa-2x"></i></div>
+                        <div><i class="fas fa-glasses fa-2x"/></div>
                         <h1>Our Vision</h1>
                         <p>We want 
                                 Design.io to be a platform where people will come to look at designs for inspiration. 
@@ -53,7 +53,7 @@ const About = () => {
                             </p>
                     </section>
                     <section className="text-item" id="process">
-                        <div><i class="fas fa-hammer fa-2x"></i></div>
+                        <div><i class="fas fa-hammer fa-2x"/></div>
                         <h1>Our Process</h1>
                         <p>Interested in how Design.io was built? Check out some documentation on Github.</p>
                         <a href="https://github.com/ogao9/design.io" target='_blank' rel="noreferrer"><button><i class="fab fa-github"/>Github</button></a>
@@ -64,7 +64,7 @@ const About = () => {
             <div className="team-container" id="team">
                 <div>
                     <div className="team-header">
-                        <div><i class="fas fa-users fa-3x"></i></div>
+                        <div><i class="fas fa-users fa-3x"/></div>
                         <h1>Our Team</h1>
                         <div className="metrics">
                             <h1><span className="num">4</span> People</h1>
@@ -76,20 +76,18 @@ const About = () => {
                     <div className="member-container">
                         {TeamMembers.map((value, index)=>(
                             <section className="member-card">
-                                <i class="fas fa-user-tie fa-5x"></i>
+                                <i class="fas fa-user-tie fa-5x"/>
                                 <h1>{value.name}</h1>
                                 <p>{value.role}</p>
                             </section>
                         ))}
                     </div>
                 </div>
+                <div className="fill-5"/>
             </div>
-            <div className="about-spacer"></div>
-
             <Footer/>
         </>
     );
 };
 
 export default About;
-

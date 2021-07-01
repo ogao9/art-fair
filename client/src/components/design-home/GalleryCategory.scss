@@ -12,13 +12,15 @@
 
 .gallery-welcome-text{
     display: flex; 
-    max-width: 800px; min-height: 350px;
+    max-width: 650px; min-height: 300px;
     padding: 0 5rem;
     margin-bottom: 1rem;
-    font-size: 1.8rem;
+    font-size: 1.7rem;
 
-    p{font-size: 1.8rem;
-    color:#B3B3B3}
+    p{
+        font-size: 1.5rem;
+        color:#B3B3B3
+    }
 }
 
 .gallery-welcome-spacer{
@@ -30,6 +32,7 @@
     .gallery-welcome-text{
         padding: 1.5rem;
     }
+    .gallery-welcome-spacer{height: 2vh;}
 }
 
 .card-popup{

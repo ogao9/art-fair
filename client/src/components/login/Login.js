@@ -26,16 +26,3 @@ const Login = () => {
 
 export default Login;
 
-{/* <div className="login-container">
-                <div className="login-left">
-                    <div className="login-left-text">
-                        <div className="top-spacer"></div>
-                        
-                    </div>
-                </div>
-
-                <div className="login-right">
-                    <div className="top-spacer"></div>
-                    <LoginForm onLoginSuccess={toProfile} />
-                </div>
-            </div> */}

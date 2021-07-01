@@ -1,6 +1,6 @@
 import React from "react";
 import DarkLogo from "../../images/LogoDark.png"
-import Card from '../design-home/Card'
+import Card from '../card/Card'
 
 
 const DesignCategory = ({nextStep, closebtn, userInput, handleChange}) => {

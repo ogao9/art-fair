@@ -14,3 +14,13 @@ export default function ScrollToTop() {
 
 //we render this component everywhere
 //the only thing it does is emit a side effect of scroll to the top when the pathname changes
+
+// import { useEffect } from "react";
+
+// export default function ScrollToTop() {
+//   useEffect(() => {
+//     window.scrollTo(0, 0);
+//   }, []);
+
+//   return null;
+// }

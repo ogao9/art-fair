@@ -59,7 +59,7 @@ const HomePage = () => {
                 {roadmapSteps.map((obj, idx) => (
                     <div className="roadmap-items" key={idx}>
                         <div className="left-image">
-                            <img src={obj.image} />
+                            <img src={obj.image} alt="site preview"/>
                         </div>
                         <div className="right-text">
                             <div className="text-wrapper">

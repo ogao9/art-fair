@@ -9,9 +9,8 @@
     display: flex; flex-flow: row wrap; 
     color: whitesmoke;
     background-color: var(--lighter-black);
-    min-height: 65vh;
+    min-height: 60vh;
     
-
     .left-text{
         flex: 50%;
         padding: 5rem;
@@ -30,6 +29,8 @@
             font-size: 1.3rem; 
             background: linear-gradient(270deg, #ff4e4e, #f9ae23); 
             cursor: pointer;
+
+        &:hover{ transform: scale(0.98);}
         }
     }
 
@@ -42,16 +43,18 @@
             object-fit: cover;
         }
     }
+}
 
-    @media (max-width: 800px) {
-        .left-text{
-            flex: 100%;
-            padding: 2rem;
-        }
-        .right-image{
-            flex: 100%;
-        }
+@media (max-width: 800px) {
+    .feature-top{ min-height: 30vh;}
+    .feature-top .left-text{
+        flex: 100%;
+        padding: 2rem;
     }
+    .feature-top .right-image{
+        display: none;
+    }
+    .feature-spacer{height: 2vh;}
 }
 
 .feature-slides-container{
@@ -66,7 +69,7 @@
     position: relative;
 
     h2.title{
-        padding-left: 2rem;
+        padding-left: 1rem;
         margin-bottom: 12px;
     }
     
@@ -111,7 +114,7 @@
         color: whitesmoke;
        
         &.active{
-            transform: scale(1.08);
+            transform: scale(1.03);
             box-shadow: 0 4px 8px 0 rgba(0,0,0,0.25);
         }
     }
@@ -152,7 +155,7 @@
     padding: 2rem 4rem;
 
     .left-card{
-        flex: 0 0 400px; height: 400px;
+        flex: 0 0 400px; height: 450px;
         max-width: 400px;
         background-color: darken(whitesmoke, 1%);
         border-radius: 5px;
@@ -187,5 +190,15 @@
         .right-text{
             padding: 1rem;
         }
+    }
+}
+
+
+@media (max-width: 500px) {
+    .analysis-opener{
+        padding: 2rem;
+    }
+    .analysis-section{
+        padding: 1rem;
     }
 }

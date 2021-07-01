@@ -2,6 +2,7 @@ import React from "react";
 import { Route, Switch } from "react-router-dom";
 import { UserProvider } from "./components/utilities/UserContext";
 import { PrivateRoute } from "./components/utilities/CustomRoutes";
+import ScrollToTop from "./components/utilities/ScrollToTop";
 import HomePage from "./components/home/HomePage";
 import Featured from "./components/featured/Feature"
 import Gallery from "./components/design-home/Gallery";
@@ -15,6 +16,7 @@ function App() {
 
     return (
         <UserProvider>
+            <ScrollToTop/>
             <Switch>
                 <Route path="/" exact component={HomePage} />
                 <Route path="/Featured" exact component={Featured} />

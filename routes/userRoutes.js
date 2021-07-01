@@ -16,19 +16,25 @@ router.get("/", async (req, res) => {
 });
 
 // @ POST /users
-// Add a new user
+// Add a new user, but first check if email already has an account
 router.post("/", async (req, res) => {
     try {
-        const salt = await bcrypt.genSalt();
-        const hashedPassword = await bcrypt.hash(req.body.password, salt);
+        const user = await User.findOne({email: req.body.email})
 
-        const new_user = new User({
-            username: req.body.username,
-            password: hashedPassword,
-            email: req.body.email,
-        });
+        if(user){
+            return res.status(200).send({message: "This email is already associated with an account"})
+        }else{
+            const salt = await bcrypt.genSalt();
+            const hashedPassword = await bcrypt.hash(req.body.password, salt);
 
-        new_user.save().then((user) => res.status(201).json(user));
+            const new_user = new User({
+                username: req.body.username,
+                password: hashedPassword,
+                email: req.body.email,
+            });
+
+            new_user.save().then((user) => res.status(201).json(user));
+        }
     } catch (error) {
         console.log(error);
         res.status(500).send("error");

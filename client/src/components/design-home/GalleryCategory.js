@@ -7,7 +7,7 @@ import Loading from "../utilities/Loading"
 import cardServices from "../../services/cardServices";
 import Header from "../headfoot/Header";
 import Footer from "../headfoot/Footer";
-import Card from "./Card";
+import Card from "../card/Card";
 import GalleryDisplay from "./GalleryDisplay";
 import './GalleryCategory.scss'
 

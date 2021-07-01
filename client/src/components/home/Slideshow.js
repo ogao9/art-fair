@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import Card from "../design-home/Card";
+import Card from "../card/Card";
 import "./Slideshow.scss";
 
 

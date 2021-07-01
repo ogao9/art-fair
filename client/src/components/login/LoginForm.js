@@ -8,18 +8,17 @@ const LoginForm = ({onLoginSuccess}) => {
     const [password, setPassword] = useState("");
     const [newUser, setNewUser] = useState(false);
     const [loading, setLoading] = useState(false);
-    const [pwdError, setPwdError] = useState(false);
-    const [loginError, setLoginError] = useState(false);
+    const [error, setError] = useState("");
 
     const {setUser} = useContext(UserContext);
     const history = useHistory(); 
     
     const handleSignUp = async (e) => {
         e.preventDefault();
-        setLoading(true); setPwdError(false);
+        setLoading(true); setError("");
 
         if (password.length < 6) {
-            setPwdError(true);
+            setError("Passwords must have at least 6 characters")
         } else {
             const idx = email.indexOf("@");
             const inducedName = email.charAt(0).toUpperCase() + email.substring(1, idx);
@@ -29,50 +28,49 @@ const LoginForm = ({onLoginSuccess}) => {
                 username: inducedName,
             };
 
-            const res = await userServices.addUser(newUser);
+            const {status, data} = await userServices.addUser(newUser);
 
-            if (res) {
-                alert("Sign up Success!");
-                setUser(res);   //log the user in as well
+            if(status === 200) 
+                setError(data.message);
+            else if(status === 201){
+                setUser(data);   
                 history.push("/Profile");
-            } else alert("Sign up failed!")
+            }else 
+                alert("Sign up failed!")
         }
-
         setLoading(false); 
     };
 
     const handleLogin = async (e) => {
         e.preventDefault();
-        setLoading(true); setPwdError(false); setLoginError(false);
+        setLoading(true); setError("")
 
         if (password.length < 6) {
-            setPwdError(true);
+            setError("Passwords must have at least 6 characters")
         } else {
             const res = await userServices.checkUser({ email, password });
             if (res) {
                 setUser(res);
                 onLoginSuccess();
             } else {
-                setLoginError(true);
+                setError("Your email or password is incorrect")
             }
         }
-
-        setLoading(false); //"can't perform state update on unmounted component error is this"
+        setLoading(false); //"can't perform state update on unmounted component" error occurs here
     };
 
     const handleGuest = async(e)=>{
         e.preventDefault();
-        setLoading(true); setPwdError(false); setLoginError(false);
+        setLoading(true); setError("")
 
         const res = await userServices.checkUser({email: "guest@design.io", password: "123456"})
         if (res) {
             setUser(res);
             onLoginSuccess();
         } else {
-            alert("Sorry, Login as guest failed.")
+            alert("Sorry, Guest Login failed.")
         }
     }
-
 
     return (
         <div className="login-form-container">
@@ -100,8 +98,7 @@ const LoginForm = ({onLoginSuccess}) => {
                     required
                 />
 
-                <div className="error-msg">{pwdError ? "Passwords must have at least 6 characters" : null} </div>
-                <div className="error-msg">{loginError ? "Your email or password is incorrect" : null} </div>
+                <div className="error-msg">{error ? error : null} </div>
 
                 <button type="submit">{newUser ? "Sign Up" : "Sign In"}</button>
                 {loading ? <i id="login-spinner" class="fas fa-spinner fa-3x"></i> : null}
@@ -112,7 +109,7 @@ const LoginForm = ({onLoginSuccess}) => {
                     {newUser 
                     ? <button type="button" onClick={() => setNewUser(false)}> Log In Here </button>
                     : <div>
-                        <button className="guest-login" type="button" onClick={handleGuest}>Login as Guest</button>
+                        <button className="guest-login" type="button" onClick={handleGuest}>Guest Login</button>
                         <span> - or - </span>
                         <button className="guest-login" type="button" onClick={() => setNewUser(true)}> Sign Up </button>
                     </div>

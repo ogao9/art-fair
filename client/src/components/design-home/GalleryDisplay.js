@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link, useRouteMatch } from "react-router-dom";
-import Card from "./Card";
+import Card from "../card/Card";
 import "./GalleryDisplay.scss"
 
 export default function GalleryDisplay ({cardsPerPage, galleryData, cardLink, handleRemove}){

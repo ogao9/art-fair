@@ -11,14 +11,15 @@
 }
 
 //-----     Login Form Styles   -----
-//------    ------          --------
+//------                        -----
 @keyframes spin {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
 }
 
 .login-form-container{
-    width: 100%;
+    display: flex; flex-flow: column nowrap; align-items: center;
+    width: clamp(325px, 35%, 800px);
     padding: 1rem;
 }
 
@@ -32,7 +33,7 @@
 
 .Login-form{
     display: flex; flex-flow: column nowrap; align-items: center;
-    width: clamp(325px, 35%, 800px);
+    width: 100%;
     margin: 0 auto;
     padding: 1.5rem;
     border-radius: 6px;
@@ -88,57 +89,3 @@
 
     .error-msg{ color: #B3B3B3}  
 }
-
-
-//-----     Will use in the future ------
-// .login-container{
-//     display: flex; flex-wrap: wrap; 
-//     width: 100%; min-height: 90vh;
-//     background-color: var(--lighter-black);
-//     color: whitesmoke;
-// }
-
-// .top-spacer{height: 15vh;
-//     background-color: var(--lighter-black);
-// }
-
-// .login-left{
-//     flex: 50%; min-height: 200px;
-//     display: grid; justify-items: center;
-//     padding: 1rem;
-//     line-height: 1.2;
-//     font-size: 1.5rem;
-    
-//     .login-left-text{
-//         padding: 1rem;
-        
-//         p{//font-family: 'Open Sans';
-//             color: #B3B3B3;}
-//     }
-
-//     .explore-button{
-//         width: clamp(300px, 100%, 800px);
-//         padding: 1rem; margin: 1rem 0;
-//         border-radius: 5px; border: none;
-//         background: linear-gradient(45deg, #ff4e50, #f9b523); 
-//         color: whitesmoke;
-//         font-size: 1.25rem; font-weight: 500;
-//         cursor: pointer;
-    
-//         &:hover{transform: scale(0.98);}
-//     }    
-// }
-
-// .login-right{
-//     flex: 50%; min-height: 500px;
-//     padding: 1rem;
-//     background-color: #181818;
-// }
-
-// @media screen and (max-width: 800px) {
-//     .top-spacer{height: 5vh;}
-
-//     .login-left, .login-right{
-//         flex: 100%;
-//     }
-// }

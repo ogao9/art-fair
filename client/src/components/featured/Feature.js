@@ -5,7 +5,7 @@ import Speaker from "../../images/speaker.png"
 import Header from "../headfoot/Header"
 import Footer from "../headfoot/Footer"
 import Loading from '../utilities/Loading'
-import Card from "../design-home/Card"
+import Card from "../card/Card"
 import './Feature.scss'
 
 const Feature = () => {

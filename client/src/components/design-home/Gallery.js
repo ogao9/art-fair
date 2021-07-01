@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, Route, Switch, useRouteMatch,} from "react-router-dom";
+import { Link, Route, Switch, useRouteMatch} from "react-router-dom";
 import { CategoryRoute } from "../utilities/CustomRoutes";
 import { Categories } from "../../services/SampleData";
 import Header from "../headfoot/Header";
@@ -11,7 +11,7 @@ const GalleryHome = ()=>{
     return(
         <>  
             <Header />
-            <div className="gallery-spacer"></div>
+            <div className="gallery-spacer"/>
 
             <section className="galleryhome-welcome">
                 <div className="welcome-text">
@@ -24,8 +24,8 @@ const GalleryHome = ()=>{
 
             <section className="category-container">
                 <div className="category-grid">
-                    {Categories.map((category) => (
-                        <div className="category-grid-item">
+                    {Categories.map((category, idx) => (
+                        <div className="category-grid-item" key={idx}>
                             <img src={category.image} alt="Category" />
                             <h1>{category.name}</h1>
 
@@ -38,8 +38,7 @@ const GalleryHome = ()=>{
                 </div>
             </section>
 
-            <div className="gallery-spacer"></div>
-
+            <div className="gallery-spacer"/>
             <Footer/>
         </>
     )
@@ -48,7 +47,7 @@ const GalleryHome = ()=>{
 const Gallery = () => {
     const {path} = useRouteMatch(); 
     return (
-        <>
+        <>  
             <Switch>
                 <CategoryRoute path={`${path}/:category`}> 
                     <GalleryCategory/>
