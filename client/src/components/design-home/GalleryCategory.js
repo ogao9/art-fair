@@ -94,12 +94,14 @@ const GalleryCategory = () =>{
 
             <div className={`submit-teaser ${blur ? "blur" : ""}`}>
                 <div className="teaser-left">
-                    <p>Put yourself out there</p>
-                    <h1>Have a design to share?</h1>
-                    <p>It's easy and there's no pressure. We believe all designs have the potential to inspire.</p>
-                    <button>
-                        <Link to='/Profile'>Submit your design</Link>
-                    </button> 
+                    <div className="text-wrapper">
+                        <p>Put yourself out there</p>
+                        <h1>Have a design to share?</h1>
+                        <p>It's easy and there's no pressure. We believe all designs have the potential to inspire.</p>
+                        <button>
+                            <Link to='/Profile'>Submit your design</Link>
+                        </button>
+                    </div>
                 </div>
 
                 <div className="teaser-right">

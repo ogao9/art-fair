@@ -54,10 +54,14 @@
 }
 
 .teaser-left{
-    flex: 30%;
+    flex: 35%;
     padding: 2rem;
     font-size: 1.4rem;
     color: var(--lighter-black);
+
+    .text-wrapper{
+        max-width: 90%;
+    }
 
     p:nth-child(1){
         font-size: 1.2rem;
@@ -88,7 +92,7 @@
 }
 
 .teaser-right{
-    flex: 70%;
+    flex: 55%;
     padding: 2rem;
     background-color: #f4f4ff;
     border-radius: 0.5rem;
